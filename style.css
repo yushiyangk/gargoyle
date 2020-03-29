@@ -1,0 +1,272 @@
+/*
+	Legacy support
+	Only browsers with >0.1% market share are noted
+
+	Newer features with fallback mechanisms implemented (and browsers with no support):
+		calc() (IE 8, Safari 5.1, Opera Mini, Android 4.3)
+		vh, vw units (IE 8, Safari 5.1, Opera Mini, Android 4.3)
+		background-image multiple (IE 8)
+		background-image SVG (IE 8)
+		linear-gradient() (IE 8 & 9)
+		background-size (IE 8)
+		background-repeat (Android 4.3 & 4.4.4)
+		background-position edge offset (IE 8 & Android 4.3)
+
+
+
+	Features with no implemented fallback mechanisms (and browsers with no support):
+		@supports (IE 8, IE11, Safari 5.1)
+		rem unit (IE 8)
+*/
+
+
+
+
+/*
+	Section elements
+*/
+html {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
+	color: darkslategray;
+
+	/* SVG property */
+	text-rendering: optimizeLegibility;  /* Good for Chrome, potentially problematic on Android */
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	padding-bottom: 5rem;
+
+	background-color: snow;
+	color: darkslategray;
+
+	text-align: center;  /* Workaround IE bug with margin auto column; parent container needs this. */
+}
+
+main {
+	margin: 1rem auto;
+	padding: 0;
+
+	text-align: initial;
+
+	width: 36rem;
+	max-width: 90%;
+	max-width: calc(100% - 1.5rem);
+}
+
+nav {
+	margin: 1rem auto;
+	padding: 0;
+
+	text-align: initial;
+}
+
+article {
+	margin: 1rem auto;
+	padding: 0;
+
+	text-align: initial;
+
+	/* CSS3 Text */
+	-moz-hyphens: auto;     /* Firefox before 43 */
+	-webkit-hyphens: auto;  /* Chrome up to 52, Opera up to 37 */
+	-ms-hyphens: auto;
+	hyphens: auto;
+	word-wrap: break-word;      /* Deprecated */
+	overflow-wrap: break-word;
+	text-align: left;
+	text-align: start;  /* Supports multidirectional text */
+	text-indent: 0;
+	-webkit-tab-size: 4;
+	tab-size: 4;
+}
+
+header {
+	margin: 1rem 0;
+	padding: 0;
+
+	text-align: initial;
+}
+
+footer {
+	margin: 1rem 0;
+	padding: 0;
+
+	text-align: initial;
+}
+
+section {
+	margin: 1rem 0;
+	padding: 0;
+
+	text-align: initial;
+}
+
+
+
+/*
+	Text elements
+*/
+p {
+	margin-top: 0.5rem;
+	margin-bottom: 1rem;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+}
+
+h1 {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+
+	/* CSS3 Text */
+	-moz-hyphens: none;     /* Firefox before 43 */
+	-webkit-hyphens: none;  /* Chrome up to 52, Opera up to 37 */
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+h2, h3, h4, h5, h6 {
+	margin-top:	2rem;
+	margin-bottom: 0.5rem;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+}
+hgroup > h1, hgroup > h2, hgroup > h3, hgroup > h4, hgroup > h5, hgroup > h6 {
+	margin-top: 0;
+}
+hgroup {
+	margin-top: 2rem;
+	margin-bottom: 0.5rem;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+}
+
+hr {
+	margin: 2rem 0;
+	padding: 0;
+	border: 0;
+
+	border-bottom: 1px solid darkslategrey;
+}
+
+
+
+/*
+	Figure elements
+*/
+figure {
+	margin-left: calc(50% - 50vw + 1rem);
+	margin-right: calc(50% - 50vw + 1rem);
+}
+figure > img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+figcaption {
+	display: block;
+	max-width: 40em;
+	margin-left: auto;
+	margin-right: auto;
+
+	text-align: center;
+}
+figure.bounded {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+figure.bounded > img {
+	max-width: 100%;
+}
+
+
+
+/*
+	Table elements
+*/
+table {
+	max-width: 100%;
+	margin: 1rem auto;
+
+	border-top: 1px solid lightgrey;
+	border-bottom: 1px solid lightgrey;
+	border-collapse: collapse;
+
+	hyphens: auto;
+}
+td, th {
+	padding: 0.2em 0.5em;
+}
+th, thead td {
+	text-align: center;
+}
+thead {
+	border-bottom: 1px solid lightgrey;
+}
+
+
+
+/*
+	Inline elements
+*/
+a {
+	color: #740000;
+	text-decoration: underline;
+}
+a:focus {
+	text-decoration: underline overline;
+}
+a:hover {
+	text-decoration: none;
+}
+
+code {
+	background-color: ghostwhite;
+	border-radius: 0.2em;
+}
+
+
+
+/*
+	Inline classes
+*/
+.nohyphen {
+	-moz-hyphens: none;     /* Firefox before 43 */
+	-webkit-hyphens: none;  /* Chrome up to 52, Opera up to 37 */
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+
+
+/*
+	Dynamic column size
+*/
+@supports (width: calc(100% - 1vw)) {
+	main {
+		max-width: calc(100% - 8.33333vw);
+	}
+}
+
+
+
+/*
+	Unhide content after CSS is loaded
+	Add id="bodymask" to body element and apply
+		body { visibility: hidden; }
+	in internal stylesheet of HTML file, to be overwritten by the following
+*/
+#bodymask {
+	visibility: visible;
+}
