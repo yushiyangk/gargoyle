@@ -14,7 +14,7 @@
 
 	Features with fallback mechanisms (unsupported browsers):
 		initial value (IE –11, O Mini all) -moz- for Firefox 2–3
-		vh, vw units (IE –8, O Mini, Android –4.3)
+		vw units (IE –8, O Mini, Android –4.3)
 		calc() (IE –11, Safari 5.1, O Mini, Android –4.3) -moz- for Firefox 4–15, -webkit- for Chrome 19–25 & Safari 6 & iOS 6.1
 			! IE 9 crashes when used in the background-position property
 			! Various known issues: https://caniuse.com/#feat=calc
@@ -26,6 +26,7 @@
 		margin: auto (Android –4.4.4)
 		rem units (IE –8, IE 9–10 partial)
 			! IE 9–10 ignores entire declaration when used in pseudo-elements or in the font shorthand property
+		vh units (IE –8, O Mini, Android –4.3)
 		:hover (Android –4.4.4)
 */
 
@@ -234,10 +235,7 @@ figure {
 	margin-left: calc(50% - 45.833333vw);
 	margin-right: calc(50% - 45.833333vw);
 }
-figure > img {
-	display: block;
-	margin: 0 auto;
-}
+
 figcaption {
 	/* Effectively centre for single line, left-align for multiple lines */
 	width: -moz-max-content;
@@ -251,12 +249,26 @@ figcaption {
 	text-align: left;
 }
 
+figure > img, figure > table {
+	display: block;
+	margin: 0 auto;
+}
+
 figure.g-bounded {
 	margin-left: 0;
 	margin-right: 0;
 }
 figure.g-bounded > img, figure.g-bounded > table {
 	max-width: 100%;
+}
+
+img {
+	margin-top: 0.75rem;
+	margin-bottom: 2.25rem;
+	margin-left: 0;
+	margin-right: 0;
+
+	max-height: 90vh;
 }
 
 
@@ -266,7 +278,10 @@ figure.g-bounded > img, figure.g-bounded > table {
 	Defect: gridding of td, th padding and border 1px
 */
 table {
-	margin: 0 auto;
+	margin-top: 0.75rem;
+	margin-bottom: 2.25rem;
+	margin-left: 0;
+	margin-right: 0;
 
 	border-top: 1px solid lightgrey;
 	border-bottom: 1px solid lightgrey;
