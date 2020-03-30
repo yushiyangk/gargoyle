@@ -251,11 +251,11 @@ figcaption {
 	text-align: left;
 }
 
-figure.bounded {
+figure.g-bounded {
 	margin-left: 0;
 	margin-right: 0;
 }
-figure.bounded > img, figure.bounded > table {
+figure.g-bounded > img, figure.g-bounded > table {
 	max-width: 100%;
 }
 
@@ -312,7 +312,7 @@ code {
 /*
 	Inline classes
 */
-.nohyphen {
+.g-nohyphen {
 	-moz-hyphens: none;
 	-webkit-hyphens: none;
 	-ms-hyphens: none;
@@ -327,6 +327,6 @@ code {
 		body { visibility: hidden; }
 	in internal stylesheet of HTML file, to be overwritten by the following
 */
-#bodymask {
+#g-bodymask {
 	visibility: visible;
 }

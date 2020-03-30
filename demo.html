@@ -4,44 +4,12 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="author" content="Yu Shiyang" />
-		<meta name="description" content="Demo of the website stylesheet, with samples of common layout elements" />
-		<title>Stylesheet demo</title>
+		<meta name="description" content="Demo of Gargoyle, a minimal CSS stylesheet" />
+		<title>Gargoyle, a minimal CSS stylesheet</title>
 
-		<link rel="stylesheet" type="text/css" href="styles/style.css" />
-		<style type="text/css">
-			@font-face {
-				font-family: "Raleway";
-				font-style: normal;
-				font-weight: normal;
-				font-display: swap;
-				src: local("Raleway"), local("Raleway-Regular"), url("fonts/Raleway-Regular.ttf"), url(https://fonts.gstatic.com/s/raleway/v14/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');
-
-				/* OpenType features */
-				/* Low-level syntax for compatibility; do not use for smallcaps */
-				-moz-font-feature-settings: "dlig=1";   /* Firefox before 29 */
-				-moz-font-feature-settings: "dlig";     /* Firefox before 34 */
-				-webkit-font-feature-settings: "dlig";  /* Chrome before 48, Opera before 35 */
-				font-feature-settings: "dlig";
-				/* Preferred syntax, limited support */
-				font-variant-ligatures: discretionary-ligatures;
-				-webkit-font-variant-ligatures: discretionary-ligatures;
-			}
-			.sans-serif {
-				font-family: "Raleway", sans-serif;
-				font-weight: normal;
-				font-size: 0.95rem;
-			}
-			.sans-serif-bold {
-				font-family: "Raleway", sans-serif;
-				font-weight: bold;
-				font-size: 0.95rem;
-			}
-			.monospace {
-				font-size: 0.85rem;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="./gargoyle.css" />
 	</head>
-	<body>
+	<body id="g-bodymask">
 		<main>
 			<article>
 				<h1>On the sex of centaurs</h1>
@@ -102,7 +70,7 @@
 
 				<h2>Inline</h2>
 
-				<p>Here is a hyperlink to <a href="">nowhere</a>, and another link to an <a href="https://asdf.com/">example domain</a>.</p>
+				<p>Here is a hyperlink to <a href="">nowhere</a>, and another link to an <a href="https://example.com/">example domain</a>.</p>
 
 				<p>Inline JavaScript is given as <code>alert('hi');</code></p>
 
@@ -115,7 +83,7 @@
 					<figcaption>Mill of Heeswijk Sun by Piet Mondrian, exceeding main column</figcaption>
 				</figure>
 
-				<figure class="bounded">
+				<figure class="g-bounded">
 					<img src="images/mill-of-heeswijk-sun.jpg" alt="An oil painting of a windmill" />
 					<figcaption>Mill of Heeswijk Sun by Piet Mondrian, bounded by main column</figcaption>
 				</figure>
