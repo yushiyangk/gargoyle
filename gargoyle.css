@@ -36,6 +36,7 @@
 	Section elements
 */
 html {
+	font-family: sans-serif;
 	font-size: 16px;
 	line-height: 24px;
 
@@ -153,6 +154,7 @@ p {
 }
 
 h1 {
+	font-family: serif;
 	font-size: 2rem;
 	line-height: 2.25rem;
 
@@ -316,10 +318,15 @@ a:visited {
 }
 
 code {
-	background-color: aliceblue;
+	font-family: monospace;
+	line-height: 1.3rem;  /* border-radius increases line height */
+	line-height: calc(1.5rem - 0.2em);
+
 	-moz-border-radius: 0.2em;
 	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
+
+	background-color: aliceblue;
 }
 
 
