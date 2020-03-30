@@ -5,12 +5,14 @@
 	Optional features (unsupported browsers):
 		text-rendering (IE –11, Edge –18, Firefox –76 on Mac, Chrome –83 on Mac, Android –4.3, Samsung –11.1)
 			! Android –4.3 breaks rendering of custom fonts with text-rendering: optimizeLegibility
+		overflow-wrap (IE –11, Edge –17, O Mini, Android –4.3, KaiOS 2.5) fallback on deprecated alias word-wrap
 		hyphens (IE –9, Chrome –54, Chrome 55–83 partial, Opera 42–66 partial, O Mini all, Android –4.4.4, Android Chrome 80 partial, UC 12.12 partial, Samsung 4, QQ 1.2) -moz- for Firefox 6–42, -ms- for IE 10–11, Edge 12–18, -webkit- for Safari 5.1–13.1 & iOS 4.2–13.4,
 		hyphens for English (IE –9, Chrome –54, Android –4.4.4, Samsung –4)
 		tab-size (IE –11, Edge –18, Android –4.3), -moz- for Firefox 4–76 & Firefox Android 68 & KaiOS 2.5, -o- for Opera 11.5–12.1 & O Mini & O Mobile 12–12.1
 		width: max-content (IE –11, Edge –18, Android –4.4.4, Samsung –4) -moz- for Firefox 3–65, -webkit- for Chrome 22–45, intrinsic value for Safari 3.1–10.1 & iOS 3.2–10.3
 		:visited (Android –4.3)
 		border-radius (IE –8, O Mini) -moz- for Firefox 2–3.6, -webkit- for Chrome 4 & Safari 3.1–4 & iOS 3.2 & Android 2.1
+		font-feature-settings (IE –9, O Mini, Android –4.3) -moz- old syntax for Firefox 4–14, -moz- for Firefox 15–33, -webkit- for Chrome 16–47 & Opera 15–34 & Android 4.4–4.4.4 & Samsung 4
 
 	Features with fallback mechanisms (unsupported browsers):
 		initial value (IE –11, O Mini all) -moz- for Firefox 2–3
@@ -19,7 +21,7 @@
 			! IE 9 crashes when used in the background-position property
 			! Various known issues: https://caniuse.com/#feat=calc
 		text-align: start or end (IE –11, Edge –18, Android –4.4.4)
-		overflow-wrap (IE –11, Edge –17, O Mini, Android –4.3, KaiOS 2.5) fallback on deprecated alias word-wrap
+		::first-letter (IE –8) ffbug workaround for Firefox using -moz-animation & @-moz-keyframes
 
 	Features with no implemented fallback mechanisms (and browsers with no support):
 		@supports (IE 8, IE11, Safari 5.1)
@@ -327,6 +329,33 @@ code {
 	border-radius: 0.2em;
 
 	background-color: aliceblue;
+}
+
+/* Bugfix for Firefox adding extra space after an element that has display: inline-block and a ::first-letter with a change of font-size; fixed by forcing reflow */
+@-moz-keyframes ffbug { from { padding-right: 0.1px ; } to { padding-right: 0; } }
+abbr {
+	/* CSS3 Font (generic OpenType features) */
+	/* Low-level syntax for compatibility; do not use for smallcaps */
+	-moz-font-feature-settings: "c2sc=1";
+	-moz-font-feature-settings: "c2sc";
+	-webkit-font-feature-settings: "c2sc";
+	font-feature-settings: "c2sc";
+}
+abbr.g-capital {
+	display: inline-block;
+
+	margin: 0;
+	padding: 0;
+
+	-moz-animation: ffbug 1s ease 1s 1;
+}
+abbr.g-capital::first-letter {
+	/* CSS3 Font (generic OpenType features) */
+	/* Low-level syntax for compatibility; do not use for smallcaps */
+	-moz-font-feature-settings: "c2sc=0";
+	-moz-font-feature-settings: "c2sc" off;
+	-webkit-font-feature-settings: "c2sc" off;
+	font-feature-settings: "c2sc" off;
 }
 
 
