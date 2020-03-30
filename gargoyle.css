@@ -2,23 +2,32 @@
 	Legacy support
 	Only browsers with >0.1% market share are noted
 
-	Newer features with fallback mechanisms implemented (and browsers with no support):
-		calc() (IE 8, Safari 5.1, Opera Mini, Android 4.3)
-		vh, vw units (IE 8, Safari 5.1, Opera Mini, Android 4.3)
-		background-image multiple (IE 8)
-		background-image SVG (IE 8)
-		linear-gradient() (IE 8 & 9)
-		background-size (IE 8)
-		background-repeat (Android 4.3 & 4.4.4)
-		background-position edge offset (IE 8 & Android 4.3)
+	Optional features (unsupported browsers):
+		text-rendering (IE –11, Edge –18, Firefox –76 on Mac, Chrome –83 on Mac, Android –4.3, Samsung –11.1)
+			! Android –4.3 breaks rendering of custom fonts with text-rendering: optimizeLegibility
+		hyphens (IE –9, Chrome –54, Chrome 55–83 partial, Opera 42–66 partial, O Mini all, Android –4.4.4, Android Chrome 80 partial, UC 12.12 partial, Samsung 4, QQ 1.2) -moz- for Firefox 6–42, -ms- for IE 10–11, Edge 12–18, -webkit- for Safari 5.1–13.1 & iOS 4.2–13.4,
+		hyphens for English (IE –9, Chrome –54, Android –4.4.4, Samsung –4)
+		tab-size (IE –11, Edge –18, Android –4.3), -moz- for Firefox 4–76 & Firefox Android 68 & KaiOS 2.5, -o- for Opera 11.5–12.1 & O Mini & O Mobile 12–12.1
+		width: max-content (IE –11, Edge –18, Android –4.4.4, Samsung –4) -moz- for Firefox 3–65, -webkit- for Chrome 22–45, intrinsic value for Safari 3.1–10.1 & iOS 3.2–10.3
+		:visited (Android –4.3)
+		border-radius (IE –8, O Mini) -moz- for Firefox 2–3.6, -webkit- for Chrome 4 & Safari 3.1–4 & iOS 3.2 & Android 2.1
 
-
+	Features with fallback mechanisms (unsupported browsers):
+		initial value (IE –11, O Mini all) -moz- for Firefox 2–3
+		vh, vw units (IE –8, O Mini, Android –4.3)
+		calc() (IE –11, Safari 5.1, O Mini, Android –4.3) -moz- for Firefox 4–15, -webkit- for Chrome 19–25 & Safari 6 & iOS 6.1
+			! IE 9 crashes when used in the background-position property
+			! Various known issues: https://caniuse.com/#feat=calc
+		text-align: start or end (IE –11, Edge –18, Android –4.4.4)
+		overflow-wrap (IE –11, Edge –17, O Mini, Android –4.3, KaiOS 2.5) fallback on deprecated alias word-wrap
 
 	Features with no implemented fallback mechanisms (and browsers with no support):
 		@supports (IE 8, IE11, Safari 5.1)
-		rem unit (IE 8)
+		margin: auto (Android –4.4.4)
+		rem units (IE –8, IE 9–10 partial)
+			! IE 9–10 ignores entire declaration when used in pseudo-elements or in the font shorthand property
+		:hover (Android –4.4.4)
 */
-
 
 
 
@@ -26,83 +35,106 @@
 	Section elements
 */
 html {
-	box-sizing: border-box;
+	font-size: 16px;
+	line-height: 24px;
+
 	margin: 0;
 	padding: 0;
 
 	color: darkslategray;
 
-	/* SVG property */
-	text-rendering: optimizeLegibility;  /* Good for Chrome, potentially problematic on Android */
+	/* Nominally an SVG property but good for Chrome; breaks Android 4.3 */
+	text-rendering: optimizeLegibility;
 }
 
 body {
 	margin: 0;
 	padding: 0;
-	padding-bottom: 5rem;
+	padding-bottom: 3rem;
 
 	background-color: snow;
 	color: darkslategray;
 
-	text-align: center;  /* Workaround IE bug with margin auto column; parent container needs this. */
+	/* Workaround for IE bug with margin: auto column centring; parent container needs this. */
+	text-align: center;
 }
 
 main {
-	margin: 1rem auto;
+	margin: 1.5rem auto;
 	padding: 0;
 
+	text-align: left;
+	text-align: start;
+	text-align: -moz-initial;
 	text-align: initial;
 
-	width: 36rem;
+	width: 40rem;  /* $column-width */
 	max-width: 90%;
-	max-width: calc(100% - 1.5rem);
+	max-width: calc(100% - 2rem);
+	max-width: 91.666667vw;  /* 100vw - 2 * $main-margin */
 }
 
 nav {
-	margin: 1rem auto;
+	margin: 1.5rem auto;
 	padding: 0;
 
+	text-align: left;
+	text-align: start;
+	text-align: -moz-initial;
 	text-align: initial;
 }
 
 article {
-	margin: 1rem auto;
+	margin: 1.5rem auto;
 	padding: 0;
 
+	text-align: left;
+	text-align: start;
+	text-align: -moz-initial;
 	text-align: initial;
 
 	/* CSS3 Text */
-	-moz-hyphens: auto;     /* Firefox before 43 */
-	-webkit-hyphens: auto;  /* Chrome up to 52, Opera up to 37 */
+	-moz-hyphens: auto;
 	-ms-hyphens: auto;
+	-webkit-hyphens: auto;
 	hyphens: auto;
-	word-wrap: break-word;      /* Deprecated */
+
+	word-wrap: break-word;  /* alias of overflow-wrap */
 	overflow-wrap: break-word;
-	text-align: left;
-	text-align: start;  /* Supports multidirectional text */
+
 	text-indent: 0;
-	-webkit-tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
 	tab-size: 4;
 }
 
 header {
-	margin: 1rem 0;
+	margin: 1.5rem auto;
 	padding: 0;
 
+	text-align: left;
+	text-align: start;
+	text-align: -moz-initial;
 	text-align: initial;
 }
 
 footer {
-	margin: 1rem 0;
+	margin: 1.5rem auto;
 	padding: 0;
 
+	text-align: left;
+	text-align: start;
+	text-align: -moz-initial;
 	text-align: initial;
 }
 
 section {
-	margin: 1rem 0;
+	margin: 1.5rem auto;
 	padding: 0;
 
+	text-align: left;
+	text-align: start;
+	text-align: -moz-initial;
 	text-align: initial;
 }
 
@@ -112,30 +144,32 @@ section {
 	Text elements
 */
 p {
-	margin-top: 0.5rem;
-	margin-bottom: 1rem;
+	margin-top: 0.75rem;
+	margin-bottom: 1.5rem;
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 }
 
 h1 {
-	margin-top: 2rem;
-	margin-bottom: 1rem;
+	font-size: 2rem;
+	line-height: 2.25rem;
+
+	margin-top: 2.25rem;
+	margin-bottom: 1.5rem;
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 
 	/* CSS3 Text */
-	-moz-hyphens: none;     /* Firefox before 43 */
-	-webkit-hyphens: none;  /* Chrome up to 52, Opera up to 37 */
+	-moz-hyphens: none;
+	-webkit-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
 }
-
 h2, h3, h4, h5, h6 {
-	margin-top:	2rem;
-	margin-bottom: 0.5rem;
+	margin-top: 2.25rem;
+	margin-bottom: 0.75rem;
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
@@ -144,18 +178,44 @@ hgroup > h1, hgroup > h2, hgroup > h3, hgroup > h4, hgroup > h5, hgroup > h6 {
 	margin-top: 0;
 }
 hgroup {
-	margin-top: 2rem;
-	margin-bottom: 0.5rem;
+	margin-top: 2.25rem;
+	margin-bottom: 0.75rem;
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 }
+h2 {
+	font-size: 1.425rem;
+	font-weight: bold;
+}
+h3 {
+	font-size: 1.14rem;
+	font-weight: bold;
+}
+h4 {
+	font-size: 0.95rem;
+	font-weight: bold;
+}
+h5 {
+	font-size: 0.855rem;
+	margin-left: 1rem;
+
+	font-weight: bold;
+}
+h6 {
+	font-size: 0.855rem;
+	margin-left: 2rem;
+
+	font-weight: bold;
+	font-style: italic;
+}
 
 hr {
-	margin: 2rem 0;
+	margin: 2.25rem 0;
+	margin-bottom: calc(2.25rem - 1px);
 	padding: 0;
-	border: 0;
 
+	border: 0;
 	border-bottom: 1px solid darkslategrey;
 }
 
@@ -165,28 +225,37 @@ hr {
 	Figure elements
 */
 figure {
-	margin-left: calc(50% - 50vw + 1rem);
-	margin-right: calc(50% - 50vw + 1rem);
+	margin-top: 0.75rem;
+	margin-bottom: 2.25rem;
+
+	/* Expand outside the column to be bounded by page instead */
+	/* If calc or vw not supported, simply fall back to being bounded by column */
+	/* 50vw - $main-margin */
+	margin-left: calc(50% - 45.833333vw);
+	margin-right: calc(50% - 45.833333vw);
 }
 figure > img {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0 auto;
 }
 figcaption {
-	display: block;
-	max-width: 40em;
-	margin-left: auto;
-	margin-right: auto;
+	/* Effectively centre for single line, left-align for multiple lines */
+	width: -moz-max-content;
+	width: -webkit-max-content;
+	width: intrinsic;
+	width: max-content;
+	max-width: 40em;  /* $column-width */
 
-	text-align: center;
+	margin: 0.75rem auto;  /* figcaption may be above or below */
+
+	text-align: left;
 }
+
 figure.bounded {
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 0;
+	margin-right: 0;
 }
-figure.bounded > img {
+figure.bounded > img, figure.bounded > table {
 	max-width: 100%;
 }
 
@@ -194,10 +263,10 @@ figure.bounded > img {
 
 /*
 	Table elements
+	Defect: gridding of td, th padding and border 1px
 */
 table {
-	max-width: 100%;
-	margin: 1rem auto;
+	margin: 0 auto;
 
 	border-top: 1px solid lightgrey;
 	border-bottom: 1px solid lightgrey;
@@ -211,7 +280,7 @@ td, th {
 th, thead td {
 	text-align: center;
 }
-thead {
+thead, tbody {
 	border-bottom: 1px solid lightgrey;
 }
 
@@ -221,18 +290,20 @@ thead {
 	Inline elements
 */
 a {
-	color: #740000;
+	color: maroon;
 	text-decoration: underline;
-}
-a:focus {
-	text-decoration: underline overline;
 }
 a:hover {
 	text-decoration: none;
 }
+a:visited {
+	color: #600000;
+}
 
 code {
-	background-color: ghostwhite;
+	background-color: aliceblue;
+	-moz-border-radius: 0.2em;
+	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
 }
 
@@ -242,21 +313,10 @@ code {
 	Inline classes
 */
 .nohyphen {
-	-moz-hyphens: none;     /* Firefox before 43 */
-	-webkit-hyphens: none;  /* Chrome up to 52, Opera up to 37 */
+	-moz-hyphens: none;
+	-webkit-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
-}
-
-
-
-/*
-	Dynamic column size
-*/
-@supports (width: calc(100% - 1vw)) {
-	main {
-		max-width: calc(100% - 8.33333vw);
-	}
 }
 
 
