@@ -303,7 +303,13 @@ figure.g-bounded > img, figure.g-bounded > table {
 	max-width: 100%;
 }
 
-img, picture {
+img {
+	display: block;
+	margin: 0 auto;
+
+	max-height: 90vh;
+}
+picture {
 	display: block;
 
 	margin-top: 0.75rem;
