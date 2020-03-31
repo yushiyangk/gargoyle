@@ -33,7 +33,7 @@
 		background-position edge offset (IE –8, Android –4.3)
 
 	Features with no implemented fallback mechanisms (and browsers with no support):
-		@supports (IE 8, IE11, Safari 5.1)
+		@supports (IE –11, Android –4.3)
 		margin: auto (Android –4.4.4)
 		rem units (IE –8, IE 9–10 partial)
 			! IE 9–10 ignores entire declaration when used in pseudo-elements or in the font shorthand property
