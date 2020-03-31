@@ -336,7 +336,7 @@ table {
 td, th {
 	display: table-cell;
 
-	padding: 0.2em 0.5em;
+	padding: 0.1875rem 0.5em;
 }
 th, thead td {
 	text-align: center;
