@@ -457,6 +457,15 @@ a.g-button {
 a.g-button:hover {
 	background-color: #ffd4d1;
 }
+
+a.g-go {
+	color: green;
+	border-color: green;
+	background-color: #d0f0d0;
+}
+a.g-go:hover {
+	background-color: #b8f0b8;
+}
 @supports
 	(background-image: url('gargoyle-go.svg'), linear-gradient(to right, green 1px, transparent 1px)) and
 	(background-size: 24px, 1px 60%) and
@@ -465,10 +474,6 @@ a.g-button:hover {
 {
 	a.g-go {
 		padding-right: calc(24px + 3em);
-
-		color: green;
-		border-color: green;
-		background-color: #d0f0d0;
 
 		background-image:
 			url('gargoyle-go.svg'),
@@ -481,9 +486,8 @@ a.g-button:hover {
 			top 50% right 1rem,
 			top 50% right 3.25rem;
 	}
-	a.g-go:hover {
-		background-color: #b8f0b8;
 
+	a.g-go:hover {
 		background-size:
 			1.5rem,
 			1px 60%;
@@ -491,6 +495,16 @@ a.g-button:hover {
 			top 50% right 0.875rem,
 			top 50% right 3.25rem;
 	}
+	/* Detect for MS Edge; disable size increase due to bad behaviour of its transition, which is less obvious in the larger transition of :focus  */
+	_:-ms-lang(x), _:-webkit-full-screen, a.g-go:hover {
+		background-size:
+			1.25rem,
+			1px 60%;
+		background-position:
+			top 50% right 1rem,
+			top 50% right 3.25rem;
+	}
+
 	a.g-go:focus {
 		background-image: url('gargoyle-go.svg');
 		background-size: 1.5rem;
