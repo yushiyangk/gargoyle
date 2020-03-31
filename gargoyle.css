@@ -61,6 +61,8 @@ html {
 }
 
 body {
+	display: block;
+
 	margin: 0;
 	padding: 0;
 	padding-bottom: 3rem;
@@ -73,6 +75,8 @@ body {
 }
 
 main {
+	display: block;
+
 	margin: 1.5rem auto;
 	padding: 0;
 
@@ -88,6 +92,8 @@ main {
 }
 
 nav {
+	display: block;
+
 	margin: 1.5rem auto;
 	padding: 0;
 
@@ -98,6 +104,8 @@ nav {
 }
 
 article {
+	display: block;
+
 	margin: 1.5rem auto;
 	padding: 0;
 
@@ -122,6 +130,8 @@ article {
 }
 
 header {
+	display: block;
+
 	margin: 1.5rem auto;
 	padding: 0;
 
@@ -132,6 +142,8 @@ header {
 }
 
 footer {
+	display: block;
+
 	margin: 1.5rem auto;
 	padding: 0;
 
@@ -142,6 +154,8 @@ footer {
 }
 
 section {
+	display: block;
+
 	margin: 1.5rem auto;
 	padding: 0;
 
@@ -157,6 +171,8 @@ section {
 	Text elements
 */
 p {
+	display: block;
+
 	margin-top: 0.75rem;
 	margin-bottom: 1.5rem;
 	margin-left: 0;
@@ -165,6 +181,8 @@ p {
 }
 
 h1 {
+	display: block;
+
 	font-family: serif;
 	font-size: 2rem;
 	line-height: 2.25rem;
@@ -182,6 +200,8 @@ h1 {
 	hyphens: none;
 }
 h2, h3, h4, h5, h6 {
+	display: block;
+
 	margin-top: 2.25rem;
 	margin-bottom: 0.75rem;
 	margin-left: 0;
@@ -192,6 +212,8 @@ hgroup > h1, hgroup > h2, hgroup > h3, hgroup > h4, hgroup > h5, hgroup > h6 {
 	margin-top: 0;
 }
 hgroup {
+	display: block;
+
 	margin-top: 2.25rem;
 	margin-bottom: 0.75rem;
 	margin-left: 0;
@@ -225,6 +247,8 @@ h6 {
 }
 
 hr {
+	display: block;
+
 	margin: 2.25rem 0;
 	margin-bottom: calc(2.25rem - 1px);
 	padding: 0;
@@ -239,6 +263,8 @@ hr {
 	Figure elements
 */
 figure {
+	display: block;
+
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
 
@@ -250,6 +276,8 @@ figure {
 }
 
 figcaption {
+	display: block;
+
 	/* Effectively centre for single line, left-align for multiple lines */
 	width: -moz-max-content;
 	width: -webkit-max-content;
@@ -262,7 +290,7 @@ figcaption {
 	text-align: left;
 }
 
-figure > img, figure > table {
+figure > img, figure > picture, figure > table {
 	display: block;
 	margin: 0 auto;
 }
@@ -275,7 +303,9 @@ figure.g-bounded > img, figure.g-bounded > table {
 	max-width: 100%;
 }
 
-img {
+img, picture {
+	display: block;
+
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
 	margin-left: 0;
@@ -291,6 +321,8 @@ img {
 	Defect: gridding of td, th padding and border 1px
 */
 table {
+	display: block;
+
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
 	margin-left: 0;
@@ -303,12 +335,21 @@ table {
 	hyphens: auto;
 }
 td, th {
+	display: table-cell;
+
 	padding: 0.2em 0.5em;
 }
 th, thead td {
 	text-align: center;
 }
-thead, tbody {
+thead {
+	display: table-header-group;
+
+	border-bottom: 1px solid lightgrey;
+}
+tbody {
+	display: table-row-group;
+
 	border-bottom: 1px solid lightgrey;
 }
 
@@ -318,6 +359,8 @@ thead, tbody {
 	Inline elements
 */
 a {
+	display: inline;
+
 	color: maroon;
 	text-decoration: underline;
 }
@@ -329,6 +372,8 @@ a:visited {
 }
 
 code {
+	display: inline;
+
 	font-family: monospace;
 	line-height: 1.3rem;  /* border-radius increases line height */
 	line-height: calc(1.5rem - 0.2em);
@@ -343,6 +388,8 @@ code {
 /* Bugfix for Firefox adding extra space after an element that has display: inline-block and a ::first-letter with a change of font-size; fixed by forcing reflow */
 @-moz-keyframes ffbug { from { padding-right: 0.1px ; } to { padding-right: 0; } }
 abbr {
+	display: inline;
+
 	/* CSS3 Font (generic OpenType features) */
 	/* Low-level syntax for compatibility; do not use for smallcaps */
 	-moz-font-feature-settings: "c2sc=1";
