@@ -291,7 +291,7 @@ figcaption {
 
 figure > img, figure > picture, figure > table {
 	display: block;
-	margin: 0 auto;
+	margin: 0.75rem auto;
 }
 
 figure.g-bounded {
@@ -307,8 +307,8 @@ img, picture {
 
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
-	margin-left: 0;
-	margin-right: 0;
+	margin-left: auto;
+	margin-right: auto;
 
 	max-height: 90vh;
 }
@@ -320,12 +320,12 @@ img, picture {
 	Defect: gridding of td, th padding and border 1px
 */
 table {
-	display: block;
+	display: table;
 
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
-	margin-left: 0;
-	margin-right: 0;
+	margin-left: auto;
+	margin-right: auto;
 
 	border-top: 1px solid lightgrey;
 	border-bottom: 1px solid lightgrey;
