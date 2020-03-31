@@ -467,7 +467,7 @@ a.g-go:hover {
 	background-color: #b8f0b8;
 }
 @supports
-	(background-image: url('gargoyle-go.svg'), linear-gradient(to right, green 1px, transparent 1px)) and
+	(background-image: url('icons/go.svg'), linear-gradient(to right, green 1px, transparent 1px)) and
 	(background-size: 24px, 1px 60%) and
 	(background-repeat: no-repeat, no-repeat) and
 	(padding-right: calc(24px + 3em))
@@ -476,7 +476,7 @@ a.g-go:hover {
 		padding-right: calc(24px + 3em);
 
 		background-image:
-			url('gargoyle-go.svg'),
+			url('icons/go.svg'),
 			linear-gradient(to right, green 1px, transparent 1px);
 		background-size:
 			1.25rem,
@@ -506,7 +506,7 @@ a.g-go:hover {
 	}
 
 	a.g-go:focus {
-		background-image: url('gargoyle-go.svg');
+		background-image: url('icons/go.svg');
 		background-size: 1.5rem;
 		background-repeat: no-repeat;
 		background-position: center;
