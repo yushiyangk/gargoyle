@@ -371,6 +371,11 @@ a:visited {
 	color: #600000;
 }
 
+small {
+	font-size: 0.833333rem;
+	line-height: 1.125rem;
+}
+
 code {
 	display: inline;
 
