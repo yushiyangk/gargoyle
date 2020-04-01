@@ -543,8 +543,8 @@ a.g-button {
 	padding-top: calc(0.9375rem - 2px);
 	padding-bottom: 0.9375rem;
 	padding-bottom: calc(0.9375rem - 2px);
-	padding-left: 2em;
-	padding-right: 2em;
+	padding-left: 2rem;
+	padding-right: 2rem;
 
 	line-height: 1.125rem;
 	max-width: 100%;
@@ -572,12 +572,12 @@ a.g-go:hover {
 }
 @supports
 	(background-image: url('icons/go.svg'), linear-gradient(to right, green 1px, transparent 1px)) and
-	(background-size: 24px, 1px 60%) and
-	(background-repeat: no-repeat, no-repeat) and
-	(padding-right: calc(24px + 3em))
+	(background-size: 1.25rem, 1px 60%) and
+	(background-repeat: no-repeat, no-repeat)
 {
 	a.g-go {
-		padding-right: calc(24px + 3em);
+		padding-right: 4.5rem;
+		padding-right: calc(4.5rem + 1px);
 
 		background-image:
 			url('icons/go.svg'),
