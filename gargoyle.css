@@ -166,6 +166,18 @@ section {
 	text-align: initial;
 }
 
+aside {
+	display: block;
+
+	margin: 1.5rem auto;
+	padding: 0;
+
+	text-align: left;
+	text-align: start;
+	text-align: -moz-initial;
+	text-align: initial;
+}
+
 
 
 /*
@@ -255,6 +267,50 @@ hr {
 
 	border: 0;
 	border-bottom: 1px solid darkslategrey;
+}
+
+
+
+/*
+	List elements
+*/
+.g-continue {
+	margin-bottom: 0;
+}
+ul, ol, dl {
+	display: block;
+
+	margin-top: 0.75rem;
+	margin-bottom: 1.5rem;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+
+	list-style-position: outside;
+}
+
+li {
+	display: list-item;
+	margin: 0;
+	margin-left: 1.5rem;
+}
+
+dt {
+	display: inline;
+	margin: 0;
+}
+dt::before {
+	content: '';
+	display: block;
+}
+dd {
+	display: inline;
+	margin: 0;
+	margin-left: 1.5rem;
+}
+dd::after {
+	content: '';
+	display: block;
 }
 
 
