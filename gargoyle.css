@@ -369,13 +369,18 @@ figcaption {
 figure > img, figure > picture, figure > table {
 	display: block;
 	margin: 0.75rem auto;
+
+	/* max-width matches main */
+	max-width: 90%;
+	max-width: calc(100% - 2rem);
+	max-width: 91.666667vw;  /* 100vw - 2 * $main-margin */
 }
 
 figure.g-bounded {
 	margin-left: 0;
 	margin-right: 0;
 }
-figure.g-bounded > img, figure.g-bounded > table {
+figure.g-bounded > img, figure.g-bounded > picture, figure.g-bounded > table {
 	max-width: 100%;
 }
 
