@@ -1,3 +1,23 @@
+/* Gargoyle.css */
+
+
+
+/*
+	Contents
+	- Section elements
+	- Text elements
+	- List elements
+	- Figure elements
+	- Table elements
+	- Inline elements
+	- Inline lists
+	- Inline classes
+	- Action buttons
+	- Unhide content after CSS is loaded
+*/
+
+
+
 /*
 	Legacy support
 	Only browsers with >0.1% market share are noted
@@ -363,7 +383,7 @@ img {
 	display: block;
 	margin: 0 auto;
 
-	max-height: 90vh;
+	max-height: 80vh;
 }
 picture {
 	display: block;
@@ -373,7 +393,7 @@ picture {
 	margin-left: auto;
 	margin-right: auto;
 
-	max-height: 90vh;
+	max-height: 80vh;
 }
 
 
@@ -452,7 +472,7 @@ code {
 	background-color: aliceblue;
 }
 
-/* Bugfix for Firefox adding extra space after an element that has display: inline-block and a ::first-letter with a change of font-size; fixed by forcing reflow */
+/* Workaround for Firefox adding extra space after an element that has display: inline-block and a ::first-letter with a change of font-size; fixed by forcing reflow */
 @-moz-keyframes ffbug { from { padding-right: 0.1px ; } to { padding-right: 0; } }
 abbr {
 	display: inline;
@@ -681,7 +701,7 @@ a.g-go:hover {
 
 /*
 	Unhide content after CSS is loaded
-	Add id="bodymask" to body element and apply
+	Add id="g-bodymask" to body element and apply
 		body { visibility: hidden; }
 	in internal stylesheet of HTML file, to be overwritten by the following
 */
