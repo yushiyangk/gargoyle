@@ -410,16 +410,22 @@ picture {
 table {
 	display: table;
 
+	width: -moz-max-content;
+	width: -webkit-max-content;
+	width: intrinsic;
+	width: max-content;
+
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
 	margin-left: auto;
 	margin-right: auto;
 
 	border-top: 1px solid lightgrey;
-	border-bottom: 1px solid lightgrey;
 	border-collapse: collapse;
 
 	hyphens: auto;
+
+	overflow-x: auto;
 }
 td, th {
 	display: table-cell;
@@ -427,6 +433,16 @@ td, th {
 	padding: 0.1875rem 0.5em;
 }
 th, thead td {
+	text-align: center;
+	border-bottom: 1px solid lightgrey;
+}
+td.g-left, th.g-left {
+	text-align: left;
+}
+td.g-right, th.g-right {
+	text-align: right;
+}
+td.g-centre, th.g-centre {
 	text-align: center;
 }
 thead {
@@ -436,6 +452,11 @@ thead {
 }
 tbody {
 	display: table-row-group;
+
+	border-bottom: 1px solid lightgrey;
+}
+tfoot {
+	display: table-footer-group;
 
 	border-bottom: 1px solid lightgrey;
 }
