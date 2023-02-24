@@ -186,16 +186,32 @@ section {
 	text-align: initial;
 }
 
-aside {
+blockquote {
 	display: block;
 
-	margin: 1.5rem auto;
+	margin: 1.5rem 2rem;
+}
+
+main aside {
+	display: block;
+
+	margin: 1.5rem 2rem;
 	padding: 0;
 
 	text-align: left;
 	text-align: start;
 	text-align: -moz-initial;
 	text-align: initial;
+}
+@media (min-width: 76rem) {  /* $column-width + 2 * ($aside-width + $column-margin) */
+	main aside {
+		position: absolute;
+		margin-top: 0;
+		margin-left: 42rem;  /* $column-width + $column-margin */
+		margin-right: 0;
+
+		width: 16rem;  /* $aside-width */
+	}
 }
 
 
@@ -297,7 +313,7 @@ hr {
 .g-continue {
 	margin-bottom: 0;
 }
-ul, ol, dl {
+ul, menu, ol, dl {
 	display: block;
 
 	margin-top: 0.75rem;
@@ -308,16 +324,24 @@ ul, ol, dl {
 
 	list-style-position: outside;
 }
+ul ul, ul menu, ul ol, menu ul, menu menu, menu ol, ol ul, ol menu, ol ol, dl ul, dl menu, dl ol{
+	margin-bottom: 0.75rem;
+}
+ul dl, menu dl, ol dl, dl dl {
+	margin-left: 2rem;
+	margin-bottom: 0.75rem;
+}
 
 li {
 	display: list-item;
 	margin: 0;
-	margin-left: 1.5rem;
+	margin-left: 2rem;
 }
 
 dt {
 	display: inline;
 	margin: 0;
+	font-weight: bold;
 }
 dt::before {
 	content: '';
@@ -336,9 +360,136 @@ dd::after {
 
 
 /*
+	Inline lists
+*/
+@supports (display: inline-flex) or (display: -ms-inline-flexbox) {
+	.g-inline, .g-subinline {
+		display: -ms-inline-flexbox;
+		display: -webkit-inline-flex;
+		display: inline-flex;
+		flex-flow: row wrap;
+
+		margin: 0;
+		padding: 0;
+	}
+	ul.g-inline, menu.g-inline, ol.g-inline, dl.g-inline {
+		display: flex;  /* lists can never be inside p, so no point making it inline-flex */
+
+		margin-top: 0.75rem;
+		margin-bottom: 1.5rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.g-inline > li, .g-subinline > li, .g-inline > .g-li, .g-subinline > .g-li {
+		display: block;
+		-webkit-flex: 0 0 auto;
+		flex: 0 0 auto;
+
+		margin: 0;
+		padding: 0;
+	}
+	.g-inline > li::after, .g-subinline > li::after, .g-inline > .g-li::after, .g-subinline > .g-li::after {
+		content: '·';
+		display: inline;
+
+		font-weight: bold;
+
+		padding-left: 0.3em;  /* $separator-padding */
+		padding-right: 0.3em;  /* $separator-padding */
+		line-height: 0;
+
+		color: grey;
+	}
+	.g-inline > li:last-child::after, .g-subinline > li:last-child::after, .g-inline > .g-li:last-child::after, .g-subinline > .g-li:last-child::after {
+		content: none;
+	}
+
+	@supports (counter-reset: count) and (counter-increment: count) and (content: counter(count)) {
+		ol.g-inline {
+			counter-reset: inline-list;
+		}
+		ol.g-inline > li {
+			counter-increment: inline-list;
+		}
+		ol.g-inline > li::before {
+			content: counter(inline-list) ". ";
+		}
+		ol.g-subinline {
+			counter-reset: subinline-list;
+		}
+		ol.g-subinline > li {
+			counter-increment: subinline-list;
+		}
+		ol.g-subinline > li::before {
+			content: counter(subinline-list) ". ";
+		}
+	}
+
+	.g-inline > dt, .g-subinline > dt {
+		display: block;
+		-webkit-flex: 0 0 auto;
+		flex: 0 0 auto;
+
+		margin: 0;
+		padding: 0;
+
+		font-weight: bold;
+	}
+	.g-inline > dt::after, .g-subinline > dt::after {
+		content: ':';
+		display: inline;
+
+		margin-right: 0.3em;  /* $separator-padding */
+	}
+	.g-inline > dt:last-child::after, .g-subinline > dt:last-child::after {
+		content: none;
+	}
+
+	.g-inline > dd, .g-subinline > dd {
+		display: block;
+		-webkit-flex: 0 0 auto;
+		flex: 0 0 auto;
+
+		margin: 0;
+		padding: 0;
+	}
+	.g-inline > dd::after, .g-subinline > dd::after {
+		content: '·';
+		display: inline;
+
+		font-size: initial;
+		font-weight: bold;
+		color: grey;
+
+		margin-left: 0.3em;  /* $separator-padding */
+		margin-right: 0.3em;  /* $separator-padding */
+	}
+	.g-inline > dd:last-child::after, .g-subinline > dd:last-child::after {
+		content: none;
+	}
+
+	.g-subinline {
+		flex-flow: row nowrap;
+
+		font-size: 0.833333rem;
+		line-height: 1.125rem;
+	}
+	.g-subinline::before {
+		content: '(';
+	}
+
+	.g-subinline::after {
+		content: ')';
+	}
+}
+
+
+
+/*
 	Figure elements
 */
-img, picture {
+main img, main picture, main svg {
 	display: block;
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
@@ -372,14 +523,14 @@ figcaption {
 	width: -webkit-max-content;
 	width: intrinsic;
 	width: max-content;
-	max-width: 40em;  /* $column-width */
+	max-width: 40rem;  /* $column-width */
 
 	margin: 0.75rem auto;  /* figcaption may be above or below */
 
 	text-align: left;
 }
 
-figure > img, figure > picture, figure > table {
+figure > img, figure > picture, figure > svg, figure > table {
 	display: block;
 	margin: 0 auto;
 
@@ -393,7 +544,7 @@ figure > a {
 	display: inline-block;
 	margin: 0;
 }
-figure > a > img, figure > a > picture, figure > a > table {
+figure > a > img, figure > a > picture, figure > a > svg, figure > a > table {
 	display: inline-block;
 	margin: 0;
 	vertical-align: top;
@@ -403,10 +554,10 @@ figure.g-bounded {
 	margin-left: 0;
 	margin-right: 0;
 }
-figure.g-bounded > img, figure.g-bounded > picture, figure.g-bounded > table {
+figure.g-bounded > img, figure.g-bounded > picture, figure.g-bounded > svg, figure.g-bounded > table {
 	max-width: 100%;
 }
-figure.g-bounded > a > img, figure.g-bounded > a > picture, figure.g-bounded > a > table {
+figure.g-bounded > a > img, figure.g-bounded > a > picture, figure.g-bounded > a > svg, figure.g-bounded > a > table {
 	max-width: 100%;
 }
 
@@ -451,7 +602,7 @@ td.g-left, th.g-left {
 td.g-right, th.g-right {
 	text-align: right;
 }
-td.g-centre, th.g-centre {
+td.g-centre, th.g-centre, td.g-center, th.g-center {
 	text-align: center;
 }
 thead {
@@ -568,6 +719,9 @@ kbd {
 	border: 1px solid lightgrey;
 	box-shadow: 0 1px 0 1px lightgrey;
 }
+h1 > kbd, h2 > kbd, h3 > kbd, h4 > kbd, h5 > kbd, h6 > kbd, b > kbd, strong > kbd, dfn > kbd, dt > kbd {
+	font-weight: 709;
+}
 
 .g-math {
 	font-family: serif;
@@ -587,8 +741,11 @@ kbd {
 abbr {
 	display: inline;
 
-	font-size: 0.9375rem;
+	font-size: 0.9375em;
 	font-weight: 500;
+}
+h1 > abbr, h2 > abbr, h3 > abbr, h4 > abbr, h5 > abbr, h6 > abbr, b > abbr, strong > abbr, dfn > abbr, dt > abbr {
+	font-weight: 700;
 }
 abbr.g-capital {
 	display: inline-block;
@@ -599,103 +756,9 @@ abbr.g-capital {
 	-moz-animation: ffbug 0.1s ease 1;
 }
 abbr.g-capital::first-letter {
-	font-size: 1rem;
+	font-size: 1.142857em;  /* 8/7 */
 	font-weight: inherit;
 }
-
-
-
-/*
-	Inline lists
-*/
-@supports (display: inline-flex) or (display: -ms-inline-flexbox) {
-	.g-inline, .g-subinline {
-		display: -ms-inline-flexbox;
-		display: -webkit-inline-flex;
-		display: inline-flex;
-		flex-flow: row wrap;
-
-		margin: 0;
-		padding: 0;
-	}
-
-	.g-inline > li, .g-subinline > li {
-		display: block;
-		-webkit-flex: 0 0 auto;
-		flex: 0 0 auto;
-
-		margin: 0;
-		padding: 0;
-	}
-	.g-inline > li::after, .g-subinline > li::after {
-		content: '·';
-
-		padding-left: 0.3em;  /* $separator-padding */
-		padding-right: 0.3em;  /* $separator-padding */
-		line-height: 0;
-
-		color: grey;
-	}
-	.g-inline > li:last-child::after, .g-subinline > li:last-child::after {
-		content: none;
-	}
-
-
-	.g-inline > dt, .g-subinline > dt {
-		display: block;
-		-webkit-flex: 0 0 auto;
-		flex: 0 0 auto;
-
-		margin: 0;
-		padding: 0;
-
-		font-weight: bold;
-	}
-	.g-inline > dt::after, .g-subinline > dt {
-		content: ':';
-		margin-right: 0.3em;  /* $separator-padding */
-	}
-	.g-inline > dt:last-child::after, .g-subinline > dt:last-child::after {
-		content: none;
-	}
-
-	.g-inline > dd, .g-subinline > dd {
-		display: block;
-		-webkit-flex: 0 0 auto;
-		flex: 0 0 auto;
-
-		margin: 0;
-		padding: 0;
-	}
-	.g-inline > dd::after, .g-subinline > dd::after {
-		content: '·';
-		font-size: initial;
-		font-weight: initial;
-		color: grey;
-		line-height: 0;
-
-		margin-left: 0.3em;  /* $separator-padding */
-		margin-right: 0.3em;  /* $separator-padding */
-	}
-	.g-inline > dd:last-child::after, .g-subinline > dd:last-child::after {
-		content: none;
-	}
-
-	.g-subinline {
-		flex-flow: row nowrap;
-
-		font-size: 0.833333rem;
-		line-height: 1.125rem;
-	}
-	.g-subinline::before {
-		content: '(';
-	}
-
-	.g-subinline::after {
-		content: ')';
-	}
-}
-
 
 
 /*
