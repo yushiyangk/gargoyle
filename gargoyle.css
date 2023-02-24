@@ -522,12 +522,8 @@ code {
 abbr {
 	display: inline;
 
-	/* CSS3 Font (generic OpenType features) */
-	/* Low-level syntax for compatibility; do not use for smallcaps */
-	-moz-font-feature-settings: "c2sc=1";
-	-moz-font-feature-settings: "c2sc";
-	-webkit-font-feature-settings: "c2sc";
-	font-feature-settings: "c2sc";
+	font-size: 0.9375rem;
+	font-weight: 500;
 }
 abbr.g-capital {
 	display: inline-block;
@@ -535,15 +531,11 @@ abbr.g-capital {
 	margin: 0;
 	padding: 0;
 
-	-moz-animation: ffbug 1s ease 1s 1;
+	-moz-animation: ffbug 0.1s ease 1;
 }
 abbr.g-capital::first-letter {
-	/* CSS3 Font (generic OpenType features) */
-	/* Low-level syntax for compatibility; do not use for smallcaps */
-	-moz-font-feature-settings: "c2sc=0";
-	-moz-font-feature-settings: "c2sc" off;
-	-webkit-font-feature-settings: "c2sc" off;
-	font-feature-settings: "c2sc" off;
+	font-size: 1rem;
+	font-weight: normal;
 }
 
 
