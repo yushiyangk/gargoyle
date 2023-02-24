@@ -349,6 +349,8 @@ figure {
 	/* 50vw - $main-margin */
 	margin-left: calc(50% - 45.833333vw);
 	margin-right: calc(50% - 45.833333vw);
+
+	text-align: center;
 }
 
 figcaption {
@@ -368,12 +370,22 @@ figcaption {
 
 figure > img, figure > picture, figure > table {
 	display: block;
-	margin: 0.75rem auto;
+	margin: 0 auto;
 
 	/* max-width matches main */
 	max-width: 90%;
 	max-width: calc(100% - 2rem);
 	max-width: 91.666667vw;  /* 100vw - 2 * $main-margin */
+}
+
+figure > a {
+	display: inline-block;
+	margin: 0;
+}
+figure > a > img, figure > a > picture, figure > a > table {
+	display: inline-block;
+	margin: 0;
+	vertical-align: top;
 }
 
 figure.g-bounded {
