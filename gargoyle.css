@@ -326,6 +326,126 @@ hr {
 
 
 /*
+	Numbered sections
+*/
+.g-counter, .g-counter1, .g-counter2, .g-counter3, .g-counter4, .g-counter5, .g-counter6 {
+	counter-reset: h1-section h2-section h3-section h4-section h5-section h6-section;
+}
+.g-counter h1, .g-counter1 h1, .g-counter2 h1, .g-counter3 h1, .g-counter4 h1, .g-counter5 h1, .g-counter6 h1 {
+	counter-increment: h1-section;
+}
+.g-counter h2, .g-counter1 h2, .g-counter2 h2, .g-counter3 h2, .g-counter4 h2, .g-counter5 h2, .g-counter6 h2 {
+	counter-increment: h2-section;
+}
+.g-counter h3, .g-counter1 h3, .g-counter2 h3, .g-counter3 h3, .g-counter4 h3, .g-counter5 h3, .g-counter6 h3 {
+	counter-increment: h3-section;
+}
+.g-counter h4, .g-counter1 h4, .g-counter2 h4, .g-counter3 h4, .g-counter4 h4, .g-counter5 h4, .g-counter6 h4 {
+	counter-increment: h4-section;
+}
+.g-counter h5, .g-counter1 h5, .g-counter2 h5, .g-counter3 h5, .g-counter4 h5, .g-counter5 h5, .g-counter6 h5 {
+	counter-increment: h5-section;
+}
+.g-counter h6, .g-counter1 h6, .g-counter2 h6, .g-counter3 h6, .g-counter4 h6, .g-counter5 h6, .g-counter6 h6 {
+	counter-increment: h6-section;
+}
+
+.g-counter h1 {
+	counter-reset: h2-section h3-section h4-section h5-section h6-section;
+}
+.g-counter h2 {
+	counter-reset: h3-section h4-section h5-section h6-section;
+}
+.g-counter h3 {
+	counter-reset: h4-section h5-section h6-section;
+}
+.g-counter h4 {
+	counter-reset: h5-section h6-section;
+}
+.g-counter h5 {
+	counter-reset: h6-section;
+}
+
+.g-counter .g-nocount, .g-counter1 .g-nocount, .g-counter2 .g-nocount, .g-counter3 .g-nocount, .g-counter4 .g-nocount, .g-counter5 .g-nocount, .g-counter6 .g-nocount {
+	counter-increment: none;
+}
+.g-counter .g-nocount::before, .g-counter1 .g-nocount::before, .g-counter2 .g-nocount::before, .g-counter3 .g-nocount::before, .g-counter4 .g-nocount::before, .g-counter5 .g-nocount::before, .g-counter6 .g-nocount::before {
+	content: none;
+}
+
+.g-counter1 h1::before {
+	content: counter(h1-section) ". ";
+}
+.g-counter1 h2::before {
+	content: counter(h1-section) "." counter(h2-section) ". ";
+}
+.g-counter1 h3::before {
+	content: counter(h1-section) "." counter(h2-section) "." counter(h3-section) ". ";
+}
+.g-counter1 h4::before {
+	content: counter(h1-section) "." counter(h2-section) "." counter(h3-section) "." counter(h4-section) ". ";
+}
+.g-counter1 h5::before {
+	content: counter(h1-section) "." counter(h2-section) "." counter(h3-section) "." counter(h4-section) "." counter(h5-section) ". ";
+}
+.g-counter1 h6::before {
+	content: counter(h1-section) "." counter(h2-section) "." counter(h3-section) "." counter(h4-section) "." counter(h5-section) "." counter(h6-section) ". ";
+}
+
+.g-counter2 h2::before {
+	content: counter(h2-section) ". ";
+}
+.g-counter2 h3::before {
+	content: counter(h2-section) "." counter(h3-section) ". ";
+}
+.g-counter2 h4::before {
+	content: counter(h2-section) "." counter(h3-section) "." counter(h4-section) ". ";
+}
+.g-counter2 h5::before {
+	content: counter(h2-section) "." counter(h3-section) "." counter(h4-section) "." counter(h5-section) ". ";
+}
+.g-counter2 h6::before {
+	content: counter(h2-section) "." counter(h3-section) "." counter(h4-section) "." counter(h5-section) "." counter(h6-section) ". ";
+}
+
+
+.g-counter3 h3::before {
+	content: counter(h3-section) ". ";
+}
+.g-counter3 h4::before {
+	content: counter(h3-section) "." counter(h4-section) ". ";
+}
+.g-counter3 h5::before {
+	content: counter(h3-section) "." counter(h4-section) "." counter(h5-section) ". ";
+}
+.g-counter3 h6::before {
+	content: counter(h3-section) "." counter(h4-section) "." counter(h5-section) "." counter(h6-section) ". ";
+}
+
+.g-counter4 h4::before {
+	content: counter(h4-section) ". ";
+}
+.g-counter4 h5::before {
+	content: counter(h4-section) "." counter(h5-section) ". ";
+}
+.g-counter4 h6::before {
+	content: counter(h4-section) "." counter(h5-section) "." counter(h6-section) ". ";
+}
+
+.g-counter5 h5::before {
+	content: counter(h5-section) ". ";
+}
+.g-counter5 h6::before {
+	content: counter(h5-section) "." counter(h6-section) ". ";
+}
+
+.g-counter6 h6::before {
+	content: counter(h6-section) ". ";
+}
+
+
+
+/*
 	List elements
 */
 .g-continue {

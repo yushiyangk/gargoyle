@@ -56,7 +56,7 @@
 
 					<p>Use <code>&lt;var&gt;</code> to specify mathematical <var>variables</var>. For more symbolic variables, add the <code>.g-math</code> class to use a serif font, e.g. <var class="g-math">x</var>, or <code>.g-mathbf</code> for vectors and matrices, e.g. <var class="g-mathbf">v</var> and <var class="g-mathbf">M</var>, or <code>.g-mathrm</code> for multi-character symbols, e.g. <span class="g-mathrm">sin</span> and <var class="g-mathrm">Re</var>. Note that <span class="g-mathrm">sin</span> is given a <code>&lt;span&gt;</code> instead of a <code>&lt;var&gt;</code> as it is not a variable. Alternatively, use <a href="https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols">Unicode symbols</a>.</p>
 
-					<p>However, prefer to use <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Authoring">Math<abbr>ML</abbr></a> for extended sequences of mathematics, as so:
+					<p>However, prefer to use <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Authoring">Math<abbr>ML</abbr></a> embedded in a <code>&lt;math&gt;</code> element for extended sequences of mathematics, as so:
 						<math>
 							<msup><mi>c</mi><mn>2</mn></msup>
 							<mo>=</mo>
@@ -98,13 +98,27 @@
 
 					<p>In other cases, we might have text that is tangentially related, which should be placed in a footnote or an aside with the <code>&lt;aside&gt;</code> element.</p>
 
+					<p>Mathematical equations can be displayed in Math<abbr>ML</abbr> using <code>&lt;math display="block"&gt;</code>, as so:</p>
+
+					<math display="block">
+						<msup><mi>c</mi><mn>2</mn></msup>
+						<mo>=</mo>
+						<msup><mi>a</mi><mn>2</mn></msup>
+						<mo>+</mo>
+						<msup><mi>b</mi><mn>2</mn></msup>
+						<mo>-</mo>
+						<mn>2</mn><mi>a</mi><mi>b</mi><mi>cos</mi><mi>γ</mi>
+					</math>
+
 					<hr />
 
 					<p>Horizontal rules may be inserted with <code>&lt;hr /&gt;</code>.</p>
 
 					<p>If sections are specified, each section should contain at least one heading element. The heading element <code>&lt;h2&gt;</code> is demonstrated at the top of this section, and <code>&lt;h1&gt;</code> is demonstrated at the top of this page, while elements <code>&lt;h3&gt;</code> through <code>&lt;h6&gt;</code> are demonstrated below.</p>
 
-					<section>
+					<p>Add one of the classes <code>.g-counter1</code> through <code>.g-counter6</code> to a <code>&lt;section&gt;</code> (or any other container element) to enable section counters for headings. Use the class with the number corresponding to the highest level of heading within that section.</p>
+
+					<section class="g-counter3">
 
 						<h3>Heading level 3</h3>
 
@@ -114,7 +128,7 @@
 
 							<h4>Heading level 4</h4>
 
-							Somep pig more.
+							Some pig more.
 
 							<section>
 
@@ -128,6 +142,22 @@
 								<h6>Second heading on level 6</h6>
 
 								Some pig more still.
+
+							</section>
+
+						</section>
+
+						<section>
+
+							<h4 class="g-nocount">Uncounted heading</h4>
+
+							<p>To omit the counter from a particular heading, add the  <code>.g-nocount</code> to it.</p>
+
+							<section>
+
+								<h5>Lower heading within an uncounted section</h5>
+
+								<p>Any lower level headings within the uncounted section should not be counted either, or else the numbering can get confusing.</p>
 
 							</section>
 
