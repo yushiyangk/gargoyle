@@ -723,7 +723,36 @@
 						</tfoot>
 					</table>
 
-				<h2>Source code blocks</h2>
+				<h2>Source code and output blocks</h2>
+
+					<p>Blocks of source code can be displayed using a <code>&lt;code&gt;</code> element nested in a <code>&lt;pre&gt;</code>:</p>
+
+<pre><code>function square(list) {
+	return list.map((x) => x * x);
+}
+</code></pre>
+
+					<p>Similarly, blocks of program output can be displayed using a <code>&lt;samp&gt;</code> element nested in a <code>&lt;pre&gt;</code>:</p>
+
+<pre><samp>                 (__)
+                 (oo)
+           /------\/
+          / |    ||
+         *  /\---/\
+            ~~   ~~
+..."Have you mooed today?"...
+</samp></pre>
+
+					<p>The <code>&lt;pre&gt;</code> element can also be used by itself:</p>
+
+
+<pre>function square(list) {
+	return list.map((x) => x * x);
+}
+</pre>
+
+					<p>Note that <code>&lt;pre&gt;</code> represents pre-formatted text. In order for the output to be properly formatted, the contents of the element cannot be indented, and the first line must follow immediately from the open tag without a line break.</p>
+
 
 
 
