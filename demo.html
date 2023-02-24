@@ -14,282 +14,331 @@
 			<article>
 				<h1>On the sex of centaurs</h1>
 
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pulvinar suscipit tincidunt. Pellentesque nec est sit amet leo scelerisque consequat. In lobortis ante in nulla sodales, a viverra dolor ultricies. Sed pharetra ligula in est rhoncus varius. Ut sit amet sapien rutrum, lacinia nisl quis, pretium nunc. Nulla sit amet sapien eleifend, vulputate massa ut, cursus arcu. In imperdiet lorem quis leo volutpat molestie. Nam vitae nisl id nisl cursus pellentesque ultricies vel tortor. Cras semper eros ac diam imperdiet, non vehicula quam volutpat. In nec erat vel eros lacinia imperdiet in ac lacus. </p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pulvinar suscipit tincidunt. Pellentesque nec est sit amet leo scelerisque consequat. In lobortis ante in nulla sodales, a viverra dolor ultricies. Sed pharetra ligula in est rhoncus varius. Ut sit amet sapien rutrum, lacinia nisl quis, pretium nunc. Nulla sit amet sapien eleifend, vulputate massa ut, cursus arcu. In imperdiet lorem quis leo volutpat molestie. Nam vitae nisl id nisl cursus pellentesque ultricies vel tortor. Cras semper eros ac diam imperdiet, non vehicula quam volutpat. In nec erat vel eros lacinia imperdiet in ac lacus. </p>
 
-				<h2>Font matching</h2>
+				<h2>Inline text</h2>
+
+					<p>Here is a hyperlink to <a href="">nowhere</a>, and another link to an <a href="https://example.com/">example domain</a>.
+
+					<p>Sometimes, we might want text to be highlighted as <b>bold</b>, or <i>italics</i>. This may be for <em>emphasis</em>, or <strong>even more emphasis</strong>. These may be rendered similarly, but they use distinct <abbr>HTML</abbr> tags with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b">subtle semantic distinction.</a></p>
+
+					<p>At other times, we might want text <small>to be small</small>.</p>
+
+					<p>Inline JavaScript is given as <code>alert('hi');</code></p>
+
+					<p>Abbreviations require specific styling, as in <abbr>HTML</abbr>, and require quire subtle styling especially at the start of a sentence. <abbr class="g-capital">CSS</abbr> is fun.</p>
+
+				<h2>Picture gallery</h2>
+
+					<p>Pieter Cornelis Mondriaan (Dutch: [ˈpitər ˈmɔndrijaːn]), after 1906 Piet Mondrian (/piːt ˈmɒndriɑːn/, also US: /- ˈmɔːn-/, Dutch: [pit ˈmɔndrijɑn]; 7 March 1872 – 1 February 1944), was a Dutch painter and theoretician who is regarded as one of the greatest artists of the 20th century. He is known for being one of the pioneers of 20th century abstract art, as he changed his artistic direction from figurative painting to an increasingly abstract style, until he reached a point where his artistic vocabulary was reduced to simple geometric elements. </p>
+
+				<h3>Centred figures</h3>
+
+					<p>These are images enclosed in a <code>&lt;figure&gt;</code> element, either alone:</p>
+
+					<figure>
+						<img src="images/mill-of-heeswijk-sun.jpg" alt="An oil painting of a windmill by Piet Mondrian, titled &quot;Mill of Heeswijk Sun&quot;" />
+					</figure>
+
+					<p>… or the following, which are accompanied by a <code>&lt;figcaption&gt;</code> element.</p>
+
+					<figure>
+					<img src="images/night-revels.jpg" alt="A panoramic painting depicting various figures engaged in various leisure activities" />
+						<figcaption><i>The Night Revels of Han Xizai</i> by an unknown artist, replica after the original by Gu Hongzhong; bounded by viewport size</figcaption>
+					</figure>
+
+					<figure class="g-bounded">
+						<img src="images/gray-tree.jpg" alt="A cubist oil painting of a tree without leaves" />
+						<figcaption><i>Gray Tree</i> by Piet Mondrian, bounded by main column width and viewport height</figcaption>
+					</figure>
+
+				<h4>Figures with hyperlinks</h4>
+
+					<figure>
+						<a href="https://en.wikipedia.org/wiki/Piet_Mondrian">
+							<img src="images/mill-of-heeswijk-sun.jpg" alt="An oil painting of a windmill by Piet Mondrian, titled &quot;Mill of Heeswijk Sun&quot;" />
+						</a>
+					</figure>
+
+					<figure class="g-bounded">
+						<a href="https://en.wikipedia.org/wiki/Piet_Mondrian">
+							<img src="images/gray-tree.jpg" alt="A cubist oil painting of a tree without leaves" />
+						</a>
+						<figcaption><i>Gray Tree</i> by Piet Mondrian, bounded by viewport height</figcaption>
+					</figure>
+
+				<h3>Text-aligned pictures</h3>
+
+					<p>We can also have bare <code>&lt;img&gt;</code> elements without a <code>&lt;figure&gt;</code> to centre them (and consequently without captions as well).</p>
+
+					<img src="images/sunflowers.jpg" alt="An oil painting of sunflowers in a vase by Vincent van Gogh, the &quot;repetition&quot; of the 4th version in the series titled &quot;Sunflowers&quot;, painted in Arles" />
+
+					<p>Such images are always bounded by column width:</p>
+
+					<img src="images/night-revels.jpg" alt="A panoramic painting depicting various figures engaged in various leisure activities, which is section of a larger work by an unknown artist as a replica of the original by Gu Hongzhong, titled &quot;The Night Revels of Han Xizai&quot;" />
+
+				<h2>Tables</h2>
+
+					<figure>
+						<figcaption>Animal shop</figcaption>
+						<table>
+							<colgroup>
+								<col />
+								<col />
+								<col align="right" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th colspan="2">Item</th>
+									<th rowspan="2">Price ($)</th>
+								</tr>
+								<tr>
+									<th>Animal</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="2">Gnat</td>
+									<td>per gram</td>
+									<td class="g-right">13.65</td>
+								</tr>
+									<tr>
+										<td>each</td>
+										<td class="g-right">0.01</td>
+									</tr>
+								<tr>
+									<td>Gnu</td>
+									<td>stuffed</td>
+									<td class="g-right">92.50</td>
+								</tr>
+								<tr>
+									<td>Emu</td>
+									<td>stuffed</td>
+									<td class="g-right">33.33</td>
+								</tr>
+								<tr>
+									<td>Armadillo</td>
+									<td>frozen</td>
+									<td class="g-right">8.99</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="2">Everything</td>
+									<td class="g-right">1024.00</td>
+								</tr>
+							</tfoot>
+						</table>
+					</figure>
+
+					<figure>
+						<table>
+							<thead>
+								<tr>
+									<th>Drink</th>
+									<th>Emoji</th>
+									<th>Calories</th>
+									<th>Carbohydrates (g)</th>
+									<th>Total Sugar (g)</th>
+									<th>Protein (g)</th>
+									<th>Total Fat (g)</th>
+									<th>Total Fiber (g)</th>
+									<th>Cholesterol (mg)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>milk</td>
+									<td class="g-centre">🥛</td>
+									<td class="g-right">149.0</td>
+									<td class="g-right">11.7</td>
+									<td class="g-right">12.3</td>
+									<td class="g-right">7.7</td>
+									<td class="g-right">8.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">24.4</td>
+								</tr>
+								<tr>
+									<td>coffee</td>
+									<td class="g-centre">☕️</td>
+									<td class="g-right">2.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.3</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+								</tr>
+								<tr>
+									<td>green tea</td>
+									<td class="g-centre">🍵</td>
+									<td class="g-right">2.5</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.5</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+								</tr>
+								<tr>
+									<td>sake</td>
+									<td class="g-centre">🍶</td>
+									<td class="g-right">39.0</td>
+									<td class="g-right">1.5</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.1</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+								</tr>
+								<tr>
+									<td>champagne</td>
+									<td class="g-centre">🍾</td>
+									<td class="g-right">89.0</td>
+									<td class="g-right">1.6</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.4</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+								</tr>
+								<tr>
+									<td>red wine</td>
+									<td class="g-centre">🍷</td>
+									<td class="g-right">125.0</td>
+									<td class="g-right">3.8</td>
+									<td class="g-right">0.9</td>
+									<td class="g-right">0.1</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+								</tr>
+								<tr>
+									<td>martini</td>
+									<td class="g-centre">🍸</td>
+									<td class="g-right">210.0</td>
+									<td class="g-right">1.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+								</tr>
+								<tr>
+									<td>tropical drink</td>
+									<td class="g-centre">🍹</td>
+									<td class="g-right">245.0</td>
+									<td class="g-right">32.0</td>
+									<td class="g-right">31.5</td>
+									<td class="g-right">0.6</td>
+									<td class="g-right">2.7</td>
+									<td class="g-right">0.4</td>
+									<td class="g-right">0.0</td>
+								</tr>
+								<tr>
+									<td>beer</td>
+									<td class="g-centre">🍺</td>
+									<td class="g-right">153.0</td>
+									<td class="g-right">12.6</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">1.6</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+								</tr>
+								<tr>
+									<td>whiskey</td>
+									<td class="g-centre">🥃</td>
+									<td class="g-right">70.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+								</tr>
+								<tr>
+									<td>soft drink</td>
+									<td class="g-centre">🥤</td>
+									<td class="g-right">151.0</td>
+									<td class="g-right">38.9</td>
+									<td class="g-right">38.9</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+									<td class="g-right">0.0</td>
+								</tr>
+							</tbody>
+						</table>
+					</figure>
+
+				<h2>Fonts</h2>
 
 					<p>A<span class="sans-serif">A</span>A<span class="sans-serif-bold">A</span>A<code class="monospace">A</code> B<span class="sans-serif">B</span>B<span class="sans-serif-bold">B</span>B<code class="monospace">B</code> M<span class="sans-serif">M</span>M<span class="sans-serif-bold">M</span>M<code class="monospace">M</code> Z<span class="sans-serif">Z</span>Z<span class="sans-serif-bold">Z</span>Z<code class="monospace">Z</code></p>
 
 					<p>a<span class="sans-serif">a</span>a<span class="sans-serif-bold">a</span>a<code class="monospace">a</code> b<span class="sans-serif">b</span>b<span class="sans-serif-bold">b</span>b<code class="monospace">b</code> f<span class="sans-serif">f</span>f<span class="sans-serif-bold">f</span>f<code class="monospace">f</code> g<span class="sans-serif">g</span>g<span class="sans-serif-bold">g</span>g<code class="monospace">g</code> i<span class="sans-serif">i</span>i<span class="sans-serif-bold">i</span>i<code class="monospace">i</code> j<span class="sans-serif">j</span>j<span class="sans-serif-bold">j</span>j<code class="monospace">j</code> q<span class="sans-serif">q</span>q<span class="sans-serif-bold">q</span>q<code class="monospace">q</code> t<span class="sans-serif">t</span>t<span class="sans-serif-bold">t</span>t<code class="monospace">t</code> w<span class="sans-serif">w</span>w<span class="sans-serif-bold">w</span>w<code class="monospace">w</code></p>
 
+				<h3>Text</h3>
+
+					<p>It was a dark, blustery afternoon in spring, and the city of London was chasing a small mining town across the dried-out bed of the old North Sea.</p>
+
+					<p>café aft 721 final</p>
+
+					<p>The following also demonstrates heading levels from 2 through 6 (heading level 1 is at the top of the page)</p>
+
 				<hgroup>
-					<h2>Body font</h2>
-					<h3>Characters</h3>
+					<h3>Glyphs</h3>
 					<h4>Latin</h4>
 				</hgroup>
 
-				<p>A B C Č Ć D Đ E F G H I J K L M N O P Q R S Š T U V W X Y Z Ž Ă Â Ê Ô Ơ Ư a b c č ć d đ e f g h i j k l m n o p q r s š t u v w x y z ž ă â ê ô ơ ư ſ</p>
+					<p>A B C Č Ć D Đ E F G H I J K L M N O P Q R S Š T U V W X Y Z Ž Ă Â Ê Ô Ơ Ư a b c č ć d đ e f g h i j k l m n o p q r s š t u v w x y z ž ă â ê ô ơ ư ſ</p>
 
 				<h4>Cyrllic</h4>
-				<p>А Б В Г Ґ Д Ђ Е Ё Є Ж З Ѕ И І Ї Й Ј К Л Љ М Н Њ О П Р С Т Ћ У Ў Ф Х Ц Ч Џ Ш Щ Ъ Ы Ь Э Ю Я а б в г ґ д ђ е ё є ж з ѕ и і ї й ј к л љ м н њ о п р с т ћ у ў ф х ц ч џ ш щ ъ ы ь э ю я</p>
+
+					<p>А Б В Г Ґ Д Ђ Е Ё Є Ж З Ѕ И І Ї Й Ј К Л Љ М Н Њ О П Р С Т Ћ У Ў Ф Х Ц Ч Џ Ш Щ Ъ Ы Ь Э Ю Я а б в г ґ д ђ е ё є ж з ѕ и і ї й ј к л љ м н њ о п р с т ћ у ў ф х ц ч џ ш щ ъ ы ь э ю я</p>
 
 				<h4>Greek</h4>
-				<p>Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω</p>
+
+					<p>Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω</p>
 
 				<h4>Numerals and symbols</h4>
-				<p>1 2 3 4 5 6 7 8 9 0</p>
-				<p>‘ ? ’ “ ! ” ( % ) [ # ] { @ } / & \ < - + ÷ × = > ® © $ € £ ¥ ¢ : ; , . *</p>
 
-				<h3>Numbers</h3>
-				<p>1234567890 1/2 1/4 3/4 ½ ¼ ¾</p>
+					<p>1 2 3 4 5 6 7 8 9 0</p>
+					<p>‘ ? ’ “ ! ” ( % ) [ # ] { @ } / & \ < - + ÷ × = > ® © $ € £ ¥ ¢ : ; , . *</p>
 
-				<h4>Zero</h4>
-				<p>00oo0 0o0o</p>
+				<h5>Numbers</h5>
+
+					<p>1234567890 1/2 1/4 3/4 ½ ¼ ¾</p>
+
+				<h6>Zero</h6>
+
+					<p>00oo0 0o0o</p>
+
+				<h4>International Phoenetic Alphabet</h4>
+
+					<p>Pieter Cornelis Mondriaan (Dutch: [ˈpitər ˈmɔndrijaːn]). After 1906, Piet Mondrian (/piːt ˈmɒndriɑːn/, also US: /- ˈmɔːn-/, Dutch: [pit ˈmɔndrijɑn].</p>
 
 				<hgroup>
 					<h3>Ligatures</h3>
 					<h4>Common ligatures</h4>
 				</hgroup>
 
-				<p>ff fi fl ft fff ffi ffl fft</p>
-				<p>ſf fſ ſff ſſf fſſ ffſ</p>
-				<p>ſſ ſi ſl ſt ſſſ ſſi ſſl ſſl ſſt</p>
+					<p>ff fi fl ft fff ffi ffl fft</p>
+					<p>ſf fſ ſff ſſf fſſ ffſ</p>
+					<p>ſſ ſi ſl ſt ſſſ ſſi ſſl ſſl ſſt</p>
 
 				<h4>Discretionary ligatures</h4>
-				<p>fb fh fj fk ffb ffh ffj ffk</p>
-				<p>ſb ſh ſj ſk ſſb ſſh ſſj ſſk</p>
-				<p>sk sp st ck cp ct rt</p>
-				<p>Th th</p>
+
+					<p>fb fh fj fk ffb ffh ffj ffk</p>
+					<p>ſb ſh ſj ſk ſſb ſſh ſſj ſſk</p>
+					<p>sk sp st ck cp ct rt</p>
+					<p>Th th</p>
 
 				<h4>Contextual alternates</h4>
-				<p>fA ffA ſA ſſA</p>
-				<p>fB ffB ſB ſſB</p>
 
-				<h3>Words</h3>
-				<p>café aft 721 final</p>
-
-				<h2>Inline</h2>
-
-				<p>Here is a hyperlink to <a href="">nowhere</a>, and another link to an <a href="https://example.com/">example domain</a>.</p>
-
-				<p>Inline JavaScript is given as <code>alert('hi');</code></p>
-
-				<p>Abbreviations require specific styling, as in <abbr>HTML</abbr>, and require quire subtle styling especially at the start of a sentence. <abbr class="g-capital">CSS</abbr> is fun.</p>
-
-				<h2>Gallery</h2>
-
-				<p>Pieter Cornelis Mondriaan (Dutch: [ˈpitər ˈmɔndrijaːn]), after 1906 Piet Mondrian (/piːt ˈmɒndriɑːn/, also US: /- ˈmɔːn-/, Dutch: [pit ˈmɔndrijɑn]; 7 March 1872 – 1 February 1944), was a Dutch painter and theoretician who is regarded as one of the greatest artists of the 20th century. He is known for being one of the pioneers of 20th century abstract art, as he changed his artistic direction from figurative painting to an increasingly abstract style, until he reached a point where his artistic vocabulary was reduced to simple geometric elements. </p>
-
-				<figure>
-					<img src="images/mill-of-heeswijk-sun.jpg" alt="An oil painting of a windmill" />
-					<figcaption><i>Mill of Heeswijk Sun</i> by Piet Mondrian, image size bounded by viewport height</figcaption>
-				</figure>
-
-				<figure class="g-bounded">
-					<img src="images/gray-tree.jpg" alt="A cubist oil painting of a tree without leaves" />
-					<figcaption><i>Gray Tree</i> by Piet Mondrian, bounded by main column and by viewport height</figcaption>
-				</figure>
-
-				<figure>
-					<img src="images/gray-tree.jpg" alt="A cubist oil painting of a tree without leaves" />
-					<figcaption><i>Gray Tree</i> by Piet Mondrian, bounded by viewport height only</figcaption>
-				</figure>
-
-				<h3>Tables</h3>
-
-				<figure>
-					<figcaption>Animal shop</figcaption>
-					<table>
-						<colgroup>
-							<col />
-							<col />
-							<col align="right" />
-						</colgroup>
-						<thead>
-							<tr>
-								<th colspan="2">Item</th>
-								<th rowspan="2">Price ($)</th>
-							</tr>
-							<tr>
-								<th>Animal</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td rowspan="2">Gnat</td>
-								<td>per gram</td>
-								<td class="g-right">13.65</td>
-							</tr>
-								<tr>
-									<td>each</td>
-									<td class="g-right">0.01</td>
-								</tr>
-							<tr>
-								<td>Gnu</td>
-								<td>stuffed</td>
-								<td class="g-right">92.50</td>
-							</tr>
-							<tr>
-								<td>Emu</td>
-								<td>stuffed</td>
-								<td class="g-right">33.33</td>
-							</tr>
-							<tr>
-								<td>Armadillo</td>
-								<td>frozen</td>
-								<td class="g-right">8.99</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<td colspan="2">Everything</td>
-								<td class="g-right">1024.00</td>
-							</tr>
-						</tfoot>
-					</table>
-				</figure>
-
-				<figure>
-					<table>
-						<thead>
-							<tr>
-								<th>Drink</th>
-								<th>Emoji</th>
-								<th>Calories</th>
-								<th>Carbohydrates (g)</th>
-								<th>Total Sugar (g)</th>
-								<th>Protein (g)</th>
-								<th>Total Fat (g)</th>
-								<th>Total Fiber (g)</th>
-								<th>Cholesterol (mg)</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>milk</td>
-								<td class="g-centre">🥛</td>
-								<td class="g-right">149.0</td>
-								<td class="g-right">11.7</td>
-								<td class="g-right">12.3</td>
-								<td class="g-right">7.7</td>
-								<td class="g-right">8.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">24.4</td>
-							</tr>
-							<tr>
-								<td>coffee</td>
-								<td class="g-centre">☕️</td>
-								<td class="g-right">2.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.3</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-							</tr>
-							<tr>
-								<td>green tea</td>
-								<td class="g-centre">🍵</td>
-								<td class="g-right">2.5</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.5</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-							</tr>
-							<tr>
-								<td>sake</td>
-								<td class="g-centre">🍶</td>
-								<td class="g-right">39.0</td>
-								<td class="g-right">1.5</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.1</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-							</tr>
-							<tr>
-								<td>champagne</td>
-								<td class="g-centre">🍾</td>
-								<td class="g-right">89.0</td>
-								<td class="g-right">1.6</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.4</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-							</tr>
-							<tr>
-								<td>red wine</td>
-								<td class="g-centre">🍷</td>
-								<td class="g-right">125.0</td>
-								<td class="g-right">3.8</td>
-								<td class="g-right">0.9</td>
-								<td class="g-right">0.1</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-							</tr>
-							<tr>
-								<td>martini</td>
-								<td class="g-centre">🍸</td>
-								<td class="g-right">210.0</td>
-								<td class="g-right">1.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-							</tr>
-							<tr>
-								<td>tropical drink</td>
-								<td class="g-centre">🍹</td>
-								<td class="g-right">245.0</td>
-								<td class="g-right">32.0</td>
-								<td class="g-right">31.5</td>
-								<td class="g-right">0.6</td>
-								<td class="g-right">2.7</td>
-								<td class="g-right">0.4</td>
-								<td class="g-right">0.0</td>
-							</tr>
-							<tr>
-								<td>beer</td>
-								<td class="g-centre">🍺</td>
-								<td class="g-right">153.0</td>
-								<td class="g-right">12.6</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">1.6</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-							</tr>
-							<tr>
-								<td>whiskey</td>
-								<td class="g-centre">🥃</td>
-								<td class="g-right">70.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-							</tr>
-							<tr>
-								<td>soft drink</td>
-								<td class="g-centre">🥤</td>
-								<td class="g-right">151.0</td>
-								<td class="g-right">38.9</td>
-								<td class="g-right">38.9</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-								<td class="g-right">0.0</td>
-							</tr>
-						</tbody>
-					</table>
-				</figure>
+					<p>fA ffA ſA ſſA</p>
+					<p>fB ffB ſB ſſB</p>
 
 			</article>
 
