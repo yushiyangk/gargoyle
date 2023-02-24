@@ -195,22 +195,40 @@ blockquote {
 main aside {
 	display: block;
 
-	margin: 1.5rem 2rem;
+	float: right;
+
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 2rem;
+	margin-right: 0;
 	padding: 0;
+
+	width: 16rem;  /* $aside-width */
+
+	color: grey;
 
 	text-align: left;
 	text-align: start;
 	text-align: -moz-initial;
 	text-align: initial;
 }
+@media (max-width: 34rem) {  /* 2 * $aside-width + $column-margin */
+	main aside {
+		float: none;
+		margin: 1.5rem 2rem;
+		width: auto;
+	}
+}
 @media (min-width: 76rem) {  /* $column-width + 2 * ($aside-width + $column-margin) */
 	main aside {
 		position: absolute;
+		float: none;
+
 		margin-top: 0;
 		margin-left: 42rem;  /* $column-width + $column-margin */
 		margin-right: 0;
 
-		width: 16rem;  /* $aside-width */
+		color: inherit;
 	}
 }
 
