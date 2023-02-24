@@ -338,6 +338,17 @@ dd::after {
 /*
 	Figure elements
 */
+img, picture {
+	display: block;
+	margin-top: 0.75rem;
+	margin-bottom: 2.25rem;
+	margin-left: 0;
+	margin-right: 0;
+
+	max-height: 80vh;
+	max-width: 100%;
+}
+
 figure {
 	display: block;
 
@@ -399,27 +410,6 @@ figure.g-bounded > a > img, figure.g-bounded > a > picture, figure.g-bounded > a
 	max-width: 100%;
 }
 
-img {
-	display: block;
-	margin-top: 0.75rem;
-	margin-bottom: 2.25rem;
-	margin-left: 0;
-	margin-right: 0;
-
-	max-height: 80vh;
-	max-width: 100%;
-}
-picture {
-	display: block;
-
-	margin-top: 0.75rem;
-	margin-bottom: 2.25rem;
-	margin-left: auto;
-	margin-right: auto;
-
-	max-height: 80vh;
-}
-
 
 
 /*
@@ -436,8 +426,8 @@ table {
 
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 0;
+	margin-right: 0;
 
 	border-top: 1px solid lightgrey;
 	border-collapse: collapse;
@@ -498,13 +488,32 @@ a:visited {
 	color: #600000;
 }
 
+dfn {
+	font-weight: bold;
+	font-style: inherit;
+}
+
 small {
 	font-size: 0.833333rem;
 	line-height: 1.125rem;
 }
 
+/* Redefine these to prevent increasing main line height */
+sup {
+	font-size: 0.833333rem;
+	line-height: 1.125rem;
+	vertical-align: top;
+}
+sub {
+	font-size: 0.833333rem;
+	line-height: 1.125rem;
+	vertical-align: bottom;
+}
+
 code {
 	display: inline;
+
+	padding: 0 0.2em;
 
 	font-family: monospace;
 	line-height: 1.3rem;  /* border-radius increases line height */
@@ -515,6 +524,62 @@ code {
 	border-radius: 0.2em;
 
 	background-color: aliceblue;
+}
+
+samp {
+	font-family: inherit;
+
+	padding: 0 0.2em;
+
+	-moz-border-radius: 0.2em;
+	-webkit-border-radius: 0.2em;
+	border-radius: 0.2em;
+
+	background-color: cornsilk;
+}
+samp code {
+	background-color: cornsilk;
+}
+samp > code:first-child, kbd > code:first-child {
+	padding-left: 0;
+}
+samp > code:last-child, kbd > code:last-child {
+	padding-right: 0;
+}
+
+kbd {
+	display: inline-block;
+
+	padding: 0.1em 0.2em;
+	margin: 0 0.1em;
+
+	font-family: inherit;
+	font-size: 0.9375rem;
+	font-weight: 500;
+	/* Same as abbr */
+
+	line-height: 1.1rem;  /* border-radius increases line height */
+	line-height: calc(1.3rem - 0.2em - 0.2em - 1px);
+
+	-moz-border-radius: 0.2em;
+	-webkit-border-radius: 0.2em;
+	border-radius: 0.2em;
+
+	border: 1px solid lightgrey;
+	box-shadow: 0 1px 0 1px lightgrey;
+}
+
+.g-math {
+	font-family: serif;
+}
+.g-mathrm, .g-mathrm var {
+	font-family: serif;
+	font-style: normal;
+}
+.g-mathbf, .g-mathbf var {
+	font-family: serif;
+	font-weight: bold;
+	font-style: normal;
 }
 
 /* Workaround for Firefox adding extra space after an element that has display: inline-block and a ::first-letter with a change of font-size; fixed by forcing reflow */
@@ -535,7 +600,7 @@ abbr.g-capital {
 }
 abbr.g-capital::first-letter {
 	font-size: 1rem;
-	font-weight: normal;
+	font-weight: inherit;
 }
 
 

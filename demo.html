@@ -8,6 +8,7 @@
 		<title>Gargoyle, a minimal CSS stylesheet</title>
 
 		<link rel="stylesheet" type="text/css" href="./gargoyle.css" />
+		<script type="text/javascript" src="./scripts/mathjax.mpadded-min.js" ></script>
 	</head>
 	<body id="g-bodymask">
 		<main>
@@ -20,13 +21,68 @@
 
 					<p>Here is a hyperlink to <a href="">nowhere</a>, and another link to an <a href="https://example.com/">example domain</a>.
 
-					<p>Sometimes, we might want text to be highlighted as <b>bold</b>, or <i>italics</i>. This may be for <em>emphasis</em>, or <strong>even more emphasis</strong>. These may be rendered similarly, but they use distinct <abbr>HTML</abbr> tags with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b">subtle semantic distinction.</a></p>
+					<p>Sometimes, we might want text to stand out as <b>bold</b> or <i>italics</i>. These may be for <em>emphasis</em>, or <strong>even more emphasis</strong>. The former pair uses <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> for formatting, while the latter pair uses <code>&lt;em&gt;</code> and <code>&lt;strong&gt;</code> to provide the semantics of emphasis or extra importance.
 
-					<p>At other times, we might want text <small>to be small</small>.</p>
+					<p>When we wish to make text more prominent but without the emphasis, there are special cases where we do not need to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code>, because there exist dedicated <abbr>HTML</abbr> elements for that purpose. These include <code>&lt;cite&gt;</code> for the names of artworks, e.g. <cite>The Rite of Spring</cite> by Igor Stravinsky, or <code>&lt;dfn&gt;</code> for highlighting the <dfn>keyword</dfn> in a glossary entry, or <code>&lt;mark&gt;</code> for <mark>highlighting</mark>, such as for search results.</p>
 
-					<p>Inline JavaScript is given as <code>alert('hi');</code></p>
+					<p>Other text decorations exist, for purposes such as <u>annotated text</u> using <code>&lt;u&gt;</code>, <s>superceded or irrelevent text</s> using <code>&lt;s&gt;</code>, keyboard interactions such as  using <code>&lt;s&gt;</code>.</p>
 
-					<p>Abbreviations require specific styling, as in <abbr>HTML</abbr>, and require quire subtle styling especially at the start of a sentence. <abbr class="g-capital">CSS</abbr> is fun.</p>
+					<p>In contrast, we might also want text <small>that is small</small>, using <code>&lt;small&gt;</code>. We might also want <q>inline quotations</q>, using <code>&lt;q&gt;</code>.</p>
+
+					<p>Manual line breaks can be added using <code>&lt;br&gt;</code>, such<br />as<br />here. This is particularly useful for poetry.</p>
+
+					<p>Superscripts and subscripts behave as expected using <code>&lt;sup&gt;</code> and <code>&lt;sub&gt;</code>, such as for the carbonate ion <data value="C(=O)([O-])[O-]">CO<sub>3</sub><sup>2&minus;</sup></data>. The preceding chemical formula has also been enclosed in a <code>&lt;data&gt;</code> element, to provide it in a machine-readable form (<abbr>SMILES</abbr>). This typically does not alter the visible formatting of the text. Another element that behaves this way is <code>&lt;time&gt;</code>, which should be used to specify time values such as <time datetime="1970-01-01">1 January 1970</time>.</p>
+
+				<h3>Abbreviations</h3>
+
+					<p>Abbreviations make use of simulated small caps, as in <abbr>HTML</abbr>, because most fonts do not implement a suitable size of smallcaps for use in place of uppercase letters in running text (they are implemented as x-height petite caps instead, which are more suited for replacing lowercase letters). The font size and weight of such <code>&lt;abbr&gt;</code> elements need to be tuned in the stylesheet to properly fit the font in use. <abbr class="g-capital">CSS</abbr> is fun; for abbreviations that start a sentence, the class <code>.g-capital</code> should be used to ensure that the first letter is fully capitalised.</p>
+
+				<h3>Bidirectional text</h3>
+
+					<p>Bidirectional text can usually be rendered without any additional <abbr>HTML</abbr> markup, such as with Arabic, إِنْ شَاءَ ٱللَّٰهُ, or with Hebrew, שלום ולהתראות.</p>
+
+					<p>Where issues arise, using a <code>&lt;bdi&gt;</code> element may help, giving <bdi>إِنْ شَاءَ ٱللَّٰهُ</bdi> and <bdi>שלום ולהתראות</bdi>.</p>
+
+					<p>Failing that, <code>&lt;bdo&gt;</code> elements can be used to provide an explicit text direction, in this case <code>rtl</code>: <bdo dir="rtl">إِنْ شَاءَ ٱللَّٰهُ</bdo> and <bdo dir="rtl">שלום ולהתראות</bdo>. This element can also be used to force atypical text directions, such as reversing Hebrew, <bdo dir="ltr">שלום ולהתראות</bdo>, or reversing English: <bdo dir="rtl">English</bdo>.</p>
+
+				<h3>Ruby</h3>
+
+					<p>Or rubi, or textual annotations, using <code>&lt;ruby&gt;</code> and <code>&lt;rt&gt;</code>, <ruby>which<rt>pn</rt></ruby> <ruby>does<rt>v</rt></ruby> <ruby>this<rt>pn</rt></ruby>. While this can be used for glosses or annotations, it is more typically used in Chinese, <ruby>中<rt>zhōng</rt></ruby><ruby>文<rt>wén</rt></ruby> or <ruby>中<rt>ㄓㄨㄥ</rt></ruby><ruby>文<rt>ㄨㄣˊ</rt></ruby>, and Japanese, <ruby>日本語<rt>にほんご</rt></ruby> or <ruby>日本語<rt>nihongo</rt></ruby>. For browsers that do not support these, add parentheses in <code>&lt;rp&gt;</code> elements to fallback to this: <ruby>中(zhōng)</ruby><ruby>文(wén)</ruby> and <ruby>日本語(にほんご)</ruby>.
+
+
+				<h3>Mathematics</h3>
+
+					<p>Use <code>&lt;var&gt;</code> to specify mathematical <var>variables</var>. For more symbolic variables, add the <code>.g-math</code> class to use a serif font, e.g. <var class="g-math">x</var>, or <code>.g-mathbf</code> for vectors and matrices, e.g. <var class="g-mathbf">v</var> and <var class="g-mathbf">M</var>, or <code>.g-mathrm</code> for multi-character symbols, e.g. <span class="g-mathrm">sin</span> and <var class="g-mathrm">Re</var>. Note that <span class="g-mathrm">sin</span> is given a <code>&lt;span&gt;</code> instead of a <code>&lt;var&gt;</code> as it is not a variable. Alternatively, use <a href="https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols">Unicode symbols</a>.</p>
+
+					<p>However, prefer to use <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Authoring">Math<abbr>ML</abbr></a> for extended sequences of mathematics, as so:
+						<math>
+							<msup><mi>c</mi><mn>2</mn></msup>
+							<mo>=</mo>
+							<msup><mi>a</mi><mn>2</mn></msup>
+							<mo>+</mo>
+							<msup><mi>b</mi><mn>2</mn></msup>
+							<mo>-</mo>
+							<mn>2</mn><mi>a</mi><mi>b</mi><mi>cos</mi><mi>γ</mi>
+						</math>
+						and
+						<math>
+							<mi>k</mi><mi mathvariant="bold">A</mi><mi mathvariant="bold">x</mi>
+							<mo>=</mo>
+							<mi mathvariant="bold">y</mi>
+						</math>
+						and
+						<math>
+							<mi>Re</mi> <mo>=</mo>
+							<mfrac>
+								<mrow><mi>u</mi><mi>L</mi></mrow>
+								<mrow><mi>ν</mi></mrow>
+							</mfrac>
+						</math>.
+					</p>
+
+				<h3>Computers and source code</h3>
+
+					<p>Use <code>&lt;code&gt;</code> to specify source code, such as the JavaScript <code>alert('Hello, world!');</code>, and combine with <code>&lt;var&gt;</code> to have variables in code: <code>ln -s <var>source_file</var> <var>target_link</var></code>. Program outputs should be specified with <code>&lt;samp&gt;</code>, as in <samp>Hello, world!</samp>, and can be combined with <code>&lt;code&gt;</code>, for example for command-line outputs: <samp><code>ln: failed to create symbolic link '<var>target_link</var>': No such file or director</code></samp>. For keyboard interactions such as <kbd>A</kbd> or <kbd>Ctrl</kbd>+<kbd>Z</kbd>, use <code>&lt;kbd&gt;</code>.</p>
 
 				<h2>Picture gallery</h2>
 
@@ -44,27 +100,27 @@
 
 					<figure>
 					<img src="images/night-revels.jpg" alt="A panoramic painting depicting various figures engaged in various leisure activities" />
-						<figcaption><i>The Night Revels of Han Xizai</i> by an unknown artist, replica after the original by Gu Hongzhong; bounded by viewport size</figcaption>
+						<figcaption><cite>The Night Revels of Han Xizai</cite> by an unknown artist, replica after the original by Gu Hongzhong; bounded by viewport size by default</figcaption>
 					</figure>
 
 					<figure class="g-bounded">
 						<img src="images/gray-tree.jpg" alt="A cubist oil painting of a tree without leaves" />
-						<figcaption><i>Gray Tree</i> by Piet Mondrian, bounded by main column width and viewport height</figcaption>
+						<figcaption><cite>Gray Tree</cite> by Piet Mondrian, bounded by main column width and viewport height, using the <code>.g-bound</code> class</figcaption>
 					</figure>
 
 				<h4>Figures with hyperlinks</h4>
-
-					<figure>
-						<a href="https://en.wikipedia.org/wiki/Piet_Mondrian">
-							<img src="images/mill-of-heeswijk-sun.jpg" alt="An oil painting of a windmill by Piet Mondrian, titled &quot;Mill of Heeswijk Sun&quot;" />
-						</a>
-					</figure>
 
 					<figure class="g-bounded">
 						<a href="https://en.wikipedia.org/wiki/Piet_Mondrian">
 							<img src="images/gray-tree.jpg" alt="A cubist oil painting of a tree without leaves" />
 						</a>
-						<figcaption><i>Gray Tree</i> by Piet Mondrian, bounded by viewport height</figcaption>
+						<figcaption>Short captions are centred</figcaption>
+					</figure>
+
+					<figure>
+						<a href="https://en.wikipedia.org/wiki/Piet_Mondrian">
+							<img src="images/mill-of-heeswijk-sun.jpg" alt="An oil painting of a windmill by Piet Mondrian, titled &quot;Mill of Heeswijk Sun&quot;" />
+						</a>
 					</figure>
 
 				<h3>Text-aligned pictures</h3>
@@ -78,6 +134,8 @@
 					<img src="images/night-revels.jpg" alt="A panoramic painting depicting various figures engaged in various leisure activities, which is section of a larger work by an unknown artist as a replica of the original by Gu Hongzhong, titled &quot;The Night Revels of Han Xizai&quot;" />
 
 				<h2>Tables</h2>
+
+					<p>These are tables enclosed in a <code>&lt;figure&gt;</code> element, with or without captions:</p>
 
 					<figure>
 						<figcaption>Animal shop</figcaption>
@@ -272,6 +330,62 @@
 							</tbody>
 						</table>
 					</figure>
+
+					<p>Tables should not be bounded by column width, as that just makes them unreadable.</p>
+
+				<h3>Text-aligned tables</h3>
+
+					<p>As with images, tables can also be used without being centred inside a <code>&lt;figure&gt;</code>.</p>
+
+					<table>
+						<colgroup>
+							<col />
+							<col />
+							<col align="right" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th colspan="2">Item</th>
+								<th rowspan="2">Price ($)</th>
+							</tr>
+							<tr>
+								<th>Animal</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="2">Gnat</td>
+								<td>per gram</td>
+								<td class="g-right">13.65</td>
+							</tr>
+								<tr>
+									<td>each</td>
+									<td class="g-right">0.01</td>
+								</tr>
+							<tr>
+								<td>Gnu</td>
+								<td>stuffed</td>
+								<td class="g-right">92.50</td>
+							</tr>
+							<tr>
+								<td>Emu</td>
+								<td>stuffed</td>
+								<td class="g-right">33.33</td>
+							</tr>
+							<tr>
+								<td>Armadillo</td>
+								<td>frozen</td>
+								<td class="g-right">8.99</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="2">Everything</td>
+								<td class="g-right">1024.00</td>
+							</tr>
+						</tfoot>
+					</table>
 
 				<h2>Fonts</h2>
 
