@@ -68,14 +68,14 @@
 	Section elements
 */
 html {
-	font-family: sans-serif;
-	font-size: 16px;
-	line-height: 1.5rem;
-
 	margin: 0;
 	padding: 0;
 
 	color: darkslategray;
+
+	font-family: sans-serif;
+	font-size: 16px;
+	line-height: 1.5rem;
 
 	/* Nominally an SVG property but good for Chrome; breaks Android 4.3 */
 	text-rendering: optimizeLegibility;
@@ -88,8 +88,8 @@ body {
 	padding: 0;
 	padding-bottom: 3rem;
 
-	background-color: snow;
 	color: darkslategray;
+	background-color: snow;
 
 	/* Workaround for IE bug with margin: auto column centring; parent container needs this. */
 	text-align: center;
@@ -98,6 +98,11 @@ body {
 main {
 	display: block;
 
+	width: 40rem;  /* $column-width */
+	max-width: 91.666667%;
+	max-width: 91.666667vw;  /* 100vw - 2 * $main-margin */
+	max-width: calc(100vw - 2rem);
+
 	margin: 1.5rem auto;
 	padding: 0;
 
@@ -105,11 +110,6 @@ main {
 	text-align: start;
 	text-align: -moz-initial;
 	text-align: initial;
-
-	width: 40rem;  /* $column-width */
-	max-width: 90%;
-	max-width: calc(100% - 2rem);
-	max-width: 91.666667vw;  /* 100vw - 2 * $main-margin */
 }
 
 nav {
@@ -187,6 +187,26 @@ section {
 }
 
 
+/*
+	Expansion beyond main column
+*/
+/* If main supports these width calculations, expand outside of column and use these as margins */
+/* If neither are supported, fall back to being bound by column */
+@supports (max-width: calc(50% - 50vw + 1rem)) {
+	figure {
+		margin-left: calc(50% - 50vw + 1rem);
+		margin-right: calc(50% - 50vw + 1rem);
+	}
+
+	@supports selector(:has(code)) {
+		pre:has(code), pre:has(samp) {
+			margin-left: calc(50% - 50vw + 1rem);
+			margin-right: calc(50% - 50vw + 1rem);
+		}
+	}
+}
+
+
 
 /*
 	Text elements
@@ -204,14 +224,14 @@ p {
 h1 {
 	display: block;
 
-	font-size: 2rem;
-	line-height: 2.25rem;
-
 	margin-top: 2.25rem;
 	margin-bottom: 1.5rem;
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
+
+	font-size: 2rem;
+	line-height: 2.25rem;
 
 	/* CSS3 Text */
 	-moz-hyphens: none;
@@ -253,15 +273,15 @@ h4 {
 	font-weight: bold;
 }
 h5 {
-	font-size: 1rem;
 	margin-left: 1rem;
 
+	font-size: 1rem;
 	font-weight: bold;
 }
 h6 {
-	font-size: 1rem;
 	margin-left: 2rem;
 
+	font-size: 1rem;
 	font-weight: bold;
 	font-style: italic;
 }
@@ -270,20 +290,17 @@ blockquote {
 	display: block;
 
 	margin: 1.5rem 2rem;
+	padding: 0;
 }
 
 main aside {
 	display: block;
-
-	float: right;
 
 	margin-top: 0;
 	margin-bottom: 0;
 	margin-left: 2rem;
 	margin-right: 0;
 	padding: 0;
-
-	width: 16rem;  /* $aside-width */
 
 	color: grey;
 
@@ -292,20 +309,21 @@ main aside {
 	text-align: -moz-initial;
 	text-align: initial;
 }
-@media (max-width: 34rem) {  /* 2 * $aside-width + $column-margin */
+@media (min-width: 34rem) {  /* 2 * $aside-width + $column-margin */
 	main aside {
-		float: none;
+		float: right;
+
+		width: 16rem;  /* $aside-width */
 		margin: 1.5rem 2rem;
-		width: auto;
 	}
 }
-@media (min-width: 76rem) {  /* $column-width + 2 * ($aside-width + $column-margin) */
+@media (min-width: 76rem) {  /* $default-column-width + 2 * ($aside-width + $column-margin) */
 	main aside {
 		position: absolute;
 		float: none;
 
 		margin-top: 0;
-		margin-left: 42rem;  /* $column-width + $column-margin */
+		margin-left: 42rem;  /* $default-column-width + $column-margin */
 		margin-right: 0;
 
 		color: inherit;
@@ -320,15 +338,35 @@ pre {
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
+
+	/*white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;*/
 }
+
 pre > code, pre > samp {
 	display: block;
 
+	margin: 0 auto;
 	padding: 0.75rem 0.5rem;
+
+	width: -moz-max-content;
+	width: -webkit-max-content;
+	width: intrinsic;
+	width: max-content;
+	min-width: 40rem;
 
 	border-radius: 6px;
 }
-pre > code[title]::before {
+
+pre > code.g-frame, pre > samp.g-frame {
+	border: 2px solid darkslategrey;
+	border-radius: 2px;
+}
+
+pre > code[title]::before, pre > samp[title]::before {
 	content: attr(title);
 	display: block;
 
@@ -337,6 +375,15 @@ pre > code[title]::before {
 
 	color: grey;
 	text-align: right;
+}
+pre > code[title].g-title-left::before, pre > samp[title].g-title-left::before {
+	text-align: left;
+}
+pre > code[title].g-title-right::before, pre > samp[title].g-title-right::before {
+	text-align: right;
+}
+pre > code[title].g-title-centre::before, pre > samp[title].g-title-centre::before, pre > code[title].g-title-center::before, pre > samp[title].g-title-center::before {
+	text-align: center;
 }
 
 hr {
@@ -498,13 +545,18 @@ ul dl, menu dl, ol dl, dl dl {
 
 li {
 	display: list-item;
+
 	margin: 0;
 	margin-left: 2rem;
+	padding: 0;
 }
 
 dt {
 	display: inline;
+
 	margin: 0;
+	padding: 0;
+
 	font-weight: bold;
 }
 dt::before {
@@ -513,8 +565,10 @@ dt::before {
 }
 dd {
 	display: inline;
+
 	margin: 0;
 	margin-left: 1.5rem;
+	padding: 0;
 }
 dd::after {
 	content: '';
@@ -531,6 +585,7 @@ img.g-inline, picture.g-inline, svg.g-inline {
 
 	max-height: 1.25rem;
 	width: auto;
+
 	vertical-align: middle;
 }
 
@@ -565,13 +620,13 @@ img.g-inline, picture.g-inline, svg.g-inline {
 		content: '·';
 		display: inline;
 
-		font-weight: bold;
-
 		padding-left: 0.3em;  /* $separator-padding */
 		padding-right: 0.3em;  /* $separator-padding */
 		line-height: 0;
 
 		color: grey;
+
+		font-weight: bold;
 	}
 	.g-inline > li:last-child::after, .g-subinline > li:last-child::after, .g-inline > .g-li:last-child::after, .g-subinline > .g-li:last-child::after {
 		content: none;
@@ -663,16 +718,19 @@ img.g-inline, picture.g-inline, svg.g-inline {
 */
 main img, main picture, main svg {
 	display: block;
+
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
 	margin-left: 0;
 	margin-right: 0;
+	padding: 0;
 
 	max-height: 80vh;
 	max-width: 100%;
 }
 main img.g-frame, main picture.g-frame, main svg.g-frame {
 	border: 2px solid darkslategrey;
+	border-radius: 2px;
 }
 main a > img.g-frame, main a > picture.g-frame, main a > svg.g-frame {
 	border-color: maroon;
@@ -683,12 +741,7 @@ figure {
 
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
-
-	/* Expand outside the column to be bounded by page instead */
-	/* If calc or vw not supported, simply fall back to being bounded by column */
-	/* 50vw - $main-margin */
-	margin-left: calc(50% - 45.833333vw);
-	margin-right: calc(50% - 45.833333vw);
+	padding: 0;
 
 	text-align: center;
 }
@@ -704,27 +757,32 @@ figcaption {
 	max-width: 38rem;  /* $column-width */
 
 	margin: 0.75rem auto;  /* figcaption may be above or below */
+	padding: 0;
 
 	text-align: left;
 }
 
 figure > img, figure > picture, figure > svg, figure > table {
 	display: block;
+
 	margin: 0 auto;
 
-	/* max-width matches main */
-	max-width: 90%;
-	max-width: calc(100% - 2rem);
+	/* max-width similar to main, but less 2rem in the final declaration */
+	max-width: 91.666667%;
 	max-width: 91.666667vw;  /* 100vw - 2 * $main-margin */
+	max-width: calc(100vw - 4rem);
 }
 
 figure > a {
 	display: inline-block;
+
 	margin: 0;
 }
 figure > a > img, figure > a > picture, figure > a > svg, figure > a > table {
 	display: inline-block;
+
 	margin: 0;
+
 	vertical-align: top;
 }
 
@@ -757,6 +815,7 @@ table {
 	margin-bottom: 2.25rem;
 	margin-left: 0;
 	margin-right: 0;
+	padding: 0;
 
 	border-top: 1px solid lightgrey;
 	border-collapse: collapse;
@@ -768,10 +827,12 @@ table {
 td, th {
 	display: table-cell;
 
+	margin: 0;
 	padding: 0.1875rem 0.5em;
 }
 th, thead td {
 	text-align: center;
+
 	border-bottom: 1px solid lightgrey;
 }
 td.g-left, th.g-left {
@@ -786,15 +847,24 @@ td.g-centre, th.g-centre, td.g-center, th.g-center {
 thead {
 	display: table-header-group;
 
+	margin: 0;
+	padding: 0;
+
 	border-bottom: 1px solid lightgrey;
 }
 tbody {
 	display: table-row-group;
 
+	margin: 0;
+	padding: 0;
+
 	border-bottom: 1px solid lightgrey;
 }
 tfoot {
 	display: table-footer-group;
+
+	margin: 0;
+	padding: 0;
 
 	border-bottom: 1px solid lightgrey;
 }
@@ -839,9 +909,10 @@ sub {
 	vertical-align: bottom;
 }
 
-code {
+code, samp {
 	display: inline;
 
+	box-sizing: border-box;
 	padding: 0 0.2em;
 
 	font-family: monospace;
@@ -852,22 +923,11 @@ code {
 	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
 
+}
+code {
 	background-color: seashell;
 }
-samp > code:first-child, kbd > code:first-child {
-	padding-left: 0;
-}
-samp > code:last-child, kbd > code:last-child {
-	padding-right: 0;
-}
-
 samp {
-	padding: 0 0.2em;
-
-	-moz-border-radius: 0.2em;
-	-webkit-border-radius: 0.2em;
-	border-radius: 0.2em;
-
 	background-color: ghostwhite;
 }
 
@@ -885,15 +945,21 @@ kbd {
 	line-height: 1.1rem;  /* border-radius increases line height */
 	line-height: calc(1.3rem - 0.2em - 0.2em - 1px);
 
+	border: 1px solid lightgrey;
+	box-shadow: 0 1px 0 1px lightgrey;
+
 	-moz-border-radius: 0.2em;
 	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
-
-	border: 1px solid lightgrey;
-	box-shadow: 0 1px 0 1px lightgrey;
 }
 h1 > kbd, h2 > kbd, h3 > kbd, h4 > kbd, h5 > kbd, h6 > kbd, b > kbd, strong > kbd, dfn > kbd, dt > kbd {
 	font-weight: 709;
+}
+kbd > code:first-child, kbd > samp:first-child {
+	padding-left: 0;
+}
+kbd > code:last-child, kbd > samp:last-child {
+	padding-right: 0;
 }
 
 .g-math {

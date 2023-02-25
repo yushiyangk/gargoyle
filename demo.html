@@ -855,7 +855,6 @@
 						<figcaption>Firefox icon</figcaption>
 					</figure>
 
-
 				<h2>Tables</h2>
 
 					<p>Use <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code> for tables. Optionally, use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> and <code>&lt;tfoot&gt;</code> to demarcate sections in the table. All table cells placed in the table head are considered heading cells, and any other cells can be made a heading by replacing <code>&lt;td&gt;</code> with <code>&lt;th&gt;</code>.</p>
@@ -1123,12 +1122,6 @@
 }
 </code></pre>
 
-
-<pre><code title="square.js">function square(list) {
-	return list.map((x) => x * x);
-}
-</code></pre>
-
 					<p>Similarly, blocks of program output can be displayed using a <code>&lt;samp&gt;</code> element nested in a <code>&lt;pre&gt;</code>:</p>
 
 <pre><samp>                 (__)
@@ -1150,7 +1143,67 @@
 
 					<p>Note that <code>&lt;pre&gt;</code> represents pre-formatted text. In order for the output to be properly formatted, the contents of the element cannot be indented, and the first line must follow immediately from the open tag without a line break.</p>
 
+					<p></p>
 
+<pre><code>echo "AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA"</code></pre>  <!-- 100 copies of  A -->
+
+<pre><samp>AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA</samp></pre>
+
+				<pre>AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA</pre>
+
+
+
+				<h3>Code block label</h3>
+
+					<p>A label can be added to the above code and output blocks by specifying the <code>title</code> attribute in the <code>&lt;code&gt;</code> or <code>&lt;samp&gt;</code> element. This can be used to specify the language, a filename, or the corresponding command that produced the output, for example.</p>
+
+<pre><code title="square.js">function square(list) {
+	return list.map((x) => x * x);
+}
+</code></pre>
+
+<pre><samp title="apt moo">                 (__)
+                 (oo)
+           /------\/
+          / |    ||
+         *  /\---/\
+            ~~   ~~
+..."Have you mooed today?"...
+</samp></pre>
+
+					<p>The label text will be right-aligned by default. It can be aligned to the left or centre by adding a <code>g-title-left</code> or <code>g-title-right</code> (or <code>g-title-right</code>) class.</p>
+
+<pre><code class="g-title-centre" title="square.js">function square(list) {
+	return list.map((x) => x * x);
+}
+</code></pre>
+
+<pre><samp class="g-title-left" title="apt moo">                 (__)
+                 (oo)
+           /------\/
+          / |    ||
+         *  /\---/\
+            ~~   ~~
+..."Have you mooed today?"...
+</samp></pre>
+
+				<h3>Framed code block</h3>
+
+					<p>Code and output blocks can also be framed, by adding a <code>g-frame</code> class.</p>
+
+<pre><code class="g-frame">function square(list) {
+	return list.map((x) => x * x);
+}
+</code></pre>
+
+<pre><samp class="g-frame" title="apt moo">                 (__)
+                 (oo)
+           /------\/
+          / |    ||
+         *  /\---/\
+            ~~   ~~
+..."Have you mooed today?"...
+</samp></pre>
 
 
 				<hgroup>
