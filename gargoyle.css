@@ -524,8 +524,16 @@ dd::after {
 
 
 /*
-	Inline lists
+	Inline elements
 */
+img.g-inline, picture.g-inline, svg.g-inline {
+	display: inline;
+
+	max-height: 1.25rem;
+	width: auto;
+	vertical-align: middle;
+}
+
 @supports (display: inline-flex) or (display: -ms-inline-flexbox) {
 	.g-inline, .g-subinline {
 		display: -ms-inline-flexbox;
@@ -663,6 +671,12 @@ main img, main picture, main svg {
 	max-height: 80vh;
 	max-width: 100%;
 }
+main img.g-frame, main picture.g-frame, main svg.g-frame {
+	border: 2px solid darkslategrey;
+}
+main a > img.g-frame, main a > picture.g-frame, main a > svg.g-frame {
+	border-color: maroon;
+}
 
 figure {
 	display: block;
@@ -687,7 +701,7 @@ figcaption {
 	width: -webkit-max-content;
 	width: intrinsic;
 	width: max-content;
-	max-width: 40rem;  /* $column-width */
+	max-width: 38rem;  /* $column-width */
 
 	margin: 0.75rem auto;  /* figcaption may be above or below */
 
