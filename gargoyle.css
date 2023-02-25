@@ -203,6 +203,14 @@ section {
 			margin-left: calc(50% - 50vw + 1rem);
 			margin-right: calc(50% - 50vw + 1rem);
 		}
+
+		/* Workaround for Firefox not implementing :has by default but still using its styles */
+		@-moz-document url-prefix() {
+			pre:has(code), pre:has(samp) {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
 	}
 }
 
