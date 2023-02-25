@@ -84,7 +84,7 @@
 
 				<h3>Computers and source code</h3>
 
-					<p>Use <code>&lt;code&gt;</code> to specify source code, such as the JavaScript <code>alert('Hello, world!');</code>, and combine with <code>&lt;var&gt;</code> to have variables in code: <code>ln -s <var>source_file</var> <var>target_link</var></code>. Program outputs should be specified with <code>&lt;samp&gt;</code>, as in <samp>Hello, world!</samp>, and can be combined with <code>&lt;code&gt;</code>, for example for command-line outputs: <samp><code>ln: failed to create symbolic link '<var>target_link</var>': No such file or director</code></samp>. For keyboard interactions such as <kbd>A</kbd> or <kbd>Ctrl</kbd>+<kbd>Z</kbd>, use <code>&lt;kbd&gt;</code>.</p>
+					<p>Use <code>&lt;code&gt;</code> to specify source code, such as the JavaScript <code>alert('Hello, world!');</code>, and combine with <code>&lt;var&gt;</code> to have variables in code: <code>ln -s <var>source_file</var> <var>target_link</var></code>. Program outputs should be specified with <code>&lt;samp&gt;</code>, as in <samp>ln: failed to create symbolic link '<var>target_link</var>': No such file or director</samp>. For keyboard interactions such as <kbd>A</kbd> or <kbd>Ctrl</kbd>+<kbd>Z</kbd>, use <code>&lt;kbd&gt;</code>.</p>
 
 				<section>
 
@@ -728,6 +728,12 @@
 					<p>Blocks of source code can be displayed using a <code>&lt;code&gt;</code> element nested in a <code>&lt;pre&gt;</code>:</p>
 
 <pre><code>function square(list) {
+	return list.map((x) => x * x);
+}
+</code></pre>
+
+
+<pre><code title="square.js">function square(list) {
 	return list.map((x) => x * x);
 }
 </code></pre>
