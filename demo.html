@@ -859,7 +859,7 @@
 
 					<p>Use <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code> for tables. Optionally, use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> and <code>&lt;tfoot&gt;</code> to demarcate sections in the table. All table cells placed in the table head are considered heading cells, and any other cells can be made a heading by replacing <code>&lt;td&gt;</code> with <code>&lt;th&gt;</code>.</p>
 
-					<p>Table cells will be centred by default. To align each cell, add one of the following classes: <code>g-left</code>, <code>g-right</code>, <code>g-centre</code> (or <code>g-center</code>). There exists <code>&lt;colgroup&gt;</code> and <code>&lt;col /&gt;</code> in the <abbr>HTML</abbr> specification to simplify this, but it is very poorly supported by browsers.</p>
+					<p>Table cells will be centred by default. To align each cell, add one of the following classes: <code>g-start</code>, <code>g-end</code>, <code>g-left</code>, <code>g-right</code>, <code>g-centre</code> (or <code>g-center</code>). There exists <code>&lt;colgroup&gt;</code> and <code>&lt;col /&gt;</code> in the <abbr>HTML</abbr> specification to simplify this, but it is very poorly supported by browsers.</p>
 
 					<p>These tables can be enclosed in a <code>&lt;figure&gt;</code> element, with or without captions:</p>
 
@@ -1113,6 +1113,49 @@
 						</tfoot>
 					</table>
 
+				<h2>Action buttons</h2>
+
+					<p>Action buttons are available as specially styled <code>&lt;a&gt;</code> elements. A generic button can be obtained by adding a <code>g-button</code> class to <code>&lt;a&gt;</code>. This will be styled with the default hyperlink colours, but with a larger footprint, borders, and animation on hover. Also note that this converts the <code>&lt;a&gt;</code> element into a block-level element.</p>
+
+					<a class="g-button" href="https://www.example.com/" onclick="return false;">Take action!</a>
+
+					<p>The text label of the button is given by the contents of the <code>&lt;a&gt;</code> element. To use multiple buttons together, enclose them in a <code>&lt;nav&gt;</code> element. The buttons will be placed on the same line and automatically wrap onto the next line as necessary.</p>
+
+					<nav class="g-continue">
+						<a class="g-button g-go" href="https://www.example.com/" onclick="return false;">Go!</a>
+						<a class="g-button g-send" href="https://www.example.com/" onclick="return false;">Send!</a>
+						<a class="g-button g-upload" href="https://www.example.com/" onclick="return false;">Upload!</a>
+						<a class="g-button g-download" href="https://www.example.com/" onclick="return false;">Download!</a>
+					</nav>
+					<nav>
+						<a class="g-button g-okay" href="https://www.example.com/" onclick="return false;">Okay</a>
+						<a class="g-button g-cancel" href="https://www.example.com/" onclick="return false;">Cancel</a>
+						<a class="g-button g-back" href="https://www.example.com/" onclick="return false;">Back</a>
+						<a class="g-button g-star" href="https://www.example.com/" onclick="return false;">Star</a>
+						<a class="g-button g-delete" href="https://www.example.com/" onclick="return false;">Delete</a>
+					</nav>
+
+					<p>Different types of pre-defined buttons are shown above, which can be obtained by adding one of the classes: <code>g-go</code>, <code>g-send</code>, <code>g-upload</code>, <code>g-download</code>, <code>g-okay</code>, <code>g-cancel</code>, <code>g-back</code>, <code>g-star</code>, <code>g-delete</code>. Note that these classes must be added in addition to <code>g-button</code>.</p>
+
+					<p>Each of the button types can be customised with a different colour, using one of the following classes: <code>g-green</code>, <code>g-cyan</code>, <code>g-blue</code>, <code>g-magenta</code>, <code>g-red</code>, <code>g-orange</code>, <code>g-yellow</code>. These colour classes must be added in addition to <code>g-button</code>, and in addition to the pre-defined classes above if using them.</p>
+
+					<nav>
+						<a class="g-button g-go g-green" href="https://www.example.com/" onclick="return false;">Green</a>
+						<a class="g-button g-go g-cyan" href="https://www.example.com/" onclick="return false;">Cyan</a>
+						<a class="g-button g-go g-blue" href="https://www.example.com/" onclick="return false;">Blue</a>
+						<a class="g-button g-go g-magenta" href="https://www.example.com/" onclick="return false;">Magenta</a>
+						<a class="g-button g-go g-red" href="https://www.example.com/" onclick="return false;">Red</a>
+						<a class="g-button g-go g-orange" href="https://www.example.com/" onclick="return false;">Orange</a>
+						<a class="g-button g-go g-yellow" href="https://www.example.com/" onclick="return false;">Yellow</a>
+					</nav>
+
+					<p>In addition, these buttons can contain arbitrarily long text, and contain line breaks. They can also contain any other inline text elements, although it is not recommended to make them too busy.</p>
+
+					<nav>
+						<a class="g-button g-go" href="https://www.example.com/" onclick="return false;">Button with<br \>line break</a>
+						<a class="g-button g-go" href="https://www.example.com/" onclick="return false;"><b>Bold</b> and <i>italics</i> and <u>annotation</u> and <code>code</code> and inline images <img class="g-inline" src="images/wikipedia.png" />, among others, are all fair game</a>
+					</nav>
+
 				<h2>Source code and output blocks</h2>
 
 					<p>Blocks of source code can be displayed using a <code>&lt;code&gt;</code> element nested in a <code>&lt;pre&gt;</code>:</p>
@@ -1151,8 +1194,6 @@
 
 				<pre>AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA</pre>
 
-
-
 				<h3>Code block label</h3>
 
 					<p>A label can be added to the above code and output blocks by specifying the <code>title</code> attribute in the <code>&lt;code&gt;</code> or <code>&lt;samp&gt;</code> element. This can be used to specify the language, a filename, or the corresponding command that produced the output, for example.</p>
@@ -1171,14 +1212,14 @@
 ..."Have you mooed today?"...
 </samp></pre>
 
-					<p>The label text will be right-aligned by default. It can be aligned to the left or centre by adding a <code>g-title-left</code> or <code>g-title-right</code> (or <code>g-title-right</code>) class.</p>
+					<p>The label text will be right-aligned by default. It can be aligned differently by adding a <code>g-title-start</code> or <code>g-title-end</code> or <code>g-title-left</code> or <code>g-title-right</code> or <code>g-title-centre</code> (or <code>g-title-center</code>) class.</p>
 
 <pre><code class="g-title-centre" title="square.js">function square(list) {
 	return list.map((x) => x * x);
 }
 </code></pre>
 
-<pre><samp class="g-title-left" title="apt moo">                 (__)
+<pre><samp class="g-title-start" title="apt moo">                 (__)
                  (oo)
            /------\/
           / |    ||
