@@ -815,10 +815,10 @@ figure.g-bound {
 	margin-left: 0;
 	margin-right: 0;
 }
-figure.g-bound > img, figure.g-bound > picture, figure.g-bound > svg, figure.g-bound > table {
+figure.g-bound img, figure.g-bound picture, figure.g-bound svg, figure.g-bound table {
 	max-width: 100%;
 }
-figure.g-bound > a > img, figure.g-bound > a > picture, figure.g-bound > a > svg, figure.g-bound > a > table {
+figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-bound a table {
 	max-width: 100%;
 }
 
