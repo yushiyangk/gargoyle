@@ -1171,7 +1171,7 @@ a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g
 		transition: all 300ms ease;
 	}
 	a.g-cancel:focus *, a.g-cancel:focus-within *, a.g-okay:focus *, a.g-okay:focus-within *, a.g-back:focus *, a.g-back:focus-within *, a.g-star:focus *, a.g-star:focus-within *, a.g-delete:focus *, a.g-delete:focus-within *, a.g-left:focus *, a.g-left:focus-within * {
-		display: none;
+		opacity: 0;
 
 		transition: all 300ms ease;
 	}
@@ -1244,7 +1244,7 @@ a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g
 		transition: all 300ms ease;
 	}
 	a.g-go:focus *, a.g-go:focus-within *, a.g-send:focus *, a.g-send:focus-within *, a.g-upload:focus *, a.g-upload:focus-within *, a.g-download:focus *, a.g-download:focus-within *, a.g-right:focus *, a.g-right:focus-within * {
-		display: none;
+		opacity: 0;
 
 		transition: all 300ms ease;
 	}
@@ -1506,6 +1506,8 @@ a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g
 
 		margin: 0;
 		padding: 0;
+
+		opacity: 1;
 	}
 	a.g-left:hover .g-icon, a.g-right:hover .g-icon {
 		max-height: 1.5rem;
@@ -1525,7 +1527,7 @@ a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g
 	}
 	a.g-left:focus svg.g-icon *, a.g-left:focus math.g-icon *, a.g-left:focus-within svg.g-icon *, a.g-left:focus-within math.g-icon *, a.g-right:focus svg.g-icon *, a.g-right:focus math.g-icon *, a.g-right:focus-within svg.g-icon *, a.g-right:focus-within math.g-icon * {
 		/* So that embedded XML can be used as icon */
-		display: block;
+		opacity: 1;
 	}
 
 	a.g-left .g-icon {
