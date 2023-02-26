@@ -229,7 +229,7 @@ section {
 			margin-right: calc(50% - 50vw + 1rem);
 		}
 
-		/* Workaround for Firefox not implementing :has by default but still using its styles */
+		/* Workaround for Firefox not implementing :has by default but not recognising that fact when asked if it @supports */
 		@-moz-document url-prefix() {
 			pre:has(code), pre:has(samp) {
 				margin-left: 0;
@@ -372,11 +372,6 @@ pre {
 	margin-right: 0;
 	padding: 0;
 
-	/*white-space: pre-wrap;
-	white-space: -moz-pre-wrap;
-	white-space: -pre-wrap;
-	white-space: -o-pre-wrap;
-	word-wrap: break-word;*/
 }
 
 pre > code, pre > samp {
@@ -392,6 +387,20 @@ pre > code, pre > samp {
 	min-width: 40rem;
 
 	border-radius: 6px;
+}
+
+pre.g-bound {
+	margin-left: 0;
+	margin-right: 0;
+
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+pre.g-bound > code, pre.g-bound > samp {
+	width: 100%;
 }
 
 pre > code.g-frame, pre > samp.g-frame {
@@ -828,14 +837,14 @@ figure > a > img, figure > a > picture, figure > a > svg, figure > a > table {
 	vertical-align: top;
 }
 
-figure.g-bounded {
+figure.g-bound {
 	margin-left: 0;
 	margin-right: 0;
 }
-figure.g-bounded > img, figure.g-bounded > picture, figure.g-bounded > svg, figure.g-bounded > table {
+figure.g-bound > img, figure.g-bound > picture, figure.g-bound > svg, figure.g-bound > table {
 	max-width: 100%;
 }
-figure.g-bounded > a > img, figure.g-bounded > a > picture, figure.g-bounded > a > svg, figure.g-bounded > a > table {
+figure.g-bound > a > img, figure.g-bound > a > picture, figure.g-bound > a > svg, figure.g-bound > a > table {
 	max-width: 100%;
 }
 
