@@ -780,6 +780,15 @@ figure {
 	}
 }
 
+@media (min-width: 44rem) {
+	@supports (max-width: calc(50% - 50vw + 1rem)) {
+		figure {
+			margin-left: calc(50% - 50vw + 2rem);
+			margin-right: calc(50% - 50vw + 2rem);
+		}
+	}
+}
+
 figcaption {
 	display: block;
 
