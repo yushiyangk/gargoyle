@@ -212,34 +212,6 @@ section {
 }
 
 
-/*
-	Expansion beyond main column
-*/
-/* If main supports these width calculations, expand outside of column and use these as margins */
-/* If neither are supported, fall back to being bound by column */
-@supports (max-width: calc(50% - 50vw + 1rem)) {
-	figure {
-		margin-left: calc(50% - 50vw + 1rem);
-		margin-right: calc(50% - 50vw + 1rem);
-	}
-
-	@supports selector(:has(code)) {
-		pre:has(code), pre:has(samp) {
-			margin-left: calc(50% - 50vw + 1rem);
-			margin-right: calc(50% - 50vw + 1rem);
-		}
-
-		/* Workaround for Firefox not implementing :has by default but not recognising that fact when asked if it @supports */
-		@-moz-document url-prefix() {
-			pre:has(code), pre:has(samp) {
-				margin-left: 0;
-				margin-right: 0;
-			}
-		}
-	}
-}
-
-
 
 /*
 	Text elements
@@ -366,41 +338,42 @@ main aside {
 pre {
 	display: block;
 
+	width: 40rem;
+	min-width: -moz-max-content;
+	min-width: -webkit-max-content;
+	min-width: intrinsic;
+	min-width: max-content;
+	max-width: 100%;
+
 	margin-top: 0.75rem;
 	margin-bottom: 1.5rem;
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
-
 }
 
 pre > code, pre > samp {
 	display: block;
 
-	margin: 0 auto;
+	margin: 0 -0.5rem;
 	padding: 0.75rem 0.5rem;
-
-	width: -moz-max-content;
-	width: -webkit-max-content;
-	width: intrinsic;
-	width: max-content;
-	min-width: 40rem;
 
 	border-radius: 6px;
 }
 
-pre.g-bound {
-	margin-left: 0;
-	margin-right: 0;
+figure > pre {
+	margin: 0 auto;
+
+	text-align: left;
+}
+figure.g-bound > pre {
+	min-width: unset;
 
 	white-space: pre-wrap;
 	white-space: -moz-pre-wrap;
 	white-space: -pre-wrap;
 	white-space: -o-pre-wrap;
 	word-wrap: break-word;
-}
-pre.g-bound > code, pre.g-bound > samp {
-	width: 100%;
 }
 
 pre > code.g-frame, pre > samp.g-frame {
@@ -769,15 +742,14 @@ img.g-inline, picture.g-inline, svg.g-inline {
 */
 main img, main picture, main svg {
 	display: block;
+	max-height: 80vh;
+	max-width: 100%;
 
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
-
-	max-height: 80vh;
-	max-width: 100%;
 }
 main img.g-frame, main picture.g-frame, main svg.g-frame {
 	border: 2px solid darkslategrey;
@@ -786,15 +758,30 @@ main img.g-frame, main picture.g-frame, main svg.g-frame {
 main a > img.g-frame, main a > picture.g-frame, main a > svg.g-frame {
 	border-color: maroon;
 }
+main img.g-detail, main picture.g-detail, main svg.g-detail {
+	max-height: unset;
+	max-width: unset;
+}
 
 figure {
 	display: block;
 
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
+	margin-left: 0;
+	margin-right: 0;
 	padding: 0;
 
 	text-align: center;
+}
+
+/* If main supports width calculations, expand outside of column and use these as margins */
+/* If not supported, fall back to being bound by column */
+@supports (max-width: calc(50% - 50vw + 1rem)) {
+	figure {
+		margin-left: calc(50% - 50vw + 1rem);
+		margin-right: calc(50% - 50vw + 1rem);
+	}
 }
 
 figcaption {
@@ -817,11 +804,6 @@ figure > img, figure > picture, figure > svg, figure > table {
 	display: block;
 
 	margin: 0 auto;
-
-	/* max-width similar to main, but less 2rem in the final declaration */
-	max-width: 91.666667%;
-	max-width: 91.666667vw;  /* 100vw - 2 * $main-margin */
-	max-width: calc(100vw - 4rem);
 }
 
 figure > a {
