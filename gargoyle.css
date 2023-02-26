@@ -778,6 +778,13 @@ figure {
 		margin-left: calc(50% - 50vw + 1rem);
 		margin-right: calc(50% - 50vw + 1rem);
 	}
+
+	/* If left or right aligned figures are supported */
+	@supports (transform: translate(-50%)) {
+		figure.g-left, figure.g-right {
+			max-width: calc(100vw - 2rem);
+		}
+	}
 }
 
 @media (min-width: 44rem) {
@@ -785,6 +792,13 @@ figure {
 		figure {
 			margin-left: calc(50% - 50vw + 2rem);
 			margin-right: calc(50% - 50vw + 2rem);
+		}
+
+		/* If left or right aligned figures are supported */
+		@supports (transform: translate(-50%)) {
+			figure.g-left, figure.g-right {
+				max-width: calc(100vw - 4rem);
+			}
 		}
 	}
 }
@@ -822,6 +836,46 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 	max-width: 100%;
 }
 
+/* Left or right aligned figures */
+@supports (transform: translate(-50%)) and (max-width: calc(100vw - 4rem)) {
+	figure.g-left, figure.g-right {
+		width: -moz-max-content;
+		width: -webkit-max-content;
+		width: intrinsic;
+		width: max-content;
+		min-width: 40rem;
+
+		margin-left: 50%;
+		margin-right: 0;
+
+		text-align: initial;
+
+		transform: translateX(-50%);
+	}
+
+	figure.g-left img, figure.g-left picture, figure.g-left svg, figure.g-left table {
+		margin-left: 0;
+		margin-right: auto;
+	}
+	figure.g-left figcaption {
+		margin-left: 0;
+		margin-right: auto;
+
+		text-align: left;
+	}
+
+	figure.g-right img, figure.g-right picture, figure.g-right svg, figure.g-right table {
+		margin-left: auto;
+		margin-right: 0;
+	}
+	figure.g-right figcaption {
+		margin-left: auto;
+		margin-right: 0;
+
+		text-align: right;
+	}
+}
+
 
 
 /*
@@ -845,6 +899,8 @@ table {
 	border-top: 1px solid lightgrey;
 	border-collapse: collapse;
 
+	text-align: left;
+	text-align: start;
 	hyphens: auto;
 
 	overflow-x: auto;
