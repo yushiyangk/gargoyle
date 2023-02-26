@@ -361,12 +361,10 @@ pre > code, pre > samp {
 	border-radius: 6px;
 }
 
-figure > pre {
+figure pre {
 	margin: 0 auto;
-
-	text-align: left;
 }
-figure.g-bound > pre {
+figure.g-bound pre {
 	min-width: unset;
 
 	white-space: pre-wrap;
@@ -755,7 +753,7 @@ main img.g-frame, main picture.g-frame, main svg.g-frame {
 	border: 2px solid darkslategrey;
 	border-radius: 2px;
 }
-main a > img.g-frame, main a > picture.g-frame, main a > svg.g-frame {
+main a img.g-frame, main a picture.g-frame, main a svg.g-frame {
 	border-color: maroon;
 }
 main img.g-detail, main picture.g-detail, main svg.g-detail {
@@ -771,8 +769,6 @@ figure {
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
-
-	text-align: center;
 }
 
 /* If main supports width calculations, expand outside of column and use these as margins */
@@ -800,23 +796,10 @@ figcaption {
 	text-align: left;
 }
 
-figure > img, figure > picture, figure > svg, figure > table {
+figure img, figure picture, figure svg, figure table {
 	display: block;
 
 	margin: 0 auto;
-}
-
-figure > a {
-	display: inline-block;
-
-	margin: 0;
-}
-figure > a > img, figure > a > picture, figure > a > svg, figure > a > table {
-	display: inline-block;
-
-	margin: 0;
-
-	vertical-align: top;
 }
 
 figure.g-bound {
