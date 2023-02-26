@@ -1086,7 +1086,7 @@ a.g-green, a.g-go, a.g-okay {
 	border-color: green;
 	background-color: #d0f0d0;
 }
-a.g-green:focus, a.g-green:focus-within, a.g-go:focus, a.g-go:focus-within, a.g-okay:focus, a.g-okay:focus-within {
+a.g-green:hover, a.g-green:focus, a.g-green:focus-within, a.g-go:hover, a.g-go:focus, a.g-go:focus-within, a.g-okay:hover, a.g-okay:focus, a.g-okay:focus-within {
 	background-color: #b8f0b8;
 }
 
@@ -1095,7 +1095,7 @@ a.g-cyan, a.g-upload {
 	border-color: darkcyan;
 	background-color: #d5fcfa;
 }
-a.g-cyan:focus, a.g-cyan:focus-within, a.g-upload:focus, a.g-upload:focus-within {
+a.g-cyan:hover, a.g-cyan:focus, a.g-cyan:focus-within, a.g-upload:hover, a.g-upload:focus, a.g-upload:focus-within {
 	background-color: #bcfaf7;
 }
 
@@ -1104,7 +1104,7 @@ a.g-blue, a.g-send, a.g-back {
 	border-color: royalblue;
 	background-color: #dadafd;
 }
-a.g-blue:focus, a.g-blue:focus-within, a.g-send:focus, a.g-send:focus-within, a.g-back:focus, a.g-back:focus-within {
+a.g-blue:hover, a.g-blue:focus, a.g-blue:focus-within, a.g-send:hover, a.g-send:focus, a.g-send:focus-within, a.g-back:hover, a.g-back:focus, a.g-back:focus-within {
 	background-color: #cacaff;
 }
 
@@ -1113,7 +1113,7 @@ a.g-magenta, a.g-download {
 	border-color: darkmagenta;
 	background-color: #ffdcff;
 }
-a.g-magenta:focus, a.g-magenta:focus-within, a.g-download:focus, a.g-download:focus-within {
+a.g-magenta:hover, a.g-magenta:focus, a.g-magenta:focus-within, a.g-download:hover, a.g-download:focus, a.g-download:focus-within {
 	background-color: #fac5fa;
 }
 
@@ -1122,7 +1122,7 @@ a.g-red, a.g-cancel, a.g-delete {
 	border-color: firebrick;
 	background-color: #fcdcdc;
 }
-a.g-red:focus, a.g-red:focus-within, a.g-cancel:focus, a.g-cancel:focus-within, a.g-delete:focus, a.g-delete:focus-within {
+a.g-red:hover, a.g-red:focus, a.g-red:focus-within, a.g-cancel:hover, a.g-cancel:focus, a.g-cancel:focus-within, a.g-delete:hover, a.g-delete:focus, a.g-delete:focus-within {
 	background-color: #f3c2c2;
 }
 
@@ -1131,7 +1131,7 @@ a.g-orange {
 	border-color: chocolate;
 	background-color: #f7e3bb;
 }
-a.g-orange:focus, a.g-orange:focus-within {
+a.g-orange:hover, a.g-orange:focus, a.g-orange:focus-within {
 	background-color: #f8db9c;
 }
 
@@ -1140,7 +1140,7 @@ a.g-yellow, a.g-star {
 	border-color: goldenrod;
 	background-color: #faf2c6;
 }
-a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:focus, a.g-star:focus-within {
+a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g-star:focus, a.g-star:focus-within {
 	background-color: #faecac;
 }
 
