@@ -764,6 +764,8 @@ main img.g-detail, main picture.g-detail, main svg.g-detail {
 figure {
 	display: block;
 
+	min-width: 100%;
+
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
 	margin-left: 0;
@@ -934,9 +936,9 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 
 			figure.g-left figcaption.g-bound, figure.g-right figcaption.g-bound {
 				/* Reset max-width to disable centreing for single-line captions */
-				/* Reset to 40rem instead of 38rem because captions for left- and right- aligned figures are flush against column */
-				width: 40rem;
-				max-width: 40rem;
+				/* Reset to 39rem instead of 38rem because captions for left- and right- aligned figures are flush against column but with 1rem margin on the other side */
+				width: 39rem;
+				max-width: 39rem;
 				/* Contrast with centred figure with a multiline (left-aligned) caption, or with directly left- or right- aligned captions, both of which are 38rem and not flush */
 
 			}
