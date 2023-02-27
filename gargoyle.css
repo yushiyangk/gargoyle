@@ -761,6 +761,18 @@ main img.g-detail, main picture.g-detail, main svg.g-detail {
 	max-width: unset;
 }
 
+main picture {
+	position: relative;
+
+	width: -moz-max-content;
+	width: -webkit-max-content;
+	width: intrinsic;
+	width: max-content;
+}
+main picture img {
+	margin: 0;
+}
+
 figure {
 	display: block;
 
@@ -944,26 +956,6 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 			}
 		}
 	}
-}
-
-
-
-/*
-	Figure action buttons
-*/
-figure:hover a.g-external {
-	display: block;
-	position: absolute;
-
-	right: 0;
-
-	width: 3rem;
-	height: 3rem;
-
-	background-color: #00000080;
-	border-radius: 6px;
-
-	transform: translateY(-100%) translate(-1.5rem, -1.5rem);
 }
 
 
@@ -1196,8 +1188,13 @@ abbr.g-capital::first-letter {
 */
 a.g-button {
 	display: block;
-	flex: 0 0 auto;
 	box-sizing: border-box;
+
+	width: -moz-max-content;
+	width: -webkit-max-content;
+	width: intrinsic;
+	width: max-content;
+	max-width: 100%;
 
 	margin: 1.5rem 0;
 	padding-top: 0.9375rem;
@@ -1206,12 +1203,6 @@ a.g-button {
 	padding-bottom: calc(0.9375rem - 2px);
 	padding-left: 2em;
 	padding-right: 2em;
-
-	width: -moz-max-content;
-	width: -webkit-max-content;
-	width: intrinsic;
-	width: max-content;
-	max-width: 100%;
 
 	border: 2px solid;
 	border-radius: 6px;
@@ -1224,6 +1215,8 @@ a.g-button {
 	transition: all 100ms ease;
 }
 nav > a.g-button {
+	flex: 0 0 auto;
+
 	margin: 0;
 }
 a.g-button:focus, a.g-button:focus-within {
@@ -1299,6 +1292,154 @@ a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g
 	background-color: #faecac;
 }
 
+
+
+/*
+	Image action buttons
+*/
+picture a.g-button {
+	position: absolute;
+
+	right: 0.75rem;
+	bottom: 0.75rem;
+
+	height: 2.25rem;
+
+	margin: 0;
+	padding-top: 0.5625rem;
+	padding-bottom: 0.5625rem;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+
+	color: lightgrey;
+
+	border: none;
+	background-color: #00000080;
+
+	opacity: 0;
+}
+picture a.g-button:hover {
+	color: white;
+	background-color: #000000a0
+}
+picture a.g-button:focus, picture a.g-button:focus-within {
+	color: #ffffffc0;
+	background-color: #000000c0;
+
+	transition: all 100ms ease;
+}
+
+picture a.g-button::after {
+	content: '';
+
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	margin: 0;
+	padding: 0;
+
+	background-color: lightgrey;
+	opacity: 0;
+
+	-webkit-mask-size: 1.25rem;
+	mask-size: 1.25rem;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: top 50% left 50%;
+	mask-position: top 50% left 50%;
+	mask-type: alpha;
+
+	transition: all 100ms ease;
+}
+picture a.g-button:hover::after {
+	background-color: white;
+}
+picture a.g-button:focus::after, picture a.g-button:focus-within::after {
+	background-color: #ffffffc0;
+
+	transition: all 100ms ease;
+}
+
+picture:hover a.g-button {
+	opacity: 1;
+}
+
+picture.g-left a.g-button, picture a.g-button.g-left {
+	left: 0.75rem;
+	right: unset;
+}
+
+picture nav {
+	display: flex;
+	flex-flow: row wrap-reverse;
+	justify-content: flex-end;
+	align-items: baseline;
+	align-content: flex-start;
+	gap: 0.75rem 0.75rem;
+
+	position: absolute;
+	left: 0.75rem;
+	right: 0.75rem;
+	top: 0.75rem;
+	bottom: 0.75rem;
+
+	margin: 0;
+	padding: 0;
+}
+
+picture nav a.g-button {
+	flex: 0 0 auto;
+
+	position: relative;
+	right: unset;
+	bottom: unset;
+}
+picture.g-left nav a.g-button, picture nav.g-left a.g-button {
+	left: unset;
+}
+
+picture.g-left nav, picture nav.g-left {
+	justify-content: flex-start;
+}
+
+picture.g-vertical nav, picture nav.g-vertical {
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+picture.g-vertical.g-left nav, picture.g-vertical nav.g-left, picture.g-left nav.g-vertical, picture nav.g-vertical.g-left {
+	flex-wrap: wrap;
+}
+
+picture a.g-external, picture a.g-expand {
+	width: 2.25rem;
+	height: 2.25rem;
+}
+picture a.g-external::after {
+	opacity: 1;
+
+	-webkit-mask-image:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M202.87 944.131q-37.783 0-64.392-26.609-26.609-26.609-26.609-64.392V298.87q0-37.783 26.609-64.392 26.609-26.609 64.392-26.609H480v91.001H202.87v554.26h554.26V576h91.001v277.13q0 37.783-26.609 64.392-26.609 26.609-64.392 26.609H202.87ZM395.413 724 332 660.587 693.717 298.87H560v-91.001h288.131V496H757.13V362.283L395.413 724Z"/></svg>');
+	mask-image:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M202.87 944.131q-37.783 0-64.392-26.609-26.609-26.609-26.609-64.392V298.87q0-37.783 26.609-64.392 26.609-26.609 64.392-26.609H480v91.001H202.87v554.26h554.26V576h91.001v277.13q0 37.783-26.609 64.392-26.609 26.609-64.392 26.609H202.87ZM395.413 724 332 660.587 693.717 298.87H560v-91.001h288.131V496H757.13V362.283L395.413 724Z"/></svg>');
+}
+picture a.g-expand::after {
+	opacity: 1;
+
+	-webkit-mask-image:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M194.5 861.5v-251h91v160h160v91h-251Zm480-320v-160h-160v-91h251v251h-91Z"/></svg>');
+	mask-image:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M194.5 861.5v-251h91v160h160v91h-251Zm480-320v-160h-160v-91h251v251h-91Z"/></svg>');
+}
+
+
+/*
+	Coloured SVG icon for action buttons
+*/
 @supports (
 		(mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'), linear-gradient(to right, black 1px, transparent 1px)) and
 		(mask-size: 1.25rem, 1px 60%) and
@@ -1360,6 +1501,8 @@ a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g
 			top 50% left 1rem,
 			top 50% left 3.25rem;
 		mask-type: alpha;
+
+		transition: all 100ms ease;
 	}
 	a.g-cancel:hover::after, a.g-okay:hover::after, a.g-back:hover::after, a.g-star:hover::after, a.g-delete:hover::after {
 		-webkit-mask-size:
@@ -1433,6 +1576,8 @@ a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g
 			top 50% right 1rem,
 			top 50% right 3.25rem;
 		mask-type: alpha;
+
+		transition: all 100ms ease;
 	}
 	a.g-go:hover::after, a.g-send:hover::after, a.g-upload:hover::after, a.g-download:hover::after {
 		-webkit-mask-size:
@@ -1667,7 +1812,7 @@ a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g
 	a.g-left:hover .g-icon, a.g-right:hover .g-icon {
 		max-height: 1.5rem;
 
-		transition: all 300ms ease;
+		transition: all 100ms ease;
 	}
 	a.g-left:focus .g-icon, a.g-left:focus-within .g-icon, a.g-right:focus .g-icon, a.g-right:focus-within .g-icon {
 		max-height: 1.5rem;
@@ -1791,6 +1936,20 @@ a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g
 	}
 	a.g-cyan:yellow .g-icon, a.g-cyan:visited:yellow .g-icon, a.g-cyan:yellow-within .g-icon, a.g-cyan:visited:yellow-within .g-icon {
 		color: goldenrod;
+	}
+
+	/* Image action buttons */
+	picture:hover a.g-external::after, picture:hover a.g-expand::after {
+		display: block;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		width: 100%;
+		height: 100%;
+
+		color: white;
 	}
 }
 
