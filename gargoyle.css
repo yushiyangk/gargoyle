@@ -839,6 +839,24 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 		margin-right: calc(50% - 50vw + 1rem);
 	}
 
+
+	@media (min-width: 44rem) {
+		/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
+		figure {
+			margin-left: calc(50% - 50vw + 2rem);
+			margin-right: calc(50% - 50vw + 2rem);
+		}
+
+		/* Elements bound to column width should be set to appropriate values rather than 100% */
+		figcaption {
+			max-width: 38rem;
+		}
+
+		figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
+			max-width: 40rem;
+		}
+	}
+
 	/* If supported, replace the above expanded margins with an offset using transform */
 	@supports (transform: translate(-50%)) {
 
@@ -907,26 +925,8 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 			margin-left: auto;
 			margin-right: auto;
 		}
-	}
-}
 
-/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
-@media (min-width: 44rem) {
-	@supports (max-width: calc(50% - 50vw + 1rem)) {
-		figure {
-			margin-left: calc(50% - 50vw + 2rem);
-			margin-right: calc(50% - 50vw + 2rem);
-		}
-
-		figcaption {
-			max-width: 38rem;
-		}
-
-		figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
-			max-width: 40rem;
-		}
-
-		@supports (transform: translate(-50%)) {
+		@media (min-width: 44rem) {
 			figure {
 				max-width: calc(100vw - 4rem);
 
@@ -951,14 +951,19 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 /*
 	Figure action buttons
 */
-figure a.external {
-	display: absolute;
-	float: right;
+figure:hover a.g-external {
+	display: block;
+	position: absolute;
 
-	width: 200px;
-	height: 200px;
+	right: 0;
 
-	background-color: red;
+	width: 3rem;
+	height: 3rem;
+
+	background-color: #00000080;
+	border-radius: 6px;
+
+	transform: translateY(-100%) translate(-1.5rem, -1.5rem);
 }
 
 
