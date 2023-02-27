@@ -63,6 +63,11 @@
 */
 
 
+:root {
+	--thumbnail-width: 9rem;
+	--thumbnail-height: 9rem;
+}
+
 
 /*
 	Section elements
@@ -597,6 +602,69 @@ dd::after {
 	display: block;
 }
 
+/* Thumbnail list */
+
+ul.g-thumbnail, menu.g-thumbnail, dl.g-thumbnail {
+	display: grid;
+	grid-template-columns: var(--thumbnail-width) auto;
+	grid-template-areas: "thumb item";
+	grid-auto-flow: row;
+	grid-gap: 0.75rem 1rem;
+	align-items: start;
+}
+
+dl.g-thumbnail {
+	grid-auto-rows: 1.5rem auto;
+}
+
+ul.g-thumbnail > a, menu.g-thumbnail > a, dl.g-thumbnail > a {
+	display: contents;
+}
+
+ul.g-thumbnail img.g-thumbnail, menu.g-thumbnail img.g-thumbnail, ul.g-thumbnail picture.g-thumbnail, menu.g-thumbnail picture.g-thumbnail, ul.g-thumbnail svg.g-thumbnail, menu.g-thumbnail svg.g-thumbnail {
+	grid-column: thumb-start / thumb-end;
+
+	box-sizing: border-box;
+
+	margin: 0;
+	padding: 0;
+}
+
+dl.g-thumbnail img.g-thumbnail, dl.g-thumbnail picture.g-thumbnail, dl.g-thumbnail svg.g-thumbnail {
+	grid-column: thumb-start / thumb-end;
+	grid-row-end: span 2;
+
+	box-sizing: border-box;
+
+	margin: 0;
+	padding: 0;
+}
+
+ul.g-thumbnail li, menu.g-thumbnail li, dl.g-thumbnail dt, dl.g-thumbnail dd {
+	display: block;
+	grid-column: item-start / item-end;
+
+	margin: 0;
+	padding: 0;
+}
+dl.g-thumbnail > a dt {
+	text-decoration: underline;
+}
+dl.g-thumbnail > a:hover dt {
+	text-decoration: none;
+}
+dl.g-thumbnail dd {
+	margin-top: -0.75rem;
+}
+
+/*dl.g-thumbnail dt {
+	font-weight: inherit;
+}*/
+dl.g-thumbnail dt::before, dl.g-thumbnail dd::after {
+	content: none;
+}
+
+
 
 
 /*
@@ -749,6 +817,7 @@ main img, main picture, main svg {
 	margin-right: 0;
 	padding: 0;
 }
+
 main img.g-frame, main picture.g-frame, main svg.g-frame {
 	border: 2px solid darkslategrey;
 	border-radius: 2px;
@@ -756,9 +825,20 @@ main img.g-frame, main picture.g-frame, main svg.g-frame {
 main a img.g-frame, main a picture.g-frame, main a svg.g-frame {
 	border-color: maroon;
 }
+
 main img.g-detail, main picture.g-detail, main svg.g-detail {
 	max-height: unset;
 	max-width: unset;
+}
+
+main img.g-thumbnail, main picture.g-thumbnail, main svg.g-thumbnail {
+	width: var(--thumbnail-width);
+	height: var(--thumbnail-width);
+
+	object-fit: cover;
+}
+main img.g-thumbnail.g-bound, main picture.g-thumbnail.g-bound, main svg.g-thumbnail.g-bound  {
+	object-fit: scale-down;
 }
 
 main picture {
