@@ -649,9 +649,11 @@ ul.g-thumbnail li, menu.g-thumbnail li, dl.g-thumbnail dt, dl.g-thumbnail dd {
 }
 dl.g-thumbnail > a dt {
 	text-decoration: underline;
+	text-decoration: underline 1px;
 }
 dl.g-thumbnail > a:hover dt {
 	text-decoration: none;
+	text-decoration: underline 1px double;
 }
 dl.g-thumbnail dd {
 	margin-top: -0.75rem;
@@ -954,7 +956,14 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 
 		/* Unset hyperlink styles for images (not tables) */
 		figure > a {
-			display: initial;
+			display: block;
+
+			width: -moz-max-content;
+			width: -webkit-max-content;
+			width: intrinsic;
+			width: max-content;
+
+			margin: 0 auto;
 		}
 		figure > a img, figure > a picture, figure > a svg {
 			display: initial;
@@ -1133,6 +1142,7 @@ a {
 }
 a:hover {
 	text-decoration: none;
+	text-decoration: underline double;
 }
 a:visited {
 	color: #600000;
