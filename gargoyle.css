@@ -1261,7 +1261,7 @@ kbd {
 	border-radius: 0.2em;
 }
 h1 > kbd, h2 > kbd, h3 > kbd, h4 > kbd, h5 > kbd, h6 > kbd, b > kbd, strong > kbd, dfn > kbd, dt > kbd {
-	font-weight: 709;
+	font-weight: 700;
 }
 kbd > code:first-child, kbd > samp:first-child {
 	padding-left: 0;
