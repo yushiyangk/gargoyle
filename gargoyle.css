@@ -1317,6 +1317,9 @@ abbr.g-capital::first-letter {
 	-ms-hyphens: none;
 	hyphens: none;
 }
+.g-quiet {
+	color: grey;
+}
 
 
 
