@@ -554,8 +554,8 @@ hr {
 ul, menu, ol, dl {
 	display: block;
 
-	margin-top: 0.75rem;
-	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
+	margin-bottom: 2.25rem;
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
@@ -585,10 +585,6 @@ dt {
 	padding: 0;
 
 	font-weight: bold;
-}
-dt::before {
-	content: '';
-	display: block;
 }
 dd {
 	display: inline;
@@ -693,6 +689,12 @@ dl.g-thumbnail > a:hover dt img.g-frame, dl.g-thumbnail > a:hover dt pic.g-frame
 }
 dl.g-thumbnail > a:visited:hover dt img.g-frame, dl.g-thumbnail > a:visited:hover dt pic.g-frameture, dl.g-thumbnail > a:visited:hover dt svg.g-frame {
 	border: 2px solid #600000;
+}
+
+dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-thumbnail h4, dl.g-thumbnail h5, dl.g-thumbnail h6 {
+	margin: 0;
+
+	font-style: initial;
 }
 
 
