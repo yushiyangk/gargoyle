@@ -1006,6 +1006,9 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 		figure.g-bound {
 			max-width: 100%;
 		}
+		figure.g-bound > a {
+			max-width: 100%;
+		}
 
 		/* Left and right aligned figures */
 		figure.g-left, figure.g-right {
