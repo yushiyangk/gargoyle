@@ -586,10 +586,6 @@ dt {
 
 	font-weight: bold;
 }
-dt::before {
-	content: '';
-	display: block;
-}
 dd {
 	display: inline;
 
