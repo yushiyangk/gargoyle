@@ -1452,8 +1452,8 @@ picture a.g-button {
 	margin: 0;
 	padding-top: 0.5625rem;
 	padding-bottom: 0.5625rem;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 
 	color: lightgrey;
 
@@ -1656,11 +1656,11 @@ picture a.g-expand::after {
 			1.5rem,
 			1px 60%;
 		-webkit-mask-position:
-			top 50% left 0.875em,
-			top 50% left 3.25em;
+			top 50% left 0.875rem,
+			top 50% left 3.25rem;
 		mask-position:
-			top 50% left 0.875em,
-			top 50% left 3.25em;
+			top 50% left 0.875rem,
+			top 50% left 3.25rem;
 	}
 	a.g-cancel:focus::after, a.g-cancel:focus-within::after, a.g-okay:focus::after, a.g-okay:focus-within::after, a.g-back:focus::after, a.g-back:focus-within::after, a.g-star:focus::after, a.g-star:focus-within::after, a.g-delete:focus::after, a.g-delete:focus-within::after {
 		-webkit-mask-size: 1.5rem;
@@ -1731,11 +1731,11 @@ picture a.g-expand::after {
 			1.5rem,
 			1px 60%;
 		-webkit-mask-position:
-			top 50% right 0.875em,
-			top 50% right 3.25em;
+			top 50% right 0.875rem,
+			top 50% right 3.25rem;
 		mask-position:
-			top 50% right 0.875em,
-			top 50% right 3.25em;
+			top 50% right 0.875rem,
+			top 50% right 3.25rem;
 	}
 	a.g-go:focus::after, a.g-go:focus-within::after, a.g-go:focus-within::after , a.g-send:focus::after, a.g-send:focus-within::after, a.g-send:focus-within::after , a.g-upload:focus::after, a.g-upload:focus-within::after, a.g-upload:focus-within::after , a.g-download:focus::after, a.g-download:focus-within::after, a.g-download:focus-within::after  {
 		-webkit-mask-size: 1.5rem;
