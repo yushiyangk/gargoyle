@@ -604,68 +604,81 @@ dd::after {
 
 /* Thumbnail list */
 
-ul.g-thumbnail, menu.g-thumbnail, dl.g-thumbnail {
+dl.g-thumbnail {
 	display: grid;
 	grid-template-columns: var(--thumbnail-width) auto;
 	grid-template-areas: "thumb item";
 	grid-auto-flow: row;
 	grid-gap: 0.75rem 1rem;
-	align-items: start;
+	align-items: stretch;
 }
 
-dl.g-thumbnail {
-	grid-auto-rows: 1.5rem auto;
+dl.g-thumbnail dt {
+	grid-column: thumb-start / thumb-end;
+
+	display: block;
+
+	margin: 0;
+	padding: 0;
 }
 
-ul.g-thumbnail > a, menu.g-thumbnail > a, dl.g-thumbnail > a {
+dl.g-thumbnail dt img, dl.g-thumbnail dt picture, dl.g-thumbnail dt svg {
+	width: var(--thumbnail-width);
+	height: var(--thumbnail-width);
+
+	margin: 0;
+	padding: 0;
+
+	object-fit: cover;
+}
+dl.g-thumbnail dt img.g-bound, dl.g-thumbnail dt picture.g-bound, dl.g-thumbnail dt svg.g-bound {
+	object-fit: scale-down;
+}
+
+dl.g-thumbnail dt > *:first-child {
+	margin-top: 0;
+}
+dl.g-thumbnail dt > *:last-child {
+	margin-bottom: 0;
+}
+
+dl.g-thumbnail dd {
+	grid-column: item-start / item-end;
+
+	display: block;
+
+	margin: 0;
+	padding: 0;
+}
+
+dl.g-thumbnail > a {
 	display: contents;
 }
 
-ul.g-thumbnail img.g-thumbnail, menu.g-thumbnail img.g-thumbnail, ul.g-thumbnail picture.g-thumbnail, menu.g-thumbnail picture.g-thumbnail, ul.g-thumbnail svg.g-thumbnail, menu.g-thumbnail svg.g-thumbnail {
-	grid-column: thumb-start / thumb-end;
+dl.g-thumbnail > a:hover dt, dl.g-thumbnail > a:hover dd {
+	margin: -0.375rem -0.5rem;
+	padding: 0.375rem 0.5rem;
 
-	box-sizing: border-box;
-
-	margin: 0;
-	padding: 0;
-}
-
-dl.g-thumbnail img.g-thumbnail, dl.g-thumbnail picture.g-thumbnail, dl.g-thumbnail svg.g-thumbnail {
-	grid-column: thumb-start / thumb-end;
-	grid-row-end: span 2;
-
-	box-sizing: border-box;
-
-	margin: 0;
-	padding: 0;
-}
-
-ul.g-thumbnail li, menu.g-thumbnail li, dl.g-thumbnail dt, dl.g-thumbnail dd {
-	display: block;
-	grid-column: item-start / item-end;
-
-	margin: 0;
-	padding: 0;
-}
-dl.g-thumbnail > a dt {
-	text-decoration: underline;
-	text-decoration: underline 1px;
+	background-color: lavenderblush;
 }
 dl.g-thumbnail > a:hover dt {
-	text-decoration: none;
-	text-decoration: underline 1px double;
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
 }
-dl.g-thumbnail dd {
-	margin-top: -0.75rem;
-}
-
-/*dl.g-thumbnail dt {
-	font-weight: inherit;
-}*/
-dl.g-thumbnail dt::before, dl.g-thumbnail dd::after {
-	content: none;
+dl.g-thumbnail > a:hover dd {
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
 }
 
+dl.g-thumbnail > a:hover dt:last-child {
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
+dl.g-thumbnail > a:hover dd:first-child {
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+}
 
 
 
@@ -826,6 +839,9 @@ main img.g-frame, main picture.g-frame, main svg.g-frame {
 }
 main a img.g-frame, main a picture.g-frame, main a svg.g-frame {
 	border-color: maroon;
+}
+main a:hover img.g-frame, main a:hover picture.g-frame, main a:hover svg.g-frame {
+	border-color: transparent;
 }
 
 main img.g-detail, main picture.g-detail, main svg.g-detail {
