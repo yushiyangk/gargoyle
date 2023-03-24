@@ -721,14 +721,6 @@ img.g-inline, picture.g-inline, svg.g-inline {
 		margin: 0;
 		padding: 0;
 	}
-	ul.g-inline, menu.g-inline, ol.g-inline, dl.g-inline {
-		display: flex;  /* lists can never be inside p, so no point making it inline-flex */
-
-		margin-top: 0.75rem;
-		margin-bottom: 1.5rem;
-		margin-left: auto;
-		margin-right: auto;
-	}
 
 	.g-inline > li, .g-subinline > li, .g-inline > .g-li, .g-subinline > .g-li {
 		display: block;
