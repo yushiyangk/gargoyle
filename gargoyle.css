@@ -549,7 +549,8 @@ hr {
 	List elements
 */
 .g-continue {
-	margin-bottom: 0;
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
 }
 ul, menu, ol, dl {
 	display: block;
