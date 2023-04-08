@@ -1284,9 +1284,13 @@ abbr {
 	font-size: 0.9375em;
 	font-weight: 500;
 }
+abbr[title] {
+	text-decoration: underline dotted;
+}
 h1 > abbr, h2 > abbr, h3 > abbr, h4 > abbr, h5 > abbr, h6 > abbr, b > abbr, strong > abbr, dfn > abbr, dt > abbr {
 	font-weight: 700;
 }
+
 abbr.g-capital {
 	display: inline-block;
 
@@ -1300,20 +1304,22 @@ abbr.g-capital::first-letter {
 	font-weight: inherit;
 }
 
-small abbr, sup abbr, sub abbr, .g-subinline abbr {
-	font-size: 0.78125rem;
-}
-
 
 /*
 	Inline classes
 */
+
 .g-nohyphen {
 	-moz-hyphens: none;
 	-webkit-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
 }
+
+.g-abbr[title] {
+	text-decoration: underline dotted;
+}
+
 .g-quiet {
 	color: grey;
 }
