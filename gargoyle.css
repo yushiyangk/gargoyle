@@ -1300,6 +1300,10 @@ abbr.g-capital::first-letter {
 	font-weight: inherit;
 }
 
+small abbr, sup abbr, sub abbr, .g-subinline abbr {
+	font-size: 0.78125rem;
+}
+
 
 /*
 	Inline classes
