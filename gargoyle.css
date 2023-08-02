@@ -552,6 +552,18 @@ hr {
 	margin-top: 0.75rem;
 	margin-bottom: 0.75rem;
 }
+ol.g-continue {
+	counter-reset: none;
+}
+
+/* For .g-continue lists across different container elements, a common ancestor must be declared as the scope */
+.g-inline-scope {
+	counter-reset: inline-list;
+}
+.g-subinline-scope {
+	counter-reset: subinline-list;
+}
+
 ul, menu, ol, dl {
 	display: block;
 
@@ -564,10 +576,12 @@ ul, menu, ol, dl {
 	list-style-position: outside;
 }
 ul ul, ul menu, ul ol, menu ul, menu menu, menu ol, ol ul, ol menu, ol ol, dl ul, dl menu, dl ol{
+	margin-top: 0.75rem;
 	margin-bottom: 0.75rem;
 }
 ul dl, menu dl, ol dl, dl dl {
 	margin-left: 2rem;
+	margin-top: 0.75rem;
 	margin-bottom: 0.75rem;
 }
 
@@ -766,6 +780,9 @@ img.g-inline, picture.g-inline, svg.g-inline {
 		ol.g-subinline > li::before {
 			content: counter(subinline-list) ". ";
 		}
+		ol.g-continue {
+			counter-reset: none;
+		}
 	}
 
 	.g-inline > dt, .g-subinline > dt {
@@ -849,6 +866,9 @@ main a:hover img, main a:hover picture, main a:hover svg {
 
 	background-color: lavenderblush;
 	border-radius: 6px;
+}
+main a.g-button:hover img, main a.g-button:hover picture, main a.g-button:hover svg {
+	background-color: unset;
 }
 
 main img.g-frame, main picture.g-frame, main svg.g-frame {
