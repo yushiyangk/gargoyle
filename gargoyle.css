@@ -320,15 +320,16 @@ main aside {
 	text-align: -moz-initial;
 	text-align: initial;
 }
-@media (min-width: 34rem) {  /* 2 * $aside-width + $column-margin */
+@media (min-width: 652.8px) {  /* (2 * $aside-width + $column-margin) / (10 / 12) = 34rem / (10 / 12) = 40.8rem; 1rem = 16px; do not use rem */
 	main aside {
 		float: right;
 
 		width: 16rem;  /* $aside-width */
-		margin: 1.5rem 2rem;
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
 	}
 }
-@media (min-width: 76rem) {  /* $default-column-width + 2 * ($aside-width + $column-margin) */
+@media (min-width: 1248px) {  /* $default-column-width + 2 * ($aside-width + $column-margin + $edge-margin); 78rem */
 	main aside {
 		position: absolute;
 		float: none;
@@ -996,14 +997,14 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 
 /* If main supports width calculations, expand outside of column and use these as margins */
 /* If not supported, fall back to being bound by column */
-@supports (max-width: calc(50% - 50vw + 1rem)) {
+@supports (max-width: calc(50% - 50vw + 1rem)) {  /* $edge-margin */
 	figure {
 		margin-left: calc(50% - 50vw + 1rem);
 		margin-right: calc(50% - 50vw + 1rem);
 	}
 
 
-	@media (min-width: 44rem) {
+	@media (min-width: 704px) {  /* $main-width + 2 * $column-margin; 44rem */
 		/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
 		figure {
 			margin-left: calc(50% - 50vw + 2rem);
@@ -1099,7 +1100,7 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 			margin-right: auto;
 		}
 
-		@media (min-width: 44rem) {
+		@media (min-width: 704px) {
 			figure {
 				max-width: calc(100vw - 4rem);
 
