@@ -242,6 +242,7 @@ h1 {
 
 	font-size: 2rem;
 	line-height: 2.25rem;
+	font-weight: bold;
 
 	/* CSS3 Text */
 	-moz-hyphens: none;
@@ -885,6 +886,9 @@ main a:hover img.g-frame, main a:hover picture.g-frame, main a:hover svg.g-frame
 	border-color: transparent;
 }
 
+main img.g-tall, main picture.g-tall, main svg.g-tall {
+	max-height: unset;
+}
 main img.g-detail, main picture.g-detail, main svg.g-detail {
 	max-height: unset;
 	max-width: unset;
@@ -953,6 +957,14 @@ figure img, figure picture, figure svg, figure table {
 }
 figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
 	max-width: 100%;
+}
+
+figure.g-tall img, figure.g-tall picture, figure.g-tall svg {
+	max-height: unset;
+}
+figure.g-detail img, figure.g-detail picture, figure.g-detail svg {
+	max-height: unset;
+	max-width: unset;
 }
 
 /* Hyperlink for images only, not tables */
@@ -1239,11 +1251,11 @@ code, samp {
 	font-family: monospace;
 	line-height: 1.3rem;  /* border-radius increases line height */
 	line-height: calc(1.5rem - 0.2em);
+	hyphens: none;
 
 	-moz-border-radius: 0.2em;
 	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
-
 }
 code {
 	background-color: seashell;
@@ -1321,7 +1333,26 @@ abbr.g-capital {
 }
 abbr.g-capital::first-letter {
 	font-size: 1.142857em;  /* 8/7 */
-	font-weight: inherit;
+	font-weight: normal;
+}
+h1 > abbr.g-capital::first-letter,
+h2 > abbr.g-capital::first-letter,
+h3 > abbr.g-capital::first-letter,
+h4 > abbr.g-capital::first-letter,
+h5 > abbr.g-capital::first-letter,
+h6 > abbr.g-capital::first-letter,
+b > abbr.g-capital::first-letter,
+strong > abbr.g-capital::first-letter,
+dfn > abbr.g-capital::first-letter,
+dt > abbr.g-capital::first-letter {
+	font-weight: bold;
+}
+a abbr.g-capital {
+	text-decoration: underline;
+}
+a:hover abbr.g-capital {
+	text-decoration: none;
+	text-decoration: underline double;
 }
 
 
@@ -1336,8 +1367,54 @@ abbr.g-capital::first-letter {
 	hyphens: none;
 }
 
+.g-abbr {
+	font-size: 0.9375em;
+	font-weight: 500;
+}
 .g-abbr[title] {
 	text-decoration: underline dotted;
+}
+h1 > .g-abbr, h2 > .g-abbr, h3 > .g-abbr, h4 > .g-abbr, h5 > .g-abbr, h6 > .g-abbr, b > .g-abbr, strong > .g-abbr, dfn > .g-abbr, dt > .g-abbr {
+	font-weight: 700;
+}
+a .g-abbr {
+	display: inline;
+}
+a:hover .g-abbr {
+	text-decoration: none;
+	text-decoration: underline double;
+}
+
+.g-abbr.g-capital {
+	display: inline-block;
+
+	margin: 0;
+	padding: 0;
+
+	-moz-animation: ffbug 0.1s ease 1;
+}
+.g-abbr.g-capital::first-letter {
+	font-size: 1.142857em;  /* 8/7 */
+	font-weight: normal;
+}
+h1 > .g-abbr.g-capital::first-letter,
+h2 > .g-abbr.g-capital::first-letter,
+h3 > .g-abbr.g-capital::first-letter,
+h4 > .g-abbr.g-capital::first-letter,
+h5 > .g-abbr.g-capital::first-letter,
+h6 > .g-abbr.g-capital::first-letter,
+b > .g-abbr.g-capital::first-letter,
+strong > .g-abbr.g-capital::first-letter,
+dfn > .g-abbr.g-capital::first-letter,
+dt > .g-abbr.g-capital::first-letter {
+	font-weight: bold;
+}
+a .g-abbr.g-capital {
+	text-decoration: underline;
+}
+a:hover .g-abbr.g-capital {
+	text-decoration: none;
+	text-decoration: underline double;
 }
 
 .g-quiet {
