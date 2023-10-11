@@ -1336,6 +1336,12 @@ dfn > abbr.g-capital::first-letter,
 dt > abbr.g-capital::first-letter {
 	font-weight: bold;
 }
+a abbr.g-capital {
+	text-decoration: underline;
+}
+a:hover abbr.g-capital {
+	text-decoration: none;
+	text-decoration: underline double;
 }
 
 
