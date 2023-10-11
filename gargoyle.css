@@ -1240,11 +1240,11 @@ code, samp {
 	font-family: monospace;
 	line-height: 1.3rem;  /* border-radius increases line height */
 	line-height: calc(1.5rem - 0.2em);
+	hyphens: none;
 
 	-moz-border-radius: 0.2em;
 	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
-
 }
 code {
 	background-color: seashell;
