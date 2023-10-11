@@ -242,6 +242,7 @@ h1 {
 
 	font-size: 2rem;
 	line-height: 2.25rem;
+	font-weight: bold;
 
 	/* CSS3 Text */
 	-moz-hyphens: none;
@@ -1321,7 +1322,20 @@ abbr.g-capital {
 }
 abbr.g-capital::first-letter {
 	font-size: 1.142857em;  /* 8/7 */
-	font-weight: inherit;
+	font-weight: normal;
+}
+h1 > abbr.g-capital::first-letter,
+h2 > abbr.g-capital::first-letter,
+h3 > abbr.g-capital::first-letter,
+h4 > abbr.g-capital::first-letter,
+h5 > abbr.g-capital::first-letter,
+h6 > abbr.g-capital::first-letter,
+b > abbr.g-capital::first-letter,
+strong > abbr.g-capital::first-letter,
+dfn > abbr.g-capital::first-letter,
+dt > abbr.g-capital::first-letter {
+	font-weight: bold;
+}
 }
 
 
