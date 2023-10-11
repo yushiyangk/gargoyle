@@ -1350,8 +1350,54 @@ dt > abbr.g-capital::first-letter {
 	hyphens: none;
 }
 
+.g-abbr {
+	font-size: 0.9375em;
+	font-weight: 500;
+}
 .g-abbr[title] {
 	text-decoration: underline dotted;
+}
+h1 > .g-abbr, h2 > .g-abbr, h3 > .g-abbr, h4 > .g-abbr, h5 > .g-abbr, h6 > .g-abbr, b > .g-abbr, strong > .g-abbr, dfn > .g-abbr, dt > .g-abbr {
+	font-weight: 700;
+}
+a .g-abbr {
+	display: inline;
+}
+a:hover .g-abbr {
+	text-decoration: none;
+	text-decoration: underline double;
+}
+
+.g-abbr.g-capital {
+	display: inline-block;
+
+	margin: 0;
+	padding: 0;
+
+	-moz-animation: ffbug 0.1s ease 1;
+}
+.g-abbr.g-capital::first-letter {
+	font-size: 1.142857em;  /* 8/7 */
+	font-weight: normal;
+}
+h1 > .g-abbr.g-capital::first-letter,
+h2 > .g-abbr.g-capital::first-letter,
+h3 > .g-abbr.g-capital::first-letter,
+h4 > .g-abbr.g-capital::first-letter,
+h5 > .g-abbr.g-capital::first-letter,
+h6 > .g-abbr.g-capital::first-letter,
+b > .g-abbr.g-capital::first-letter,
+strong > .g-abbr.g-capital::first-letter,
+dfn > .g-abbr.g-capital::first-letter,
+dt > .g-abbr.g-capital::first-letter {
+	font-weight: bold;
+}
+a .g-abbr.g-capital {
+	text-decoration: underline;
+}
+a:hover .g-abbr.g-capital {
+	text-decoration: none;
+	text-decoration: underline double;
 }
 
 .g-quiet {
