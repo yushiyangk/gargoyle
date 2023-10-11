@@ -886,6 +886,9 @@ main a:hover img.g-frame, main a:hover picture.g-frame, main a:hover svg.g-frame
 	border-color: transparent;
 }
 
+main img.g-tall, main picture.g-tall, main svg.g-tall {
+	max-height: unset;
+}
 main img.g-detail, main picture.g-detail, main svg.g-detail {
 	max-height: unset;
 	max-width: unset;
@@ -954,6 +957,14 @@ figure img, figure picture, figure svg, figure table {
 }
 figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
 	max-width: 100%;
+}
+
+figure.g-tall img, figure.g-tall picture, figure.g-tall svg {
+	max-height: unset;
+}
+figure.g-detail img, figure.g-detail picture, figure.g-detail svg {
+	max-height: unset;
+	max-width: unset;
 }
 
 /* Hyperlink for images only, not tables */
