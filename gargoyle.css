@@ -55,11 +55,6 @@
 
 	Features with no implemented fallback mechanisms (and browsers with no support):
 		@supports (IE –11, Android –4.3)
-		margin: auto (Android –4.4.4)
-		rem units (IE –8, IE 9–10 partial)
-			! IE 9–10 ignores entire declaration when used in pseudo-elements or in the font shorthand property
-		vh units (IE –8, O Mini, Android –4.3)
-		:hover (Android –4.4.4)
 */
 
 
