@@ -23,49 +23,254 @@
 	Only browsers with >0.1% market share are noted
 
 	Optional features (unsupported browsers):
-		text-rendering (IE –11, Edge –18, Firefox –76 on Mac, Chrome –83 on Mac, Android –4.3, Samsung –11.1)
-			! Android –4.3 breaks rendering of custom fonts with text-rendering: optimizeLegibility
-		overflow-wrap (IE –11, Edge –17, O Mini, Android –4.3, KaiOS 2.5) fallback on deprecated alias word-wrap
-		hyphens (IE –9, Chrome –54, Chrome 55–83 partial, Opera 42–66 partial, O Mini all, Android –4.4.4, Android Chrome 80 partial, UC 12.12 partial, Samsung 4, QQ 1.2) -moz- for Firefox 6–42, -ms- for IE 10–11, Edge 12–18, -webkit- for Safari 5.1–13.1 & iOS 4.2–13.4,
-		hyphens for English (IE –9, Chrome –54, Android –4.4.4, Samsung –4)
-		tab-size (IE –11, Edge –18, Android –4.3), -moz- for Firefox 4–76 & Firefox Android 68 & KaiOS 2.5, -o- for Opera 11.5–12.1 & O Mini & O Mobile 12–12.1
-		width: max-content (IE –11, Edge –18, Android –4.4.4, Samsung –4) -moz- for Firefox 3–65, -webkit- for Chrome 22–45, intrinsic value for Safari 3.1–10.1 & iOS 3.2–10.3
-		:visited (Android –4.3)
-		border-radius (IE –8, O Mini) -moz- for Firefox 2–3.6, -webkit- for Chrome 4 & Safari 3.1–4 & iOS 3.2 & Android 2.1
-		font-feature-settings (IE –9, O Mini, Android –4.3) -moz- old syntax for Firefox 4–14, -moz- for Firefox 15–33, -webkit- for Chrome 16–47 & Opera 15–34 & Android 4.4–4.4.4 & Samsung 4
-		flex (IE –10) -webkit- for Chrome 22–28 & Safari 8 & iOS 8–8.4
+		text-rendering (IE –11, Edge –18)
+		overflow-wrap (IE –11) fallback on deprecated alias word-wrap
+		hyphens -ms- for IE –11 & Edge –18, -webkit- for Safari –16.6 & iOS –16.7
+		hyphens: auto (IE –11, Edge –18) So no need for -ms- if the only values used are auto and none
+		tab-size (IE –11, Edge –18) Must be integer for iOS –12.5
+		width: max-content (IE –11, Edge –18)
+		align-items: baseline (for Flexbox) (IE –11, possibly Edge –18)
+		gap (for Flexbox) (IE –11)
+		object-fit: cover or scale-down (IE –11, Edge –18)
+		display: contents (IE –11, Edge –18)
 
 	Features with fallback mechanisms (unsupported browsers):
-		initial value (IE –11, O Mini all) -moz- for Firefox 2–3
-		vw units (IE –8, O Mini, Android –4.3)
-		calc() (IE –11, Safari 5.1, O Mini, Android –4.3) -moz- for Firefox 4–15, -webkit- for Chrome 19–25 & Safari 6 & iOS 6.1
-			! IE 9 crashes when used in the background-position property
-			! Various known issues: https://caniuse.com/#feat=calc
-		text-align: start or end (IE –11, Edge –18, Android –4.4.4)
-		::first-letter (IE –8) ffbug workaround for Firefox using -moz-animation & @-moz-keyframes
+		initial value (IE –11)
+		calc() (IE –11)
+			! Various known issues for IE11: https://caniuse.com/#feat=calc
+		text-align: start or end (IE –11, Edge –18)
+		::first-letter (IE –8) ffbug workaround for Firefox –128 using -moz-animation & @-moz-keyframes
+		Grid Layout for thumbnail list:
+			grid-template-columns use -ms-grid-columns for IE –11
+			grid-template-areas (IE –11)
+			grid-auto-flow: row (IE –11, Edge –18)
+			gap (for Grid Layout) (IE –11) use grid-gap for iOS –11.2
+			align-items: baseline (for Grid Layout) (IE –11, possibly Edge –18)
+			grid-column (IE –11)
 
 	Dependent features for action buttons, which will fallback to plain hyperlinks (unsupported browsers):
-		background-image multiple (IE –8)
-		background-image SVG (IE –8, Safari –13.1, iOS –13.4)
-		linear-gradient() (IE –9)
-		linear-gradient(to) (IE –9)
-		background-size (IE –8)
-		background-repeat (Android IE –4.4.4)
-		background-position edge offset (IE –8, Android –4.3)
+		mask-image (IE –11), -webkit- for Chrome –119, iOS –15.3, Opera –117
+		mask-image SVG (IE –11)
+		mask-image multiple (IE –11)
+		mask-size (IE –11), -webkit- for Chrome –119, iOS –15.3
+		mask-repeat (IE –11), -webkit- for Chrome –119, iOS –15.3
+		mask-position (IE –11), -webkit- for Chrome –119, iOS –15.3
 
 	Features with no implemented fallback mechanisms (and browsers with no support):
 		@supports (IE –11, Android –4.3)
-		margin: auto (Android –4.4.4)
-		rem units (IE –8, IE 9–10 partial)
-			! IE 9–10 ignores entire declaration when used in pseudo-elements or in the font shorthand property
-		vh units (IE –8, O Mini, Android –4.3)
-		:hover (Android –4.4.4)
 */
 
 
 :root {
+	--font-size: 16px;
+	--line-height: 1.5rem;
+	--skip: var(--line-height);
+	--span: 1rem;
+
+	--main-color: darkslategrey;
+	--background-color: snow;
+	--quiet-color: grey;
+	--highlight-color: lavenderblush;
+	--link-color: maroon;
+	--visited-color: #600000;
+	--frame-color: darkslategrey;
+	--frame-link-color: maroon;
+	--frame-visited-color: #600000;
+	--table-border-color: lightgrey;
+	--kbd-frame-color: lightgrey;
+
+	--large-v: 2.25rem;  /* compat */
+	--large-v: calc(1.5 * var(--skip));
+	--medium-v: var(--skip);
+	--small-v: 0.75rem;  /* compat */
+	--small-v: calc(0.5 * var(--skip));
+	--tiny-v: 0.375rem;  /* compat */
+	--tiny-v: calc(0.25 * var(--skip));
+	--large-h: 2rem;  /* compat */
+	--large-h: calc(2 * var(--span));
+	--medium-h: var(--span);
+	--small-h: 0.5rem;  /* compat */
+	--small-h: calc(0.5 * var(--span));
+
+	--small-font-size: 0.833333rem;  /* 5/6 of base font size */
+	--small-line-height: 1.125rem;
+	--demi-font-size: 0.9375rem;  /* 15/16 of base font size */
+	--demi-font-weight: 500;
+	--demi-bold-font-weight: 700;
+	--inverse-demi-font-size: 1.066667em;  /* 16/15 of demi */
+	--inline-height: 1.25rem;
+	--inline-padding-h: 0.2em;
+	--inline-border-radius: 0.2em;
+	--inline-border-radius-line-height-compat: 1.3rem;  /* compat; (--line-height) - var(--inline-border-radius) */
+
+	--border-radius: 6px;
+	--frame-width: 2px;
+	--frame-border-radius: 2px;
+	--item-margin-v: var(--small-v);
+	--item-margin-h: var(--medium-h);
+
+
+	--heading-margin-top: var(--large-v);
+	--heading-margin-bottom: var(--small-v);
+
+	--text-margin-top: var(--small-v);
+	--text-margin-bottom: var(--medium-v);
+	--text-padding-h: 0.2em;
+
+	--quote-margin-v: var(--medium-v);
+	--quote-margin-h: var(--large-h);
+
+	--list-margin-top: var(--medium-v);
+	--list-margin-bottom: var(--large-v);
+	--list-item-margin-v: var(--small-v);
+	--list-item-margin-h: var(--large-h);
+
+	--image-max-height: 80vh;
+	--image-margin-top: var(--small-v);
+	--image-margin-bottom: var(--large-v);
+
+	--image-highlight-padding-v: var(--tiny-v);
+	--image-highlight-negative-margin-v-compat: -0.375rem;  /* compat; -1 * var(--thumbnail-list-padding-v) */
+	--image-highlight-padding-h: var(--small-h);
+	--image-highlight-negative-margin-h-compat: -0.5rem;  /* compat; -1 * var(--thumbnail-list-padding-h) */
+
+
+	--page-bottom: 3rem;  /* compat */
+	--page-bottom: calc(2 * var(--skip));
+
+	--main-margin-v: var(--medium-v);
+	--main-margin-h: var(--medium-h);
+	--main-width: 91.666667vw;  /* compat */
+	--main-width: calc(100vw - 2 * var(--main-margin-h));
+	--column-width: 40rem;
+
+	--main-nav-margin-v: var(--small-v);
+	--main-nav-margin-h: var(--medium-h);
+
+	--article-text-indent: 0;
+	--article-tab-size: 4;  /* Should be an integer for wide support */
+
+	--h1-margin-top: var(--large-v);
+	--h1-margin-bottom: var(--medium-v);
+	--h1-font-size: 2rem;
+	--h1-line-height: var(--large-v);
+
+	--h2-font-size: 1.666667rem;  /* 5/6 of h1 == 5/3 */
+	--h3-font-size: 1.333333rem;  /* 4/5 of h2 == 4/3 */
+	--h4-font-size: 1.111111rem;  /* 5/6 of h3 == 10/9 */
+	--h5-font-size: var(--h4-font-size);
+	--h5-margin-left: var(--medium-h);
+	--h6-font-size: var(--h4-font-size);
+	--h6-margin-left: 2rem;  /* compat */
+	--h6-margin-left: var(--large-h);
+
+	--main-aside-margin-h-with-column-compat: 42rem;  /* compat; var(--column-width) + var(--quote-margin-h) */
+	--main-aside-width: 16rem;
+	/* WARNING: Media queries for <aside> need to be manually updated in precomputed px units */
+
+	--pre-padding-v: var(--small-v);
+	--pre-padding-h: var(--small-h);
+	--pre-padding-negative-margin-h-compat: -0.5rem;  /* compat; -1 * var(--pre-padding-h) */
+	--pre-title-margin-v: var(--tiny-v);
+	--pre-title-margin-top-with-negative-padding-compat: -0.375rem;  /* compat; var(--pre-title-margin-v) - var(--pre-padding-v) */
+	--pre-title-color: var(--quiet-color);
+
+	--hr-width: 1px;
+
+	--dt-margin-left: 0;
+	--dd-margin-left: 1.5rem;  /* compat */
+	--dd-margin-left: calc(1.5 * var(--span));
+
 	--thumbnail-width: 9rem;
-	--thumbnail-height: 9rem;
+	--thumbnail-height: var(--thumbnail-width);
+
+	--thumbnail-list-fallback-margin-h-allowance: var(--medium-h); /* extra allowance to be absolutely sure that line-breaking will not occur unexpectedly when Grid Layout is not supported */
+	--thumbnail-list-fallback-item-max-width-compat: 29rem;  /* compat; var(--column-width) - var(--thumbnail-width) - var(--item-margin-h) - var(--thumbnail-list-fallback-margin-h-allowance) */
+	--thumbnail-list-fallback-margin-top-with-negative-padding-compat: 0.375rem;  /* compat; var(--item-margin-v) - var(--thumbnail-list-padding-v) */
+	--thumbnail-list-fallback-margin-right-with-negative-padding-compat: 0.5rem;  /* compat; var(--item-margin-h) - var(--thumbnail-list-padding-h) */
+
+	--inline-list-separtor-margin: 0.3em;
+	--inline-list-separator-color: var(--quiet-color);
+
+	--figcaption-margin-v: var(--small-v);
+	--figcaption-margin-h: var(--medium-h);
+	--figcaption-width-compat: 38rem;  /* compat; var(--column-width) - 2 * var(--figcaption-margin-h) */
+	--figcaption-aligned-width-compat: 39rem;
+	--figure-wide-max-width: calc(100vw - 2 * var(--large-h));  /* No compat version because the existing fallback for figure max width, which is var(--main-width), already has more generous margins when calc() is not supported, especially on wider screens */
+	/* WARNING: Media queries for <figure> and <figcaption> need to be manually updated in precomputed px units */
+
+	--table-margin-top: var(--small-v);
+	--table-margin-bottom: var(--large-v);
+	--table-padding-v: 0.1875rem;  /* compat */
+	--table-padding-v: calc(var(--tiny-v) / 2);
+	--table-padding-h: var(--small-h);
+	--table-border-width: 1px;
+
+	--kbd-margin-h: 0.1em;
+	--kbd-padding-v: 0.1em;
+	--kbd-padding-h: var(--inline-padding-h);
+	--kbd-frame-width: 1px;
+	--kbd-shadow-width: 1px;
+	--kbd-line-height-compat: 1.1rem;  /* compat; var(--line-height) - 2 * var(--border-radius) - var(--kbd-frame-width) */
+
+	--button-margin-v: var(--medium-v);
+	--button-padding-v: 0.9375rem;  /* compat */
+	--button-padding-v: calc(0.625 * var(--skip));
+	--button-padding-h: 2em;
+	--button-border-width: var(--frame-width);
+	--button-border-radius: var(--border-radius);
+	--button-line-height: 1.125rem;  /* compat */
+	--button-line-height: calc(0.75 * var(--skip));  /* 0.75 == 2 - 2 * 0.625 */
+	--button-internal-padding-h: 1.25rem;
+	--button-internal-border-width: 1px;
+	--button-internal-border-height: 60%;
+	--button-icon-size: 1.25rem;  /* compat */
+	--button-icon-size: calc(1.25 * var(--span));
+	--button-icon-highlight-scale: 1.2;
+	--button-icon-highlight-size-compat: 1.5rem;  /* compat; var(--button-icon-size) * var(--button-icon-highlight-scale) */
+	--button-icon-margin-h: var(--medium-h);
+	--button-icon-highlight-margin-h-compat: 0.875rem;  /* compat; var(--button-icon-margin-h) - (var(--button-icon-highlight-size) - var(--button-icon-size)) / 2 */
+	--button-icon-box-width-compat: 3.25rem;  /* compat; var(--button-icon-size) + 2 * var(--button-icon-margin-h) */
+	--button-icon-centre-compat: 1.625rem;  /* compat; 0.5 * var(--button-icon-size) + var(--button-icon-margin-h) */
+	--button-icon-box-width-with-internal-padding-h-compat: 4.5rem; /* compat; var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) */
+
+	--image-button-height: var(--large-v);
+	--image-button-icon-width: var(--image-button-height);
+	--image-button-margin-v: var(--small-v);
+	--image-button-margin-h: var(--image-button-margin-v);
+	--image-button-padding-v: 0.5625rem;  /* compat */
+	--image-button-padding-v: calc(0.375 * var(--skip));
+	--image-button-padding-h: var(--small-h);
+
+	--button-highlight-color: #ffd4d1;
+	--button-green-color: green;
+	--button-green-background-color: #d0f0d0;
+	--button-green-highlight-color: #b8f0b8;
+	--button-cyan-color: darkcyan;
+	--button-cyan-background-color: #d5fcfa;
+	--button-cyan-highlight-color: #bcfaf7;
+	--button-blue-color: royalblue;
+	--button-blue-background-color: #dadafd;
+	--button-blue-highlight-color: #cacaff;
+	--button-magenta-color: darkmagenta;
+	--button-magenta-background-color: #dadafd;
+	--button-magenta-highlight-color: #cacaff;
+	--button-red-color: firebrick;
+	--button-red-background-color: #fcdcdc;
+	--button-red-highlight-color: #f3c2c2;
+	--button-orange-color: chocolate;
+	--button-orange-background-color: #f7e3bb;
+	--button-orange-highlight-color: #f8db9c;
+	--button-yellow-color: goldenrod;
+	--button-yellow-background-color: #faf2c6;
+	--button-yellow-highlight-color: #faecac;
+	--image-button-color: lightgrey;
+	--image-button-background-color: #00000080;
+	--image-button-hover-color: white;
+	--image-button-hover-background-color: #000000a0;
+	--image-button-focus-color: #ffffffc0;
+	--image-button-focus-background-color: #000000c0;
+
 }
 
 
@@ -76,13 +281,13 @@ html {
 	margin: 0;
 	padding: 0;
 
-	color: darkslategray;
+	color: var(--color);
 
 	font-family: sans-serif;
-	font-size: 16px;
-	line-height: 1.5rem;
+	font-size: var(--font-size);
+	line-height: var(--line-height);
 
-	/* Nominally an SVG property but good for Chrome; breaks Android 4.3 */
+	/* Nominally an SVG property but good for Chrome */
 	text-rendering: optimizeLegibility;
 }
 
@@ -91,10 +296,10 @@ body {
 
 	margin: 0;
 	padding: 0;
-	padding-bottom: 3rem;
+	padding-bottom: var(--page-bottom);
 
-	color: darkslategray;
-	background-color: snow;
+	color:var(--color);
+	background-color: var(--background-color);
 
 	/* Workaround for IE bug with margin: auto column centring; parent container needs this. */
 	text-align: center;
@@ -103,17 +308,14 @@ body {
 main {
 	display: block;
 
-	width: 40rem;  /* $column-width */
-	max-width: 91.666667%;
-	max-width: 91.666667vw;  /* 100vw - 2 * $main-margin */
-	max-width: calc(100vw - 2rem);
+	width: var(--column-width);
+	max-width: var(--main-width);
 
-	margin: 1.5rem auto;
+	margin: var(--main-margin-v) auto;
 	padding: 0;
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
 
@@ -123,17 +325,13 @@ main nav {
 	justify-content: flex-start;
 	align-items: baseline;
 	align-content: flex-start;
-	gap: 0.75rem 1rem;
+	gap: var(--main-nav-margin-v) var(--main-nav-margin-h);
 
-	margin-top: 0.75rem;
-	margin-bottom: 1.5rem;
-	margin-left: auto;
-	margin-right: auto;
+	margin: var(--main-nav-margin-v) auto;
 	padding: 0;
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
 main nav.g-left {
@@ -157,62 +355,54 @@ main nav.g-centre, main nav.g-center {
 article {
 	display: block;
 
-	margin: 1.5rem auto;
+	margin: var(--medium-v) auto;
 	padding: 0;
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 
 	/* CSS3 Text */
-	-moz-hyphens: auto;
-	-ms-hyphens: auto;
 	-webkit-hyphens: auto;
 	hyphens: auto;
 
 	word-wrap: break-word;  /* alias of overflow-wrap */
 	overflow-wrap: break-word;
 
-	text-indent: 0;
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
+	text-indent: var(--article-text-indent);
+	tab-size: var(--article-tab-size);
 }
 
 header {
 	display: block;
 
-	margin: 1.5rem auto;
+	margin: var(--medium-v) auto;
 	padding: 0;
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
 
 footer {
 	display: block;
 
-	margin: 1.5rem auto;
+	margin: var(--medium-v) auto;
 	padding: 0;
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
 
 section {
 	display: block;
 
-	margin: 1.5rem auto;
+	margin: var(--medium-v) auto;
 	padding: 0;
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
 
@@ -224,8 +414,8 @@ section {
 p {
 	display: block;
 
-	margin-top: 0.75rem;
-	margin-bottom: 1.5rem;
+	margin-top: var(--text-margin-top);
+	margin-bottom: var(--text-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
@@ -234,27 +424,25 @@ p {
 h1 {
 	display: block;
 
-	margin-top: 2.25rem;
-	margin-bottom: 1.5rem;
+	margin-top: var(--h1-margin-top);
+	margin-bottom: var(--h1-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 
-	font-size: 2rem;
-	line-height: 2.25rem;
+	font-size: var(--h1-font-size);
+	line-height: var(--h1-line-height);
 	font-weight: bold;
 
 	/* CSS3 Text */
-	-moz-hyphens: none;
 	-webkit-hyphens: none;
-	-ms-hyphens: none;
 	hyphens: none;
 }
 h2, h3, h4, h5, h6 {
 	display: block;
 
-	margin-top: 2.25rem;
-	margin-bottom: 0.75rem;
+	margin-top: var(--heading-margin-top);
+	margin-bottom: var(--heading-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
@@ -265,34 +453,34 @@ hgroup > h1, hgroup > h2, hgroup > h3, hgroup > h4, hgroup > h5, hgroup > h6 {
 hgroup {
 	display: block;
 
-	margin-top: 2.25rem;
-	margin-bottom: 0.75rem;
+	margin-top: var(--heading-margin-top);
+	margin-bottom: var(--heading-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 }
 h2 {
-	font-size: 1.666667rem;
+	font-size: var(--h2-font-size);
 	font-weight: bold;
 }
 h3 {
-	font-size: 1.333333rem;
+	font-size: var(--h3-font-size);
 	font-weight: bold;
 }
 h4 {
-	font-size: 1.111111rem;
+	font-size: var(--h4-font-size);
 	font-weight: bold;
 }
 h5 {
-	margin-left: 1rem;
+	margin-left: var(--h5-margin-left);
 
-	font-size: 1rem;
+	font-size: var(--h5-font-size);
 	font-weight: bold;
 }
 h6 {
-	margin-left: 2rem;
+	margin-left: var(--h6-margin-left);
 
-	font-size: 1rem;
+	font-size: var(--h6-font-size);
 	font-weight: bold;
 	font-style: italic;
 }
@@ -300,7 +488,7 @@ h6 {
 blockquote {
 	display: block;
 
-	margin: 1.5rem 2rem;
+	margin: var(--quote-margin-v) var(--quote-margin-h);
 	padding: 0;
 }
 
@@ -309,32 +497,34 @@ main aside {
 
 	margin-top: 0;
 	margin-bottom: 0;
-	margin-left: 2rem;
+	margin-left: var(--quote-margin-h);
 	margin-right: 0;
 	padding: 0;
 
-	color: grey;
+	color: var(--quiet-color);
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
-@media (min-width: 34rem) {  /* 2 * $aside-width + $column-margin */
+@media (min-width: 652.8px) {  /* (2 * var(--main-aside-width) + var(--main-aside-narrow-margin-h)) / (10 / 12) == 34rem / (10 / 12) == 40.8rem */
+	/* Divide by 10/12 because column width has a lower bound of 10/12 of display width, which happens when calc() is not supported, whereas var(--column-width) is only used when the display is not narrow */
 	main aside {
 		float: right;
 
-		width: 16rem;  /* $aside-width */
-		margin: 1.5rem 2rem;
+		width: var(--main-aside-width);
+		margin-top: var(--quote-margin-v);
+		margin-bottom: var(--quote-margin-v);
 	}
 }
-@media (min-width: 76rem) {  /* $default-column-width + 2 * ($aside-width + $column-margin) */
+@media (min-width: 1248px) {  /* var(--column-width) + 2 * (var(--main-aside-width) + var(--block-margin-h) + var(--main-margin-h)) == 78rem */
 	main aside {
 		position: absolute;
 		float: none;
 
 		margin-top: 0;
-		margin-left: 42rem;  /* $default-column-width + $column-margin */
+		margin-left: var(--main-aside-margin-h-with-column-compat);
+		margin-left: calc(var(--column-width) + var(--quote-margin-h));
 		margin-right: 0;
 
 		color: inherit;
@@ -344,15 +534,12 @@ main aside {
 pre {
 	display: block;
 
-	width: 40rem;
-	min-width: -moz-max-content;
-	min-width: -webkit-max-content;
-	min-width: intrinsic;
+	width: var(--column-width);
 	min-width: max-content;
 	max-width: 100%;
 
-	margin-top: 0.75rem;
-	margin-bottom: 1.5rem;
+	margin-top: var(--text-margin-top);
+	margin-bottom: var(--text-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
@@ -361,10 +548,11 @@ pre {
 pre > code, pre > samp {
 	display: block;
 
-	margin: 0 -0.5rem;
-	padding: 0.75rem 0.5rem;
+	margin: 0 var(--pre-padding-negative-margin-h-compat);
+	margin: 0 calc(-1 * var(--pre-padding-h));
+	padding: var(--pre-padding-v) var(--pre-padding-h);
 
-	border-radius: 6px;
+	border-radius: var(--border-radius);
 }
 
 figure pre {
@@ -374,25 +562,24 @@ figure.g-bound pre {
 	min-width: unset;
 
 	white-space: pre-wrap;
-	white-space: -moz-pre-wrap;
-	white-space: -pre-wrap;
-	white-space: -o-pre-wrap;
 	word-wrap: break-word;
+	overflow-wrap: break-word;
 }
 
 pre > code.g-frame, pre > samp.g-frame {
-	border: 2px solid darkslategrey;
-	border-radius: 2px;
+	border: var(--frame-width) solid var(--frame-color);
+	border-radius: var(--frame-border-radius);
 }
 
 pre > code[title]::before, pre > samp[title]::before {
 	content: attr(title);
 	display: block;
 
-	margin-top: -0.375rem;
-	margin-bottom: 0.375rem;
+	margin-top: var(--pre-title-margin-top-with-negative-padding-compat);
+	margin-top: calc(var(--pre-title-margin-v) - var(--pre-padding-v));
+	margin-bottom: var(--pre-title-margin-v);
 
-	color: grey;
+	color: var(--pre-title-color);
 	text-align: right;
 	text-align: end;
 }
@@ -417,12 +604,12 @@ pre > code[title].g-title-centre::before, pre > samp[title].g-title-centre::befo
 hr {
 	display: block;
 
-	margin: 2.25rem 0;
-	margin-bottom: calc(2.25rem - 1px);
+	margin: var(--large-v) 0;
+	margin-bottom: calc(var(--large-v) - var(--hr-width));
 	padding: 0;
 
 	border: 0;
-	border-bottom: 1px solid darkslategrey;
+	border-bottom: var(--hr-width) solid var(--main-color);
 }
 
 
@@ -550,8 +737,8 @@ hr {
 	List elements
 */
 .g-continue {
-	margin-top: 0.75rem;
-	margin-bottom: 0.75rem;
+	margin-top: var(--list-item-margin-v);
+	margin-bottom: var(--list-item-margin-v);
 }
 ol.g-continue {
 	counter-reset: none;
@@ -568,8 +755,8 @@ ol.g-continue {
 ul, menu, ol, dl {
 	display: block;
 
-	margin-top: 1.5rem;
-	margin-bottom: 2.25rem;
+	margin-top: var(--list-margin-top);
+	margin-bottom: var(--list-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
@@ -577,20 +764,20 @@ ul, menu, ol, dl {
 	list-style-position: outside;
 }
 ul ul, ul menu, ul ol, menu ul, menu menu, menu ol, ol ul, ol menu, ol ol, dl ul, dl menu, dl ol{
-	margin-top: 0.75rem;
-	margin-bottom: 0.75rem;
+	margin-top: var(--list-item-margin-v);
+	margin-bottom: var(--list-item-margin-v);
 }
 ul dl, menu dl, ol dl, dl dl {
-	margin-left: 2rem;
-	margin-top: 0.75rem;
-	margin-bottom: 0.75rem;
+	margin-left: var(--list-item-margin-h);
+	margin-top: var(--list-item-margin-v);
+	margin-bottom: var(--list-item-margin-v);
 }
 
 li {
 	display: list-item;
 
 	margin: 0;
-	margin-left: 2rem;
+	margin-left: var(--list-item-margin-h);
 	padding: 0;
 }
 
@@ -598,6 +785,7 @@ dt {
 	display: inline;
 
 	margin: 0;
+	margin-left: var(--dt-margin-left);
 	padding: 0;
 
 	font-weight: bold;
@@ -606,7 +794,7 @@ dd {
 	display: inline;
 
 	margin: 0;
-	margin-left: 1.5rem;
+	margin-left: var(--dd-margin-left);
 	padding: 0;
 }
 dd::after {
@@ -616,22 +804,17 @@ dd::after {
 
 /* Thumbnail list */
 
-dl.g-thumbnail {
-	display: grid;
-	grid-template-columns: var(--thumbnail-width) auto;
-	grid-template-areas: "thumb item";
-	grid-auto-flow: row;
-	grid-gap: 0.75rem 1rem;
-	align-items: stretch;
-}
-
 dl.g-thumbnail dt {
-	grid-column: thumb-start / thumb-end;
-
-	display: block;
+	display: inline-block;
 
 	margin: 0;
+	margin-top: var(--item-margin-v);
+	margin-right: var(--item-margin-h);
 	padding: 0;
+}
+
+dl.g-thumbnail > dt:first-of-type, dl.g-thumbnail > dd:first-of-type {
+	margin-top: 0;
 }
 
 dl.g-thumbnail dt img, dl.g-thumbnail dt picture, dl.g-thumbnail dt svg {
@@ -656,11 +839,13 @@ dl.g-thumbnail dt > *:last-child {
 }
 
 dl.g-thumbnail dd {
-	grid-column: item-start / item-end;
+	display: inline-block;
 
-	display: block;
+	max-width: var(--thumbnail-list-fallback-item-max-width-compat);
+	max-width: calc(var(--column-width) - var(--thumbnail-width) - var(--item-margin-h) - var(--thumbnail-list-fallback-margin-h-allowance));
 
 	margin: 0;
+	margin-top: var(--item-margin-v);
 	padding: 0;
 }
 
@@ -668,29 +853,49 @@ dl.g-thumbnail > a {
 	display: contents;
 }
 
-dl.g-thumbnail > a:hover dt, dl.g-thumbnail > a:hover dd {
-	margin: -0.375rem -0.5rem;
-	padding: 0.375rem 0.5rem;
-
-	background-color: lavenderblush;
+dl.g-thumbnail > a:first-child > dt:first-of-type, dl.g-thumbnail > a:first-child > dd:first-of-type {
+	margin-top: 0;
 }
+
 dl.g-thumbnail > a:hover dt {
-	border-top-left-radius: 6px;
-	border-bottom-left-radius: 6px;
+	margin-top: var(--thumbnail-list-fallback-margin-top-with-negative-padding-compat);
+	margin-top: calc(var(--item-margin-v) - var(--image-highlight-padding-v));
+	margin-bottom: var(--image-highlight-negative-margin-v-compat);
+	margin-bottom: calc(-1 * var(--image-highlight-padding-v));
+	margin-left: var(--image-highlight-negative-margin-h-compat);
+	margin-left: calc(-1 * var(--image-highlight-padding-h));
+	margin-right: var(--thumbnail-list-fallback-margin-right-with-negative-padding-compat);
+	margin-right: calc(var(--item-margin-h) - var(--image-highlight-padding-h));
+	padding: var(--image-highlight-padding-v) var(--image-highlight-padding-h);
+
+	background-color: var(--highlight-color);
 }
 dl.g-thumbnail > a:hover dd {
-	border-top-right-radius: 6px;
-	border-bottom-right-radius: 6px;
+	margin: var(--image-highlight-negative-margin-v-compat) var(--image-highlight-negative-margin-h-compat);
+	margin: calc(-1 * var(--image-highlight-padding-v)) calc(-1 * var(--image-highlight-padding-h));
+	margin-top: var(--thumbnail-list-fallback-margin-top-with-negative-padding-compat);
+	margin-top: calc(var(--item-margin-v) - var(--image-highlight-padding-v));
+	padding: var(--image-highlight-padding-v) var(--image-highlight-padding-h);
+
+	background-color: var(--highlight-color);
+}
+dl.g-thumbnail > a:hover dt {
+	border-top-left-radius: var(--border-radius);
+	border-bottom-left-radius: var(--border-radius);
+}
+dl.g-thumbnail > a:hover dd {
+	border-top-right-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
 }
 
 dl.g-thumbnail > a:hover dt:last-child {
-	border-top-right-radius: 6px;
-	border-bottom-right-radius: 6px;
+	border-top-right-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
 }
 
 dl.g-thumbnail > a:hover dd:first-child {
-	border-top-left-radius: 6px;
-	border-bottom-left-radius: 6px;
+	border-top-left-radius: var(--border-radius);
+	border-bottom-left-radius: var(--border-radius);
 }
 
 dl.g-thumbnail > a:hover dt img, dl.g-thumbnail > a:hover dt picture, dl.g-thumbnail > a:hover dt svg {
@@ -701,10 +906,10 @@ dl.g-thumbnail > a:hover dt img, dl.g-thumbnail > a:hover dt picture, dl.g-thumb
 }
 
 dl.g-thumbnail > a:hover dt img.g-frame, dl.g-thumbnail > a:hover dt pic.g-frameture, dl.g-thumbnail > a:hover dt svg.g-frame {
-	border: 2px solid maroon;
+	border: var(--frame-width) solid var(--frame-link-color);
 }
 dl.g-thumbnail > a:visited:hover dt img.g-frame, dl.g-thumbnail > a:visited:hover dt pic.g-frameture, dl.g-thumbnail > a:visited:hover dt svg.g-frame {
-	border: 2px solid #600000;
+	border: var(--frame-width) solid var(--frame-visited-color);
 }
 
 dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-thumbnail h4, dl.g-thumbnail h5, dl.g-thumbnail h6 {
@@ -713,6 +918,39 @@ dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-
 	font-style: initial;
 }
 
+@supports (grid-template-areas: "thumb item") and (grid-auto-flow: row) and (display: contents) {
+	dl.g-thumbnail {
+		display: grid;
+		grid-template-columns: var(--thumbnail-width) auto;
+		grid-template-areas: "thumb item";
+		grid-auto-flow: row;
+		grid-gap: var(--item-margin-v) var(--item-margin-h);
+		gap: var(--item-margin-v) var(--item-margin-h);
+		align-items: stretch;
+	}
+
+	dl.g-thumbnail dt {
+		grid-column: thumb-start / thumb-end;
+		display: block;
+
+		margin: 0;
+	}
+
+	dl.g-thumbnail dd {
+		grid-column: item-start / item-end;
+		display: block;
+
+		max-width: unset;
+
+		margin: 0;
+	}
+
+	dl.g-thumbnail > a:hover dt, dl.g-thumbnail > a:hover dd {
+		margin: var(--image-highlight-negative-margin-v-compat) var(--image-highlight-negative-margin-h-compat);
+		margin: calc(-1 * var(--image-highlight-padding-v)) calc(-1 * var(--image-highlight-padding-h));
+		padding: var(--image-highlight-padding-v) var(--image-highlight-padding-h);
+	}
+}
 
 
 /*
@@ -721,127 +959,118 @@ dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-
 img.g-inline, picture.g-inline, svg.g-inline {
 	display: inline;
 
-	max-height: 1.25rem;
+	max-height: var(--inline-height);
 	width: auto;
 
 	vertical-align: middle;
 }
 
-@supports (display: inline-flex) or (display: -ms-inline-flexbox) {
-	.g-inline, .g-subinline {
-		display: -ms-inline-flexbox;
-		display: -webkit-inline-flex;
-		display: inline-flex;
-		flex-flow: row wrap;
+ol.g-inline {
+	counter-reset: inline-list;
+}
+ol.g-inline > li {
+	counter-increment: inline-list;
+}
+ol.g-inline > li::before {
+	content: counter(inline-list) ". ";
+}
+ol.g-subinline {
+	counter-reset: subinline-list;
+}
+ol.g-subinline > li {
+	counter-increment: subinline-list;
+}
+ol.g-subinline > li::before {
+	content: counter(subinline-list) ". ";
+}
+ol.g-continue {
+	counter-reset: none;
+}
 
-		margin: 0;
-		padding: 0;
-	}
+.g-inline, .g-subinline {
+	display: inline-flex;
+	flex-flow: row wrap;
 
-	.g-inline > li, .g-subinline > li, .g-inline > .g-li, .g-subinline > .g-li {
-		display: block;
-		-webkit-flex: 0 0 auto;
-		flex: 0 0 auto;
+	margin: 0;
+	padding: 0;
+}
 
-		margin: 0;
-		padding: 0;
-	}
-	.g-inline > li::after, .g-subinline > li::after, .g-inline > .g-li::after, .g-subinline > .g-li::after {
-		content: '·';
-		display: inline;
+.g-inline > li, .g-subinline > li, .g-inline > .g-li, .g-subinline > .g-li {
+	display: block;
+	flex: 0 0 auto;
 
-		padding-left: 0.3em;  /* $separator-padding */
-		padding-right: 0.3em;  /* $separator-padding */
-		line-height: 0;
+	margin: 0;
+	padding: 0;
+}
+.g-inline > li::after, .g-subinline > li::after, .g-inline > .g-li::after, .g-subinline > .g-li::after {
+	content: '·';
+	display: inline;
 
-		color: grey;
+	padding-left: var(--inline-list-separtor-margin);
+	padding-right: var(--inline-list-separtor-margin);
+	line-height: 0;
 
-		font-weight: bold;
-	}
-	.g-inline > li:last-child::after, .g-subinline > li:last-child::after, .g-inline > .g-li:last-child::after, .g-subinline > .g-li:last-child::after {
-		content: none;
-	}
+	color: var(--inline-list-separator-color);
 
-	@supports (counter-reset: count) and (counter-increment: count) and (content: counter(count)) {
-		ol.g-inline {
-			counter-reset: inline-list;
-		}
-		ol.g-inline > li {
-			counter-increment: inline-list;
-		}
-		ol.g-inline > li::before {
-			content: counter(inline-list) ". ";
-		}
-		ol.g-subinline {
-			counter-reset: subinline-list;
-		}
-		ol.g-subinline > li {
-			counter-increment: subinline-list;
-		}
-		ol.g-subinline > li::before {
-			content: counter(subinline-list) ". ";
-		}
-		ol.g-continue {
-			counter-reset: none;
-		}
-	}
+	font-weight: bold;
+}
+.g-inline > li:last-child::after, .g-subinline > li:last-child::after, .g-inline > .g-li:last-child::after, .g-subinline > .g-li:last-child::after {
+	content: none;
+}
 
-	.g-inline > dt, .g-subinline > dt {
-		display: block;
-		-webkit-flex: 0 0 auto;
-		flex: 0 0 auto;
+.g-inline > dt, .g-subinline > dt {
+	display: block;
+	flex: 0 0 auto;
 
-		margin: 0;
-		padding: 0;
+	margin: 0;
+	padding: 0;
 
-		font-weight: bold;
-	}
-	.g-inline > dt::after, .g-subinline > dt::after {
-		content: ':';
-		display: inline;
+	font-weight: bold;
+}
+.g-inline > dt::after, .g-subinline > dt::after {
+	content: ':';
+	display: inline;
 
-		margin-right: 0.3em;  /* $separator-padding */
-	}
-	.g-inline > dt:last-child::after, .g-subinline > dt:last-child::after {
-		content: none;
-	}
+	margin-right: var(--inline-list-separtor-margin);
+}
+.g-inline > dt:last-child::after, .g-subinline > dt:last-child::after {
+	content: none;
+}
 
-	.g-inline > dd, .g-subinline > dd {
-		display: block;
-		-webkit-flex: 0 0 auto;
-		flex: 0 0 auto;
+.g-inline > dd, .g-subinline > dd {
+	display: block;
+	flex: 0 0 auto;
 
-		margin: 0;
-		padding: 0;
-	}
-	.g-inline > dd::after, .g-subinline > dd::after {
-		content: '·';
-		display: inline;
+	margin: 0;
+	padding: 0;
+}
+.g-inline > dd::after, .g-subinline > dd::after {
+	content: '·';
+	display: inline;
 
-		font-size: initial;
-		font-weight: bold;
-		color: grey;
+	font-size: initial;
+	font-weight: bold;
+	color: var(--inline-list-separator-color);
 
-		margin-left: 0.3em;  /* $separator-padding */
-		margin-right: 0.3em;  /* $separator-padding */
-	}
-	.g-inline > dd:last-child::after, .g-subinline > dd:last-child::after {
-		content: none;
-	}
+	margin-left: var(--inline-list-separtor-margin);
+	margin-right: var(--inline-list-separtor-margin);
+}
+.g-inline > dd:last-child::after, .g-subinline > dd:last-child::after {
+	content: none;
+}
 
-	.g-subinline {
-		flex-flow: row nowrap;
+.g-subinline {
+	flex-flow: row nowrap;
 
-		font-size: 0.833333rem;
-		line-height: 1.125rem;
-	}
-	.g-subinline::before {
-		content: '(';
-	}
+	font-size: var(--small-font-size);
+	line-height: var(--small-line-height);
+}
+.g-subinline::before {
+	content: '(';
+}
 
-	.g-subinline::after {
-		content: ')';
-	}
+.g-subinline::after {
+	content: ')';
 }
 
 
@@ -851,36 +1080,37 @@ img.g-inline, picture.g-inline, svg.g-inline {
 */
 main img, main picture, main svg {
 	display: block;
-	max-height: 80vh;
+	max-height: var(--image-max-height);
 	max-width: 100%;
 
-	margin-top: 0.75rem;
-	margin-bottom: 2.25rem;
+	margin-top: var(--image-margin-top);
+	margin-bottom: var(--image-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 }
 
 main a:hover img, main a:hover picture, main a:hover svg {
-	margin: -0.375rem -0.5rem;
-	padding: 0.375rem 0.5rem;
+	margin: var(--image-highlight-negative-margin-v-compat) var(--image-highlight-negative-margin-h-compat);
+	margin: calc(-1 * var(--image-highlight-padding-v)) calc(-1 * var(--image-highlight-padding-h));
+	padding: var(--image-highlight-padding-v) var(--image-highlight-padding-h);
 
-	background-color: lavenderblush;
-	border-radius: 6px;
+	background-color: var(--highlight-color);
+	border-radius: var(--border-radius);
 }
 main a.g-button:hover img, main a.g-button:hover picture, main a.g-button:hover svg {
 	background-color: unset;
 }
 
 main img.g-frame, main picture.g-frame, main svg.g-frame {
-	border: 2px solid darkslategrey;
-	border-radius: 2px;
+	border: var(--frame-width) solid var(--frame-color);
+	border-radius: var(--frame-border-radius);
 }
 main a img.g-frame, main a picture.g-frame, main a svg.g-frame {
-	border-color: maroon;
+	border-color: var(--frame-link-color);
 }
 main a:visited img.g-frame, main a:visited picture.g-frame, main a:visited svg.g-frame {
-	border-color: #600000;
+	border-color: var(--frame-visited-color);
 }
 main a:hover img.g-frame, main a:hover picture.g-frame, main a:hover svg.g-frame {
 	border-color: transparent;
@@ -907,9 +1137,6 @@ main img.g-thumbnail.g-bound, main picture.g-thumbnail.g-bound, main svg.g-thumb
 main picture {
 	position: relative;
 
-	width: -moz-max-content;
-	width: -webkit-max-content;
-	width: intrinsic;
 	width: max-content;
 }
 main picture img, main a:hover picture img {
@@ -919,28 +1146,31 @@ main picture img, main a:hover picture img {
 figure {
 	display: block;
 
-	min-width: 100%;
+	position: relative;
+	left: 50%;
 
-	margin-top: 0.75rem;
-	margin-bottom: 2.25rem;
+	width: max-content;
+	max-width: var(--main-width);
+
+	margin-top: var(--image-margin-top);
+	margin-bottom: var(--image-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 
-	text-align: center;
+	transform: translateX(-50%);
+
+	text-align: initial;
 }
 
 figcaption {
 	display: block;
 
 	/* Effectively centre for single line, left-align for multiple lines */
-	width: -moz-max-content;
-	width: -webkit-max-content;
-	width: intrinsic;
 	width: max-content;
-	max-width: 100%;  /* $column-width */
+	max-width: 100%;
 
-	margin: 0.75rem auto;  /* figcaption may be above or below */
+	margin: var(--figcaption-margin-v) auto;  /* figcaption may be above or below */
 	padding: 0;
 
 	text-align: left;
@@ -967,15 +1197,17 @@ figure.g-detail img, figure.g-detail picture, figure.g-detail svg {
 	max-width: unset;
 }
 
-/* Hyperlink for images only, not tables */
+/* Unset hyperlink styles for images (but not tables) */
 figure > a {
-	display: inline-block;
+	display: block;
 
-	margin: 0;
+	width: max-content;
+
+	margin: 0 auto;
 	padding: 0;
 }
 figure > a img, figure > a picture, figure > a svg {
-	display: inline-block;
+	display: initial;
 
 	margin: 0;
 	padding: 0;
@@ -984,138 +1216,88 @@ figure > a img, figure > a picture, figure > a svg {
 }
 
 figure.g-bound {
+	max-width: 100%;
+
 	margin-left: 0;
 	margin-right: 0;
 }
 figure.g-bound img, figure.g-bound picture, figure.g-bound svg, figure.g-bound table {
 	max-width: 100%;
 }
-figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-bound a table {
+figure.g-bound > a {
 	max-width: 100%;
 }
 
-/* If main supports width calculations, expand outside of column and use these as margins */
-/* If not supported, fall back to being bound by column */
-@supports (max-width: calc(50% - 50vw + 1rem)) {
+/* Left and right aligned figures */
+figure.g-left,
+figure.g-right {
+	/* When combined with width: max-content, this makes the figure aligned when narrower than main column, and centred when wider */
+	min-width: 100%;
+}
+
+figure.g-left img,
+figure.g-left picture,
+figure.g-left svg,
+figure.g-left table {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+figure.g-left figcaption {
+	margin-left: 0;
+	margin-right: auto;
+
+	text-align: left;
+}
+
+figure.g-right img,
+figure.g-right picture,
+figure.g-right svg,
+figure.g-right table {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+figure.g-right figcaption {
+	margin-left: auto;
+	margin-right: 0;
+
+	text-align: right;
+}
+
+figure.g-left figcaption.g-bound,
+figure.g-right figcaption.g-bound {
+	width: 100%;
+	max-width: 100%;
+
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (min-width: 704px) {  /* value of 100vw when var(--figure-wide-max-width) == var(--column-width); 44rem */
+	/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
 	figure {
-		margin-left: calc(50% - 50vw + 1rem);
-		margin-right: calc(50% - 50vw + 1rem);
+		max-width: var(--figure-wide-max-width);
 	}
 
-
-	@media (min-width: 44rem) {
-		/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
-		figure {
-			margin-left: calc(50% - 50vw + 2rem);
-			margin-right: calc(50% - 50vw + 2rem);
-		}
-
-		/* Elements bound to column width should be set to appropriate values rather than 100% */
-		figcaption {
-			max-width: 38rem;
-		}
-
-		figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
-			max-width: 40rem;
-		}
+	/* Elements bound to column width should be set to appropriate values rather than 100% */
+	figcaption {
+		max-width: var(--figcaption-width-compat);
+		max-width: calc(var(--column-width) - 2 * var(--figcaption-margin-h));
 	}
 
-	/* If supported, replace the above expanded margins with an offset using transform */
-	@supports (transform: translate(-50%)) {
+	figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
+		max-width: var(--column-width);
+	}
 
-		/* Unset hyperlink styles for images (not tables) */
-		figure > a {
-			display: block;
-
-			width: -moz-max-content;
-			width: -webkit-max-content;
-			width: intrinsic;
-			width: max-content;
-
-			margin: 0 auto;
-		}
-		figure > a img, figure > a picture, figure > a svg {
-			display: initial;
-		}
-
-		figure {
-			position: relative;
-			left: 50%;
-
-			width: -moz-max-content;
-			width: -webkit-max-content;
-			width: intrinsic;
-			width: max-content;
-			max-width: calc(100vw - 2rem);
-
-			margin-left: 0;
-			margin-right: 0;
-
-			text-align: initial;
-
-			transform: translateX(-50%);
-		}
-
-		figure.g-bound {
-			max-width: 100%;
-		}
-		figure.g-bound > a {
-			max-width: 100%;
-		}
-
-		/* Left and right aligned figures */
-		figure.g-left, figure.g-right {
-			/* When combined with width: max-content, this makes the figure aligned when narrower than main column, and centred when wider */
-			min-width: 100%;
-		}
-
-		figure.g-left img, figure.g-left picture, figure.g-left svg, figure.g-left table {
-			margin-left: 0;
-			margin-right: auto;
-		}
-		figure.g-left figcaption {
-			margin-left: 0;
-			margin-right: auto;
-
-			text-align: left;
-		}
-
-		figure.g-right img, figure.g-right picture, figure.g-right svg, figure.g-right table {
-			margin-left: auto;
-			margin-right: 0;
-		}
-		figure.g-right figcaption {
-			margin-left: auto;
-			margin-right: 0;
-
-			text-align: right;
-		}
-
-		figure.g-left figcaption.g-bound, figure.g-right figcaption.g-bound {
-			width: 100%;
-			max-width: 100%;
-
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		@media (min-width: 44rem) {
-			figure {
-				max-width: calc(100vw - 4rem);
-
-				margin-left: 0;
-				margin-right: 0;
-			}
-
-			figure.g-left figcaption.g-bound, figure.g-right figcaption.g-bound {
-				/* Reset max-width to disable centreing for single-line captions */
-				/* Reset to 39rem instead of 38rem because captions for left- and right- aligned figures are flush against column but with 1rem margin on the other side */
-				width: 39rem;
-				max-width: 39rem;
-				/* Contrast with centred figure with a multiline (left-aligned) caption, or with directly left- or right- aligned captions, both of which are 38rem and not flush */
-
-			}
-		}
+	figure.g-left figcaption.g-bound, figure.g-right figcaption.g-bound {
+		/* Reset max-width to disable centreing for single-line captions */
+		/* Subtract one-sided margin instead of two because captions for left- and right- aligned figures are flush against column but with var(--figcaption-margin-h) margin on the other side */
+		width: var(--figcaption-aligned-width-compat);
+		width: calc(var(--column-width) - var(--figcaption-margin-h));
+		max-width: var(--figcaption-aligned-width-compat);
+		max-width: calc(var(--column-width) - var(--figcaption-margin-h));
+		/* Contrast with centred figure with a multiline (left-aligned) caption, or with directly left- or right- aligned captions, both of which have margin on boths sides and are not flush */
 	}
 }
 
@@ -1128,22 +1310,20 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 table {
 	display: table;
 
-	width: -moz-max-content;
-	width: -webkit-max-content;
-	width: intrinsic;
 	width: max-content;
 
-	margin-top: 0.75rem;
-	margin-bottom: 2.25rem;
+	margin-top: var(--table-margin-top);
+	margin-bottom: var(--table-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 
-	border-top: 1px solid lightgrey;
+	border-top: var(--table-border-width) solid var(--table-border-color);
 	border-collapse: collapse;
 
 	text-align: left;
 	text-align: start;
+	-webkit-hyphens: auto;
 	hyphens: auto;
 
 	overflow-x: auto;
@@ -1152,12 +1332,12 @@ td, th {
 	display: table-cell;
 
 	margin: 0;
-	padding: 0.1875rem 0.5em;
+	padding: var(--table-padding-v) var(--table-padding-h);
 }
 th, thead td {
 	text-align: center;
 
-	border-bottom: 1px solid lightgrey;
+	border-bottom: var(--table-border-width) solid var(--table-border-color);
 }
 td.g-left, th.g-left {
 	text-align: left;
@@ -1182,7 +1362,7 @@ thead {
 	margin: 0;
 	padding: 0;
 
-	border-bottom: 1px solid lightgrey;
+	border-bottom: var(--table-border-width) solid var(--table-border-color);
 }
 tbody {
 	display: table-row-group;
@@ -1190,7 +1370,7 @@ tbody {
 	margin: 0;
 	padding: 0;
 
-	border-bottom: 1px solid lightgrey;
+	border-bottom: var(--table-border-width) solid var(--table-border-color);
 }
 tfoot {
 	display: table-footer-group;
@@ -1198,7 +1378,7 @@ tfoot {
 	margin: 0;
 	padding: 0;
 
-	border-bottom: 1px solid lightgrey;
+	border-bottom: var(--table-border-width) solid var(--table-border-color);
 }
 
 
@@ -1209,7 +1389,7 @@ tfoot {
 a {
 	display: inline;
 
-	color: maroon;
+	color: var(--link-color);
 	text-decoration: underline;
 }
 a:hover {
@@ -1217,7 +1397,7 @@ a:hover {
 	text-decoration: underline double;
 }
 a:visited {
-	color: #600000;
+	color: var(--visited-color);
 }
 
 dfn {
@@ -1226,19 +1406,18 @@ dfn {
 }
 
 small {
-	font-size: 0.833333rem;
-	line-height: 1.125rem;
+	font-size: var(--small-font-size);
+	line-height: var(--small-line-height);
 }
 
 /* Redefine these to prevent increasing main line height */
 sup {
-	font-size: 0.833333rem;
-	line-height: 1.125rem;
+	font-size: var(--small-font-size);
+	line-height: var(--small-line-height);
 	vertical-align: top;
 }
-sub {
-	font-size: 0.833333rem;
-	line-height: 1.125rem;
+sub {font-size: var(--small-font-size);
+	line-height: var(--small-line-height);
 	vertical-align: bottom;
 }
 
@@ -1246,16 +1425,15 @@ code, samp {
 	display: inline;
 
 	box-sizing: border-box;
-	padding: 0 0.2em;
+	padding: 0 var(--inline-padding-h);
 
 	font-family: monospace;
-	line-height: 1.3rem;  /* border-radius increases line height */
-	line-height: calc(1.5rem - 0.2em);
+	line-height: var(--inline-border-radius-line-height-compat);  /* border-radius increases line height */
+	line-height: calc(var(--line-height) - var(--inline-border-radius));
+	-webkit-hyphens: none;
 	hyphens: none;
 
-	-moz-border-radius: 0.2em;
-	-webkit-border-radius: 0.2em;
-	border-radius: 0.2em;
+	border-radius: var(--inline-border-radius);
 }
 code {
 	background-color: seashell;
@@ -1266,27 +1444,24 @@ samp {
 
 kbd {
 	display: inline-block;
-
-	padding: 0.1em 0.2em;
-	margin: 0 0.1em;
+	margin: 0 var(--kbd-margin-h);
+	padding: var(--kbd-padding-v) var(--kbd-padding-h);
 
 	font-family: inherit;
-	font-size: 0.9375rem;
-	font-weight: 500;
-	/* Same as abbr */
+	font-size: var(--demi-font-size);
+	font-weight: var(--demi-font-weight);
 
-	line-height: 1.1rem;  /* border-radius increases line height */
-	line-height: calc(1.3rem - 0.2em - 0.2em - 1px);
+	line-height: var(--kbd-line-height-compat);  /* border-radius increases line height */
+	line-height: calc(var(--line-height) - 2 * var(--border-radius) - var(--kbd-frame-width));
+	line-height: calc(1.5rem - 0.2em - 0.2em - 1px);
 
-	border: 1px solid lightgrey;
-	box-shadow: 0 1px 0 1px lightgrey;
+	border: var(--kbd-frame-width) solid var(--kbd-frame-color);
+	box-shadow: 0 var(--kbd-shadow-width) 0 var(--kbd-shadow-width) var(--kbd-frame-color);
 
-	-moz-border-radius: 0.2em;
-	-webkit-border-radius: 0.2em;
-	border-radius: 0.2em;
+	border-radius: var(--inline-border-radius);
 }
 h1 > kbd, h2 > kbd, h3 > kbd, h4 > kbd, h5 > kbd, h6 > kbd, b > kbd, strong > kbd, dfn > kbd, dt > kbd {
-	font-weight: 700;
+	font-weight: var(--demi-bold-font-weight);
 }
 kbd > code:first-child, kbd > samp:first-child {
 	padding-left: 0;
@@ -1313,14 +1488,14 @@ kbd > code:last-child, kbd > samp:last-child {
 abbr {
 	display: inline;
 
-	font-size: 0.9375em;
-	font-weight: 500;
+	font-size: var(--demi-font-size);
+	font-weight: var(--demi-font-weight);
 }
 abbr[title] {
 	text-decoration: underline dotted;
 }
 h1 > abbr, h2 > abbr, h3 > abbr, h4 > abbr, h5 > abbr, h6 > abbr, b > abbr, strong > abbr, dfn > abbr, dt > abbr {
-	font-weight: 700;
+	font-weight: var(--demi-bold-font-weight);
 }
 
 abbr.g-capital {
@@ -1332,7 +1507,7 @@ abbr.g-capital {
 	-moz-animation: ffbug 0.1s ease 1;
 }
 abbr.g-capital::first-letter {
-	font-size: 1.142857em;  /* 8/7 */
+	font-size: var(--inverse-demi-font-size);
 	font-weight: normal;
 }
 h1 > abbr.g-capital::first-letter,
@@ -1361,21 +1536,19 @@ a:hover abbr.g-capital {
 */
 
 .g-nohyphen {
-	-moz-hyphens: none;
 	-webkit-hyphens: none;
-	-ms-hyphens: none;
 	hyphens: none;
 }
 
 .g-abbr {
-	font-size: 0.9375em;
-	font-weight: 500;
+	font-size: var(--demi-font-size);
+	font-weight: var(--demi-font-weight);
 }
 .g-abbr[title] {
 	text-decoration: underline dotted;
 }
 h1 > .g-abbr, h2 > .g-abbr, h3 > .g-abbr, h4 > .g-abbr, h5 > .g-abbr, h6 > .g-abbr, b > .g-abbr, strong > .g-abbr, dfn > .g-abbr, dt > .g-abbr {
-	font-weight: 700;
+	font-weight: var(--demi-bold-font-weight);
 }
 a .g-abbr {
 	display: inline;
@@ -1394,7 +1567,7 @@ a:hover .g-abbr {
 	-moz-animation: ffbug 0.1s ease 1;
 }
 .g-abbr.g-capital::first-letter {
-	font-size: 1.142857em;  /* 8/7 */
+	font-size: var(--inverse-demi-font-size);
 	font-weight: normal;
 }
 h1 > .g-abbr.g-capital::first-letter,
@@ -1418,7 +1591,7 @@ a:hover .g-abbr.g-capital {
 }
 
 .g-quiet {
-	color: grey;
+	color: var(--quiet-color);
 }
 
 
@@ -1430,26 +1603,19 @@ a.g-button {
 	display: block;
 	box-sizing: border-box;
 
-	width: -moz-max-content;
-	width: -webkit-max-content;
-	width: intrinsic;
 	width: max-content;
 	max-width: 100%;
 
-	margin: 1.5rem 0;
-	padding-top: 0.9375rem;
-	padding-top: calc(0.9375rem - 2px);
-	padding-bottom: 0.9375rem;
-	padding-bottom: calc(0.9375rem - 2px);
-	padding-left: 2em;
-	padding-right: 2em;
+	margin: var(--button-margin-v) 0;
+	padding: var(--button-padding-v) var(--button-padding-h);
+	padding: calc(var(--button-padding-v) - var(--button-border-width)) var(--button-padding-h);
 
-	border: 2px solid;
-	border-radius: 6px;
+	border: var(--button-border-width) solid;
+	border-radius: var(--button-border-radius);
 
 	overflow: hidden;
 
-	line-height: 1.125rem;
+	line-height: var(--button-line-height);
 	text-decoration: none;
 
 	transition: all 100ms ease;
@@ -1459,8 +1625,8 @@ nav > a.g-button {
 
 	margin: 0;
 }
-a.g-button:focus, a.g-button:focus-within {
-	background-color: #ffd4d1;
+a.g-button:hover, a.g-button:focus, a.g-button:focus-within {
+	background-color: var(--button-highlight-color);
 }
 
 a.g-button:hover img, a.g-button:hover picture, a.g-button:hover svg {
@@ -1474,66 +1640,66 @@ a.g-button .g-icon {
 
 /* Custom button colours */
 a.g-green, a.g-go, a.g-okay {
-	color: green;
-	border-color: green;
-	background-color: #d0f0d0;
+	color: var(--button-green-color);
+	border-color: var(--button-green-color);
+	background-color: var(--button-green-background-color);
 }
 a.g-green:hover, a.g-green:focus, a.g-green:focus-within, a.g-go:hover, a.g-go:focus, a.g-go:focus-within, a.g-okay:hover, a.g-okay:focus, a.g-okay:focus-within {
-	background-color: #b8f0b8;
+	background-color: var(--button-green-highlight-color);
 }
 
 a.g-cyan, a.g-upload {
-	color: darkcyan;
-	border-color: darkcyan;
-	background-color: #d5fcfa;
+	color: var(--button-cyan-color);
+	border-color: var(--button-cyan-color);
+	background-color: var(--button-cyan-background-color);
 }
 a.g-cyan:hover, a.g-cyan:focus, a.g-cyan:focus-within, a.g-upload:hover, a.g-upload:focus, a.g-upload:focus-within {
-	background-color: #bcfaf7;
+	background-color: var(--button-cyan-highlight-color);
 }
 
 a.g-blue, a.g-send, a.g-back {
-	color: royalblue;
-	border-color: royalblue;
-	background-color: #dadafd;
+	color: var(--button-blue-color);
+	border-color: var(--button-blue-color);
+	background-color: var(--button-blue-background-color);
 }
 a.g-blue:hover, a.g-blue:focus, a.g-blue:focus-within, a.g-send:hover, a.g-send:focus, a.g-send:focus-within, a.g-back:hover, a.g-back:focus, a.g-back:focus-within {
-	background-color: #cacaff;
+	background-color: var(--button-blue-highlight-color);
 }
 
 a.g-magenta, a.g-download {
-	color: darkmagenta;
-	border-color: darkmagenta;
-	background-color: #ffdcff;
+	color: var(--button-magenta-color);
+	border-color: var(--button-magenta-color);
+	background-color: var(--button-magenta-background-color);
 }
 a.g-magenta:hover, a.g-magenta:focus, a.g-magenta:focus-within, a.g-download:hover, a.g-download:focus, a.g-download:focus-within {
-	background-color: #fac5fa;
+	background-color: var(--button-magenta-highlight-color);
 }
 
 a.g-red, a.g-cancel, a.g-delete {
-	color: firebrick;
-	border-color: firebrick;
-	background-color: #fcdcdc;
+	color: var(--button-red-color);
+	border-color: var(--button-red-color);
+	background-color: var(--button-red-background-color);
 }
 a.g-red:hover, a.g-red:focus, a.g-red:focus-within, a.g-cancel:hover, a.g-cancel:focus, a.g-cancel:focus-within, a.g-delete:hover, a.g-delete:focus, a.g-delete:focus-within {
-	background-color: #f3c2c2;
+	background-color: var(--button-red-highlight-color);
 }
 
 a.g-orange {
-	color: chocolate;
-	border-color: chocolate;
-	background-color: #f7e3bb;
+	color: var(--button-orange-color);
+	border-color: var(--button-orange-color);
+	background-color: var(--button-orange-background-color);
 }
 a.g-orange:hover, a.g-orange:focus, a.g-orange:focus-within {
-	background-color: #f8db9c;
+	background-color: var(--button-orange-highlight-color);
 }
 
 a.g-yellow, a.g-star {
-	color: goldenrod;
-	border-color: goldenrod;
-	background-color: #faf2c6;
+	color: var(--button-yellow-color);
+	border-color: var(--button-yellow-color);
+	background-color: var(--button-yellow-background-color);
 }
 a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g-star:focus, a.g-star:focus-within {
-	background-color: #faecac;
+	background-color: var(--button-yellow-highlight-color);
 }
 
 
@@ -1544,31 +1710,28 @@ a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g
 picture a.g-button {
 	position: absolute;
 
-	right: 0.75rem;
-	bottom: 0.75rem;
+	bottom: var(--image-button-margin-v);
+	right: var(--image-button-margin-h);
 
-	height: 2.25rem;
+	height: var(--image-button-height);
 
 	margin: 0;
-	padding-top: 0.5625rem;
-	padding-bottom: 0.5625rem;
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
+	padding: var(--image-button-padding-v) var(--image-button-padding-h);
 
-	color: lightgrey;
+	color: var(--image-button-color);
 
 	border: none;
-	background-color: #00000080;
+	background-color: var(--image-button-background-color);
 
 	opacity: 0;
 }
 picture a.g-button:hover {
-	color: white;
-	background-color: #000000a0
+	color: var(--image-button-hover-color);
+	background-color: var(--image-button-hover-background-color);
 }
 picture a.g-button:focus, picture a.g-button:focus-within {
-	color: #ffffffc0;
-	background-color: #000000c0;
+	color: var(--image-button-focus-color);
+	background-color: var(--image-button-focus-background-color);
 
 	transition: all 100ms ease;
 }
@@ -1586,11 +1749,11 @@ picture a.g-button::after {
 	margin: 0;
 	padding: 0;
 
-	background-color: lightgrey;
+	background-color: var(--image-button-color);
 	opacity: 0;
 
-	-webkit-mask-size: 1.25rem;
-	mask-size: 1.25rem;
+	-webkit-mask-size: var(--button-icon-size);
+	mask-size: var(--button-icon-size);
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	-webkit-mask-position: top 50% left 50%;
@@ -1600,10 +1763,10 @@ picture a.g-button::after {
 	transition: all 100ms ease;
 }
 picture a.g-button:hover::after {
-	background-color: white;
+	background-color: var(--image-button-hover-color);
 }
 picture a.g-button:focus::after, picture a.g-button:focus-within::after {
-	background-color: #ffffffc0;
+	background-color: var(--image-button-focus-color);
 
 	transition: all 100ms ease;
 }
@@ -1613,7 +1776,7 @@ picture:hover a.g-button {
 }
 
 picture.g-left a.g-button, picture a.g-button.g-left {
-	left: 0.75rem;
+	left: var(--image-button-margin-h);
 	right: unset;
 }
 
@@ -1623,13 +1786,13 @@ picture nav {
 	justify-content: flex-end;
 	align-items: baseline;
 	align-content: flex-start;
-	gap: 0.75rem 0.75rem;
+	gap: var(--image-button-margin-v) var(--image-button-margin-h);
 
 	position: absolute;
-	left: 0.75rem;
-	right: 0.75rem;
-	top: 0.75rem;
-	bottom: 0.75rem;
+	top: var(--image-button-margin-v);
+	bottom: var(--image-button-margin-v);
+	left: var(--image-button-margin-h);
+	right: var(--image-button-margin-h);
 
 	margin: 0;
 	padding: 0;
@@ -1660,8 +1823,8 @@ picture.g-vertical.g-left nav, picture.g-vertical nav.g-left, picture.g-left nav
 }
 
 picture a.g-external, picture a.g-expand {
-	width: 2.25rem;
-	height: 2.25rem;
+	width: var(--image-button-icon-width);
+	height: var(--image-button-height);
 }
 picture a.g-external::after {
 	opacity: 1;
@@ -1685,15 +1848,29 @@ picture a.g-expand::after {
 	Coloured SVG icon for action buttons
 */
 @supports (
-		(mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'), linear-gradient(to right, black 1px, transparent 1px)) and
-		(mask-size: 1.25rem, 1px 60%) and
-		(mask-repeat: no-repeat, no-repeat) and
-		(mask-position: top 50% right 1rem, top 50% right 3.25rem)
+		(mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'), linear-gradient(to right, black 1px, transparent 1px))
+		and (mask-size:
+			var(--button-icon-size),
+			var(--button-internal-border-width) var(--button-internal-border-height))
+		and (mask-repeat: no-repeat, no-repeat)
+		and (
+			(mask-position: top 50% left var(--button-icon-margin-h),
+			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h)))
+			or (mask-position: top 50% left var(--button-icon-margin-h),
+			top 50% left var(--button-icon-box-width-compat))
+		)
 	) or (
-		(-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'), linear-gradient(to right, black 1px, transparent 1px)) and
-		(-webkit-mask-size: 1.25rem, 1px 60%) and
-		(-webkit-mask-repeat: no-repeat, no-repeat) and
-		(-webkit-mask-position: top 50% right 1rem, top 50% right 3.25rem)
+		(-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'), linear-gradient(to right, black 1px, transparent 1px))
+		and (-webkit-mask-size:
+			var(--button-icon-size),
+			var(--button-internal-border-width) var(--button-internal-border-height))
+		and (-webkit-mask-repeat: no-repeat, no-repeat)
+		and (
+			(-webkit-mask-position: top 50% left var(--button-icon-margin-h),
+			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h)))
+			or (-webkit-mask-position: top 50% left var(--button-icon-margin-h),
+			top 50% left var(--button-icon-box-width-compat))
+		)
 	)
 {
 	/* These SVG icons are from the Material Design icon set, with fill 0, weight 500, grade 0, optical size 24px */
@@ -1702,8 +1879,8 @@ picture a.g-expand::after {
 	a.g-cancel, a.g-okay, a.g-back, a.g-star, a.g-delete, a.g-left {
 		position: relative;
 
-		padding-left: 4.5rem;
-		padding-left: calc(4.5rem + 1px);
+		padding-left: var(--button-icon-box-width-with-internal-padding-h-compat);
+		padding-left: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
 	}
 	a.g-cancel:focus, a.g-cancel:focus-within, a.g-okay:focus, a.g-okay:focus-within, a.g-back:focus, a.g-back:focus-within, a.g-star:focus, a.g-star:focus-within, a.g-delete:focus, a.g-delete:focus-within, a.g-left:focus, a.g-left:focus-within {
 		color: transparent;
@@ -1727,44 +1904,64 @@ picture a.g-expand::after {
 		width: 100%;
 		height: 100%;
 
-		padding-left: 4.5rem;
-		padding-left: calc(4.5rem + 1px);
+		padding-left: var(--button-icon-box-width-with-internal-padding-h-compat);
+		padding-left: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
 
 		-webkit-mask-size:
-			1.25rem,
-			1px 60%;
+			var(--button-icon-size),
+			var(--button-internal-border-width) var(--button-internal-border-height);
 		mask-size:
-			1.25rem,
-			1px 60%;
+			var(--button-icon-size),
+			var(--button-internal-border-width) var(--button-internal-border-height);
 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
 		-webkit-mask-position:
-			top 50% left 1rem,
-			top 50% left 3.25rem;
+			top 50% left var(--button-icon-margin-h),
+			top 50% left var(--button-icon-box-width-compat);
+		-webkit-mask-position:
+			top 50% left var(--button-icon-margin-h),
+			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
 		mask-position:
-			top 50% left 1rem,
-			top 50% left 3.25rem;
+			top 50% left var(--button-icon-margin-h),
+			top 50% left var(--button-icon-box-width-compat);
+		mask-position:
+			top 50% left var(--button-icon-margin-h),
+			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
 		mask-type: alpha;
 
 		transition: all 100ms ease;
 	}
 	a.g-cancel:hover::after, a.g-okay:hover::after, a.g-back:hover::after, a.g-star:hover::after, a.g-delete:hover::after {
 		-webkit-mask-size:
-			1.5rem,
-			1px 60%;
+			var(--button-icon-highlight-size-compat),
+			var(--button-internal-border-width) var(--button-internal-border-height);
+		-webkit-mask-size:
+			calc(var(--button-icon-size) * var(--button-icon-highlight-scale)),
+			var(--button-internal-border-width) var(--button-internal-border-height);
 		mask-size:
-			1.5rem,
-			1px 60%;
+			var(--button-icon-highlight-size-compat),
+			var(--button-internal-border-width) var(--button-internal-border-height);
+		mask-size:
+			calc(var(--button-icon-size) * var(--button-icon-highlight-scale)),
+			var(--button-internal-border-width) var(--button-internal-border-height);
 		-webkit-mask-position:
-			top 50% left 0.875rem,
-			top 50% left 3.25rem;
+			top 50% left var(--button-icon-highlight-margin-h-compat),
+			top 50% left var(--button-icon-box-width-compat);
+		-webkit-mask-position:
+			top 50% left calc(var(--button-icon-margin-h) - (((var(--button-icon-size) * var(--button-icon-highlight-scale)) - var(--button-icon-size)) / 2)),
+			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
 		mask-position:
-			top 50% left 0.875rem,
-			top 50% left 3.25rem;
+			top 50% left var(--button-icon-highlight-margin-h-compat),
+			top 50% left var(--button-icon-box-width-compat);
+		mask-position:
+			top 50% left calc(var(--button-icon-margin-h) - (((var(--button-icon-size) * var(--button-icon-highlight-scale)) - var(--button-icon-size)) / 2)),
+			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
 	}
 	a.g-cancel:focus::after, a.g-cancel:focus-within::after, a.g-okay:focus::after, a.g-okay:focus-within::after, a.g-back:focus::after, a.g-back:focus-within::after, a.g-star:focus::after, a.g-star:focus-within::after, a.g-delete:focus::after, a.g-delete:focus-within::after {
-		-webkit-mask-size: 1.5rem;
-		mask-size: 1.5rem;
+		-webkit-mask-size: var(--button-icon-highlight-size-compat);
+		-webkit-mask-size: calc(var(--button-icon-size) * var(--button-icon-highlight-scale));
+		mask-size: var(--button-icon-highlight-size-compat);
+		mask-size: calc(var(--button-icon-size) * var(--button-icon-highlight-scale));
 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
 		-webkit-mask-position: center;
@@ -1777,8 +1974,8 @@ picture a.g-expand::after {
 	a.g-go, a.g-send, a.g-upload, a.g-download, a.g-right {
 		position: relative;
 
-		padding-right: 4.5rem;
-		padding-right: calc(4.5rem + 1px);
+		padding-right: var(--button-icon-box-width-with-internal-padding-h-compat);
+		padding-right: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
 	}
 	a.g-go:focus, a.g-go:focus-within, a.g-send:focus, a.g-send:focus-within, a.g-upload:focus, a.g-upload:focus-within, a.g-download:focus, a.g-download:focus-within, a.g-right:focus, a.g-right:focus-within {
 		color: transparent;
@@ -1802,44 +1999,64 @@ picture a.g-expand::after {
 		width: 100%;
 		height: 100%;
 
-		padding-right: 4.5rem;
-		padding-right: calc(4.5rem + 1px);
+		padding-right: var(--button-icon-box-width-with-internal-padding-h-compat);
+		padding-right: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
 
 		-webkit-mask-size:
-			1.25rem,
-			1px 60%;
+			var(--button-icon-size),
+			var(--button-internal-border-width) var(--button-internal-border-height);
 		mask-size:
-			1.25rem,
-			1px 60%;
+			var(--button-icon-size),
+			var(--button-internal-border-width) var(--button-internal-border-height);
 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
 		-webkit-mask-position:
-			top 50% right 1rem,
-			top 50% right 3.25rem;
+			top 50% right var(--button-icon-margin-h),
+			top 50% right var(--button-icon-box-width-compat);
+		-webkit-mask-position:
+			top 50% right var(--button-icon-margin-h),
+			top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
 		mask-position:
-			top 50% right 1rem,
-			top 50% right 3.25rem;
+			top 50% right var(--button-icon-margin-h),
+			top 50% right var(--button-icon-box-width-compat);
+		mask-position:
+			top 50% right var(--button-icon-margin-h),
+			top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
 		mask-type: alpha;
 
 		transition: all 100ms ease;
 	}
 	a.g-go:hover::after, a.g-send:hover::after, a.g-upload:hover::after, a.g-download:hover::after {
 		-webkit-mask-size:
-			1.5rem,
-			1px 60%;
+			var(--button-icon-highlight-size-compat),
+			var(--button-internal-border-width) var(--button-internal-border-height);
+		-webkit-mask-size:
+			calc(var(--button-icon-size) * var(--button-icon-highlight-scale)),
+			var(--button-internal-border-width) var(--button-internal-border-height);
 		mask-size:
-			1.5rem,
-			1px 60%;
+			var(--button-icon-highlight-size-compat),
+			var(--button-internal-border-width) var(--button-internal-border-height);
+		mask-size:
+			calc(var(--button-icon-size) * var(--button-icon-highlight-scale)),
+			var(--button-internal-border-width) var(--button-internal-border-height);
 		-webkit-mask-position:
-			top 50% right 0.875rem,
-			top 50% right 3.25rem;
+			top 50% right var(--button-icon-highlight-margin-h-compat),
+			top 50% right var(--button-icon-box-width-compat);
+		-webkit-mask-position:
+			top 50% right calc(var(--button-icon-margin-h) - ((calc(var(--button-icon-size) * var(--button-icon-highlight-scale))) - var(--button-icon-size))),
+			top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
 		mask-position:
-			top 50% right 0.875rem,
-			top 50% right 3.25rem;
+			top 50% right var(--button-icon-highlight-margin-h-compat),
+			top 50% right var(--button-icon-box-width-compat);
+		mask-position:
+			top 50% right calc(var(--button-icon-margin-h) - ((calc(var(--button-icon-size) * var(--button-icon-highlight-scale))) - var(--button-icon-size))),
+			top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
 	}
 	a.g-go:focus::after, a.g-go:focus-within::after, a.g-go:focus-within::after , a.g-send:focus::after, a.g-send:focus-within::after, a.g-send:focus-within::after , a.g-upload:focus::after, a.g-upload:focus-within::after, a.g-upload:focus-within::after , a.g-download:focus::after, a.g-download:focus-within::after, a.g-download:focus-within::after  {
-		-webkit-mask-size: 1.5rem;
-		mask-size: 1.5rem;
+		-webkit-mask-size: var(--button-icon-highlight-size-compat);
+		-webkit-mask-size: calc(var(--button-icon-size) * var(--button-icon-highlight-scale));
+		mask-size: var(--button-icon-highlight-size-compat);
+		mask-size: calc(var(--button-icon-size) * var(--button-icon-highlight-scale));
 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
 		-webkit-mask-position: center;
@@ -1997,24 +2214,24 @@ picture a.g-expand::after {
 		width: 100%;
 		height: 100%;
 
-		background-color: maroon;
+		background-color: var(--link-color);
 
 		-webkit-mask-image: linear-gradient(to right, black 1px, transparent 1px);
 		mask-image: linear-gradient(to right, black 1px, transparent 1px);
-		-webkit-mask-size: 1px 60%;
-		mask-size: 1px 60%;
+		-webkit-mask-size: var(--button-internal-border-width) var(--button-internal-border-height);
+		mask-size: var(--button-internal-border-width) var(--button-internal-border-height);
 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
 		mask-type: alpha;
 	}
 	a.g-left:visited::after, a.g-right:visited::after {
-		background-color: #600000;
+		background-color: var(--visited-color);
 	}
 	a.g-left:focus, a.g-left:focus-within, a.g-right:focus, a.g-right:focus-within {
-		border-color: maroon;
+		border-color: var(--link-color);
 	}
 	a.g-left:visited:focus, a.g-left:visited:focus-within, a.g-right:visited:focus, a.g-right:visited:focus-within {
-		border-color: #600000;
+		border-color: var(--visited-color);
 	}
 	a.g-left:focus::after, a.g-left:focus-within::after, a.g-right:focus::after, a.g-right:focus-within::after {
 		background-color: transparent;
@@ -2023,19 +2240,23 @@ picture a.g-expand::after {
 	}
 
 	a.g-left::after {
-		padding-left: 4.5rem;
-		padding-left: calc(4.5rem + 1px);
+		padding-left: var(--button-icon-box-width-with-internal-padding-h-compat);
+		padding-left: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
 
-		-webkit-mask-position: top 50% left 3.25rem;
-		mask-position: top 50% left 3.25rem;
+		-webkit-mask-position: top 50% left var(--button-icon-box-width-compat);
+		-webkit-mask-position: top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+		mask-position: top 50% left var(--button-icon-box-width-compat);
+		mask-position: top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
 	}
 
 	a.g-right::after {
-		padding-right: 4.5rem;
-		padding-right: calc(4.5rem + 1px);
+		padding-right: var(--button-icon-box-width-with-internal-padding-h-compat);
+		padding-right: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
 
-		-webkit-mask-position: top 50% right 3.25rem;
-		mask-position: top 50% right 3.25rem;
+		-webkit-mask-position: top 50% right var(--button-icon-box-width-compat);
+		-webkit-mask-position: top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+		mask-position: top 50% right var(--button-icon-box-width-compat);
+		mask-position: top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
 	}
 
 	/* Custom icons in buttons */
@@ -2045,7 +2266,7 @@ picture a.g-expand::after {
 		position: absolute;
 		top: 50%;
 
-		max-height: 1.25rem;
+		max-height: var(--button-icon-size);
 		width: auto;
 
 		margin: 0;
@@ -2053,21 +2274,12 @@ picture a.g-expand::after {
 
 		opacity: 1;
 	}
-	a.g-left:hover .g-icon, a.g-right:hover .g-icon {
-		max-height: 1.5rem;
-
-		transition: all 100ms ease;
-	}
 	a.g-left:focus .g-icon, a.g-left:focus-within .g-icon, a.g-right:focus .g-icon, a.g-right:focus-within .g-icon {
-		max-height: 1.5rem;
-
-		color: maroon;  /* So that text elements can be used as icon */
-
-		transition: all 300ms ease;
+		color: var(--link-color);  /* So that text elements can be used as icon */
 	}
-	a.g-left:visited:focus .g-icon, a.g-left:visited:focus-within .g-icon, a.g-right:visited:focus .g-icon, a.g-right:vistied:focus-within .g-icon {
+	a.g-left:visited:focus .g-icon, a.g-left:visited:focus-within .g-icon, a.g-right:visited:focus .g-icon, a.g-right:visited:focus-within .g-icon {
 		/* So that text elements can be used as icon */
-		color: #600000;
+		color: var(--visited-color);
 	}
 	a.g-left:focus svg.g-icon *, a.g-left:focus math.g-icon *, a.g-left:focus-within svg.g-icon *, a.g-left:focus-within math.g-icon *, a.g-right:focus svg.g-icon *, a.g-right:focus math.g-icon *, a.g-right:focus-within svg.g-icon *, a.g-right:focus-within math.g-icon * {
 		/* So that embedded XML can be used as icon */
@@ -2075,111 +2287,114 @@ picture a.g-expand::after {
 	}
 
 	a.g-left .g-icon {
-		left: 1.625rem;
+		left: var(--button-icon-centre-compat);
+		left: calc(0.5 * var(--button-icon-size) + var(--button-icon-margin-h));
 		transform: translate(-50%, -50%);
+	}
+	a.g-left:hover .g-icon {
+		transform: translate(-50%, -50%) scale(var(--button-icon-highlight-scale), var(--button-icon-highlight-scale));
+
+		transition: all 100ms ease;
 	}
 	a.g-left:focus .g-icon, a.g-left:focus-within .g-icon {
 		left: 50%;
+
+		transition: all 300ms ease;
 	}
 
 	a.g-right .g-icon {
-		right: 1.625rem;
+		right: var(--button-icon-centre-compat);
+		right: calc(0.5 * var(--button-icon-size) + var(--button-icon-margin-h));
 		transform: translate(50%, -50%);
+	}
+	a.g-right:hover .g-icon {
+		transform: translate(50%, -50%) scale(var(--button-icon-highlight-scale), var(--button-icon-highlight-scale));
+
+		transition: all 100ms ease;
 	}
 	a.g-right:focus .g-icon, a.g-right:focus-within .g-icon {
 		right: 50%;
-	}
 
-	@supports (transform: translate(-50%, -50%) scale(1.2, 1.2)) {
-		a.g-left:hover .g-icon, a.g-left:focus .g-icon, a.g-left:focus-within .g-icon {
-			max-height: 1.25rem;  /* Use original height and scale it instead */
-
-			transform: translate(-50%, -50%) scale(1.2, 1.2);
-		}
-		a.g-right:hover .g-icon, a.g-right:focus .g-icon, a.g-right:focus-within .g-icon {
-			max-height: 1.25rem;  /* Use original height and scale it instead */
-
-			transform: translate(50%, -50%) scale(1.2, 1.2);
-		}
+		transition: all 300ms ease;
 	}
 
 	/* Custom button colours */
 	a.g-green::after, a.g-green:visited::after {
-		background-color: green;
+		background-color: var(--button-green-color);
 	}
 
 	a.g-cyan::after, a.g-cyan:visited::after {
-		background-color: darkcyan;
+		background-color: var(--button-cyan-color);
 	}
 
 	a.g-blue::after, a.g-blue:visited::after {
-		background-color: royalblue;
+		background-color: var(--button-blue-color);
 	}
 
 	a.g-magenta::after, a.g-magenta:visited::after {
-		background-color: darkmagenta;
+		background-color: var(--button-magenta-color);
 	}
 
 	a.g-red::after, a.g-red:visited::after {
-		background-color: firebrick;
+		background-color: var(--button-red-color);
 	}
 
 	a.g-orange::after, a.g-orange:visited::after {
-		background-color: chocolate;
+		background-color: var(--button-orange-color);
 	}
 
 	a.g-yellow::after, a.g-yellow:visited::after {
-		background-color: goldenrod;
+		background-color: var(--button-yellow-color);
 	}
 
 	/* For greater specificity to override .g-left and .g-right */
 	a.g-green:focus, a.g-green:visited:focus, a.g-green:focus-within, a.g-green:visited:focus-within {
-		border-color: green;
+		border-color: var(--button-green-color);
 	}
 	a.g-green:focus .g-icon, a.g-green:visited:focus .g-icon, a.g-green:focus-within .g-icon, a.g-green:visited:focus-within .g-icon {
-		color: green;
+		color: var(--button-green-color);
 	}
 
 	a.g-cyan:focus, a.g-cyan:visited:focus, a.g-cyan:focus-within, a.g-cyan:visited:focus-within {
-		border-color: darkcyan;
+		border-color: var(--button-cyan-color);
 	}
 	a.g-cyan:focus .g-icon, a.g-cyan:visited:focus .g-icon, a.g-cyan:focus-within .g-icon, a.g-cyan:visited:focus-within .g-icon {
-		color: darkcyan;
+		color: var(--button-cyan-color);
 	}
 
 	a.g-blue:focus, a.g-blue:visited:focus, a.g-blue:focus-within, a.g-blue:visited:focus-within {
-		border-color: royalblue;
+		border-color: var(--button-blue-color);
 	}
 	a.g-blue:focus .g-icon, a.g-blue:visited:focus .g-icon, a.g-blue:focus-within .g-icon, a.g-blue:visited:focus-within .g-icon {
-		color: royalblue;
+		color: var(--button-blue-color);
 	}
 
 	a.g-magenta:focus, a.g-magenta:visited:focus, a.g-magenta:focus-within, a.g-magenta:visited:focus-within {
-		border-color: darkmagenta;
+		border-color: var(--button-magenta-color);
 	}
 	a.g-magenta:focus .g-icon, a.g-magenta:visited:focus .g-icon, a.g-magenta:focus-within .g-icon, a.g-magenta:visited:focus-within .g-icon {
-		color: darkmagenta;
+		color: var(--button-magenta-color);
 	}
 
 	a.g-red:focus, a.g-red:visited:focus, a.g-red:focus-within, a.g-red:visited:focus-within {
-		border-color: firebrick;
+		border-color: var(--button-red-color);
 	}
 	a.g-red:focus .g-icon, a.g-red:visited:focus .g-icon, a.g-red:focus-within .g-icon, a.g-red:visited:focus-within .g-icon {
-		color: firebrick;
+		color: var(--button-red-color);
 	}
 
 	a.g-orange:focus, a.g-orange:visited:focus, a.g-orange:focus-within, a.g-orange:visited:focus-within {
-		border-color: chocolate;
+		border-color: var(--button-orange-color);
 	}
 	a.g-orange:focus .g-icon, a.g-orange:visited:focus .g-icon, a.g-orange:focus-within .g-icon, a.g-orange:visited:focus-within .g-icon {
-		color: chocolate;
+		color: var(--button-orange-color);
 	}
 
 	a.g-yellow:focus, a.g-yellow:visited:focus, a.g-yellow:focus-within, a.g-yellow:visited:focus-within {
-		border-color: goldenrod;
+		border-color: var(--button-yellow-color);
 	}
 	a.g-cyan:yellow .g-icon, a.g-cyan:visited:yellow .g-icon, a.g-cyan:yellow-within .g-icon, a.g-cyan:visited:yellow-within .g-icon {
-		color: goldenrod;
+		color: var(--button-yellow-color);
 	}
 
 	/* Image action buttons */
@@ -2193,7 +2408,7 @@ picture a.g-expand::after {
 		width: 100%;
 		height: 100%;
 
-		color: white;
+		color: var(--image-button-hover-color);
 	}
 }
 
