@@ -31,15 +31,8 @@
 		width: max-content (IE –11, Edge –18)
 		align-items: baseline (for Flexbox) (IE –11, possibly Edge –18)
 		gap (for Flexbox) (IE –11)
-		grid-template-columns use -ms-grid-columns for IE –11
-		grid-template-areas (IE –11)
-		grid-auto-flow: row (IE –11, Edge –18)
-		gap (for Grid Layout) (IE –11) use grid-gap for iOS –11.2
-		align-items: baseline (for Grid Layout) (IE –11, possibly Edge –18)
-		grid-column (IE –11)
 		object-fit: cover or scale-down (IE –11, Edge –18)
 		display: contents (IE –11, Edge –18)
-		transform IE –11 not supported on SVG elements
 
 	Features with fallback mechanisms (unsupported browsers):
 		initial value (IE –11)
@@ -47,6 +40,13 @@
 			! Various known issues for IE11: https://caniuse.com/#feat=calc
 		text-align: start or end (IE –11, Edge –18)
 		::first-letter (IE –8) ffbug workaround for Firefox –128 using -moz-animation & @-moz-keyframes
+		Grid Layout for thumbnail list:
+			grid-template-columns use -ms-grid-columns for IE –11
+			grid-template-areas (IE –11)
+			grid-auto-flow: row (IE –11, Edge –18)
+			gap (for Grid Layout) (IE –11) use grid-gap for iOS –11.2
+			align-items: baseline (for Grid Layout) (IE –11, possibly Edge –18)
+			grid-column (IE –11)
 
 	Dependent features for action buttons, which will fallback to plain hyperlinks (unsupported browsers):
 		mask-image (IE –11), -webkit- for Chrome –119, iOS –15.3, Opera –117
