@@ -37,9 +37,8 @@
 
 	Features with fallback mechanisms (unsupported browsers):
 		initial value (IE –11)
-		calc() (IE –11, Safari 5.1, O Mini, Android –4.3) -moz- for Firefox 4–15, -webkit- for Chrome 19–25 & Safari 6 & iOS 6.1
-			! IE 9 crashes when used in the background-position property
-			! Various known issues: https://caniuse.com/#feat=calc
+		calc() (IE –11)
+			! Various known issues for IE11: https://caniuse.com/#feat=calc
 		text-align: start or end (IE –11, Edge –18, Android –4.4.4)
 		::first-letter (IE –8) ffbug workaround for Firefox using -moz-animation & @-moz-keyframes
 
