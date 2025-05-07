@@ -356,6 +356,7 @@ figure.g-bound pre {
 
 	white-space: pre-wrap;
 	word-wrap: break-word;
+	overflow-wrap: break-word;
 }
 
 pre > code.g-frame, pre > samp.g-frame {
