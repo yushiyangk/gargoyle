@@ -28,7 +28,7 @@
 		hyphens -ms- for IE –11 & Edge –18, -webkit- for Safari –16.6 & iOS –16.7
 		hyphens: auto (IE –11, Edge –18) So no need for -ms- if the only values used are auto and none
 		tab-size (IE –11, Edge –18) Must be integer for iOS –12.5
-		width: max-content (IE –11, Edge –18, Android –4.4.4, Samsung –4) -moz- for Firefox 3–65, -webkit- for Chrome 22–45, intrinsic value for Safari 3.1–10.1 & iOS 3.2–10.3
+		width: max-content (IE –11, Edge –18)
 		:visited (Android –4.3)
 		border-radius (IE –8, O Mini) -moz- for Firefox 2–3.6, -webkit- for Chrome 4 & Safari 3.1–4 & iOS 3.2 & Android 2.1
 		font-feature-settings (IE –9, O Mini, Android –4.3) -moz- old syntax for Firefox 4–14, -moz- for Firefox 15–33, -webkit- for Chrome 16–47 & Opera 15–34 & Android 4.4–4.4.4 & Samsung 4
@@ -323,9 +323,6 @@ pre {
 	display: block;
 
 	width: 40rem;
-	min-width: -moz-max-content;
-	min-width: -webkit-max-content;
-	min-width: intrinsic;
 	min-width: max-content;
 	max-width: 100%;
 
@@ -885,9 +882,6 @@ main img.g-thumbnail.g-bound, main picture.g-thumbnail.g-bound, main svg.g-thumb
 main picture {
 	position: relative;
 
-	width: -moz-max-content;
-	width: -webkit-max-content;
-	width: intrinsic;
 	width: max-content;
 }
 main picture img, main a:hover picture img {
@@ -912,9 +906,6 @@ figcaption {
 	display: block;
 
 	/* Effectively centre for single line, left-align for multiple lines */
-	width: -moz-max-content;
-	width: -webkit-max-content;
-	width: intrinsic;
 	width: max-content;
 	max-width: 100%;  /* $column-width */
 
@@ -1005,9 +996,6 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 		figure > a {
 			display: block;
 
-			width: -moz-max-content;
-			width: -webkit-max-content;
-			width: intrinsic;
 			width: max-content;
 
 			margin: 0 auto;
@@ -1020,9 +1008,6 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 			position: relative;
 			left: 50%;
 
-			width: -moz-max-content;
-			width: -webkit-max-content;
-			width: intrinsic;
 			width: max-content;
 			max-width: calc(100vw - 2rem);
 
@@ -1106,9 +1091,6 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 table {
 	display: table;
 
-	width: -moz-max-content;
-	width: -webkit-max-content;
-	width: intrinsic;
 	width: max-content;
 
 	margin-top: 0.75rem;
@@ -1408,9 +1390,6 @@ a.g-button {
 	display: block;
 	box-sizing: border-box;
 
-	width: -moz-max-content;
-	width: -webkit-max-content;
-	width: intrinsic;
 	width: max-content;
 	max-width: 100%;
 
