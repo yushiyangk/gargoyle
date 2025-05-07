@@ -27,7 +27,7 @@
 		overflow-wrap (IE –11) fallback on deprecated alias word-wrap
 		hyphens -ms- for IE –11 & Edge –18, -webkit- for Safari –16.6 & iOS –16.7
 		hyphens: auto (IE –11, Edge –18) So no need for -ms- if the only values used are auto and none
-		tab-size (IE –11, Edge –18, Android –4.3), -moz- for Firefox 4–76 & Firefox Android 68 & KaiOS 2.5, -o- for Opera 11.5–12.1 & O Mini & O Mobile 12–12.1
+		tab-size (IE –11, Edge –18) Must be integer for iOS –12.5
 		width: max-content (IE –11, Edge –18, Android –4.4.4, Samsung –4) -moz- for Firefox 3–65, -webkit- for Chrome 22–45, intrinsic value for Safari 3.1–10.1 & iOS 3.2–10.3
 		:visited (Android –4.3)
 		border-radius (IE –8, O Mini) -moz- for Firefox 2–3.6, -webkit- for Chrome 4 & Safari 3.1–4 & iOS 3.2 & Android 2.1
@@ -160,8 +160,6 @@ article {
 	overflow-wrap: break-word;
 
 	text-indent: 0;
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
 	tab-size: 4;
 }
 
