@@ -1848,15 +1848,29 @@ picture a.g-expand::after {
 	Coloured SVG icon for action buttons
 */
 @supports (
-		(mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'), linear-gradient(to right, black 1px, transparent 1px)) and
-		(mask-size: 1.25rem, 1px 60%) and
-		(mask-repeat: no-repeat, no-repeat) and
-		(mask-position: top 50% right 1rem, top 50% right 3.25rem)
+		(mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'), linear-gradient(to right, black 1px, transparent 1px))
+		and (mask-size:
+			var(--button-icon-size),
+			var(--button-internal-border-width) var(--button-internal-border-height))
+		and (mask-repeat: no-repeat, no-repeat)
+		and (
+			(mask-position: top 50% left var(--button-icon-margin-h),
+			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h)))
+			or (mask-position: top 50% left var(--button-icon-margin-h),
+			top 50% left var(--button-icon-box-width-compat))
+		)
 	) or (
-		(-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'), linear-gradient(to right, black 1px, transparent 1px)) and
-		(-webkit-mask-size: 1.25rem, 1px 60%) and
-		(-webkit-mask-repeat: no-repeat, no-repeat) and
-		(-webkit-mask-position: top 50% right 1rem, top 50% right 3.25rem)
+		(-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'), linear-gradient(to right, black 1px, transparent 1px))
+		and (-webkit-mask-size:
+			var(--button-icon-size),
+			var(--button-internal-border-width) var(--button-internal-border-height))
+		and (-webkit-mask-repeat: no-repeat, no-repeat)
+		and (
+			(-webkit-mask-position: top 50% left var(--button-icon-margin-h),
+			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h)))
+			or (-webkit-mask-position: top 50% left var(--button-icon-margin-h),
+			top 50% left var(--button-icon-box-width-compat))
+		)
 	)
 {
 	/* These SVG icons are from the Material Design icon set, with fill 0, weight 500, grade 0, optical size 24px */
