@@ -933,6 +933,7 @@ figure {
 	left: 50%;
 
 	width: max-content;
+	max-width: 91.666667vw;  /* 100vw - 2 * $main-margin */
 	max-width: calc(100vw - 2rem);
 
 	margin-top: 0.75rem;
@@ -1060,6 +1061,7 @@ figure.g-right figcaption.g-bound {
 @media (min-width: 704px) {  /* $main-width + 2 * $column-margin; 44rem */
 	/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
 	figure {
+		/* No fallback for lack of calc() support because the existing fallback already has more generous margins, especially on wider screens */
 		max-width: calc(100vw - 4rem);
 	}
 
