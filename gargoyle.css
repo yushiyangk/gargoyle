@@ -2006,12 +2006,12 @@ picture a.g-expand::after {
 		opacity: 1;
 	}
 	a.g-left:hover .g-icon, a.g-right:hover .g-icon {
-		max-height: 1.5rem;
+		transform: translate(-50%, -50%) scale(1.2, 1.2);
 
 		transition: all 100ms ease;
 	}
 	a.g-left:focus .g-icon, a.g-left:focus-within .g-icon, a.g-right:focus .g-icon, a.g-right:focus-within .g-icon {
-		max-height: 1.5rem;
+		transform: translate(50%, -50%) scale(1.2, 1.2);
 
 		color: maroon;  /* So that text elements can be used as icon */
 
@@ -2040,19 +2040,6 @@ picture a.g-expand::after {
 	}
 	a.g-right:focus .g-icon, a.g-right:focus-within .g-icon {
 		right: 50%;
-	}
-
-	@supports (transform: translate(-50%, -50%) scale(1.2, 1.2)) {
-		a.g-left:hover .g-icon, a.g-left:focus .g-icon, a.g-left:focus-within .g-icon {
-			max-height: 1.25rem;  /* Use original height and scale it instead */
-
-			transform: translate(-50%, -50%) scale(1.2, 1.2);
-		}
-		a.g-right:hover .g-icon, a.g-right:focus .g-icon, a.g-right:focus-within .g-icon {
-			max-height: 1.25rem;  /* Use original height and scale it instead */
-
-			transform: translate(50%, -50%) scale(1.2, 1.2);
-		}
 	}
 
 	/* Custom button colours */
