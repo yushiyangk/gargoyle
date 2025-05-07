@@ -1,5 +1,59 @@
 ## Changelog
 
+### 0.4
+
+#### Added
+
+- Added CSS variables for easier customisation of the stylesheet for individual sites
+	- Most derived values are automatically computed using `calc()`
+	- **Note**: media queries cannot be automatically computed from variables, and must be manually updated to the appropriate value in `px`; the variables that each media query uses is indicated beside it.
+	- **Note**: in order to support IE 11, each derived value is separately defined as a variable ending in `-compat`, which should be updated manually; the variables that each `-compat` variable depends on is indicated beside it.
+- Compatibility check and a fallback implementation for thumbnail lists
+	- Fallback avoids using Grid Layout as it is poorly supported by IE 11
+	- Fallback will be used for IE 11 and Edge 18 (the latter due to it not supporting `display: content`)
+
+#### Changed
+
+- Use `gap` property for Grid Layout instead of the older `grid-gap` (the older property name is still used for iOS Safari 11.2)
+- Use `overflow-wrap` property instead of the older `word-wrap` (the older property name is still used for IE 11)
+
+#### Removed
+
+- Dropped support for browsers with less than 0.1% global user share as of May 2025. The **earliest supported** browsers are now:
+	- Google Chrome 109
+	- Edge 18
+	- Safari 15.6
+	- Firefox 115
+	- Opera 117
+	- IE 11
+	- Google Chrome Android 135
+	- iOS Safari 11.2
+	- Samsung Internet 27
+	- Opera Mobile 80
+	- Android Browser 135
+	- Firefox Android 137
+- Removed the following fallbacks for old browsers:
+	- fallback for `vw` units
+	- fallbacks for `transform: translate()` in figures and action buttons
+	- fallback for `display: inline-flex` or `display: -ms-inline-flexbox` in inline lists
+	- fallback for `counter-reset`, `counter-increment` properties and `counter()` function in inline lists
+	- `-moz-hyphens: auto` and `-ms-hyphens: auto` properties
+	- `-moz-tab-size` and `-o-tab-size` properties
+	- `width: -moz-max-content`, `width: -webkit-max-content` and `width: intrinsic` (used by Safari before version 11)
+	- `-moz-border-radius` and `-webkit-border-radius` properties
+	- `display: -ms-inline-flexbox` and `display -webkit-inline-flex` in inline lists
+	- `-webkit-flex` property
+	- `white-space: -moz-pre-wrap`, `white-space: -pre-wrap` and `white-space: -o-pre-wrap`
+
+
+#### Fixed
+
+- Incorrect stylesheet breakpoints due to using `rem` units in media queries (`rem` uses the browser default font size instead of that defined in the stylesheet)
+- Missing hover effect in uncoloured action buttons
+- Misaligned icons on hover or focus in custom action buttons that were aligned with `g-right`
+- Overly vertically cramped `<kbd>` elements
+- Incorrect size of initial capital letter when the `g-capital` class was added to an `<abbr>` element or an element with the `g-abbr` class
+
 ### 0.3.9
 
 - Changed the `g-continue` class for `<ol>` elements so that list numbering is continued
