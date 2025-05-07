@@ -29,7 +29,8 @@
 		hyphens: auto (IE –11, Edge –18) So no need for -ms- if the only values used are auto and none
 		tab-size (IE –11, Edge –18) Must be integer for iOS –12.5
 		width: max-content (IE –11, Edge –18)
-		flex (IE –10) -webkit- for Chrome 22–28 & Safari 8 & iOS 8–8.4
+		align-items: baseline (for Flex Box) (IE –11, possibly Edge –18)
+		gap (IE –11) (for Flex Box)
 
 	Features with fallback mechanisms (unsupported browsers):
 		initial value (IE –11)
@@ -701,8 +702,6 @@ img.g-inline, picture.g-inline, svg.g-inline {
 
 @supports (display: inline-flex) or (display: -ms-inline-flexbox) {
 	.g-inline, .g-subinline {
-		display: -ms-inline-flexbox;
-		display: -webkit-inline-flex;
 		display: inline-flex;
 		flex-flow: row wrap;
 
@@ -712,7 +711,6 @@ img.g-inline, picture.g-inline, svg.g-inline {
 
 	.g-inline > li, .g-subinline > li, .g-inline > .g-li, .g-subinline > .g-li {
 		display: block;
-		-webkit-flex: 0 0 auto;
 		flex: 0 0 auto;
 
 		margin: 0;
@@ -760,7 +758,6 @@ img.g-inline, picture.g-inline, svg.g-inline {
 
 	.g-inline > dt, .g-subinline > dt {
 		display: block;
-		-webkit-flex: 0 0 auto;
 		flex: 0 0 auto;
 
 		margin: 0;
@@ -780,7 +777,6 @@ img.g-inline, picture.g-inline, svg.g-inline {
 
 	.g-inline > dd, .g-subinline > dd {
 		display: block;
-		-webkit-flex: 0 0 auto;
 		flex: 0 0 auto;
 
 		margin: 0;
