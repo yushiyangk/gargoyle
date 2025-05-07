@@ -36,7 +36,7 @@
 		flex (IE –10) -webkit- for Chrome 22–28 & Safari 8 & iOS 8–8.4
 
 	Features with fallback mechanisms (unsupported browsers):
-		initial value (IE –11, O Mini all) -moz- for Firefox 2–3
+		initial value (IE –11)
 		vw units (IE –8, O Mini, Android –4.3)
 		calc() (IE –11, Safari 5.1, O Mini, Android –4.3) -moz- for Firefox 4–15, -webkit- for Chrome 19–25 & Safari 6 & iOS 6.1
 			! IE 9 crashes when used in the background-position property
@@ -107,7 +107,6 @@ main {
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
 
@@ -127,7 +126,6 @@ main nav {
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
 main nav.g-left {
@@ -156,7 +154,6 @@ article {
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 
 	/* CSS3 Text */
@@ -182,7 +179,6 @@ header {
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
 
@@ -194,7 +190,6 @@ footer {
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
 
@@ -206,7 +201,6 @@ section {
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
 
@@ -311,7 +305,6 @@ main aside {
 
 	text-align: left;
 	text-align: start;
-	text-align: -moz-initial;
 	text-align: initial;
 }
 @media (min-width: 652.8px) {  /* (2 * $aside-width + $column-margin) / (10 / 12) = 34rem / (10 / 12) = 40.8rem; 1rem = 16px; do not use rem */
