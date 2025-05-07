@@ -45,8 +45,12 @@
 		::first-letter (IE –8) ffbug workaround for Firefox using -moz-animation & @-moz-keyframes
 
 	Dependent features for action buttons, which will fallback to plain hyperlinks (unsupported browsers):
-		background-image multiple (IE –8)
-		background-image SVG (Safari –13.1, iOS –13.4)
+		mask-image (IE –11)
+		mask-image SVG (IE –11)
+		mask-image multiple (IE –11)
+		mask-size (IE –11)
+		mask-repeat (IE –11)
+		mask-position (IE –11)
 
 	Features with no implemented fallback mechanisms (and browsers with no support):
 		@supports (IE –11, Android –4.3)
