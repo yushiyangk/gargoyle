@@ -1411,7 +1411,7 @@ nav > a.g-button {
 
 	margin: 0;
 }
-a.g-button:focus, a.g-button:focus-within {
+a.g-button:hover, a.g-button:focus, a.g-button:focus-within {
 	background-color: #ffd4d1;
 }
 
