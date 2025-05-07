@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.4.1
+
+- Changed all CSS variables to add the prefix `--g-`
+
 ### 0.4
 
 #### Added
