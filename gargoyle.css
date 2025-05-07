@@ -2007,19 +2007,10 @@ picture a.g-expand::after {
 
 		opacity: 1;
 	}
-	a.g-left:hover .g-icon, a.g-right:hover .g-icon {
-		transform: translate(-50%, -50%) scale(1.2, 1.2);
-
-		transition: all 100ms ease;
-	}
 	a.g-left:focus .g-icon, a.g-left:focus-within .g-icon, a.g-right:focus .g-icon, a.g-right:focus-within .g-icon {
-		transform: translate(50%, -50%) scale(1.2, 1.2);
-
 		color: maroon;  /* So that text elements can be used as icon */
-
-		transition: all 300ms ease;
 	}
-	a.g-left:visited:focus .g-icon, a.g-left:visited:focus-within .g-icon, a.g-right:visited:focus .g-icon, a.g-right:vistied:focus-within .g-icon {
+	a.g-left:visited:focus .g-icon, a.g-left:visited:focus-within .g-icon, a.g-right:visited:focus .g-icon, a.g-right:visited:focus-within .g-icon {
 		/* So that text elements can be used as icon */
 		color: #600000;
 	}
@@ -2032,16 +2023,30 @@ picture a.g-expand::after {
 		left: 1.625rem;
 		transform: translate(-50%, -50%);
 	}
+	a.g-left:hover .g-icon {
+		transform: translate(-50%, -50%) scale(1.2, 1.2);
+
+		transition: all 100ms ease;
+	}
 	a.g-left:focus .g-icon, a.g-left:focus-within .g-icon {
 		left: 50%;
+
+		transition: all 300ms ease;
 	}
 
 	a.g-right .g-icon {
 		right: 1.625rem;
 		transform: translate(50%, -50%);
 	}
+	a.g-right:hover .g-icon {
+		transform: translate(50%, -50%) scale(1.2, 1.2);
+
+		transition: all 100ms ease;
+	}
 	a.g-right:focus .g-icon, a.g-right:focus-within .g-icon {
 		right: 50%;
+
+		transition: all 300ms ease;
 	}
 
 	/* Custom button colours */
