@@ -25,8 +25,8 @@
 	Optional features (unsupported browsers):
 		text-rendering (IE –11, Edge –18)
 		overflow-wrap (IE –11) fallback on deprecated alias word-wrap
-		hyphens (IE –9, Chrome –54, Chrome 55–83 partial, Opera 42–66 partial, O Mini all, Android –4.4.4, Android Chrome 80 partial, UC 12.12 partial, Samsung 4, QQ 1.2) -moz- for Firefox 6–42, -ms- for IE 10–11, Edge 12–18, -webkit- for Safari 5.1–13.1 & iOS 4.2–13.4,
-		hyphens for English (IE –9, Chrome –54, Android –4.4.4, Samsung –4)
+		hyphens -ms- for IE –11 & Edge –18, -webkit- for Safari –16.6 & iOS –16.7
+		hyphens: auto (IE –11, Edge –18) So no need for -ms- if the only values used are auto and none
 		tab-size (IE –11, Edge –18, Android –4.3), -moz- for Firefox 4–76 & Firefox Android 68 & KaiOS 2.5, -o- for Opera 11.5–12.1 & O Mini & O Mobile 12–12.1
 		width: max-content (IE –11, Edge –18, Android –4.4.4, Samsung –4) -moz- for Firefox 3–65, -webkit- for Chrome 22–45, intrinsic value for Safari 3.1–10.1 & iOS 3.2–10.3
 		:visited (Android –4.3)
@@ -153,8 +153,6 @@ article {
 	text-align: initial;
 
 	/* CSS3 Text */
-	-moz-hyphens: auto;
-	-ms-hyphens: auto;
 	-webkit-hyphens: auto;
 	hyphens: auto;
 
@@ -229,9 +227,7 @@ h1 {
 	font-weight: bold;
 
 	/* CSS3 Text */
-	-moz-hyphens: none;
 	-webkit-hyphens: none;
-	-ms-hyphens: none;
 	hyphens: none;
 }
 h2, h3, h4, h5, h6 {
@@ -1128,6 +1124,7 @@ table {
 
 	text-align: left;
 	text-align: start;
+	-webkit-hyphens: auto;
 	hyphens: auto;
 
 	overflow-x: auto;
@@ -1235,6 +1232,7 @@ code, samp {
 	font-family: monospace;
 	line-height: 1.3rem;  /* border-radius increases line height */
 	line-height: calc(1.5rem - 0.2em);
+	-webkit-hyphens: none;
 	hyphens: none;
 
 	-moz-border-radius: 0.2em;
@@ -1345,9 +1343,7 @@ a:hover abbr.g-capital {
 */
 
 .g-nohyphen {
-	-moz-hyphens: none;
 	-webkit-hyphens: none;
-	-ms-hyphens: none;
 	hyphens: none;
 }
 
