@@ -24,7 +24,7 @@
 
 	Optional features (unsupported browsers):
 		text-rendering (IE –11, Edge –18)
-		overflow-wrap (IE –11, Edge –17, O Mini, Android –4.3, KaiOS 2.5) fallback on deprecated alias word-wrap
+		overflow-wrap (IE –11) fallback on deprecated alias word-wrap
 		hyphens (IE –9, Chrome –54, Chrome 55–83 partial, Opera 42–66 partial, O Mini all, Android –4.4.4, Android Chrome 80 partial, UC 12.12 partial, Samsung 4, QQ 1.2) -moz- for Firefox 6–42, -ms- for IE 10–11, Edge 12–18, -webkit- for Safari 5.1–13.1 & iOS 4.2–13.4,
 		hyphens for English (IE –9, Chrome –54, Android –4.4.4, Samsung –4)
 		tab-size (IE –11, Edge –18, Android –4.3), -moz- for Firefox 4–76 & Firefox Android 68 & KaiOS 2.5, -o- for Opera 11.5–12.1 & O Mini & O Mobile 12–12.1
