@@ -748,6 +748,28 @@ img.g-inline, picture.g-inline, svg.g-inline {
 	vertical-align: middle;
 }
 
+ol.g-inline {
+	counter-reset: inline-list;
+}
+ol.g-inline > li {
+	counter-increment: inline-list;
+}
+ol.g-inline > li::before {
+	content: counter(inline-list) ". ";
+}
+ol.g-subinline {
+	counter-reset: subinline-list;
+}
+ol.g-subinline > li {
+	counter-increment: subinline-list;
+}
+ol.g-subinline > li::before {
+	content: counter(subinline-list) ". ";
+}
+ol.g-continue {
+	counter-reset: none;
+}
+
 .g-inline, .g-subinline {
 	display: inline-flex;
 	flex-flow: row wrap;
@@ -777,30 +799,6 @@ img.g-inline, picture.g-inline, svg.g-inline {
 }
 .g-inline > li:last-child::after, .g-subinline > li:last-child::after, .g-inline > .g-li:last-child::after, .g-subinline > .g-li:last-child::after {
 	content: none;
-}
-
-@supports (counter-reset: count) and (counter-increment: count) and (content: counter(count)) {
-	ol.g-inline {
-		counter-reset: inline-list;
-	}
-	ol.g-inline > li {
-		counter-increment: inline-list;
-	}
-	ol.g-inline > li::before {
-		content: counter(inline-list) ". ";
-	}
-	ol.g-subinline {
-		counter-reset: subinline-list;
-	}
-	ol.g-subinline > li {
-		counter-increment: subinline-list;
-	}
-	ol.g-subinline > li::before {
-		content: counter(subinline-list) ". ";
-	}
-	ol.g-continue {
-		counter-reset: none;
-	}
 }
 
 .g-inline > dt, .g-subinline > dt {
