@@ -46,12 +46,7 @@
 
 	Dependent features for action buttons, which will fallback to plain hyperlinks (unsupported browsers):
 		background-image multiple (IE –8)
-		background-image SVG (IE –8, Safari –13.1, iOS –13.4)
-		linear-gradient() (IE –9)
-		linear-gradient(to) (IE –9)
-		background-size (IE –8)
-		background-repeat (Android IE –4.4.4)
-		background-position edge offset (IE –8, Android –4.3)
+		background-image SVG (Safari –13.1, iOS –13.4)
 
 	Features with no implemented fallback mechanisms (and browsers with no support):
 		@supports (IE –11, Android –4.3)
