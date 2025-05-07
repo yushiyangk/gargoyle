@@ -40,7 +40,7 @@
 		calc() (IE –11)
 			! Various known issues for IE11: https://caniuse.com/#feat=calc
 		text-align: start or end (IE –11, Edge –18)
-		::first-letter (IE –8) ffbug workaround for Firefox using -moz-animation & @-moz-keyframes
+		::first-letter (IE –8) ffbug workaround for Firefox –128 using -moz-animation & @-moz-keyframes
 
 	Dependent features for action buttons, which will fallback to plain hyperlinks (unsupported browsers):
 		mask-image (IE –11)
