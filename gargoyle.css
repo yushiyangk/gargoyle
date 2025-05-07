@@ -62,214 +62,214 @@
 
 
 :root {
-	--font-size: 16px;
-	--line-height: 1.5rem;
-	--skip: var(--line-height);
-	--span: 1rem;
+	--g-font-size: 16px;
+	--g-line-height: 1.5rem;
+	--g-skip: var(--g-line-height);
+	--g-span: 1rem;
 
-	--main-color: darkslategrey;
-	--background-color: snow;
-	--quiet-color: grey;
-	--highlight-color: lavenderblush;
-	--link-color: maroon;
-	--visited-color: #600000;
-	--frame-color: darkslategrey;
-	--frame-link-color: maroon;
-	--frame-visited-color: #600000;
-	--table-border-color: lightgrey;
-	--kbd-frame-color: lightgrey;
+	--g-main-color: darkslategrey;
+	--g-background-color: snow;
+	--g-quiet-color: grey;
+	--g-highlight-color: lavenderblush;
+	--g-link-color: maroon;
+	--g-visited-color: #600000;
+	--g-frame-color: darkslategrey;
+	--g-frame-link-color: maroon;
+	--g-frame-visited-color: #600000;
+	--g-table-border-color: lightgrey;
+	--g-kbd-frame-color: lightgrey;
 
-	--large-v: 2.25rem;  /* compat */
-	--large-v: calc(1.5 * var(--skip));
-	--medium-v: var(--skip);
-	--small-v: 0.75rem;  /* compat */
-	--small-v: calc(0.5 * var(--skip));
-	--tiny-v: 0.375rem;  /* compat */
-	--tiny-v: calc(0.25 * var(--skip));
-	--large-h: 2rem;  /* compat */
-	--large-h: calc(2 * var(--span));
-	--medium-h: var(--span);
-	--small-h: 0.5rem;  /* compat */
-	--small-h: calc(0.5 * var(--span));
+	--g-large-v: 2.25rem;  /* compat */
+	--g-large-v: calc(1.5 * var(--g-skip));
+	--g-medium-v: var(--g-skip);
+	--g-small-v: 0.75rem;  /* compat */
+	--g-small-v: calc(0.5 * var(--g-skip));
+	--g-tiny-v: 0.375rem;  /* compat */
+	--g-tiny-v: calc(0.25 * var(--g-skip));
+	--g-large-h: 2rem;  /* compat */
+	--g-large-h: calc(2 * var(--g-span));
+	--g-medium-h: var(--g-span);
+	--g-small-h: 0.5rem;  /* compat */
+	--g-small-h: calc(0.5 * var(--g-span));
 
-	--small-font-size: 0.833333rem;  /* 5/6 of base font size */
-	--small-line-height: 1.125rem;
-	--demi-font-size: 0.9375rem;  /* 15/16 of base font size */
-	--demi-font-weight: 500;
-	--demi-bold-font-weight: 700;
-	--inverse-demi-font-size: 1.066667em;  /* 16/15 of demi */
-	--inline-height: 1.25rem;
-	--inline-padding-h: 0.2em;
-	--inline-border-radius: 0.2em;
-	--inline-border-radius-line-height-compat: 1.3rem;  /* compat; (--line-height) - var(--inline-border-radius) */
+	--g-small-font-size: 0.833333rem;  /* 5/6 of base font size */
+	--g-small-line-height: 1.125rem;
+	--g-demi-font-size: 0.9375rem;  /* 15/16 of base font size */
+	--g-demi-font-weight: 500;
+	--g-demi-bold-font-weight: 700;
+	--g-inverse-demi-font-size: 1.066667em;  /* 16/15 of demi */
+	--g-inline-height: 1.25rem;
+	--g-inline-padding-h: 0.2em;
+	--g-inline-border-radius: 0.2em;
+	--g-inline-border-radius-line-height-compat: 1.3rem;  /* compat; (--g-line-height) - var(--g-inline-border-radius) */
 
-	--border-radius: 6px;
-	--frame-width: 2px;
-	--frame-border-radius: 2px;
-	--item-margin-v: var(--small-v);
-	--item-margin-h: var(--medium-h);
-
-
-	--heading-margin-top: var(--large-v);
-	--heading-margin-bottom: var(--small-v);
-
-	--text-margin-top: var(--small-v);
-	--text-margin-bottom: var(--medium-v);
-	--text-padding-h: 0.2em;
-
-	--quote-margin-v: var(--medium-v);
-	--quote-margin-h: var(--large-h);
-
-	--list-margin-top: var(--medium-v);
-	--list-margin-bottom: var(--large-v);
-	--list-item-margin-v: var(--small-v);
-	--list-item-margin-h: var(--large-h);
-
-	--image-max-height: 80vh;
-	--image-margin-top: var(--small-v);
-	--image-margin-bottom: var(--large-v);
-
-	--image-highlight-padding-v: var(--tiny-v);
-	--image-highlight-negative-margin-v-compat: -0.375rem;  /* compat; -1 * var(--thumbnail-list-padding-v) */
-	--image-highlight-padding-h: var(--small-h);
-	--image-highlight-negative-margin-h-compat: -0.5rem;  /* compat; -1 * var(--thumbnail-list-padding-h) */
+	--g-border-radius: 6px;
+	--g-frame-width: 2px;
+	--g-frame-border-radius: 2px;
+	--g-item-margin-v: var(--g-small-v);
+	--g-item-margin-h: var(--g-medium-h);
 
 
-	--page-bottom: 3rem;  /* compat */
-	--page-bottom: calc(2 * var(--skip));
+	--g-heading-margin-top: var(--g-large-v);
+	--g-heading-margin-bottom: var(--g-small-v);
 
-	--main-margin-v: var(--medium-v);
-	--main-margin-h: var(--medium-h);
-	--main-width: 91.666667vw;  /* compat */
-	--main-width: calc(100vw - 2 * var(--main-margin-h));
-	--column-width: 40rem;
+	--g-text-margin-top: var(--g-small-v);
+	--g-text-margin-bottom: var(--g-medium-v);
+	--g-text-padding-h: 0.2em;
 
-	--main-nav-margin-v: var(--small-v);
-	--main-nav-margin-h: var(--medium-h);
+	--g-quote-margin-v: var(--g-medium-v);
+	--g-quote-margin-h: var(--g-large-h);
 
-	--article-text-indent: 0;
-	--article-tab-size: 4;  /* Should be an integer for wide support */
+	--g-list-margin-top: var(--g-medium-v);
+	--g-list-margin-bottom: var(--g-large-v);
+	--g-list-item-margin-v: var(--g-small-v);
+	--g-list-item-margin-h: var(--g-large-h);
 
-	--h1-margin-top: var(--large-v);
-	--h1-margin-bottom: var(--medium-v);
-	--h1-font-size: 2rem;
-	--h1-line-height: var(--large-v);
+	--g-image-max-height: 80vh;
+	--g-image-margin-top: var(--g-small-v);
+	--g-image-margin-bottom: var(--g-large-v);
 
-	--h2-font-size: 1.666667rem;  /* 5/6 of h1 == 5/3 */
-	--h3-font-size: 1.333333rem;  /* 4/5 of h2 == 4/3 */
-	--h4-font-size: 1.111111rem;  /* 5/6 of h3 == 10/9 */
-	--h5-font-size: var(--h4-font-size);
-	--h5-margin-left: var(--medium-h);
-	--h6-font-size: var(--h4-font-size);
-	--h6-margin-left: 2rem;  /* compat */
-	--h6-margin-left: var(--large-h);
+	--g-image-highlight-padding-v: var(--g-tiny-v);
+	--g-image-highlight-negative-margin-v-compat: -0.375rem;  /* compat; -1 * var(--g-thumbnail-list-padding-v) */
+	--g-image-highlight-padding-h: var(--g-small-h);
+	--g-image-highlight-negative-margin-h-compat: -0.5rem;  /* compat; -1 * var(--g-thumbnail-list-padding-h) */
 
-	--main-aside-margin-h-with-column-compat: 42rem;  /* compat; var(--column-width) + var(--quote-margin-h) */
-	--main-aside-width: 16rem;
+
+	--g-page-bottom: 3rem;  /* compat */
+	--g-page-bottom: calc(2 * var(--g-skip));
+
+	--g-main-margin-v: var(--g-medium-v);
+	--g-main-margin-h: var(--g-medium-h);
+	--g-main-width: 91.666667vw;  /* compat */
+	--g-main-width: calc(100vw - 2 * var(--g-main-margin-h));
+	--g-column-width: 40rem;
+
+	--g-main-nav-margin-v: var(--g-small-v);
+	--g-main-nav-margin-h: var(--g-medium-h);
+
+	--g-article-text-indent: 0;
+	--g-article-tab-size: 4;  /* Should be an integer for wide support */
+
+	--g-h1-margin-top: var(--g-large-v);
+	--g-h1-margin-bottom: var(--g-medium-v);
+	--g-h1-font-size: 2rem;
+	--g-h1-line-height: var(--g-large-v);
+
+	--g-h2-font-size: 1.666667rem;  /* 5/6 of h1 == 5/3 */
+	--g-h3-font-size: 1.333333rem;  /* 4/5 of h2 == 4/3 */
+	--g-h4-font-size: 1.111111rem;  /* 5/6 of h3 == 10/9 */
+	--g-h5-font-size: var(--g-h4-font-size);
+	--g-h5-margin-left: var(--g-medium-h);
+	--g-h6-font-size: var(--g-h4-font-size);
+	--g-h6-margin-left: 2rem;  /* compat */
+	--g-h6-margin-left: var(--g-large-h);
+
+	--g-main-aside-margin-h-with-column-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
+	--g-main-aside-width: 16rem;
 	/* WARNING: Media queries for <aside> need to be manually updated in precomputed px units */
 
-	--pre-padding-v: var(--small-v);
-	--pre-padding-h: var(--small-h);
-	--pre-padding-negative-margin-h-compat: -0.5rem;  /* compat; -1 * var(--pre-padding-h) */
-	--pre-title-margin-v: var(--tiny-v);
-	--pre-title-margin-top-with-negative-padding-compat: -0.375rem;  /* compat; var(--pre-title-margin-v) - var(--pre-padding-v) */
-	--pre-title-color: var(--quiet-color);
+	--g-pre-padding-v: var(--g-small-v);
+	--g-pre-padding-h: var(--g-small-h);
+	--g-pre-padding-negative-margin-h-compat: -0.5rem;  /* compat; -1 * var(--g-pre-padding-h) */
+	--g-pre-title-margin-v: var(--g-tiny-v);
+	--g-pre-title-margin-top-with-negative-padding-compat: -0.375rem;  /* compat; var(--g-pre-title-margin-v) - var(--g-pre-padding-v) */
+	--g-pre-title-color: var(--g-quiet-color);
 
-	--hr-width: 1px;
+	--g-hr-width: 1px;
 
-	--dt-margin-left: 0;
-	--dd-margin-left: 1.5rem;  /* compat */
-	--dd-margin-left: calc(1.5 * var(--span));
+	--g-dt-margin-left: 0;
+	--g-dd-margin-left: 1.5rem;  /* compat */
+	--g-dd-margin-left: calc(1.5 * var(--g-span));
 
-	--thumbnail-width: 9rem;
-	--thumbnail-height: var(--thumbnail-width);
+	--g-thumbnail-width: 9rem;
+	--g-thumbnail-height: var(--g-thumbnail-width);
 
-	--thumbnail-list-fallback-margin-h-allowance: var(--medium-h); /* extra allowance to be absolutely sure that line-breaking will not occur unexpectedly when Grid Layout is not supported */
-	--thumbnail-list-fallback-item-max-width-compat: 29rem;  /* compat; var(--column-width) - var(--thumbnail-width) - var(--item-margin-h) - var(--thumbnail-list-fallback-margin-h-allowance) */
-	--thumbnail-list-fallback-margin-top-with-negative-padding-compat: 0.375rem;  /* compat; var(--item-margin-v) - var(--thumbnail-list-padding-v) */
-	--thumbnail-list-fallback-margin-right-with-negative-padding-compat: 0.5rem;  /* compat; var(--item-margin-h) - var(--thumbnail-list-padding-h) */
+	--g-thumbnail-list-fallback-margin-h-allowance: var(--g-medium-h); /* extra allowance to be absolutely sure that line-breaking will not occur unexpectedly when Grid Layout is not supported */
+	--g-thumbnail-list-fallback-item-max-width-compat: 29rem;  /* compat; var(--g-column-width) - var(--g-thumbnail-width) - var(--g-item-margin-h) - var(--g-thumbnail-list-fallback-margin-h-allowance) */
+	--g-thumbnail-list-fallback-margin-top-with-negative-padding-compat: 0.375rem;  /* compat; var(--g-item-margin-v) - var(--g-thumbnail-list-padding-v) */
+	--g-thumbnail-list-fallback-margin-right-with-negative-padding-compat: 0.5rem;  /* compat; var(--g-item-margin-h) - var(--g-thumbnail-list-padding-h) */
 
-	--inline-list-separtor-margin: 0.3em;
-	--inline-list-separator-color: var(--quiet-color);
+	--g-inline-list-separtor-margin: 0.3em;
+	--g-inline-list-separator-color: var(--g-quiet-color);
 
-	--figcaption-margin-v: var(--small-v);
-	--figcaption-margin-h: var(--medium-h);
-	--figcaption-width-compat: 38rem;  /* compat; var(--column-width) - 2 * var(--figcaption-margin-h) */
-	--figcaption-aligned-width-compat: 39rem;
-	--figure-wide-max-width: calc(100vw - 2 * var(--large-h));  /* No compat version because the existing fallback for figure max width, which is var(--main-width), already has more generous margins when calc() is not supported, especially on wider screens */
+	--g-figcaption-margin-v: var(--g-small-v);
+	--g-figcaption-margin-h: var(--g-medium-h);
+	--g-figcaption-width-compat: 38rem;  /* compat; var(--g-column-width) - 2 * var(--g-figcaption-margin-h) */
+	--g-figcaption-aligned-width-compat: 39rem;
+	--g-figure-wide-max-width: calc(100vw - 2 * var(--g-large-h));  /* No compat version because the existing fallback for figure max width, which is var(--g-main-width), already has more generous margins when calc() is not supported, especially on wider screens */
 	/* WARNING: Media queries for <figure> and <figcaption> need to be manually updated in precomputed px units */
 
-	--table-margin-top: var(--small-v);
-	--table-margin-bottom: var(--large-v);
-	--table-padding-v: 0.1875rem;  /* compat */
-	--table-padding-v: calc(var(--tiny-v) / 2);
-	--table-padding-h: var(--small-h);
-	--table-border-width: 1px;
+	--g-table-margin-top: var(--g-small-v);
+	--g-table-margin-bottom: var(--g-large-v);
+	--g-table-padding-v: 0.1875rem;  /* compat */
+	--g-table-padding-v: calc(var(--g-tiny-v) / 2);
+	--g-table-padding-h: var(--g-small-h);
+	--g-table-border-width: 1px;
 
-	--kbd-margin-h: 0.1em;
-	--kbd-padding-v: 0.1em;
-	--kbd-padding-h: var(--inline-padding-h);
-	--kbd-frame-width: 1px;
-	--kbd-shadow-width: 1px;
-	--kbd-line-height-compat: 1.1rem;  /* compat; var(--line-height) - 2 * var(--border-radius) - var(--kbd-frame-width) */
+	--g-kbd-margin-h: 0.1em;
+	--g-kbd-padding-v: 0.1em;
+	--g-kbd-padding-h: var(--g-inline-padding-h);
+	--g-kbd-frame-width: 1px;
+	--g-kbd-shadow-width: 1px;
+	--g-kbd-line-height-compat: 1.1rem;  /* compat; var(--g-line-height) - 2 * var(--g-border-radius) - var(--g-kbd-frame-width) */
 
-	--button-margin-v: var(--medium-v);
-	--button-padding-v: 0.9375rem;  /* compat */
-	--button-padding-v: calc(0.625 * var(--skip));
-	--button-padding-h: 2em;
-	--button-border-width: var(--frame-width);
-	--button-border-radius: var(--border-radius);
-	--button-line-height: 1.125rem;  /* compat */
-	--button-line-height: calc(0.75 * var(--skip));  /* 0.75 == 2 - 2 * 0.625 */
-	--button-internal-padding-h: 1.25rem;
-	--button-internal-border-width: 1px;
-	--button-internal-border-height: 60%;
-	--button-icon-size: 1.25rem;  /* compat */
-	--button-icon-size: calc(1.25 * var(--span));
-	--button-icon-highlight-scale: 1.2;
-	--button-icon-highlight-size-compat: 1.5rem;  /* compat; var(--button-icon-size) * var(--button-icon-highlight-scale) */
-	--button-icon-margin-h: var(--medium-h);
-	--button-icon-highlight-margin-h-compat: 0.875rem;  /* compat; var(--button-icon-margin-h) - (var(--button-icon-highlight-size) - var(--button-icon-size)) / 2 */
-	--button-icon-box-width-compat: 3.25rem;  /* compat; var(--button-icon-size) + 2 * var(--button-icon-margin-h) */
-	--button-icon-centre-compat: 1.625rem;  /* compat; 0.5 * var(--button-icon-size) + var(--button-icon-margin-h) */
-	--button-icon-box-width-with-internal-padding-h-compat: 4.5rem; /* compat; var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) */
+	--g-button-margin-v: var(--g-medium-v);
+	--g-button-padding-v: 0.9375rem;  /* compat */
+	--g-button-padding-v: calc(0.625 * var(--g-skip));
+	--g-button-padding-h: 2em;
+	--g-button-border-width: var(--g-frame-width);
+	--g-button-border-radius: var(--g-border-radius);
+	--g-button-line-height: 1.125rem;  /* compat */
+	--g-button-line-height: calc(0.75 * var(--g-skip));  /* 0.75 == 2 - 2 * 0.625 */
+	--g-button-internal-padding-h: 1.25rem;
+	--g-button-internal-border-width: 1px;
+	--g-button-internal-border-height: 60%;
+	--g-button-icon-size: 1.25rem;  /* compat */
+	--g-button-icon-size: calc(1.25 * var(--g-span));
+	--g-button-icon-highlight-scale: 1.2;
+	--g-button-icon-highlight-size-compat: 1.5rem;  /* compat; var(--g-button-icon-size) * var(--g-button-icon-highlight-scale) */
+	--g-button-icon-margin-h: var(--g-medium-h);
+	--g-button-icon-highlight-margin-h-compat: 0.875rem;  /* compat; var(--g-button-icon-margin-h) - (var(--g-button-icon-highlight-size) - var(--g-button-icon-size)) / 2 */
+	--g-button-icon-box-width-compat: 3.25rem;  /* compat; var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h) */
+	--g-button-icon-centre-compat: 1.625rem;  /* compat; 0.5 * var(--g-button-icon-size) + var(--g-button-icon-margin-h) */
+	--g-button-icon-box-width-with-internal-padding-h-compat: 4.5rem; /* compat; var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h) + var(--g-button-internal-padding-h) */
 
-	--image-button-height: var(--large-v);
-	--image-button-icon-width: var(--image-button-height);
-	--image-button-margin-v: var(--small-v);
-	--image-button-margin-h: var(--image-button-margin-v);
-	--image-button-padding-v: 0.5625rem;  /* compat */
-	--image-button-padding-v: calc(0.375 * var(--skip));
-	--image-button-padding-h: var(--small-h);
+	--g-image-button-height: var(--g-large-v);
+	--g-image-button-icon-width: var(--g-image-button-height);
+	--g-image-button-margin-v: var(--g-small-v);
+	--g-image-button-margin-h: var(--g-image-button-margin-v);
+	--g-image-button-padding-v: 0.5625rem;  /* compat */
+	--g-image-button-padding-v: calc(0.375 * var(--g-skip));
+	--g-image-button-padding-h: var(--g-small-h);
 
-	--button-highlight-color: #ffd4d1;
-	--button-green-color: green;
-	--button-green-background-color: #d0f0d0;
-	--button-green-highlight-color: #b8f0b8;
-	--button-cyan-color: darkcyan;
-	--button-cyan-background-color: #d5fcfa;
-	--button-cyan-highlight-color: #bcfaf7;
-	--button-blue-color: royalblue;
-	--button-blue-background-color: #dadafd;
-	--button-blue-highlight-color: #cacaff;
-	--button-magenta-color: darkmagenta;
-	--button-magenta-background-color: #dadafd;
-	--button-magenta-highlight-color: #cacaff;
-	--button-red-color: firebrick;
-	--button-red-background-color: #fcdcdc;
-	--button-red-highlight-color: #f3c2c2;
-	--button-orange-color: chocolate;
-	--button-orange-background-color: #f7e3bb;
-	--button-orange-highlight-color: #f8db9c;
-	--button-yellow-color: goldenrod;
-	--button-yellow-background-color: #faf2c6;
-	--button-yellow-highlight-color: #faecac;
-	--image-button-color: lightgrey;
-	--image-button-background-color: #00000080;
-	--image-button-hover-color: white;
-	--image-button-hover-background-color: #000000a0;
-	--image-button-focus-color: #ffffffc0;
-	--image-button-focus-background-color: #000000c0;
+	--g-button-highlight-color: #ffd4d1;
+	--g-button-green-color: green;
+	--g-button-green-background-color: #d0f0d0;
+	--g-button-green-highlight-color: #b8f0b8;
+	--g-button-cyan-color: darkcyan;
+	--g-button-cyan-background-color: #d5fcfa;
+	--g-button-cyan-highlight-color: #bcfaf7;
+	--g-button-blue-color: royalblue;
+	--g-button-blue-background-color: #dadafd;
+	--g-button-blue-highlight-color: #cacaff;
+	--g-button-magenta-color: darkmagenta;
+	--g-button-magenta-background-color: #dadafd;
+	--g-button-magenta-highlight-color: #cacaff;
+	--g-button-red-color: firebrick;
+	--g-button-red-background-color: #fcdcdc;
+	--g-button-red-highlight-color: #f3c2c2;
+	--g-button-orange-color: chocolate;
+	--g-button-orange-background-color: #f7e3bb;
+	--g-button-orange-highlight-color: #f8db9c;
+	--g-button-yellow-color: goldenrod;
+	--g-button-yellow-background-color: #faf2c6;
+	--g-button-yellow-highlight-color: #faecac;
+	--g-image-button-color: lightgrey;
+	--g-image-button-background-color: #00000080;
+	--g-image-button-hover-color: white;
+	--g-image-button-hover-background-color: #000000a0;
+	--g-image-button-focus-color: #ffffffc0;
+	--g-image-button-focus-background-color: #000000c0;
 
 }
 
@@ -281,11 +281,11 @@ html {
 	margin: 0;
 	padding: 0;
 
-	color: var(--color);
+	color: var(--g-color);
 
 	font-family: sans-serif;
-	font-size: var(--font-size);
-	line-height: var(--line-height);
+	font-size: var(--g-font-size);
+	line-height: var(--g-line-height);
 
 	/* Nominally an SVG property but good for Chrome */
 	text-rendering: optimizeLegibility;
@@ -296,10 +296,10 @@ body {
 
 	margin: 0;
 	padding: 0;
-	padding-bottom: var(--page-bottom);
+	padding-bottom: var(--g-page-bottom);
 
-	color:var(--color);
-	background-color: var(--background-color);
+	color:var(--g-color);
+	background-color: var(--g-background-color);
 
 	/* Workaround for IE bug with margin: auto column centring; parent container needs this. */
 	text-align: center;
@@ -308,10 +308,10 @@ body {
 main {
 	display: block;
 
-	width: var(--column-width);
-	max-width: var(--main-width);
+	width: var(--g-column-width);
+	max-width: var(--g-main-width);
 
-	margin: var(--main-margin-v) auto;
+	margin: var(--g-main-margin-v) auto;
 	padding: 0;
 
 	text-align: left;
@@ -325,9 +325,9 @@ main nav {
 	justify-content: flex-start;
 	align-items: baseline;
 	align-content: flex-start;
-	gap: var(--main-nav-margin-v) var(--main-nav-margin-h);
+	gap: var(--g-main-nav-margin-v) var(--g-main-nav-margin-h);
 
-	margin: var(--main-nav-margin-v) auto;
+	margin: var(--g-main-nav-margin-v) auto;
 	padding: 0;
 
 	text-align: left;
@@ -355,7 +355,7 @@ main nav.g-centre, main nav.g-center {
 article {
 	display: block;
 
-	margin: var(--medium-v) auto;
+	margin: var(--g-medium-v) auto;
 	padding: 0;
 
 	text-align: left;
@@ -369,14 +369,14 @@ article {
 	word-wrap: break-word;  /* alias of overflow-wrap */
 	overflow-wrap: break-word;
 
-	text-indent: var(--article-text-indent);
-	tab-size: var(--article-tab-size);
+	text-indent: var(--g-article-text-indent);
+	tab-size: var(--g-article-tab-size);
 }
 
 header {
 	display: block;
 
-	margin: var(--medium-v) auto;
+	margin: var(--g-medium-v) auto;
 	padding: 0;
 
 	text-align: left;
@@ -387,7 +387,7 @@ header {
 footer {
 	display: block;
 
-	margin: var(--medium-v) auto;
+	margin: var(--g-medium-v) auto;
 	padding: 0;
 
 	text-align: left;
@@ -398,7 +398,7 @@ footer {
 section {
 	display: block;
 
-	margin: var(--medium-v) auto;
+	margin: var(--g-medium-v) auto;
 	padding: 0;
 
 	text-align: left;
@@ -414,8 +414,8 @@ section {
 p {
 	display: block;
 
-	margin-top: var(--text-margin-top);
-	margin-bottom: var(--text-margin-bottom);
+	margin-top: var(--g-text-margin-top);
+	margin-bottom: var(--g-text-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
@@ -424,14 +424,14 @@ p {
 h1 {
 	display: block;
 
-	margin-top: var(--h1-margin-top);
-	margin-bottom: var(--h1-margin-bottom);
+	margin-top: var(--g-h1-margin-top);
+	margin-bottom: var(--g-h1-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 
-	font-size: var(--h1-font-size);
-	line-height: var(--h1-line-height);
+	font-size: var(--g-h1-font-size);
+	line-height: var(--g-h1-line-height);
 	font-weight: bold;
 
 	/* CSS3 Text */
@@ -441,8 +441,8 @@ h1 {
 h2, h3, h4, h5, h6 {
 	display: block;
 
-	margin-top: var(--heading-margin-top);
-	margin-bottom: var(--heading-margin-bottom);
+	margin-top: var(--g-heading-margin-top);
+	margin-bottom: var(--g-heading-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
@@ -453,34 +453,34 @@ hgroup > h1, hgroup > h2, hgroup > h3, hgroup > h4, hgroup > h5, hgroup > h6 {
 hgroup {
 	display: block;
 
-	margin-top: var(--heading-margin-top);
-	margin-bottom: var(--heading-margin-bottom);
+	margin-top: var(--g-heading-margin-top);
+	margin-bottom: var(--g-heading-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 }
 h2 {
-	font-size: var(--h2-font-size);
+	font-size: var(--g-h2-font-size);
 	font-weight: bold;
 }
 h3 {
-	font-size: var(--h3-font-size);
+	font-size: var(--g-h3-font-size);
 	font-weight: bold;
 }
 h4 {
-	font-size: var(--h4-font-size);
+	font-size: var(--g-h4-font-size);
 	font-weight: bold;
 }
 h5 {
-	margin-left: var(--h5-margin-left);
+	margin-left: var(--g-h5-margin-left);
 
-	font-size: var(--h5-font-size);
+	font-size: var(--g-h5-font-size);
 	font-weight: bold;
 }
 h6 {
-	margin-left: var(--h6-margin-left);
+	margin-left: var(--g-h6-margin-left);
 
-	font-size: var(--h6-font-size);
+	font-size: var(--g-h6-font-size);
 	font-weight: bold;
 	font-style: italic;
 }
@@ -488,7 +488,7 @@ h6 {
 blockquote {
 	display: block;
 
-	margin: var(--quote-margin-v) var(--quote-margin-h);
+	margin: var(--g-quote-margin-v) var(--g-quote-margin-h);
 	padding: 0;
 }
 
@@ -497,34 +497,34 @@ main aside {
 
 	margin-top: 0;
 	margin-bottom: 0;
-	margin-left: var(--quote-margin-h);
+	margin-left: var(--g-quote-margin-h);
 	margin-right: 0;
 	padding: 0;
 
-	color: var(--quiet-color);
+	color: var(--g-quiet-color);
 
 	text-align: left;
 	text-align: start;
 	text-align: initial;
 }
-@media (min-width: 652.8px) {  /* (2 * var(--main-aside-width) + var(--main-aside-narrow-margin-h)) / (10 / 12) == 34rem / (10 / 12) == 40.8rem */
-	/* Divide by 10/12 because column width has a lower bound of 10/12 of display width, which happens when calc() is not supported, whereas var(--column-width) is only used when the display is not narrow */
+@media (min-width: 652.8px) {  /* (2 * var(--g-main-aside-width) + var(--g-main-aside-narrow-margin-h)) / (10 / 12) == 34rem / (10 / 12) == 40.8rem */
+	/* Divide by 10/12 because column width has a lower bound of 10/12 of display width, which happens when calc() is not supported, whereas var(--g-column-width) is only used when the display is not narrow */
 	main aside {
 		float: right;
 
-		width: var(--main-aside-width);
-		margin-top: var(--quote-margin-v);
-		margin-bottom: var(--quote-margin-v);
+		width: var(--g-main-aside-width);
+		margin-top: var(--g-quote-margin-v);
+		margin-bottom: var(--g-quote-margin-v);
 	}
 }
-@media (min-width: 1248px) {  /* var(--column-width) + 2 * (var(--main-aside-width) + var(--block-margin-h) + var(--main-margin-h)) == 78rem */
+@media (min-width: 1248px) {  /* var(--g-column-width) + 2 * (var(--g-main-aside-width) + var(--g-block-margin-h) + var(--g-main-margin-h)) == 78rem */
 	main aside {
 		position: absolute;
 		float: none;
 
 		margin-top: 0;
-		margin-left: var(--main-aside-margin-h-with-column-compat);
-		margin-left: calc(var(--column-width) + var(--quote-margin-h));
+		margin-left: var(--g-main-aside-margin-h-with-column-compat);
+		margin-left: calc(var(--g-column-width) + var(--g-quote-margin-h));
 		margin-right: 0;
 
 		color: inherit;
@@ -534,12 +534,12 @@ main aside {
 pre {
 	display: block;
 
-	width: var(--column-width);
+	width: var(--g-column-width);
 	min-width: max-content;
 	max-width: 100%;
 
-	margin-top: var(--text-margin-top);
-	margin-bottom: var(--text-margin-bottom);
+	margin-top: var(--g-text-margin-top);
+	margin-bottom: var(--g-text-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
@@ -548,11 +548,11 @@ pre {
 pre > code, pre > samp {
 	display: block;
 
-	margin: 0 var(--pre-padding-negative-margin-h-compat);
-	margin: 0 calc(-1 * var(--pre-padding-h));
-	padding: var(--pre-padding-v) var(--pre-padding-h);
+	margin: 0 var(--g-pre-padding-negative-margin-h-compat);
+	margin: 0 calc(-1 * var(--g-pre-padding-h));
+	padding: var(--g-pre-padding-v) var(--g-pre-padding-h);
 
-	border-radius: var(--border-radius);
+	border-radius: var(--g-border-radius);
 }
 
 figure pre {
@@ -567,19 +567,19 @@ figure.g-bound pre {
 }
 
 pre > code.g-frame, pre > samp.g-frame {
-	border: var(--frame-width) solid var(--frame-color);
-	border-radius: var(--frame-border-radius);
+	border: var(--g-frame-width) solid var(--g-frame-color);
+	border-radius: var(--g-frame-border-radius);
 }
 
 pre > code[title]::before, pre > samp[title]::before {
 	content: attr(title);
 	display: block;
 
-	margin-top: var(--pre-title-margin-top-with-negative-padding-compat);
-	margin-top: calc(var(--pre-title-margin-v) - var(--pre-padding-v));
-	margin-bottom: var(--pre-title-margin-v);
+	margin-top: var(--g-pre-title-margin-top-with-negative-padding-compat);
+	margin-top: calc(var(--g-pre-title-margin-v) - var(--g-pre-padding-v));
+	margin-bottom: var(--g-pre-title-margin-v);
 
-	color: var(--pre-title-color);
+	color: var(--g-pre-title-color);
 	text-align: right;
 	text-align: end;
 }
@@ -604,12 +604,12 @@ pre > code[title].g-title-centre::before, pre > samp[title].g-title-centre::befo
 hr {
 	display: block;
 
-	margin: var(--large-v) 0;
-	margin-bottom: calc(var(--large-v) - var(--hr-width));
+	margin: var(--g-large-v) 0;
+	margin-bottom: calc(var(--g-large-v) - var(--g-hr-width));
 	padding: 0;
 
 	border: 0;
-	border-bottom: var(--hr-width) solid var(--main-color);
+	border-bottom: var(--g-hr-width) solid var(--g-main-color);
 }
 
 
@@ -737,8 +737,8 @@ hr {
 	List elements
 */
 .g-continue {
-	margin-top: var(--list-item-margin-v);
-	margin-bottom: var(--list-item-margin-v);
+	margin-top: var(--g-list-item-margin-v);
+	margin-bottom: var(--g-list-item-margin-v);
 }
 ol.g-continue {
 	counter-reset: none;
@@ -755,8 +755,8 @@ ol.g-continue {
 ul, menu, ol, dl {
 	display: block;
 
-	margin-top: var(--list-margin-top);
-	margin-bottom: var(--list-margin-bottom);
+	margin-top: var(--g-list-margin-top);
+	margin-bottom: var(--g-list-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
@@ -764,20 +764,20 @@ ul, menu, ol, dl {
 	list-style-position: outside;
 }
 ul ul, ul menu, ul ol, menu ul, menu menu, menu ol, ol ul, ol menu, ol ol, dl ul, dl menu, dl ol{
-	margin-top: var(--list-item-margin-v);
-	margin-bottom: var(--list-item-margin-v);
+	margin-top: var(--g-list-item-margin-v);
+	margin-bottom: var(--g-list-item-margin-v);
 }
 ul dl, menu dl, ol dl, dl dl {
-	margin-left: var(--list-item-margin-h);
-	margin-top: var(--list-item-margin-v);
-	margin-bottom: var(--list-item-margin-v);
+	margin-left: var(--g-list-item-margin-h);
+	margin-top: var(--g-list-item-margin-v);
+	margin-bottom: var(--g-list-item-margin-v);
 }
 
 li {
 	display: list-item;
 
 	margin: 0;
-	margin-left: var(--list-item-margin-h);
+	margin-left: var(--g-list-item-margin-h);
 	padding: 0;
 }
 
@@ -785,7 +785,7 @@ dt {
 	display: inline;
 
 	margin: 0;
-	margin-left: var(--dt-margin-left);
+	margin-left: var(--g-dt-margin-left);
 	padding: 0;
 
 	font-weight: bold;
@@ -794,7 +794,7 @@ dd {
 	display: inline;
 
 	margin: 0;
-	margin-left: var(--dd-margin-left);
+	margin-left: var(--g-dd-margin-left);
 	padding: 0;
 }
 dd::after {
@@ -808,8 +808,8 @@ dl.g-thumbnail dt {
 	display: inline-block;
 
 	margin: 0;
-	margin-top: var(--item-margin-v);
-	margin-right: var(--item-margin-h);
+	margin-top: var(--g-item-margin-v);
+	margin-right: var(--g-item-margin-h);
 	padding: 0;
 }
 
@@ -818,8 +818,8 @@ dl.g-thumbnail > dt:first-of-type, dl.g-thumbnail > dd:first-of-type {
 }
 
 dl.g-thumbnail dt img, dl.g-thumbnail dt picture, dl.g-thumbnail dt svg {
-	width: var(--thumbnail-width);
-	height: var(--thumbnail-width);
+	width: var(--g-thumbnail-width);
+	height: var(--g-thumbnail-width);
 
 	margin: 0;
 	padding: 0;
@@ -841,11 +841,11 @@ dl.g-thumbnail dt > *:last-child {
 dl.g-thumbnail dd {
 	display: inline-block;
 
-	max-width: var(--thumbnail-list-fallback-item-max-width-compat);
-	max-width: calc(var(--column-width) - var(--thumbnail-width) - var(--item-margin-h) - var(--thumbnail-list-fallback-margin-h-allowance));
+	max-width: var(--g-thumbnail-list-fallback-item-max-width-compat);
+	max-width: calc(var(--g-column-width) - var(--g-thumbnail-width) - var(--g-item-margin-h) - var(--g-thumbnail-list-fallback-margin-h-allowance));
 
 	margin: 0;
-	margin-top: var(--item-margin-v);
+	margin-top: var(--g-item-margin-v);
 	padding: 0;
 }
 
@@ -858,44 +858,44 @@ dl.g-thumbnail > a:first-child > dt:first-of-type, dl.g-thumbnail > a:first-chil
 }
 
 dl.g-thumbnail > a:hover dt {
-	margin-top: var(--thumbnail-list-fallback-margin-top-with-negative-padding-compat);
-	margin-top: calc(var(--item-margin-v) - var(--image-highlight-padding-v));
-	margin-bottom: var(--image-highlight-negative-margin-v-compat);
-	margin-bottom: calc(-1 * var(--image-highlight-padding-v));
-	margin-left: var(--image-highlight-negative-margin-h-compat);
-	margin-left: calc(-1 * var(--image-highlight-padding-h));
-	margin-right: var(--thumbnail-list-fallback-margin-right-with-negative-padding-compat);
-	margin-right: calc(var(--item-margin-h) - var(--image-highlight-padding-h));
-	padding: var(--image-highlight-padding-v) var(--image-highlight-padding-h);
+	margin-top: var(--g-thumbnail-list-fallback-margin-top-with-negative-padding-compat);
+	margin-top: calc(var(--g-item-margin-v) - var(--g-image-highlight-padding-v));
+	margin-bottom: var(--g-image-highlight-negative-margin-v-compat);
+	margin-bottom: calc(-1 * var(--g-image-highlight-padding-v));
+	margin-left: var(--g-image-highlight-negative-margin-h-compat);
+	margin-left: calc(-1 * var(--g-image-highlight-padding-h));
+	margin-right: var(--g-thumbnail-list-fallback-margin-right-with-negative-padding-compat);
+	margin-right: calc(var(--g-item-margin-h) - var(--g-image-highlight-padding-h));
+	padding: var(--g-image-highlight-padding-v) var(--g-image-highlight-padding-h);
 
-	background-color: var(--highlight-color);
+	background-color: var(--g-highlight-color);
 }
 dl.g-thumbnail > a:hover dd {
-	margin: var(--image-highlight-negative-margin-v-compat) var(--image-highlight-negative-margin-h-compat);
-	margin: calc(-1 * var(--image-highlight-padding-v)) calc(-1 * var(--image-highlight-padding-h));
-	margin-top: var(--thumbnail-list-fallback-margin-top-with-negative-padding-compat);
-	margin-top: calc(var(--item-margin-v) - var(--image-highlight-padding-v));
-	padding: var(--image-highlight-padding-v) var(--image-highlight-padding-h);
+	margin: var(--g-image-highlight-negative-margin-v-compat) var(--g-image-highlight-negative-margin-h-compat);
+	margin: calc(-1 * var(--g-image-highlight-padding-v)) calc(-1 * var(--g-image-highlight-padding-h));
+	margin-top: var(--g-thumbnail-list-fallback-margin-top-with-negative-padding-compat);
+	margin-top: calc(var(--g-item-margin-v) - var(--g-image-highlight-padding-v));
+	padding: var(--g-image-highlight-padding-v) var(--g-image-highlight-padding-h);
 
-	background-color: var(--highlight-color);
+	background-color: var(--g-highlight-color);
 }
 dl.g-thumbnail > a:hover dt {
-	border-top-left-radius: var(--border-radius);
-	border-bottom-left-radius: var(--border-radius);
+	border-top-left-radius: var(--g-border-radius);
+	border-bottom-left-radius: var(--g-border-radius);
 }
 dl.g-thumbnail > a:hover dd {
-	border-top-right-radius: var(--border-radius);
-	border-bottom-right-radius: var(--border-radius);
+	border-top-right-radius: var(--g-border-radius);
+	border-bottom-right-radius: var(--g-border-radius);
 }
 
 dl.g-thumbnail > a:hover dt:last-child {
-	border-top-right-radius: var(--border-radius);
-	border-bottom-right-radius: var(--border-radius);
+	border-top-right-radius: var(--g-border-radius);
+	border-bottom-right-radius: var(--g-border-radius);
 }
 
 dl.g-thumbnail > a:hover dd:first-child {
-	border-top-left-radius: var(--border-radius);
-	border-bottom-left-radius: var(--border-radius);
+	border-top-left-radius: var(--g-border-radius);
+	border-bottom-left-radius: var(--g-border-radius);
 }
 
 dl.g-thumbnail > a:hover dt img, dl.g-thumbnail > a:hover dt picture, dl.g-thumbnail > a:hover dt svg {
@@ -906,10 +906,10 @@ dl.g-thumbnail > a:hover dt img, dl.g-thumbnail > a:hover dt picture, dl.g-thumb
 }
 
 dl.g-thumbnail > a:hover dt img.g-frame, dl.g-thumbnail > a:hover dt pic.g-frameture, dl.g-thumbnail > a:hover dt svg.g-frame {
-	border: var(--frame-width) solid var(--frame-link-color);
+	border: var(--g-frame-width) solid var(--g-frame-link-color);
 }
 dl.g-thumbnail > a:visited:hover dt img.g-frame, dl.g-thumbnail > a:visited:hover dt pic.g-frameture, dl.g-thumbnail > a:visited:hover dt svg.g-frame {
-	border: var(--frame-width) solid var(--frame-visited-color);
+	border: var(--g-frame-width) solid var(--g-frame-visited-color);
 }
 
 dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-thumbnail h4, dl.g-thumbnail h5, dl.g-thumbnail h6 {
@@ -921,11 +921,11 @@ dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-
 @supports (grid-template-areas: "thumb item") and (grid-auto-flow: row) and (display: contents) {
 	dl.g-thumbnail {
 		display: grid;
-		grid-template-columns: var(--thumbnail-width) auto;
+		grid-template-columns: var(--g-thumbnail-width) auto;
 		grid-template-areas: "thumb item";
 		grid-auto-flow: row;
-		grid-gap: var(--item-margin-v) var(--item-margin-h);
-		gap: var(--item-margin-v) var(--item-margin-h);
+		grid-gap: var(--g-item-margin-v) var(--g-item-margin-h);
+		gap: var(--g-item-margin-v) var(--g-item-margin-h);
 		align-items: stretch;
 	}
 
@@ -946,9 +946,9 @@ dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-
 	}
 
 	dl.g-thumbnail > a:hover dt, dl.g-thumbnail > a:hover dd {
-		margin: var(--image-highlight-negative-margin-v-compat) var(--image-highlight-negative-margin-h-compat);
-		margin: calc(-1 * var(--image-highlight-padding-v)) calc(-1 * var(--image-highlight-padding-h));
-		padding: var(--image-highlight-padding-v) var(--image-highlight-padding-h);
+		margin: var(--g-image-highlight-negative-margin-v-compat) var(--g-image-highlight-negative-margin-h-compat);
+		margin: calc(-1 * var(--g-image-highlight-padding-v)) calc(-1 * var(--g-image-highlight-padding-h));
+		padding: var(--g-image-highlight-padding-v) var(--g-image-highlight-padding-h);
 	}
 }
 
@@ -959,7 +959,7 @@ dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-
 img.g-inline, picture.g-inline, svg.g-inline {
 	display: inline;
 
-	max-height: var(--inline-height);
+	max-height: var(--g-inline-height);
 	width: auto;
 
 	vertical-align: middle;
@@ -1006,11 +1006,11 @@ ol.g-continue {
 	content: '·';
 	display: inline;
 
-	padding-left: var(--inline-list-separtor-margin);
-	padding-right: var(--inline-list-separtor-margin);
+	padding-left: var(--g-inline-list-separtor-margin);
+	padding-right: var(--g-inline-list-separtor-margin);
 	line-height: 0;
 
-	color: var(--inline-list-separator-color);
+	color: var(--g-inline-list-separator-color);
 
 	font-weight: bold;
 }
@@ -1031,7 +1031,7 @@ ol.g-continue {
 	content: ':';
 	display: inline;
 
-	margin-right: var(--inline-list-separtor-margin);
+	margin-right: var(--g-inline-list-separtor-margin);
 }
 .g-inline > dt:last-child::after, .g-subinline > dt:last-child::after {
 	content: none;
@@ -1050,10 +1050,10 @@ ol.g-continue {
 
 	font-size: initial;
 	font-weight: bold;
-	color: var(--inline-list-separator-color);
+	color: var(--g-inline-list-separator-color);
 
-	margin-left: var(--inline-list-separtor-margin);
-	margin-right: var(--inline-list-separtor-margin);
+	margin-left: var(--g-inline-list-separtor-margin);
+	margin-right: var(--g-inline-list-separtor-margin);
 }
 .g-inline > dd:last-child::after, .g-subinline > dd:last-child::after {
 	content: none;
@@ -1062,8 +1062,8 @@ ol.g-continue {
 .g-subinline {
 	flex-flow: row nowrap;
 
-	font-size: var(--small-font-size);
-	line-height: var(--small-line-height);
+	font-size: var(--g-small-font-size);
+	line-height: var(--g-small-line-height);
 }
 .g-subinline::before {
 	content: '(';
@@ -1080,37 +1080,37 @@ ol.g-continue {
 */
 main img, main picture, main svg {
 	display: block;
-	max-height: var(--image-max-height);
+	max-height: var(--g-image-max-height);
 	max-width: 100%;
 
-	margin-top: var(--image-margin-top);
-	margin-bottom: var(--image-margin-bottom);
+	margin-top: var(--g-image-margin-top);
+	margin-bottom: var(--g-image-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 }
 
 main a:hover img, main a:hover picture, main a:hover svg {
-	margin: var(--image-highlight-negative-margin-v-compat) var(--image-highlight-negative-margin-h-compat);
-	margin: calc(-1 * var(--image-highlight-padding-v)) calc(-1 * var(--image-highlight-padding-h));
-	padding: var(--image-highlight-padding-v) var(--image-highlight-padding-h);
+	margin: var(--g-image-highlight-negative-margin-v-compat) var(--g-image-highlight-negative-margin-h-compat);
+	margin: calc(-1 * var(--g-image-highlight-padding-v)) calc(-1 * var(--g-image-highlight-padding-h));
+	padding: var(--g-image-highlight-padding-v) var(--g-image-highlight-padding-h);
 
-	background-color: var(--highlight-color);
-	border-radius: var(--border-radius);
+	background-color: var(--g-highlight-color);
+	border-radius: var(--g-border-radius);
 }
 main a.g-button:hover img, main a.g-button:hover picture, main a.g-button:hover svg {
 	background-color: unset;
 }
 
 main img.g-frame, main picture.g-frame, main svg.g-frame {
-	border: var(--frame-width) solid var(--frame-color);
-	border-radius: var(--frame-border-radius);
+	border: var(--g-frame-width) solid var(--g-frame-color);
+	border-radius: var(--g-frame-border-radius);
 }
 main a img.g-frame, main a picture.g-frame, main a svg.g-frame {
-	border-color: var(--frame-link-color);
+	border-color: var(--g-frame-link-color);
 }
 main a:visited img.g-frame, main a:visited picture.g-frame, main a:visited svg.g-frame {
-	border-color: var(--frame-visited-color);
+	border-color: var(--g-frame-visited-color);
 }
 main a:hover img.g-frame, main a:hover picture.g-frame, main a:hover svg.g-frame {
 	border-color: transparent;
@@ -1125,8 +1125,8 @@ main img.g-detail, main picture.g-detail, main svg.g-detail {
 }
 
 main img.g-thumbnail, main picture.g-thumbnail, main svg.g-thumbnail {
-	width: var(--thumbnail-width);
-	height: var(--thumbnail-width);
+	width: var(--g-thumbnail-width);
+	height: var(--g-thumbnail-width);
 
 	object-fit: cover;
 }
@@ -1150,10 +1150,10 @@ figure {
 	left: 50%;
 
 	width: max-content;
-	max-width: var(--main-width);
+	max-width: var(--g-main-width);
 
-	margin-top: var(--image-margin-top);
-	margin-bottom: var(--image-margin-bottom);
+	margin-top: var(--g-image-margin-top);
+	margin-bottom: var(--g-image-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
@@ -1170,7 +1170,7 @@ figcaption {
 	width: max-content;
 	max-width: 100%;
 
-	margin: var(--figcaption-margin-v) auto;  /* figcaption may be above or below */
+	margin: var(--g-figcaption-margin-v) auto;  /* figcaption may be above or below */
 	padding: 0;
 
 	text-align: left;
@@ -1274,29 +1274,29 @@ figure.g-right figcaption.g-bound {
 	margin-right: auto;
 }
 
-@media (min-width: 704px) {  /* value of 100vw when var(--figure-wide-max-width) == var(--column-width); 44rem */
+@media (min-width: 704px) {  /* value of 100vw when var(--g-figure-wide-max-width) == var(--g-column-width); 44rem */
 	/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
 	figure {
-		max-width: var(--figure-wide-max-width);
+		max-width: var(--g-figure-wide-max-width);
 	}
 
 	/* Elements bound to column width should be set to appropriate values rather than 100% */
 	figcaption {
-		max-width: var(--figcaption-width-compat);
-		max-width: calc(var(--column-width) - 2 * var(--figcaption-margin-h));
+		max-width: var(--g-figcaption-width-compat);
+		max-width: calc(var(--g-column-width) - 2 * var(--g-figcaption-margin-h));
 	}
 
 	figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
-		max-width: var(--column-width);
+		max-width: var(--g-column-width);
 	}
 
 	figure.g-left figcaption.g-bound, figure.g-right figcaption.g-bound {
 		/* Reset max-width to disable centreing for single-line captions */
-		/* Subtract one-sided margin instead of two because captions for left- and right- aligned figures are flush against column but with var(--figcaption-margin-h) margin on the other side */
-		width: var(--figcaption-aligned-width-compat);
-		width: calc(var(--column-width) - var(--figcaption-margin-h));
-		max-width: var(--figcaption-aligned-width-compat);
-		max-width: calc(var(--column-width) - var(--figcaption-margin-h));
+		/* Subtract one-sided margin instead of two because captions for left- and right- aligned figures are flush against column but with var(--g-figcaption-margin-h) margin on the other side */
+		width: var(--g-figcaption-aligned-width-compat);
+		width: calc(var(--g-column-width) - var(--g-figcaption-margin-h));
+		max-width: var(--g-figcaption-aligned-width-compat);
+		max-width: calc(var(--g-column-width) - var(--g-figcaption-margin-h));
 		/* Contrast with centred figure with a multiline (left-aligned) caption, or with directly left- or right- aligned captions, both of which have margin on boths sides and are not flush */
 	}
 }
@@ -1312,13 +1312,13 @@ table {
 
 	width: max-content;
 
-	margin-top: var(--table-margin-top);
-	margin-bottom: var(--table-margin-bottom);
+	margin-top: var(--g-table-margin-top);
+	margin-bottom: var(--g-table-margin-bottom);
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
 
-	border-top: var(--table-border-width) solid var(--table-border-color);
+	border-top: var(--g-table-border-width) solid var(--g-table-border-color);
 	border-collapse: collapse;
 
 	text-align: left;
@@ -1332,12 +1332,12 @@ td, th {
 	display: table-cell;
 
 	margin: 0;
-	padding: var(--table-padding-v) var(--table-padding-h);
+	padding: var(--g-table-padding-v) var(--g-table-padding-h);
 }
 th, thead td {
 	text-align: center;
 
-	border-bottom: var(--table-border-width) solid var(--table-border-color);
+	border-bottom: var(--g-table-border-width) solid var(--g-table-border-color);
 }
 td.g-left, th.g-left {
 	text-align: left;
@@ -1362,7 +1362,7 @@ thead {
 	margin: 0;
 	padding: 0;
 
-	border-bottom: var(--table-border-width) solid var(--table-border-color);
+	border-bottom: var(--g-table-border-width) solid var(--g-table-border-color);
 }
 tbody {
 	display: table-row-group;
@@ -1370,7 +1370,7 @@ tbody {
 	margin: 0;
 	padding: 0;
 
-	border-bottom: var(--table-border-width) solid var(--table-border-color);
+	border-bottom: var(--g-table-border-width) solid var(--g-table-border-color);
 }
 tfoot {
 	display: table-footer-group;
@@ -1378,7 +1378,7 @@ tfoot {
 	margin: 0;
 	padding: 0;
 
-	border-bottom: var(--table-border-width) solid var(--table-border-color);
+	border-bottom: var(--g-table-border-width) solid var(--g-table-border-color);
 }
 
 
@@ -1389,7 +1389,7 @@ tfoot {
 a {
 	display: inline;
 
-	color: var(--link-color);
+	color: var(--g-link-color);
 	text-decoration: underline;
 }
 a:hover {
@@ -1397,7 +1397,7 @@ a:hover {
 	text-decoration: underline double;
 }
 a:visited {
-	color: var(--visited-color);
+	color: var(--g-visited-color);
 }
 
 dfn {
@@ -1406,18 +1406,18 @@ dfn {
 }
 
 small {
-	font-size: var(--small-font-size);
-	line-height: var(--small-line-height);
+	font-size: var(--g-small-font-size);
+	line-height: var(--g-small-line-height);
 }
 
 /* Redefine these to prevent increasing main line height */
 sup {
-	font-size: var(--small-font-size);
-	line-height: var(--small-line-height);
+	font-size: var(--g-small-font-size);
+	line-height: var(--g-small-line-height);
 	vertical-align: top;
 }
-sub {font-size: var(--small-font-size);
-	line-height: var(--small-line-height);
+sub {font-size: var(--g-small-font-size);
+	line-height: var(--g-small-line-height);
 	vertical-align: bottom;
 }
 
@@ -1425,15 +1425,15 @@ code, samp {
 	display: inline;
 
 	box-sizing: border-box;
-	padding: 0 var(--inline-padding-h);
+	padding: 0 var(--g-inline-padding-h);
 
 	font-family: monospace;
-	line-height: var(--inline-border-radius-line-height-compat);  /* border-radius increases line height */
-	line-height: calc(var(--line-height) - var(--inline-border-radius));
+	line-height: var(--g-inline-border-radius-line-height-compat);  /* border-radius increases line height */
+	line-height: calc(var(--g-line-height) - var(--g-inline-border-radius));
 	-webkit-hyphens: none;
 	hyphens: none;
 
-	border-radius: var(--inline-border-radius);
+	border-radius: var(--g-inline-border-radius);
 }
 code {
 	background-color: seashell;
@@ -1444,24 +1444,24 @@ samp {
 
 kbd {
 	display: inline-block;
-	margin: 0 var(--kbd-margin-h);
-	padding: var(--kbd-padding-v) var(--kbd-padding-h);
+	margin: 0 var(--g-kbd-margin-h);
+	padding: var(--g-kbd-padding-v) var(--g-kbd-padding-h);
 
 	font-family: inherit;
-	font-size: var(--demi-font-size);
-	font-weight: var(--demi-font-weight);
+	font-size: var(--g-demi-font-size);
+	font-weight: var(--g-demi-font-weight);
 
-	line-height: var(--kbd-line-height-compat);  /* border-radius increases line height */
-	line-height: calc(var(--line-height) - 2 * var(--border-radius) - var(--kbd-frame-width));
+	line-height: var(--g-kbd-line-height-compat);  /* border-radius increases line height */
+	line-height: calc(var(--g-line-height) - 2 * var(--g-border-radius) - var(--g-kbd-frame-width));
 	line-height: calc(1.5rem - 0.2em - 0.2em - 1px);
 
-	border: var(--kbd-frame-width) solid var(--kbd-frame-color);
-	box-shadow: 0 var(--kbd-shadow-width) 0 var(--kbd-shadow-width) var(--kbd-frame-color);
+	border: var(--g-kbd-frame-width) solid var(--g-kbd-frame-color);
+	box-shadow: 0 var(--g-kbd-shadow-width) 0 var(--g-kbd-shadow-width) var(--g-kbd-frame-color);
 
-	border-radius: var(--inline-border-radius);
+	border-radius: var(--g-inline-border-radius);
 }
 h1 > kbd, h2 > kbd, h3 > kbd, h4 > kbd, h5 > kbd, h6 > kbd, b > kbd, strong > kbd, dfn > kbd, dt > kbd {
-	font-weight: var(--demi-bold-font-weight);
+	font-weight: var(--g-demi-bold-font-weight);
 }
 kbd > code:first-child, kbd > samp:first-child {
 	padding-left: 0;
@@ -1488,14 +1488,14 @@ kbd > code:last-child, kbd > samp:last-child {
 abbr {
 	display: inline;
 
-	font-size: var(--demi-font-size);
-	font-weight: var(--demi-font-weight);
+	font-size: var(--g-demi-font-size);
+	font-weight: var(--g-demi-font-weight);
 }
 abbr[title] {
 	text-decoration: underline dotted;
 }
 h1 > abbr, h2 > abbr, h3 > abbr, h4 > abbr, h5 > abbr, h6 > abbr, b > abbr, strong > abbr, dfn > abbr, dt > abbr {
-	font-weight: var(--demi-bold-font-weight);
+	font-weight: var(--g-demi-bold-font-weight);
 }
 
 abbr.g-capital {
@@ -1507,7 +1507,7 @@ abbr.g-capital {
 	-moz-animation: ffbug 0.1s ease 1;
 }
 abbr.g-capital::first-letter {
-	font-size: var(--inverse-demi-font-size);
+	font-size: var(--g-inverse-demi-font-size);
 	font-weight: normal;
 }
 h1 > abbr.g-capital::first-letter,
@@ -1541,14 +1541,14 @@ a:hover abbr.g-capital {
 }
 
 .g-abbr {
-	font-size: var(--demi-font-size);
-	font-weight: var(--demi-font-weight);
+	font-size: var(--g-demi-font-size);
+	font-weight: var(--g-demi-font-weight);
 }
 .g-abbr[title] {
 	text-decoration: underline dotted;
 }
 h1 > .g-abbr, h2 > .g-abbr, h3 > .g-abbr, h4 > .g-abbr, h5 > .g-abbr, h6 > .g-abbr, b > .g-abbr, strong > .g-abbr, dfn > .g-abbr, dt > .g-abbr {
-	font-weight: var(--demi-bold-font-weight);
+	font-weight: var(--g-demi-bold-font-weight);
 }
 a .g-abbr {
 	display: inline;
@@ -1567,7 +1567,7 @@ a:hover .g-abbr {
 	-moz-animation: ffbug 0.1s ease 1;
 }
 .g-abbr.g-capital::first-letter {
-	font-size: var(--inverse-demi-font-size);
+	font-size: var(--g-inverse-demi-font-size);
 	font-weight: normal;
 }
 h1 > .g-abbr.g-capital::first-letter,
@@ -1591,7 +1591,7 @@ a:hover .g-abbr.g-capital {
 }
 
 .g-quiet {
-	color: var(--quiet-color);
+	color: var(--g-quiet-color);
 }
 
 
@@ -1606,16 +1606,16 @@ a.g-button {
 	width: max-content;
 	max-width: 100%;
 
-	margin: var(--button-margin-v) 0;
-	padding: var(--button-padding-v) var(--button-padding-h);
-	padding: calc(var(--button-padding-v) - var(--button-border-width)) var(--button-padding-h);
+	margin: var(--g-button-margin-v) 0;
+	padding: var(--g-button-padding-v) var(--g-button-padding-h);
+	padding: calc(var(--g-button-padding-v) - var(--g-button-border-width)) var(--g-button-padding-h);
 
-	border: var(--button-border-width) solid;
-	border-radius: var(--button-border-radius);
+	border: var(--g-button-border-width) solid;
+	border-radius: var(--g-button-border-radius);
 
 	overflow: hidden;
 
-	line-height: var(--button-line-height);
+	line-height: var(--g-button-line-height);
 	text-decoration: none;
 
 	transition: all 100ms ease;
@@ -1626,7 +1626,7 @@ nav > a.g-button {
 	margin: 0;
 }
 a.g-button:hover, a.g-button:focus, a.g-button:focus-within {
-	background-color: var(--button-highlight-color);
+	background-color: var(--g-button-highlight-color);
 }
 
 a.g-button:hover img, a.g-button:hover picture, a.g-button:hover svg {
@@ -1640,66 +1640,66 @@ a.g-button .g-icon {
 
 /* Custom button colours */
 a.g-green, a.g-go, a.g-okay {
-	color: var(--button-green-color);
-	border-color: var(--button-green-color);
-	background-color: var(--button-green-background-color);
+	color: var(--g-button-green-color);
+	border-color: var(--g-button-green-color);
+	background-color: var(--g-button-green-background-color);
 }
 a.g-green:hover, a.g-green:focus, a.g-green:focus-within, a.g-go:hover, a.g-go:focus, a.g-go:focus-within, a.g-okay:hover, a.g-okay:focus, a.g-okay:focus-within {
-	background-color: var(--button-green-highlight-color);
+	background-color: var(--g-button-green-highlight-color);
 }
 
 a.g-cyan, a.g-upload {
-	color: var(--button-cyan-color);
-	border-color: var(--button-cyan-color);
-	background-color: var(--button-cyan-background-color);
+	color: var(--g-button-cyan-color);
+	border-color: var(--g-button-cyan-color);
+	background-color: var(--g-button-cyan-background-color);
 }
 a.g-cyan:hover, a.g-cyan:focus, a.g-cyan:focus-within, a.g-upload:hover, a.g-upload:focus, a.g-upload:focus-within {
-	background-color: var(--button-cyan-highlight-color);
+	background-color: var(--g-button-cyan-highlight-color);
 }
 
 a.g-blue, a.g-send, a.g-back {
-	color: var(--button-blue-color);
-	border-color: var(--button-blue-color);
-	background-color: var(--button-blue-background-color);
+	color: var(--g-button-blue-color);
+	border-color: var(--g-button-blue-color);
+	background-color: var(--g-button-blue-background-color);
 }
 a.g-blue:hover, a.g-blue:focus, a.g-blue:focus-within, a.g-send:hover, a.g-send:focus, a.g-send:focus-within, a.g-back:hover, a.g-back:focus, a.g-back:focus-within {
-	background-color: var(--button-blue-highlight-color);
+	background-color: var(--g-button-blue-highlight-color);
 }
 
 a.g-magenta, a.g-download {
-	color: var(--button-magenta-color);
-	border-color: var(--button-magenta-color);
-	background-color: var(--button-magenta-background-color);
+	color: var(--g-button-magenta-color);
+	border-color: var(--g-button-magenta-color);
+	background-color: var(--g-button-magenta-background-color);
 }
 a.g-magenta:hover, a.g-magenta:focus, a.g-magenta:focus-within, a.g-download:hover, a.g-download:focus, a.g-download:focus-within {
-	background-color: var(--button-magenta-highlight-color);
+	background-color: var(--g-button-magenta-highlight-color);
 }
 
 a.g-red, a.g-cancel, a.g-delete {
-	color: var(--button-red-color);
-	border-color: var(--button-red-color);
-	background-color: var(--button-red-background-color);
+	color: var(--g-button-red-color);
+	border-color: var(--g-button-red-color);
+	background-color: var(--g-button-red-background-color);
 }
 a.g-red:hover, a.g-red:focus, a.g-red:focus-within, a.g-cancel:hover, a.g-cancel:focus, a.g-cancel:focus-within, a.g-delete:hover, a.g-delete:focus, a.g-delete:focus-within {
-	background-color: var(--button-red-highlight-color);
+	background-color: var(--g-button-red-highlight-color);
 }
 
 a.g-orange {
-	color: var(--button-orange-color);
-	border-color: var(--button-orange-color);
-	background-color: var(--button-orange-background-color);
+	color: var(--g-button-orange-color);
+	border-color: var(--g-button-orange-color);
+	background-color: var(--g-button-orange-background-color);
 }
 a.g-orange:hover, a.g-orange:focus, a.g-orange:focus-within {
-	background-color: var(--button-orange-highlight-color);
+	background-color: var(--g-button-orange-highlight-color);
 }
 
 a.g-yellow, a.g-star {
-	color: var(--button-yellow-color);
-	border-color: var(--button-yellow-color);
-	background-color: var(--button-yellow-background-color);
+	color: var(--g-button-yellow-color);
+	border-color: var(--g-button-yellow-color);
+	background-color: var(--g-button-yellow-background-color);
 }
 a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g-star:focus, a.g-star:focus-within {
-	background-color: var(--button-yellow-highlight-color);
+	background-color: var(--g-button-yellow-highlight-color);
 }
 
 
@@ -1710,28 +1710,28 @@ a.g-yellow:hover, a.g-yellow:focus, a.g-yellow:focus-within, a.g-star:hover, a.g
 picture a.g-button {
 	position: absolute;
 
-	bottom: var(--image-button-margin-v);
-	right: var(--image-button-margin-h);
+	bottom: var(--g-image-button-margin-v);
+	right: var(--g-image-button-margin-h);
 
-	height: var(--image-button-height);
+	height: var(--g-image-button-height);
 
 	margin: 0;
-	padding: var(--image-button-padding-v) var(--image-button-padding-h);
+	padding: var(--g-image-button-padding-v) var(--g-image-button-padding-h);
 
-	color: var(--image-button-color);
+	color: var(--g-image-button-color);
 
 	border: none;
-	background-color: var(--image-button-background-color);
+	background-color: var(--g-image-button-background-color);
 
 	opacity: 0;
 }
 picture a.g-button:hover {
-	color: var(--image-button-hover-color);
-	background-color: var(--image-button-hover-background-color);
+	color: var(--g-image-button-hover-color);
+	background-color: var(--g-image-button-hover-background-color);
 }
 picture a.g-button:focus, picture a.g-button:focus-within {
-	color: var(--image-button-focus-color);
-	background-color: var(--image-button-focus-background-color);
+	color: var(--g-image-button-focus-color);
+	background-color: var(--g-image-button-focus-background-color);
 
 	transition: all 100ms ease;
 }
@@ -1749,11 +1749,11 @@ picture a.g-button::after {
 	margin: 0;
 	padding: 0;
 
-	background-color: var(--image-button-color);
+	background-color: var(--g-image-button-color);
 	opacity: 0;
 
-	-webkit-mask-size: var(--button-icon-size);
-	mask-size: var(--button-icon-size);
+	-webkit-mask-size: var(--g-button-icon-size);
+	mask-size: var(--g-button-icon-size);
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	-webkit-mask-position: top 50% left 50%;
@@ -1763,10 +1763,10 @@ picture a.g-button::after {
 	transition: all 100ms ease;
 }
 picture a.g-button:hover::after {
-	background-color: var(--image-button-hover-color);
+	background-color: var(--g-image-button-hover-color);
 }
 picture a.g-button:focus::after, picture a.g-button:focus-within::after {
-	background-color: var(--image-button-focus-color);
+	background-color: var(--g-image-button-focus-color);
 
 	transition: all 100ms ease;
 }
@@ -1776,7 +1776,7 @@ picture:hover a.g-button {
 }
 
 picture.g-left a.g-button, picture a.g-button.g-left {
-	left: var(--image-button-margin-h);
+	left: var(--g-image-button-margin-h);
 	right: unset;
 }
 
@@ -1786,13 +1786,13 @@ picture nav {
 	justify-content: flex-end;
 	align-items: baseline;
 	align-content: flex-start;
-	gap: var(--image-button-margin-v) var(--image-button-margin-h);
+	gap: var(--g-image-button-margin-v) var(--g-image-button-margin-h);
 
 	position: absolute;
-	top: var(--image-button-margin-v);
-	bottom: var(--image-button-margin-v);
-	left: var(--image-button-margin-h);
-	right: var(--image-button-margin-h);
+	top: var(--g-image-button-margin-v);
+	bottom: var(--g-image-button-margin-v);
+	left: var(--g-image-button-margin-h);
+	right: var(--g-image-button-margin-h);
 
 	margin: 0;
 	padding: 0;
@@ -1823,8 +1823,8 @@ picture.g-vertical.g-left nav, picture.g-vertical nav.g-left, picture.g-left nav
 }
 
 picture a.g-external, picture a.g-expand {
-	width: var(--image-button-icon-width);
-	height: var(--image-button-height);
+	width: var(--g-image-button-icon-width);
+	height: var(--g-image-button-height);
 }
 picture a.g-external::after {
 	opacity: 1;
@@ -1850,26 +1850,26 @@ picture a.g-expand::after {
 @supports (
 		(mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'), linear-gradient(to right, black 1px, transparent 1px))
 		and (mask-size:
-			var(--button-icon-size),
-			var(--button-internal-border-width) var(--button-internal-border-height))
+			var(--g-button-icon-size),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height))
 		and (mask-repeat: no-repeat, no-repeat)
 		and (
-			(mask-position: top 50% left var(--button-icon-margin-h),
-			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h)))
-			or (mask-position: top 50% left var(--button-icon-margin-h),
-			top 50% left var(--button-icon-box-width-compat))
+			(mask-position: top 50% left var(--g-button-icon-margin-h),
+			top 50% left calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h)))
+			or (mask-position: top 50% left var(--g-button-icon-margin-h),
+			top 50% left var(--g-button-icon-box-width-compat))
 		)
 	) or (
 		(-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'), linear-gradient(to right, black 1px, transparent 1px))
 		and (-webkit-mask-size:
-			var(--button-icon-size),
-			var(--button-internal-border-width) var(--button-internal-border-height))
+			var(--g-button-icon-size),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height))
 		and (-webkit-mask-repeat: no-repeat, no-repeat)
 		and (
-			(-webkit-mask-position: top 50% left var(--button-icon-margin-h),
-			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h)))
-			or (-webkit-mask-position: top 50% left var(--button-icon-margin-h),
-			top 50% left var(--button-icon-box-width-compat))
+			(-webkit-mask-position: top 50% left var(--g-button-icon-margin-h),
+			top 50% left calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h)))
+			or (-webkit-mask-position: top 50% left var(--g-button-icon-margin-h),
+			top 50% left var(--g-button-icon-box-width-compat))
 		)
 	)
 {
@@ -1879,8 +1879,8 @@ picture a.g-expand::after {
 	a.g-cancel, a.g-okay, a.g-back, a.g-star, a.g-delete, a.g-left {
 		position: relative;
 
-		padding-left: var(--button-icon-box-width-with-internal-padding-h-compat);
-		padding-left: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
+		padding-left: var(--g-button-icon-box-width-with-internal-padding-h-compat);
+		padding-left: calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h) + var(--g-button-internal-padding-h) + var(--g-button-internal-border-width));
 	}
 	a.g-cancel:focus, a.g-cancel:focus-within, a.g-okay:focus, a.g-okay:focus-within, a.g-back:focus, a.g-back:focus-within, a.g-star:focus, a.g-star:focus-within, a.g-delete:focus, a.g-delete:focus-within, a.g-left:focus, a.g-left:focus-within {
 		color: transparent;
@@ -1904,64 +1904,64 @@ picture a.g-expand::after {
 		width: 100%;
 		height: 100%;
 
-		padding-left: var(--button-icon-box-width-with-internal-padding-h-compat);
-		padding-left: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
+		padding-left: var(--g-button-icon-box-width-with-internal-padding-h-compat);
+		padding-left: calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h) + var(--g-button-internal-padding-h) + var(--g-button-internal-border-width));
 
 		-webkit-mask-size:
-			var(--button-icon-size),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			var(--g-button-icon-size),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		mask-size:
-			var(--button-icon-size),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			var(--g-button-icon-size),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
 		-webkit-mask-position:
-			top 50% left var(--button-icon-margin-h),
-			top 50% left var(--button-icon-box-width-compat);
+			top 50% left var(--g-button-icon-margin-h),
+			top 50% left var(--g-button-icon-box-width-compat);
 		-webkit-mask-position:
-			top 50% left var(--button-icon-margin-h),
-			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+			top 50% left var(--g-button-icon-margin-h),
+			top 50% left calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 		mask-position:
-			top 50% left var(--button-icon-margin-h),
-			top 50% left var(--button-icon-box-width-compat);
+			top 50% left var(--g-button-icon-margin-h),
+			top 50% left var(--g-button-icon-box-width-compat);
 		mask-position:
-			top 50% left var(--button-icon-margin-h),
-			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+			top 50% left var(--g-button-icon-margin-h),
+			top 50% left calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 		mask-type: alpha;
 
 		transition: all 100ms ease;
 	}
 	a.g-cancel:hover::after, a.g-okay:hover::after, a.g-back:hover::after, a.g-star:hover::after, a.g-delete:hover::after {
 		-webkit-mask-size:
-			var(--button-icon-highlight-size-compat),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			var(--g-button-icon-highlight-size-compat),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		-webkit-mask-size:
-			calc(var(--button-icon-size) * var(--button-icon-highlight-scale)),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale)),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		mask-size:
-			var(--button-icon-highlight-size-compat),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			var(--g-button-icon-highlight-size-compat),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		mask-size:
-			calc(var(--button-icon-size) * var(--button-icon-highlight-scale)),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale)),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		-webkit-mask-position:
-			top 50% left var(--button-icon-highlight-margin-h-compat),
-			top 50% left var(--button-icon-box-width-compat);
+			top 50% left var(--g-button-icon-highlight-margin-h-compat),
+			top 50% left var(--g-button-icon-box-width-compat);
 		-webkit-mask-position:
-			top 50% left calc(var(--button-icon-margin-h) - (((var(--button-icon-size) * var(--button-icon-highlight-scale)) - var(--button-icon-size)) / 2)),
-			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+			top 50% left calc(var(--g-button-icon-margin-h) - (((var(--g-button-icon-size) * var(--g-button-icon-highlight-scale)) - var(--g-button-icon-size)) / 2)),
+			top 50% left calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 		mask-position:
-			top 50% left var(--button-icon-highlight-margin-h-compat),
-			top 50% left var(--button-icon-box-width-compat);
+			top 50% left var(--g-button-icon-highlight-margin-h-compat),
+			top 50% left var(--g-button-icon-box-width-compat);
 		mask-position:
-			top 50% left calc(var(--button-icon-margin-h) - (((var(--button-icon-size) * var(--button-icon-highlight-scale)) - var(--button-icon-size)) / 2)),
-			top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+			top 50% left calc(var(--g-button-icon-margin-h) - (((var(--g-button-icon-size) * var(--g-button-icon-highlight-scale)) - var(--g-button-icon-size)) / 2)),
+			top 50% left calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 	}
 	a.g-cancel:focus::after, a.g-cancel:focus-within::after, a.g-okay:focus::after, a.g-okay:focus-within::after, a.g-back:focus::after, a.g-back:focus-within::after, a.g-star:focus::after, a.g-star:focus-within::after, a.g-delete:focus::after, a.g-delete:focus-within::after {
-		-webkit-mask-size: var(--button-icon-highlight-size-compat);
-		-webkit-mask-size: calc(var(--button-icon-size) * var(--button-icon-highlight-scale));
-		mask-size: var(--button-icon-highlight-size-compat);
-		mask-size: calc(var(--button-icon-size) * var(--button-icon-highlight-scale));
+		-webkit-mask-size: var(--g-button-icon-highlight-size-compat);
+		-webkit-mask-size: calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale));
+		mask-size: var(--g-button-icon-highlight-size-compat);
+		mask-size: calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale));
 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
 		-webkit-mask-position: center;
@@ -1974,8 +1974,8 @@ picture a.g-expand::after {
 	a.g-go, a.g-send, a.g-upload, a.g-download, a.g-right {
 		position: relative;
 
-		padding-right: var(--button-icon-box-width-with-internal-padding-h-compat);
-		padding-right: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
+		padding-right: var(--g-button-icon-box-width-with-internal-padding-h-compat);
+		padding-right: calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h) + var(--g-button-internal-padding-h) + var(--g-button-internal-border-width));
 	}
 	a.g-go:focus, a.g-go:focus-within, a.g-send:focus, a.g-send:focus-within, a.g-upload:focus, a.g-upload:focus-within, a.g-download:focus, a.g-download:focus-within, a.g-right:focus, a.g-right:focus-within {
 		color: transparent;
@@ -1999,64 +1999,64 @@ picture a.g-expand::after {
 		width: 100%;
 		height: 100%;
 
-		padding-right: var(--button-icon-box-width-with-internal-padding-h-compat);
-		padding-right: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
+		padding-right: var(--g-button-icon-box-width-with-internal-padding-h-compat);
+		padding-right: calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h) + var(--g-button-internal-padding-h) + var(--g-button-internal-border-width));
 
 		-webkit-mask-size:
-			var(--button-icon-size),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			var(--g-button-icon-size),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		mask-size:
-			var(--button-icon-size),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			var(--g-button-icon-size),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
 		-webkit-mask-position:
-			top 50% right var(--button-icon-margin-h),
-			top 50% right var(--button-icon-box-width-compat);
+			top 50% right var(--g-button-icon-margin-h),
+			top 50% right var(--g-button-icon-box-width-compat);
 		-webkit-mask-position:
-			top 50% right var(--button-icon-margin-h),
-			top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+			top 50% right var(--g-button-icon-margin-h),
+			top 50% right calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 		mask-position:
-			top 50% right var(--button-icon-margin-h),
-			top 50% right var(--button-icon-box-width-compat);
+			top 50% right var(--g-button-icon-margin-h),
+			top 50% right var(--g-button-icon-box-width-compat);
 		mask-position:
-			top 50% right var(--button-icon-margin-h),
-			top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+			top 50% right var(--g-button-icon-margin-h),
+			top 50% right calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 		mask-type: alpha;
 
 		transition: all 100ms ease;
 	}
 	a.g-go:hover::after, a.g-send:hover::after, a.g-upload:hover::after, a.g-download:hover::after {
 		-webkit-mask-size:
-			var(--button-icon-highlight-size-compat),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			var(--g-button-icon-highlight-size-compat),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		-webkit-mask-size:
-			calc(var(--button-icon-size) * var(--button-icon-highlight-scale)),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale)),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		mask-size:
-			var(--button-icon-highlight-size-compat),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			var(--g-button-icon-highlight-size-compat),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		mask-size:
-			calc(var(--button-icon-size) * var(--button-icon-highlight-scale)),
-			var(--button-internal-border-width) var(--button-internal-border-height);
+			calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale)),
+			var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		-webkit-mask-position:
-			top 50% right var(--button-icon-highlight-margin-h-compat),
-			top 50% right var(--button-icon-box-width-compat);
+			top 50% right var(--g-button-icon-highlight-margin-h-compat),
+			top 50% right var(--g-button-icon-box-width-compat);
 		-webkit-mask-position:
-			top 50% right calc(var(--button-icon-margin-h) - ((calc(var(--button-icon-size) * var(--button-icon-highlight-scale))) - var(--button-icon-size))),
-			top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+			top 50% right calc(var(--g-button-icon-margin-h) - ((calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale))) - var(--g-button-icon-size))),
+			top 50% right calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 		mask-position:
-			top 50% right var(--button-icon-highlight-margin-h-compat),
-			top 50% right var(--button-icon-box-width-compat);
+			top 50% right var(--g-button-icon-highlight-margin-h-compat),
+			top 50% right var(--g-button-icon-box-width-compat);
 		mask-position:
-			top 50% right calc(var(--button-icon-margin-h) - ((calc(var(--button-icon-size) * var(--button-icon-highlight-scale))) - var(--button-icon-size))),
-			top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+			top 50% right calc(var(--g-button-icon-margin-h) - ((calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale))) - var(--g-button-icon-size))),
+			top 50% right calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 	}
 	a.g-go:focus::after, a.g-go:focus-within::after, a.g-go:focus-within::after , a.g-send:focus::after, a.g-send:focus-within::after, a.g-send:focus-within::after , a.g-upload:focus::after, a.g-upload:focus-within::after, a.g-upload:focus-within::after , a.g-download:focus::after, a.g-download:focus-within::after, a.g-download:focus-within::after  {
-		-webkit-mask-size: var(--button-icon-highlight-size-compat);
-		-webkit-mask-size: calc(var(--button-icon-size) * var(--button-icon-highlight-scale));
-		mask-size: var(--button-icon-highlight-size-compat);
-		mask-size: calc(var(--button-icon-size) * var(--button-icon-highlight-scale));
+		-webkit-mask-size: var(--g-button-icon-highlight-size-compat);
+		-webkit-mask-size: calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale));
+		mask-size: var(--g-button-icon-highlight-size-compat);
+		mask-size: calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale));
 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
 		-webkit-mask-position: center;
@@ -2214,24 +2214,24 @@ picture a.g-expand::after {
 		width: 100%;
 		height: 100%;
 
-		background-color: var(--link-color);
+		background-color: var(--g-link-color);
 
 		-webkit-mask-image: linear-gradient(to right, black 1px, transparent 1px);
 		mask-image: linear-gradient(to right, black 1px, transparent 1px);
-		-webkit-mask-size: var(--button-internal-border-width) var(--button-internal-border-height);
-		mask-size: var(--button-internal-border-width) var(--button-internal-border-height);
+		-webkit-mask-size: var(--g-button-internal-border-width) var(--g-button-internal-border-height);
+		mask-size: var(--g-button-internal-border-width) var(--g-button-internal-border-height);
 		-webkit-mask-repeat: no-repeat;
 		mask-repeat: no-repeat;
 		mask-type: alpha;
 	}
 	a.g-left:visited::after, a.g-right:visited::after {
-		background-color: var(--visited-color);
+		background-color: var(--g-visited-color);
 	}
 	a.g-left:focus, a.g-left:focus-within, a.g-right:focus, a.g-right:focus-within {
-		border-color: var(--link-color);
+		border-color: var(--g-link-color);
 	}
 	a.g-left:visited:focus, a.g-left:visited:focus-within, a.g-right:visited:focus, a.g-right:visited:focus-within {
-		border-color: var(--visited-color);
+		border-color: var(--g-visited-color);
 	}
 	a.g-left:focus::after, a.g-left:focus-within::after, a.g-right:focus::after, a.g-right:focus-within::after {
 		background-color: transparent;
@@ -2240,23 +2240,23 @@ picture a.g-expand::after {
 	}
 
 	a.g-left::after {
-		padding-left: var(--button-icon-box-width-with-internal-padding-h-compat);
-		padding-left: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
+		padding-left: var(--g-button-icon-box-width-with-internal-padding-h-compat);
+		padding-left: calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h) + var(--g-button-internal-padding-h) + var(--g-button-internal-border-width));
 
-		-webkit-mask-position: top 50% left var(--button-icon-box-width-compat);
-		-webkit-mask-position: top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
-		mask-position: top 50% left var(--button-icon-box-width-compat);
-		mask-position: top 50% left calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+		-webkit-mask-position: top 50% left var(--g-button-icon-box-width-compat);
+		-webkit-mask-position: top 50% left calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
+		mask-position: top 50% left var(--g-button-icon-box-width-compat);
+		mask-position: top 50% left calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 	}
 
 	a.g-right::after {
-		padding-right: var(--button-icon-box-width-with-internal-padding-h-compat);
-		padding-right: calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h) + var(--button-internal-padding-h) + var(--button-internal-border-width));
+		padding-right: var(--g-button-icon-box-width-with-internal-padding-h-compat);
+		padding-right: calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h) + var(--g-button-internal-padding-h) + var(--g-button-internal-border-width));
 
-		-webkit-mask-position: top 50% right var(--button-icon-box-width-compat);
-		-webkit-mask-position: top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
-		mask-position: top 50% right var(--button-icon-box-width-compat);
-		mask-position: top 50% right calc(var(--button-icon-size) + 2 * var(--button-icon-margin-h));
+		-webkit-mask-position: top 50% right var(--g-button-icon-box-width-compat);
+		-webkit-mask-position: top 50% right calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
+		mask-position: top 50% right var(--g-button-icon-box-width-compat);
+		mask-position: top 50% right calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 	}
 
 	/* Custom icons in buttons */
@@ -2266,7 +2266,7 @@ picture a.g-expand::after {
 		position: absolute;
 		top: 50%;
 
-		max-height: var(--button-icon-size);
+		max-height: var(--g-button-icon-size);
 		width: auto;
 
 		margin: 0;
@@ -2275,11 +2275,11 @@ picture a.g-expand::after {
 		opacity: 1;
 	}
 	a.g-left:focus .g-icon, a.g-left:focus-within .g-icon, a.g-right:focus .g-icon, a.g-right:focus-within .g-icon {
-		color: var(--link-color);  /* So that text elements can be used as icon */
+		color: var(--g-link-color);  /* So that text elements can be used as icon */
 	}
 	a.g-left:visited:focus .g-icon, a.g-left:visited:focus-within .g-icon, a.g-right:visited:focus .g-icon, a.g-right:visited:focus-within .g-icon {
 		/* So that text elements can be used as icon */
-		color: var(--visited-color);
+		color: var(--g-visited-color);
 	}
 	a.g-left:focus svg.g-icon *, a.g-left:focus math.g-icon *, a.g-left:focus-within svg.g-icon *, a.g-left:focus-within math.g-icon *, a.g-right:focus svg.g-icon *, a.g-right:focus math.g-icon *, a.g-right:focus-within svg.g-icon *, a.g-right:focus-within math.g-icon * {
 		/* So that embedded XML can be used as icon */
@@ -2287,12 +2287,12 @@ picture a.g-expand::after {
 	}
 
 	a.g-left .g-icon {
-		left: var(--button-icon-centre-compat);
-		left: calc(0.5 * var(--button-icon-size) + var(--button-icon-margin-h));
+		left: var(--g-button-icon-centre-compat);
+		left: calc(0.5 * var(--g-button-icon-size) + var(--g-button-icon-margin-h));
 		transform: translate(-50%, -50%);
 	}
 	a.g-left:hover .g-icon {
-		transform: translate(-50%, -50%) scale(var(--button-icon-highlight-scale), var(--button-icon-highlight-scale));
+		transform: translate(-50%, -50%) scale(var(--g-button-icon-highlight-scale), var(--g-button-icon-highlight-scale));
 
 		transition: all 100ms ease;
 	}
@@ -2303,12 +2303,12 @@ picture a.g-expand::after {
 	}
 
 	a.g-right .g-icon {
-		right: var(--button-icon-centre-compat);
-		right: calc(0.5 * var(--button-icon-size) + var(--button-icon-margin-h));
+		right: var(--g-button-icon-centre-compat);
+		right: calc(0.5 * var(--g-button-icon-size) + var(--g-button-icon-margin-h));
 		transform: translate(50%, -50%);
 	}
 	a.g-right:hover .g-icon {
-		transform: translate(50%, -50%) scale(var(--button-icon-highlight-scale), var(--button-icon-highlight-scale));
+		transform: translate(50%, -50%) scale(var(--g-button-icon-highlight-scale), var(--g-button-icon-highlight-scale));
 
 		transition: all 100ms ease;
 	}
@@ -2320,81 +2320,81 @@ picture a.g-expand::after {
 
 	/* Custom button colours */
 	a.g-green::after, a.g-green:visited::after {
-		background-color: var(--button-green-color);
+		background-color: var(--g-button-green-color);
 	}
 
 	a.g-cyan::after, a.g-cyan:visited::after {
-		background-color: var(--button-cyan-color);
+		background-color: var(--g-button-cyan-color);
 	}
 
 	a.g-blue::after, a.g-blue:visited::after {
-		background-color: var(--button-blue-color);
+		background-color: var(--g-button-blue-color);
 	}
 
 	a.g-magenta::after, a.g-magenta:visited::after {
-		background-color: var(--button-magenta-color);
+		background-color: var(--g-button-magenta-color);
 	}
 
 	a.g-red::after, a.g-red:visited::after {
-		background-color: var(--button-red-color);
+		background-color: var(--g-button-red-color);
 	}
 
 	a.g-orange::after, a.g-orange:visited::after {
-		background-color: var(--button-orange-color);
+		background-color: var(--g-button-orange-color);
 	}
 
 	a.g-yellow::after, a.g-yellow:visited::after {
-		background-color: var(--button-yellow-color);
+		background-color: var(--g-button-yellow-color);
 	}
 
 	/* For greater specificity to override .g-left and .g-right */
 	a.g-green:focus, a.g-green:visited:focus, a.g-green:focus-within, a.g-green:visited:focus-within {
-		border-color: var(--button-green-color);
+		border-color: var(--g-button-green-color);
 	}
 	a.g-green:focus .g-icon, a.g-green:visited:focus .g-icon, a.g-green:focus-within .g-icon, a.g-green:visited:focus-within .g-icon {
-		color: var(--button-green-color);
+		color: var(--g-button-green-color);
 	}
 
 	a.g-cyan:focus, a.g-cyan:visited:focus, a.g-cyan:focus-within, a.g-cyan:visited:focus-within {
-		border-color: var(--button-cyan-color);
+		border-color: var(--g-button-cyan-color);
 	}
 	a.g-cyan:focus .g-icon, a.g-cyan:visited:focus .g-icon, a.g-cyan:focus-within .g-icon, a.g-cyan:visited:focus-within .g-icon {
-		color: var(--button-cyan-color);
+		color: var(--g-button-cyan-color);
 	}
 
 	a.g-blue:focus, a.g-blue:visited:focus, a.g-blue:focus-within, a.g-blue:visited:focus-within {
-		border-color: var(--button-blue-color);
+		border-color: var(--g-button-blue-color);
 	}
 	a.g-blue:focus .g-icon, a.g-blue:visited:focus .g-icon, a.g-blue:focus-within .g-icon, a.g-blue:visited:focus-within .g-icon {
-		color: var(--button-blue-color);
+		color: var(--g-button-blue-color);
 	}
 
 	a.g-magenta:focus, a.g-magenta:visited:focus, a.g-magenta:focus-within, a.g-magenta:visited:focus-within {
-		border-color: var(--button-magenta-color);
+		border-color: var(--g-button-magenta-color);
 	}
 	a.g-magenta:focus .g-icon, a.g-magenta:visited:focus .g-icon, a.g-magenta:focus-within .g-icon, a.g-magenta:visited:focus-within .g-icon {
-		color: var(--button-magenta-color);
+		color: var(--g-button-magenta-color);
 	}
 
 	a.g-red:focus, a.g-red:visited:focus, a.g-red:focus-within, a.g-red:visited:focus-within {
-		border-color: var(--button-red-color);
+		border-color: var(--g-button-red-color);
 	}
 	a.g-red:focus .g-icon, a.g-red:visited:focus .g-icon, a.g-red:focus-within .g-icon, a.g-red:visited:focus-within .g-icon {
-		color: var(--button-red-color);
+		color: var(--g-button-red-color);
 	}
 
 	a.g-orange:focus, a.g-orange:visited:focus, a.g-orange:focus-within, a.g-orange:visited:focus-within {
-		border-color: var(--button-orange-color);
+		border-color: var(--g-button-orange-color);
 	}
 	a.g-orange:focus .g-icon, a.g-orange:visited:focus .g-icon, a.g-orange:focus-within .g-icon, a.g-orange:visited:focus-within .g-icon {
-		color: var(--button-orange-color);
+		color: var(--g-button-orange-color);
 	}
 
 	a.g-yellow:focus, a.g-yellow:visited:focus, a.g-yellow:focus-within, a.g-yellow:visited:focus-within {
-		border-color: var(--button-yellow-color);
+		border-color: var(--g-button-yellow-color);
 	}
 	a.g-cyan:yellow .g-icon, a.g-cyan:visited:yellow .g-icon, a.g-cyan:yellow-within .g-icon, a.g-cyan:visited:yellow-within .g-icon {
-		color: var(--button-yellow-color);
+		color: var(--g-button-yellow-color);
 	}
 
 	/* Image action buttons */
@@ -2408,7 +2408,7 @@ picture a.g-expand::after {
 		width: 100%;
 		height: 100%;
 
-		color: var(--image-button-hover-color);
+		color: var(--g-image-button-hover-color);
 	}
 }
 
