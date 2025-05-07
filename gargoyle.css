@@ -29,7 +29,6 @@
 		hyphens: auto (IE –11, Edge –18) So no need for -ms- if the only values used are auto and none
 		tab-size (IE –11, Edge –18) Must be integer for iOS –12.5
 		width: max-content (IE –11, Edge –18)
-		font-feature-settings (IE –9, O Mini, Android –4.3) -moz- old syntax for Firefox 4–14, -moz- for Firefox 15–33, -webkit- for Chrome 16–47 & Opera 15–34 & Android 4.4–4.4.4 & Samsung 4
 		flex (IE –10) -webkit- for Chrome 22–28 & Safari 8 & iOS 8–8.4
 
 	Features with fallback mechanisms (unsupported browsers):
