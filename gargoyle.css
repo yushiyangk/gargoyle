@@ -858,7 +858,7 @@ dl.g-thumbnail > a:first-child > dt:first-of-type, dl.g-thumbnail > a:first-chil
 }
 
 dl.g-thumbnail > a:hover dt {
-	margin-top: var(-thumbnail-list-fallback-margin-top-with-negative-padding-compat);
+	margin-top: var(--thumbnail-list-fallback-margin-top-with-negative-padding-compat);
 	margin-top: calc(var(--item-margin-v) - var(--image-highlight-padding-v));
 	margin-bottom: var(--image-highlight-negative-margin-v-compat);
 	margin-bottom: calc(-1 * var(--image-highlight-padding-v));
@@ -873,7 +873,7 @@ dl.g-thumbnail > a:hover dt {
 dl.g-thumbnail > a:hover dd {
 	margin: var(--image-highlight-negative-margin-v-compat) var(--image-highlight-negative-margin-h-compat);
 	margin: calc(-1 * var(--image-highlight-padding-v)) calc(-1 * var(--image-highlight-padding-h));
-	margin-top: var(-thumbnail-list-fallback-margin-top-with-negative-padding-compat);
+	margin-top: var(--thumbnail-list-fallback-margin-top-with-negative-padding-compat);
 	margin-top: calc(var(--item-margin-v) - var(--image-highlight-padding-v));
 	padding: var(--image-highlight-padding-v) var(--image-highlight-padding-h);
 
@@ -2332,7 +2332,7 @@ picture a.g-expand::after {
 	}
 
 	a.g-magenta::after, a.g-magenta:visited::after {
-		background-color: var(-button-magenta-color);
+		background-color: var(--button-magenta-color);
 	}
 
 	a.g-red::after, a.g-red:visited::after {
@@ -2370,10 +2370,10 @@ picture a.g-expand::after {
 	}
 
 	a.g-magenta:focus, a.g-magenta:visited:focus, a.g-magenta:focus-within, a.g-magenta:visited:focus-within {
-		border-color: var(-button-magenta-color);
+		border-color: var(--button-magenta-color);
 	}
 	a.g-magenta:focus .g-icon, a.g-magenta:visited:focus .g-icon, a.g-magenta:focus-within .g-icon, a.g-magenta:visited:focus-within .g-icon {
-		color: var(-button-magenta-color);
+		color: var(--button-magenta-color);
 	}
 
 	a.g-red:focus, a.g-red:visited:focus, a.g-red:focus-within, a.g-red:visited:focus-within {
