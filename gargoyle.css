@@ -29,8 +29,14 @@
 		hyphens: auto (IE –11, Edge –18) So no need for -ms- if the only values used are auto and none
 		tab-size (IE –11, Edge –18) Must be integer for iOS –12.5
 		width: max-content (IE –11, Edge –18)
-		align-items: baseline (for Flex Box) (IE –11, possibly Edge –18)
-		gap (IE –11) (for Flex Box)
+		align-items: baseline (for Flexbox) (IE –11, possibly Edge –18)
+		gap (for Flexbox) (IE –11)
+		grid-template-columns use -ms-grid-columns for IE –11
+		grid-template-areas (IE –11)
+		grid-auto-flow: row (IE –11, Edge –18)
+		gap (for Grid Layout) (IE –11) use grid-gap for iOS –11.2
+		align-items: baseline (for Grid Layout) (IE –11, possibly Edge –18)
+		grid-column (IE –11)
 
 	Features with fallback mechanisms (unsupported browsers):
 		initial value (IE –11)
@@ -589,18 +595,27 @@ dd::after {
 
 /* Thumbnail list */
 
-dl.g-thumbnail {
-	display: grid;
-	grid-template-columns: var(--thumbnail-width) auto;
-	grid-template-areas: "thumb item";
-	grid-auto-flow: row;
-	grid-gap: 0.75rem 1rem;
-	align-items: stretch;
+@supports (grid-template-areas: "thumb item") and (grid-auto-flow: row) {
+	dl.g-thumbnail {
+		display: grid;
+		grid-template-columns: var(--thumbnail-width) auto;
+		grid-template-areas: "thumb item";
+		grid-auto-flow: row;
+		grid-gap: 0.75rem 1rem;
+		gap: 0.75rem 1rem;
+		align-items: stretch;
+	}
+
+	dl.g-thumbnail dt {
+		grid-column: thumb-start / thumb-end;
+	}
+
+	dl.g-thumbnail dd {
+		grid-column: item-start / item-end;
+	}
 }
 
 dl.g-thumbnail dt {
-	grid-column: thumb-start / thumb-end;
-
 	display: block;
 
 	margin: 0;
@@ -629,8 +644,6 @@ dl.g-thumbnail dt > *:last-child {
 }
 
 dl.g-thumbnail dd {
-	grid-column: item-start / item-end;
-
 	display: block;
 
 	margin: 0;
@@ -685,7 +698,6 @@ dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-
 
 	font-style: initial;
 }
-
 
 
 /*
