@@ -633,7 +633,8 @@ dl.g-thumbnail dt > *:last-child {
 dl.g-thumbnail dd {
 	display: inline-block;
 
-	max-width: calc(40rem - var(--thumbnail-width) - 2rem);  /* $column-width - $thumbnail-width - $column-gap */
+	max-width: 29rem;
+	max-width: calc(40rem - var(--thumbnail-width) - 1rem - 1rem);  /* $column-width - $thumbnail-width - $column-gap - extra margin */
 
 	margin: 0;
 	margin-top: 0.75rem;
@@ -1236,7 +1237,7 @@ kbd {
 	font-weight: 500;
 	/* Same as abbr */
 
-	line-height: 1.1rem;  /* border-radius increases line height */
+	line-height: 0.9rem;  /* border-radius increases line height */
 	line-height: calc(1.3rem - 0.2em - 0.2em - 1px);
 
 	border: 1px solid lightgrey;
