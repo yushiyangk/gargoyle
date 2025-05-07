@@ -37,6 +37,7 @@
 		gap (for Grid Layout) (IE –11) use grid-gap for iOS –11.2
 		align-items: baseline (for Grid Layout) (IE –11, possibly Edge –18)
 		grid-column (IE –11)
+		object-fit: cover or scale-down (IE –11, Edge –18)
 
 	Features with fallback mechanisms (unsupported browsers):
 		initial value (IE –11)
