@@ -932,8 +932,8 @@ figure {
 
 	margin-top: 0.75rem;
 	margin-bottom: 2.25rem;
-	margin-left: 0;
-	margin-right: 0;
+	margin-left: calc(50% - 50vw + 1rem);
+	margin-right: calc(50% - 50vw + 1rem);
 	padding: 0;
 
 	text-align: center;
@@ -1000,121 +1000,111 @@ figure.g-bound a img, figure.g-bound a picture, figure.g-bound a svg, figure.g-b
 	max-width: 100%;
 }
 
-/* If main supports width calculations, expand outside of column and use these as margins */
-/* If not supported, fall back to being bound by column */
-@supports (max-width: calc(50% - 50vw + 1rem)) {  /* $edge-margin */
+@media (min-width: 704px) {  /* $main-width + 2 * $column-margin; 44rem */
+	/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
 	figure {
-		margin-left: calc(50% - 50vw + 1rem);
-		margin-right: calc(50% - 50vw + 1rem);
+		margin-left: calc(50% - 50vw + 2rem);
+		margin-right: calc(50% - 50vw + 2rem);
 	}
 
-
-	@media (min-width: 704px) {  /* $main-width + 2 * $column-margin; 44rem */
-		/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
-		figure {
-			margin-left: calc(50% - 50vw + 2rem);
-			margin-right: calc(50% - 50vw + 2rem);
-		}
-
-		/* Elements bound to column width should be set to appropriate values rather than 100% */
-		figcaption {
-			max-width: 38rem;
-		}
-
-		figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
-			max-width: 40rem;
-		}
+	/* Elements bound to column width should be set to appropriate values rather than 100% */
+	figcaption {
+		max-width: 38rem;
 	}
 
-	/* If supported, replace the above expanded margins with an offset using transform */
-	@supports (transform: translate(-50%)) {
+	figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
+		max-width: 40rem;
+	}
+}
 
-		/* Unset hyperlink styles for images (not tables) */
-		figure > a {
-			display: block;
+/* If supported, replace the above expanded margins with an offset using transform */
+@supports (transform: translate(-50%)) {
 
-			width: max-content;
+	/* Unset hyperlink styles for images (not tables) */
+	figure > a {
+		display: block;
 
-			margin: 0 auto;
-		}
-		figure > a img, figure > a picture, figure > a svg {
-			display: initial;
-		}
+		width: max-content;
 
+		margin: 0 auto;
+	}
+	figure > a img, figure > a picture, figure > a svg {
+		display: initial;
+	}
+
+	figure {
+		position: relative;
+		left: 50%;
+
+		width: max-content;
+		max-width: calc(100vw - 2rem);
+
+		margin-left: 0;
+		margin-right: 0;
+
+		text-align: initial;
+
+		transform: translateX(-50%);
+	}
+
+	figure.g-bound {
+		max-width: 100%;
+	}
+	figure.g-bound > a {
+		max-width: 100%;
+	}
+
+	/* Left and right aligned figures */
+	figure.g-left, figure.g-right {
+		/* When combined with width: max-content, this makes the figure aligned when narrower than main column, and centred when wider */
+		min-width: 100%;
+	}
+
+	figure.g-left img, figure.g-left picture, figure.g-left svg, figure.g-left table {
+		margin-left: 0;
+		margin-right: auto;
+	}
+	figure.g-left figcaption {
+		margin-left: 0;
+		margin-right: auto;
+
+		text-align: left;
+	}
+
+	figure.g-right img, figure.g-right picture, figure.g-right svg, figure.g-right table {
+		margin-left: auto;
+		margin-right: 0;
+	}
+	figure.g-right figcaption {
+		margin-left: auto;
+		margin-right: 0;
+
+		text-align: right;
+	}
+
+	figure.g-left figcaption.g-bound, figure.g-right figcaption.g-bound {
+		width: 100%;
+		max-width: 100%;
+
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	@media (min-width: 704px) {
 		figure {
-			position: relative;
-			left: 50%;
-
-			width: max-content;
-			max-width: calc(100vw - 2rem);
+			max-width: calc(100vw - 4rem);
 
 			margin-left: 0;
 			margin-right: 0;
-
-			text-align: initial;
-
-			transform: translateX(-50%);
-		}
-
-		figure.g-bound {
-			max-width: 100%;
-		}
-		figure.g-bound > a {
-			max-width: 100%;
-		}
-
-		/* Left and right aligned figures */
-		figure.g-left, figure.g-right {
-			/* When combined with width: max-content, this makes the figure aligned when narrower than main column, and centred when wider */
-			min-width: 100%;
-		}
-
-		figure.g-left img, figure.g-left picture, figure.g-left svg, figure.g-left table {
-			margin-left: 0;
-			margin-right: auto;
-		}
-		figure.g-left figcaption {
-			margin-left: 0;
-			margin-right: auto;
-
-			text-align: left;
-		}
-
-		figure.g-right img, figure.g-right picture, figure.g-right svg, figure.g-right table {
-			margin-left: auto;
-			margin-right: 0;
-		}
-		figure.g-right figcaption {
-			margin-left: auto;
-			margin-right: 0;
-
-			text-align: right;
 		}
 
 		figure.g-left figcaption.g-bound, figure.g-right figcaption.g-bound {
-			width: 100%;
-			max-width: 100%;
+			/* Reset max-width to disable centreing for single-line captions */
+			/* Reset to 39rem instead of 38rem because captions for left- and right- aligned figures are flush against column but with 1rem margin on the other side */
+			width: 39rem;
+			max-width: 39rem;
+			/* Contrast with centred figure with a multiline (left-aligned) caption, or with directly left- or right- aligned captions, both of which are 38rem and not flush */
 
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		@media (min-width: 704px) {
-			figure {
-				max-width: calc(100vw - 4rem);
-
-				margin-left: 0;
-				margin-right: 0;
-			}
-
-			figure.g-left figcaption.g-bound, figure.g-right figcaption.g-bound {
-				/* Reset max-width to disable centreing for single-line captions */
-				/* Reset to 39rem instead of 38rem because captions for left- and right- aligned figures are flush against column but with 1rem margin on the other side */
-				width: 39rem;
-				max-width: 39rem;
-				/* Contrast with centred figure with a multiline (left-aligned) caption, or with directly left- or right- aligned captions, both of which are 38rem and not flush */
-
-			}
 		}
 	}
 }
