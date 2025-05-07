@@ -748,116 +748,114 @@ img.g-inline, picture.g-inline, svg.g-inline {
 	vertical-align: middle;
 }
 
-@supports (display: inline-flex) or (display: -ms-inline-flexbox) {
-	.g-inline, .g-subinline {
-		display: inline-flex;
-		flex-flow: row wrap;
+.g-inline, .g-subinline {
+	display: inline-flex;
+	flex-flow: row wrap;
 
-		margin: 0;
-		padding: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.g-inline > li, .g-subinline > li, .g-inline > .g-li, .g-subinline > .g-li {
+	display: block;
+	flex: 0 0 auto;
+
+	margin: 0;
+	padding: 0;
+}
+.g-inline > li::after, .g-subinline > li::after, .g-inline > .g-li::after, .g-subinline > .g-li::after {
+	content: '·';
+	display: inline;
+
+	padding-left: 0.3em;  /* $separator-padding */
+	padding-right: 0.3em;  /* $separator-padding */
+	line-height: 0;
+
+	color: grey;
+
+	font-weight: bold;
+}
+.g-inline > li:last-child::after, .g-subinline > li:last-child::after, .g-inline > .g-li:last-child::after, .g-subinline > .g-li:last-child::after {
+	content: none;
+}
+
+@supports (counter-reset: count) and (counter-increment: count) and (content: counter(count)) {
+	ol.g-inline {
+		counter-reset: inline-list;
 	}
-
-	.g-inline > li, .g-subinline > li, .g-inline > .g-li, .g-subinline > .g-li {
-		display: block;
-		flex: 0 0 auto;
-
-		margin: 0;
-		padding: 0;
+	ol.g-inline > li {
+		counter-increment: inline-list;
 	}
-	.g-inline > li::after, .g-subinline > li::after, .g-inline > .g-li::after, .g-subinline > .g-li::after {
-		content: '·';
-		display: inline;
-
-		padding-left: 0.3em;  /* $separator-padding */
-		padding-right: 0.3em;  /* $separator-padding */
-		line-height: 0;
-
-		color: grey;
-
-		font-weight: bold;
+	ol.g-inline > li::before {
+		content: counter(inline-list) ". ";
 	}
-	.g-inline > li:last-child::after, .g-subinline > li:last-child::after, .g-inline > .g-li:last-child::after, .g-subinline > .g-li:last-child::after {
-		content: none;
+	ol.g-subinline {
+		counter-reset: subinline-list;
 	}
-
-	@supports (counter-reset: count) and (counter-increment: count) and (content: counter(count)) {
-		ol.g-inline {
-			counter-reset: inline-list;
-		}
-		ol.g-inline > li {
-			counter-increment: inline-list;
-		}
-		ol.g-inline > li::before {
-			content: counter(inline-list) ". ";
-		}
-		ol.g-subinline {
-			counter-reset: subinline-list;
-		}
-		ol.g-subinline > li {
-			counter-increment: subinline-list;
-		}
-		ol.g-subinline > li::before {
-			content: counter(subinline-list) ". ";
-		}
-		ol.g-continue {
-			counter-reset: none;
-		}
+	ol.g-subinline > li {
+		counter-increment: subinline-list;
 	}
-
-	.g-inline > dt, .g-subinline > dt {
-		display: block;
-		flex: 0 0 auto;
-
-		margin: 0;
-		padding: 0;
-
-		font-weight: bold;
+	ol.g-subinline > li::before {
+		content: counter(subinline-list) ". ";
 	}
-	.g-inline > dt::after, .g-subinline > dt::after {
-		content: ':';
-		display: inline;
-
-		margin-right: 0.3em;  /* $separator-padding */
+	ol.g-continue {
+		counter-reset: none;
 	}
-	.g-inline > dt:last-child::after, .g-subinline > dt:last-child::after {
-		content: none;
-	}
+}
 
-	.g-inline > dd, .g-subinline > dd {
-		display: block;
-		flex: 0 0 auto;
+.g-inline > dt, .g-subinline > dt {
+	display: block;
+	flex: 0 0 auto;
 
-		margin: 0;
-		padding: 0;
-	}
-	.g-inline > dd::after, .g-subinline > dd::after {
-		content: '·';
-		display: inline;
+	margin: 0;
+	padding: 0;
 
-		font-size: initial;
-		font-weight: bold;
-		color: grey;
+	font-weight: bold;
+}
+.g-inline > dt::after, .g-subinline > dt::after {
+	content: ':';
+	display: inline;
 
-		margin-left: 0.3em;  /* $separator-padding */
-		margin-right: 0.3em;  /* $separator-padding */
-	}
-	.g-inline > dd:last-child::after, .g-subinline > dd:last-child::after {
-		content: none;
-	}
+	margin-right: 0.3em;  /* $separator-padding */
+}
+.g-inline > dt:last-child::after, .g-subinline > dt:last-child::after {
+	content: none;
+}
 
-	.g-subinline {
-		flex-flow: row nowrap;
+.g-inline > dd, .g-subinline > dd {
+	display: block;
+	flex: 0 0 auto;
 
-		font-size: 0.833333rem;
-		line-height: 1.125rem;
-	}
-	.g-subinline::before {
-		content: '(';
-	}
+	margin: 0;
+	padding: 0;
+}
+.g-inline > dd::after, .g-subinline > dd::after {
+	content: '·';
+	display: inline;
 
-	.g-subinline::after {
-		content: ')';
-	}
+	font-size: initial;
+	font-weight: bold;
+	color: grey;
+
+	margin-left: 0.3em;  /* $separator-padding */
+	margin-right: 0.3em;  /* $separator-padding */
+}
+.g-inline > dd:last-child::after, .g-subinline > dd:last-child::after {
+	content: none;
+}
+
+.g-subinline {
+	flex-flow: row nowrap;
+
+	font-size: 0.833333rem;
+	line-height: 1.125rem;
+}
+.g-subinline::before {
+	content: '(';
+}
+
+.g-subinline::after {
+	content: ')';
 }
 
 
