@@ -29,7 +29,6 @@
 		hyphens: auto (IE –11, Edge –18) So no need for -ms- if the only values used are auto and none
 		tab-size (IE –11, Edge –18) Must be integer for iOS –12.5
 		width: max-content (IE –11, Edge –18)
-		border-radius (IE –8, O Mini) -moz- for Firefox 2–3.6, -webkit- for Chrome 4 & Safari 3.1–4 & iOS 3.2 & Android 2.1
 		font-feature-settings (IE –9, O Mini, Android –4.3) -moz- old syntax for Firefox 4–14, -moz- for Firefox 15–33, -webkit- for Chrome 16–47 & Opera 15–34 & Android 4.4–4.4.4 & Samsung 4
 		flex (IE –10) -webkit- for Chrome 22–28 & Safari 8 & iOS 8–8.4
 
@@ -1214,8 +1213,6 @@ code, samp {
 	-webkit-hyphens: none;
 	hyphens: none;
 
-	-moz-border-radius: 0.2em;
-	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
 }
 code {
@@ -1242,8 +1239,6 @@ kbd {
 	border: 1px solid lightgrey;
 	box-shadow: 0 1px 0 1px lightgrey;
 
-	-moz-border-radius: 0.2em;
-	-webkit-border-radius: 0.2em;
 	border-radius: 0.2em;
 }
 h1 > kbd, h2 > kbd, h3 > kbd, h4 > kbd, h5 > kbd, h6 > kbd, b > kbd, strong > kbd, dfn > kbd, dt > kbd {
