@@ -37,7 +37,6 @@
 
 	Features with fallback mechanisms (unsupported browsers):
 		initial value (IE –11)
-		vw units (IE –8, O Mini, Android –4.3)
 		calc() (IE –11, Safari 5.1, O Mini, Android –4.3) -moz- for Firefox 4–15, -webkit- for Chrome 19–25 & Safari 6 & iOS 6.1
 			! IE 9 crashes when used in the background-position property
 			! Various known issues: https://caniuse.com/#feat=calc
@@ -98,7 +97,6 @@ main {
 	display: block;
 
 	width: 40rem;  /* $column-width */
-	max-width: 91.666667%;
 	max-width: 91.666667vw;  /* 100vw - 2 * $main-margin */
 	max-width: calc(100vw - 2rem);
 
