@@ -1,5 +1,10 @@
 ## Changelog
 
+### 0.4.2
+
+- Added current version number to `gargoyle.css`
+- Fixed incorrect variable used for main text colour
+
 ### 0.4.1
 
 - Changed all CSS variables to add the prefix `--g-`
