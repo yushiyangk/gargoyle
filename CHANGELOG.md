@@ -1,5 +1,11 @@
 ## Changelog
 
+### 0.4.3
+
+- Changed scrolling behaviour of wide tables
+	- Removed `overflow-x: auto` from `<table>` elements
+	- It will now rely on horizontal scrolling of the page itself rather than rendering its own scrollbars
+
 ### 0.4.2
 
 - Added current version number to `gargoyle.css`

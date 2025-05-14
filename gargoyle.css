@@ -1328,8 +1328,6 @@ table {
 	text-align: start;
 	-webkit-hyphens: auto;
 	hyphens: auto;
-
-	overflow-x: auto;
 }
 td, th {
 	display: table-cell;
