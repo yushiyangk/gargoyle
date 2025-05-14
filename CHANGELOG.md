@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.4.4
+
+- Fixed variables for button colours not being applied to built-in icon types
+
 ### 0.4.3
 
 - Changed scrolling behaviour of wide tables
