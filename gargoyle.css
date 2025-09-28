@@ -101,10 +101,14 @@
 	--g-demi-font-weight: 500;
 	--g-demi-bold-font-weight: 700;
 	--g-inverse-demi-font-size: 1.066667em;  /* 16/15 of demi */
+
+	--g-monospace-font-size: var(--g-font-size);
+	--g-monospace-line-height: var(--g-line-height);
+
 	--g-inline-height: 1.25rem;
 	--g-inline-padding-h: 0.2em;
 	--g-inline-border-radius: 0.2em;
-	--g-inline-border-radius-line-height-compat: 1.3rem;  /* compat; (--g-line-height) - var(--g-inline-border-radius) */
+	--g-inline-border-radius-monospace-line-height-compat: 1.3rem;  /* compat; (--g-monospace-line-height) - var(--g-inline-border-radius) */
 
 	--g-border-radius: 6px;
 	--g-frame-width: 2px;
@@ -1439,8 +1443,9 @@ code, samp {
 	padding: 0 var(--g-inline-padding-h);
 
 	font-family: monospace;
-	line-height: var(--g-inline-border-radius-line-height-compat);  /* border-radius increases line height */
-	line-height: calc(var(--g-line-height) - var(--g-inline-border-radius));
+	font-size: var(--g-monospace-font-size);
+	line-height: var(--g-inline-border-radius-monospace-line-height-compat);  /* border-radius increases line height */
+	line-height: calc(var(--g-monospace-line-height) - var(--g-inline-border-radius));
 	-webkit-hyphens: none;
 	hyphens: none;
 
