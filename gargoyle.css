@@ -42,7 +42,7 @@
 		calc() (IE –11)
 			! Various known issues for IE11: https://caniuse.com/#feat=calc
 		text-align: start or end (IE –11, Edge –18)
-		::first-letter (IE –8) ffbug workaround for Firefox –128 using -moz-animation & @-moz-keyframes
+		::first-letter (Firefox –128, see ffbug workaround)
 		Grid Layout for thumbnail list:
 			grid-template-columns use -ms-grid-columns for IE –11
 			grid-template-areas (IE –11)
@@ -1499,7 +1499,7 @@ kbd > code:last-child, kbd > samp:last-child {
 	font-style: normal;
 }
 
-/* Workaround for Firefox adding extra space after an element that has display: inline-block and a ::first-letter with a change of font-size; fixed by forcing reflow */
+/* Workaround for Firefox adding extra space after an element that has display: inline-block and a ::first-letter with a change of font-size; fixed by forcing reflow (https://bugzilla.mozilla.org/show_bug.cgi?id=385615) */
 @-moz-keyframes ffbug { from { padding-right: 0.1px ; } to { padding-right: 0; } }
 abbr {
 	display: inline;
