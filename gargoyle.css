@@ -116,15 +116,15 @@
 	--g-heading-inverse-demi-relative-font-size: var(--g-inverse-demi-relative-font-size);
 	--g-heading-demi-font-weight: var(--g-demi-bold-font-weight);
 	--g-h2-font-size: 1.666667rem;  /* 5/6 of h1 == 5/3 */
-	--g-h2-line-height: var(--g-medium-v);
+	--g-h2-line-height: var(--g-line-height);
 	--g-h3-font-size: 1.333333rem;  /* 4/5 of h2 == 4/3 */
-	--g-h3-line-height: var(--g-medium-v);
+	--g-h3-line-height: var(--g-line-height);
 	--g-h4-font-size: 1.111111rem;  /* 5/6 of h3 == 10/9 */
-	--g-h4-line-height: var(--g-medium-v);
+	--g-h4-line-height: var(--g-line-height);
 	--g-h5-font-size: var(--g-h4-font-size);
-	--g-h5-line-height: var(--g-medium-v);
+	--g-h5-line-height: var(--g-line-height);
 	--g-h6-font-size: var(--g-h4-font-size);
-	--g-h6-line-height: var(--g-medium-v);
+	--g-h6-line-height: var(--g-line-height);
 
 
 	--g-inline-height: 1.25rem;
