@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.4.5 */
+/* version 0.5 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -1444,6 +1444,14 @@ sub {font-size: var(--g-small-font-size);
 	vertical-align: bottom;
 }
 
+tt {
+	font-family: monospace;
+	font-size: var(--g-monospace-font-size);
+	line-height: var(--g-inline-border-radius-monospace-line-height-compat);  /* border-radius increases line height */
+	line-height: calc(var(--g-monospace-line-height) - var(--g-inline-border-radius));
+	-webkit-hyphens: none;
+	hyphens: none;
+}
 code, samp {
 	display: inline;
 

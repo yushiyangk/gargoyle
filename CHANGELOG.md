@@ -1,5 +1,6 @@
 ## Changelog
 
+
 ### 0.5
 
 #### Breaking changes
@@ -30,6 +31,7 @@ These changes are breaking if and only if the old variable names have been overw
 - Added customisable variables for monospace font size and line height:
 	- `--g-monospace-font-size`, set to `var(--g-font-size)` by default (same behaviour as before)
 	- `--g-monospace-line-height`, set to `var(--g-line-height)` by default (same behaviour as before)
+- Added styles for `<tt>`, to use the new monospace variables also
 
 
 ### 0.4.4
