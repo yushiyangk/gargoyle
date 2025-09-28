@@ -116,6 +116,25 @@
 	--g-heading-margin-top: var(--g-large-v);
 	--g-heading-margin-bottom: var(--g-small-v);
 
+	--g-h1-margin-top: var(--g-large-v);
+	--g-h1-margin-bottom: var(--g-medium-v);
+	--g-h1-font-size: 2rem;
+	--g-h1-line-height: var(--g-large-v);
+
+	--g-h2-font-size: 1.666667rem;  /* 5/6 of h1 == 5/3 */
+	--g-h2-line-height: var(--g-medium-v);
+	--g-h3-font-size: 1.333333rem;  /* 4/5 of h2 == 4/3 */
+	--g-h3-line-height: var(--g-medium-v);
+	--g-h4-font-size: 1.111111rem;  /* 5/6 of h3 == 10/9 */
+	--g-h4-line-height: var(--g-medium-v);
+	--g-h5-font-size: var(--g-h4-font-size);
+	--g-h5-line-height: var(--g-medium-v);
+	--g-h5-margin-left: var(--g-medium-h);
+	--g-h6-font-size: var(--g-h4-font-size);
+	--g-h6-line-height: var(--g-medium-v);
+	--g-h6-margin-left: 2rem;  /* compat */
+	--g-h6-margin-left: var(--g-large-h);
+
 	--g-text-margin-top: var(--g-small-v);
 	--g-text-margin-bottom: var(--g-medium-v);
 	--g-text-padding-h: 0.2em;
@@ -152,20 +171,6 @@
 
 	--g-article-text-indent: 0;
 	--g-article-tab-size: 4;  /* Should be an integer for wide support */
-
-	--g-h1-margin-top: var(--g-large-v);
-	--g-h1-margin-bottom: var(--g-medium-v);
-	--g-h1-font-size: 2rem;
-	--g-h1-line-height: var(--g-large-v);
-
-	--g-h2-font-size: 1.666667rem;  /* 5/6 of h1 == 5/3 */
-	--g-h3-font-size: 1.333333rem;  /* 4/5 of h2 == 4/3 */
-	--g-h4-font-size: 1.111111rem;  /* 5/6 of h3 == 10/9 */
-	--g-h5-font-size: var(--g-h4-font-size);
-	--g-h5-margin-left: var(--g-medium-h);
-	--g-h6-font-size: var(--g-h4-font-size);
-	--g-h6-margin-left: 2rem;  /* compat */
-	--g-h6-margin-left: var(--g-large-h);
 
 	--g-main-aside-margin-h-with-column-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
 	--g-main-aside-width: 16rem;
@@ -464,24 +469,29 @@ hgroup {
 }
 h2 {
 	font-size: var(--g-h2-font-size);
+	line-height: var(--g-h2-line-height);
 	font-weight: bold;
 }
 h3 {
 	font-size: var(--g-h3-font-size);
+	line-height: var(--g-h3-line-height);
 	font-weight: bold;
 }
 h4 {
 	font-size: var(--g-h4-font-size);
+	line-height: var(--g-h4-line-height);
 	font-weight: bold;
 }
 h5 {
 	margin-left: var(--g-h5-margin-left);
+	line-height: var(--g-h5-line-height);
 
 	font-size: var(--g-h5-font-size);
 	font-weight: bold;
 }
 h6 {
 	margin-left: var(--g-h6-margin-left);
+	line-height: var(--g-h6-line-height);
 
 	font-size: var(--g-h6-font-size);
 	font-weight: bold;
