@@ -1,5 +1,39 @@
 ## Changelog
 
+
+### 0.5
+
+#### Breaking changes
+
+- Renamed the variable `--g-demi-font-size` to `--g-demi-relative-font-size`, and changed its default value's unit from `rem` to `em`
+- Renamed the variable `--g-inverse-demi-font-size` to `--g-inverse-demi-relative-font-size`, and changed its default value's unit from `rem` to `em`
+- Renamed the variable `--g-inline-border-radius-line-height-compat` to `--g-inline-border-radius-monospace-line-height-compat`
+
+These changes are breaking if and only if the old variable names have been overwritten
+
+#### Added
+
+- Added customisable variables for relative font size changes in `<abbr>` and `<kbd>` inside headings:
+	- `--g-h1-demi-relative-font-size`
+	- `--g-h1-inverse-demi-relative-font-size`
+	- `--g-h1-demi-font-weight`
+	- `--g-heading-demi-relative-font-size`
+	- `--g-heading-inverse-demi-relative-font-size`
+	- `--g-heading-demi-font-weight`
+	- The default values for these are set to `var(--g-demi-relative-font-size)`, `var(--g-inverse-demi-relative-font-size)` and `var(--g-demi-bold-font-weight)` respectively (same behaviour as before, notwithstanding the breaking change above)
+- Added customisable variables for heading line heights (in addition to that for `<h1>` which was already present):
+	- `g-h2-line-height`
+	- `g-h3-line-height`
+	- `g-h4-line-height`
+	- `g-h5-line-height`
+	- `g-h6-line-height`
+	- The default values for these are all set to `var(--g-line-height)` (same behaviour as before)
+- Added customisable variables for monospace font size and line height:
+	- `--g-monospace-font-size`, set to `var(--g-font-size)` by default (same behaviour as before)
+	- `--g-monospace-line-height`, set to `var(--g-line-height)` by default (same behaviour as before)
+- Added styles for `<tt>`, to use the new monospace variables also
+
+
 ### 0.4.4
 
 - Fixed variables for button colours not being applied to built-in icon types
