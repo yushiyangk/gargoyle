@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.4.4 */
+/* version 0.4.5 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -98,20 +98,23 @@
 	--g-small-font-size: 0.833333rem;  /* 5/6 of base font size */
 	--g-small-line-height: 1.125rem;
 
-	--g-demi-font-weight: 500;
-	--g-demi-bold-font-weight: 700;
 	--g-demi-relative-font-size: 0.9375em;  /* 15/16 */
 	--g-inverse-demi-relative-font-size: 1.066667em;  /* 16/15 of demi */
+	--g-demi-font-weight: 500;
+	--g-demi-bold-font-weight: 700;
 
 	--g-monospace-font-size: var(--g-font-size);
 	--g-monospace-line-height: var(--g-line-height);
 
 	--g-h1-font-size: 2rem;
 	--g-h1-line-height: var(--g-large-v);
-	--g-h1-demi-font-weight: var(--g-demi-bold-font-weight);
 	--g-h1-demi-relative-font-size: var(--g-demi-relative-font-size);
 	--g-h1-inverse-demi-relative-font-size: var(--g-inverse-demi-relative-font-size);
+	--g-h1-demi-font-weight: var(--g-demi-bold-font-weight);
 
+	--g-heading-demi-relative-font-size: var(--g-demi-relative-font-size);
+	--g-heading-inverse-demi-relative-font-size: var(--g-inverse-demi-relative-font-size);
+	--g-heading-demi-font-weight: var(--g-demi-bold-font-weight);
 	--g-h2-font-size: 1.666667rem;  /* 5/6 of h1 == 5/3 */
 	--g-h2-line-height: var(--g-medium-v);
 	--g-h3-font-size: 1.333333rem;  /* 4/5 of h2 == 4/3 */
@@ -122,9 +125,6 @@
 	--g-h5-line-height: var(--g-medium-v);
 	--g-h6-font-size: var(--g-h4-font-size);
 	--g-h6-line-height: var(--g-medium-v);
-	--g-heading-demi-font-weight: var(--g-demi-bold-font-weight);
-	--g-heading-demi-relative-font-size: var(--g-demi-relative-font-size);
-	--g-heading-inverse-demi-relative-font-size: var(--g-inverse-demi-relative-font-size);
 
 
 	--g-inline-height: 1.25rem;
