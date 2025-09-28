@@ -97,10 +97,10 @@
 
 	--g-small-font-size: 0.833333rem;  /* 5/6 of base font size */
 	--g-small-line-height: 1.125rem;
-	--g-demi-font-size: 0.9375rem;  /* 15/16 of base font size */
+	--g-demi-relative-font-size: 0.9375em;  /* 15/16 */
 	--g-demi-font-weight: 500;
 	--g-demi-bold-font-weight: 700;
-	--g-inverse-demi-font-size: 1.066667em;  /* 16/15 of demi */
+	--g-inverse-demi-relative-font-size: 1.066667em;  /* 16/15 of demi */
 
 	--g-monospace-font-size: var(--g-font-size);
 	--g-monospace-line-height: var(--g-line-height);
@@ -1464,7 +1464,7 @@ kbd {
 	padding: var(--g-kbd-padding-v) var(--g-kbd-padding-h);
 
 	font-family: inherit;
-	font-size: var(--g-demi-font-size);
+	font-size: var(--g-demi-relative-font-size);
 	font-weight: var(--g-demi-font-weight);
 
 	line-height: var(--g-kbd-line-height-compat);  /* border-radius increases line height */
@@ -1504,7 +1504,7 @@ kbd > code:last-child, kbd > samp:last-child {
 abbr {
 	display: inline;
 
-	font-size: var(--g-demi-font-size);
+	font-size: var(--g-demi-relative-font-size);
 	font-weight: var(--g-demi-font-weight);
 }
 abbr[title] {
@@ -1523,7 +1523,7 @@ abbr.g-capital {
 	-moz-animation: ffbug 0.1s ease 1;
 }
 abbr.g-capital::first-letter {
-	font-size: var(--g-inverse-demi-font-size);
+	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: normal;
 }
 h1 > abbr.g-capital::first-letter,
@@ -1557,7 +1557,7 @@ a:hover abbr.g-capital {
 }
 
 .g-abbr {
-	font-size: var(--g-demi-font-size);
+	font-size: var(--g-demi-relative-font-size);
 	font-weight: var(--g-demi-font-weight);
 }
 .g-abbr[title] {
@@ -1583,7 +1583,7 @@ a:hover .g-abbr {
 	-moz-animation: ffbug 0.1s ease 1;
 }
 .g-abbr.g-capital::first-letter {
-	font-size: var(--g-inverse-demi-font-size);
+	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: normal;
 }
 h1 > .g-abbr.g-capital::first-letter,
