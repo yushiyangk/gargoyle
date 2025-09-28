@@ -97,13 +97,35 @@
 
 	--g-small-font-size: 0.833333rem;  /* 5/6 of base font size */
 	--g-small-line-height: 1.125rem;
-	--g-demi-relative-font-size: 0.9375em;  /* 15/16 */
+
 	--g-demi-font-weight: 500;
 	--g-demi-bold-font-weight: 700;
+	--g-demi-relative-font-size: 0.9375em;  /* 15/16 */
 	--g-inverse-demi-relative-font-size: 1.066667em;  /* 16/15 of demi */
 
 	--g-monospace-font-size: var(--g-font-size);
 	--g-monospace-line-height: var(--g-line-height);
+
+	--g-h1-font-size: 2rem;
+	--g-h1-line-height: var(--g-large-v);
+	--g-h1-demi-font-weight: var(--g-demi-bold-font-weight);
+	--g-h1-demi-relative-font-size: var(--g-demi-relative-font-size);
+	--g-h1-inverse-demi-relative-font-size: var(--g-inverse-demi-relative-font-size);
+
+	--g-h2-font-size: 1.666667rem;  /* 5/6 of h1 == 5/3 */
+	--g-h2-line-height: var(--g-medium-v);
+	--g-h3-font-size: 1.333333rem;  /* 4/5 of h2 == 4/3 */
+	--g-h3-line-height: var(--g-medium-v);
+	--g-h4-font-size: 1.111111rem;  /* 5/6 of h3 == 10/9 */
+	--g-h4-line-height: var(--g-medium-v);
+	--g-h5-font-size: var(--g-h4-font-size);
+	--g-h5-line-height: var(--g-medium-v);
+	--g-h6-font-size: var(--g-h4-font-size);
+	--g-h6-line-height: var(--g-medium-v);
+	--g-heading-demi-font-weight: var(--g-demi-bold-font-weight);
+	--g-heading-demi-relative-font-size: var(--g-demi-relative-font-size);
+	--g-heading-inverse-demi-relative-font-size: var(--g-inverse-demi-relative-font-size);
+
 
 	--g-inline-height: 1.25rem;
 	--g-inline-padding-h: 0.2em;
@@ -116,26 +138,12 @@
 	--g-item-margin-v: var(--g-small-v);
 	--g-item-margin-h: var(--g-medium-h);
 
+	--g-h1-margin-top: var(--g-large-v);
+	--g-h1-margin-bottom: var(--g-medium-v);
 
 	--g-heading-margin-top: var(--g-large-v);
 	--g-heading-margin-bottom: var(--g-small-v);
-
-	--g-h1-margin-top: var(--g-large-v);
-	--g-h1-margin-bottom: var(--g-medium-v);
-	--g-h1-font-size: 2rem;
-	--g-h1-line-height: var(--g-large-v);
-
-	--g-h2-font-size: 1.666667rem;  /* 5/6 of h1 == 5/3 */
-	--g-h2-line-height: var(--g-medium-v);
-	--g-h3-font-size: 1.333333rem;  /* 4/5 of h2 == 4/3 */
-	--g-h3-line-height: var(--g-medium-v);
-	--g-h4-font-size: 1.111111rem;  /* 5/6 of h3 == 10/9 */
-	--g-h4-line-height: var(--g-medium-v);
-	--g-h5-font-size: var(--g-h4-font-size);
-	--g-h5-line-height: var(--g-medium-v);
 	--g-h5-margin-left: var(--g-medium-h);
-	--g-h6-font-size: var(--g-h4-font-size);
-	--g-h6-line-height: var(--g-medium-v);
 	--g-h6-margin-left: 2rem;  /* compat */
 	--g-h6-margin-left: var(--g-large-h);
 
@@ -1510,8 +1518,16 @@ abbr {
 abbr[title] {
 	text-decoration: underline dotted;
 }
-h1 > abbr, h2 > abbr, h3 > abbr, h4 > abbr, h5 > abbr, h6 > abbr, b > abbr, strong > abbr, dfn > abbr, dt > abbr {
+b > abbr, strong > abbr, dfn > abbr, dt > abbr {
 	font-weight: var(--g-demi-bold-font-weight);
+}
+h1 > abbr {
+	font-size: var(--g-h1-demi-relative-font-size);
+	font-weight: var(--g-h1-demi-font-weight);
+}
+h2 > abbr, h3 > abbr, h4 > abbr, h5 > abbr, h6 > abbr {
+	font-size: var(--g-heading-demi-relative-font-size);
+	font-weight: var(--g-heading-demi-font-weight);
 }
 
 abbr.g-capital {
@@ -1526,16 +1542,22 @@ abbr.g-capital::first-letter {
 	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: normal;
 }
-h1 > abbr.g-capital::first-letter,
-h2 > abbr.g-capital::first-letter,
-h3 > abbr.g-capital::first-letter,
-h4 > abbr.g-capital::first-letter,
-h5 > abbr.g-capital::first-letter,
-h6 > abbr.g-capital::first-letter,
 b > abbr.g-capital::first-letter,
 strong > abbr.g-capital::first-letter,
 dfn > abbr.g-capital::first-letter,
 dt > abbr.g-capital::first-letter {
+	font-weight: bold;
+}
+h1 > abbr.g-capital::first-letter {
+	font-size: var(--g-h1-inverse-demi-relative-font-size);
+	font-weight: bold;
+}
+h2 > abbr.g-capital::first-letter,
+h3 > abbr.g-capital::first-letter,
+h4 > abbr.g-capital::first-letter,
+h5 > abbr.g-capital::first-letter,
+h6 > abbr.g-capital::first-letter {
+	font-size: var(--g-heading-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
 a abbr.g-capital {
