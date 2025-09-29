@@ -43,6 +43,8 @@
 			! Various known issues for IE11: https://caniuse.com/#feat=calc
 		text-align: start or end (IE –11, Edge –18)
 		::first-letter (Firefox –128, see ffbug workaround)
+		user-select -webkit- for Safari –26.6–, -ms- for IE –11
+		content-visibility (IE –11, Safari –17.6, Firefox –118 by default, iOS Safari –17.7, QQ –14.9)
 		Grid Layout for thumbnail list:
 			grid-template-columns use -ms-grid-columns for IE –11
 			grid-template-areas (IE –11)
@@ -81,6 +83,8 @@
 	--g-frame-visited-color: #600000;
 	--g-table-border-color: lightgrey;
 	--g-kbd-frame-color: lightgrey;
+	--g-spoiler-color: var(--g-main-color);
+	--g-spoiler-highlight-color: #4f5f5f;  /* darkslategrey is #2f4f4f */
 
 	--g-large-v: 2.25rem;  /* compat */
 	--g-large-v: calc(1.5 * var(--g-skip));
@@ -130,6 +134,7 @@
 	--g-inline-height: 1.25rem;
 	--g-inline-padding-h: 0.2em;
 	--g-inline-border-radius: 0.2em;
+	--g-inline-border-radius-line-height-compat: 1.3rem;  /* compat; (--g-line-height) - var(--g-inline-border-radius) */
 	--g-inline-border-radius-monospace-line-height-compat: 1.3rem;  /* compat; (--g-monospace-line-height) - var(--g-inline-border-radius) */
 
 	--g-border-radius: 6px;
@@ -290,7 +295,6 @@
 	--g-image-button-hover-background-color: #000000a0;
 	--g-image-button-focus-color: #ffffffc0;
 	--g-image-button-focus-background-color: #000000c0;
-
 }
 
 
@@ -1500,6 +1504,27 @@ kbd > code:first-child, kbd > samp:first-child {
 }
 kbd > code:last-child, kbd > samp:last-child {
 	padding-right: 0;
+}
+
+.g-spoiler:not([tabindex]):not(:hover),
+.g-spoiler[tabindex]:not(:focus):not(:focus-within) {
+	color: transparent !important;  /* compat for content-visibility: hidden not being supported */
+	background-color: var(--g-spoiler-color) !important;
+
+	content-visibility: hidden !important;
+
+	cursor: pointer !important;
+
+	-webkit-user-select: none !important;
+	-ms-user-select: none !important;
+	user-select: none !important;
+}
+.g-spoiler:not([tabindex]):not(:hover) *,
+.g-spoiler[tabindex]:not(:focus):not(:focus-within) * {
+	visibility: hidden !important;
+}
+.g-spoiler[tabindex]:not(:focus):not(:focus-within):hover {
+	background: radial-gradient(var(--g-spoiler-highlight-color) 0%, var(--g-spoiler-color) 150%);
 }
 
 .g-math {
