@@ -572,6 +572,24 @@ main aside {
 	}
 }
 
+main aside > h1:first-child, main aside > h2:first-child, main aside > h3:first-child, main aside > h4:first-child, main aside > h5:first-child, main aside > h6:first-child,
+main aside > p:first-child, main aside > pre:first-child,
+main aside > blockquote:first-child,
+main aside > ul:first-child, main aside > menu:first-child, main aside > ol:first-child, main aside > dl:first-child,
+main aside > img:first-child, main aside > picture:first-child, main aside > svg:first-child, main aside > figure:first-child,
+main aside > table:first-child {
+	margin-top: 0;
+}
+main aside > h1:last-child, main aside > h2:last-child, main aside > h3:last-child, main aside > h4:last-child, main aside > h5:last-child, main aside > h6:last-child,
+main aside > p:last-child, main aside > pre:last-child,
+main aside > blockquote:last-child,
+main aside > ul:last-child, main aside > menu:last-child, main aside > ol:last-child, main aside > dl:last-child,
+main aside > img:last-child, main aside > picture:last-child, main aside > svg:last-child, main aside > figure:last-child,
+main aside > table:last-child {
+	margin-bottom: 0;
+}
+
+
 pre {
 	display: block;
 
