@@ -39,12 +39,15 @@
 		text-wrap-mode (Chrome –126, Safari –17.1, Firefox –118, IE –11, iOS Safari –16.7, Opera mobile –80)
 		text-wrap-style: pretty (Chrome –126, Safari –18.6, Firefox –146–, IE –11, iOS Safari –18.6, Opera mobile –80)
 		white-space-collapse (Chrome –112, Safari –17.1, Firefox –118, IE –11, iOS Safari –16.7)
+		text-decoration-thickness (IE –11, iOS Safari –11.2)
 
 	Features with fallback mechanisms (unsupported browsers):
 		initial value (IE –11)
 		calc() (IE –11)
 			! Various known issues for IE11: https://caniuse.com/#feat=calc
 		text-align: start or end (IE –11)
+		text-decoration-line (IE –11) -webkit- for iOS Safari 11.2
+		text-decoration-style (IE –11, Safari –26.1–, iOS Safari –26.1–)
 		::first-letter (Firefox –128, see ffbug workaround)
 		user-select -webkit- for Safari –26.6–, -ms- for IE –11
 		content-visibility (IE –11, Safari –17.6, Firefox –118 by default, iOS Safari –17.7, QQ –14.9)
@@ -132,6 +135,8 @@
 	--g-h5-line-height: var(--g-line-height);
 	--g-h6-font-size: var(--g-h4-font-size);
 	--g-h6-line-height: var(--g-line-height);
+
+	--g-underline-thickness: from-font;
 
 
 	--g-inline-height: 1.25rem;
@@ -600,7 +605,7 @@ figure.g-bound pre {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 
-	white-space: pre-wrap;  /* older property, equivalent to both white-space-collapse: preserve and text-wrap-mode: wrap */
+	white-space: pre-wrap;  /* legacy shorthand property, equivalent to both white-space-collapse: preserve and text-wrap-mode: wrap */
 	text-wrap-mode: wrap;
 }
 
@@ -1426,14 +1431,23 @@ a {
 	display: inline;
 
 	color: var(--g-link-color);
-	text-decoration: underline;
+
+	text-decoration: underline;  /* legacy shorthand property */
+	-webkit-text-decoration-line: underline;
+	text-decoration-line: underline;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 a:hover {
-	text-decoration: none;
-	text-decoration: underline double;
+	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: double;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 a:visited {
 	color: var(--g-visited-color);
+}
+
+u {
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 
 dfn {
@@ -1558,7 +1572,11 @@ abbr {
 	font-weight: var(--g-demi-font-weight);
 }
 abbr[title] {
-	text-decoration: underline dotted;
+	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	-webkit-text-decoration-line: underline;
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 b > abbr, strong > abbr, dfn > abbr, dt > abbr {
 	font-weight: var(--g-demi-bold-font-weight);
@@ -1603,11 +1621,14 @@ h6 > abbr.g-capital::first-letter {
 	font-weight: bold;
 }
 a abbr.g-capital {
-	text-decoration: underline;
+	text-decoration: underline;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	text-decoration-style: solid;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 a:hover abbr.g-capital {
-	text-decoration: none;
-	text-decoration: underline double;
+	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: double;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 
 
@@ -1625,7 +1646,11 @@ a:hover abbr.g-capital {
 	font-weight: var(--g-demi-font-weight);
 }
 .g-abbr[title] {
-	text-decoration: underline dotted;
+	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: dotted */
+	-webkit-text-decoration-line: underline;
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 h1 > .g-abbr, h2 > .g-abbr, h3 > .g-abbr, h4 > .g-abbr, h5 > .g-abbr, h6 > .g-abbr, b > .g-abbr, strong > .g-abbr, dfn > .g-abbr, dt > .g-abbr {
 	font-weight: var(--g-demi-bold-font-weight);
@@ -1634,8 +1659,9 @@ a .g-abbr {
 	display: inline;
 }
 a:hover .g-abbr {
-	text-decoration: none;
-	text-decoration: underline double;
+	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: double;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 
 .g-abbr.g-capital {
@@ -1663,11 +1689,14 @@ dt > .g-abbr.g-capital::first-letter {
 	font-weight: bold;
 }
 a .g-abbr.g-capital {
-	text-decoration: underline;
+	text-decoration: underline;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	text-decoration-style: solid;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 a:hover .g-abbr.g-capital {
-	text-decoration: none;
-	text-decoration: underline double;
+	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: double;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 
 .g-quiet {
@@ -1712,7 +1741,9 @@ a.g-button {
 	overflow: hidden;
 
 	line-height: var(--g-button-line-height);
-	text-decoration: none;
+	text-decoration: none;  /* legacy shorthand property for text-decoration-line: none */
+	-webkit-text-decoration-line: none;
+	text-decoration-line: none;
 
 	transition: all 100ms ease;
 }
