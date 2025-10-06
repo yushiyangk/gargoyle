@@ -40,6 +40,7 @@
 		text-wrap-style: pretty (Chrome –126, Safari –18.6, Firefox –146–, IE –11, iOS Safari –18.6, Opera mobile –80)
 		white-space-collapse (Chrome –112, Safari –17.1, Firefox –118, IE –11, iOS Safari –16.7)
 		text-decoration-thickness (IE –11, iOS Safari –11.2)
+		text-underline-position -webkit- for iOS Safari –11.2
 
 	Features with fallback mechanisms (unsupported browsers):
 		initial value (IE –11)
@@ -321,6 +322,9 @@ html {
 
 	/* Nominally an SVG property but good for Chrome */
 	text-rendering: optimizeLegibility;
+
+	-webkit-text-underline-position: from-font;
+	text-underline-position: from-font;
 }
 
 body {
