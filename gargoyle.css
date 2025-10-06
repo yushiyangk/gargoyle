@@ -9,6 +9,7 @@
 	Contents
 	- Section elements
 	- Text elements
+	- Numbered sections
 	- List elements
 	- Figure elements
 	- Table elements
@@ -675,6 +676,11 @@ hr {
 
 	border: 0;
 	border-bottom: var(--g-hr-width) solid var(--g-main-color);
+}
+
+.g-compact {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 
