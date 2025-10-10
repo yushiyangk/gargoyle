@@ -34,7 +34,7 @@
 						here. This is particularly useful for poetry.
 					</p>
 
-					<p>Running text is automatically hyphenated by default. To prevent hyphenation, such as for technical terms, enclose them in a span with class <code>g-nobreak</code>: <span class="g-nobreak">supercalifragilisticexpialidocious</span>. This will force an early line-break, or, failing that, overflow outside the main text column.</p>
+					<p>Running text is automatically hyphenated by default. To prevent hyphenation, such as for technical terms, enclose them in an inline element with class <code>g-nobreak</code>: <span class="g-nobreak">supercalifragilisticexpialidocious</span>. This will force an early line-break, or, failing that, overflow outside the main text column.</p>
 
 					<p>Apart from emoji, 😃, small images can be added inline by using the <code>g-inline</code> class in an <code>&lt;img&gt;</code> or <code>&lt;picture&gt;</code>, <img class="g-inline" src="images/wikipedia.png" />, or <code>&lt;svg&gt;</code>,
 
@@ -159,7 +159,7 @@
 						</svg>.
 					</p>
 
-					<p>It may be desirable to include some text for decorative purposes only, that should be user-selectable as part of the main text body. Enclose them in a span with the class <code>g-decor</code>, such as <span class="g-decor">!!</span>these exclamation marks<span class="g-decor">!!</span></p>
+					<p>It may be desirable to include some text for decorative purposes only, that should be user-selectable as part of the main text body. Enclose them in an inline element with the class <code>g-decor</code>, such as <span class="g-decor">!!</span>these exclamation marks<span class="g-decor">!!</span></p>
 
 					<p>Superscripts and subscripts behave as expected using <code>&lt;sup&gt;</code> and <code>&lt;sub&gt;</code>, such as for the carbonate ion <data value="C(=O)([O-])[O-]">CO<sub>3</sub><sup>2&minus;</sup></data>.</p>
 
@@ -222,6 +222,15 @@
 
 					<p>To refer to on-screen <abbr title="graphical user interface">GUI</abbr> controls, use <code>&lt;kbd class="g-detail"&gt;</code>, as in <kbd><kbd class="g-detail">File</kbd>→<kbd class="g-detail">Save</kbd></kbd>. As before, when there are multiple controls being used in tandem, enclose them all in an additional outer <code>&lt;kbd&gt;</code> (without needing the <code>g-detail</code> class).</p>
 					</p>
+
+				<h3>Spoilers</h3>
+
+					<p>Spoiler content can be blacked out until the user deliberately reveals them. For simple usage, enclose the spoiler content in an inline element with class <code>g-spoiler</code>, such as <span class="g-spoiler">this</span>.
+					</p>
+
+					<p>However, note that this spoiler will be revealed only on hover. This is easy to trigger by accident, and does not work well on touch devices.</p>
+
+					<p>Instead, prefer to use spoiler elements that only reveal their contents on click, or on touch. To do that, add the <code>tabindex="-1"</code> attribute to the same inline element, like with <span class="g-spoiler" tabindex="-1">this text</span>.</p>
 
 				<section>
 
