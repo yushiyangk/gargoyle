@@ -1752,6 +1752,16 @@ a:hover abbr.g-capital {
 	text-decoration-style: double;
 	text-decoration-thickness: var(--g-underline-thickness);
 }
+dl.g-thumbnail a abbr.g-capital {
+	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	text-decoration-style: dotted;
+	text-decoration-thickness: var(--g-underline-thickness);
+}
+dl.g-thumbnail a:hover abbr.g-capital {
+	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: dotted;
+	text-decoration-thickness: var(--g-underline-thickness);
+}
 
 
 /*
@@ -1832,6 +1842,16 @@ a .g-abbr.g-capital {
 a:hover .g-abbr.g-capital {
 	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
 	text-decoration-style: double;
+	text-decoration-thickness: var(--g-underline-thickness);
+}
+dl.g-thumbnail a .g-abbr.g-capital {
+	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	text-decoration-style: dotted;
+	text-decoration-thickness: var(--g-underline-thickness);
+}
+dl.g-thumbnail a:hover .g-abbr.g-capital {
+	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: dotted;
 	text-decoration-thickness: var(--g-underline-thickness);
 }
 
