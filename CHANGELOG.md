@@ -1,5 +1,13 @@
 ## Changelog
 
+### 0.7
+
+**Breaking change**: the class `g-default-media` must be added to the top-level `<body>` element in each HTML document for media queries to work correctly.
+
+This affects the behaviour of `<aside>` and `<figure>` at different screen sizes. Once the class is added, the behaviour is the same as before.
+
+The class should *not* be added if custom media queries have been defined. This change is to allow ease of overriding media queries, which must be done especially when `--g-font-size` is changed.
+
 
 ### 0.6
 
