@@ -2623,11 +2623,11 @@ picture a.g-expand::after {
 
 
 /*
-	Unhide content after CSS is loaded
-	Add id="g-bodymask" to body element and apply
+	Hide content until after CSS is loaded
+	Add class="g-bodymask" to body element and apply
 		body { visibility: hidden; }
 	in internal stylesheet of HTML file, to be overwritten by the following
 */
-#g-bodymask {
+.g-bodymask {
 	visibility: visible;
 }
