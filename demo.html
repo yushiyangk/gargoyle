@@ -34,6 +34,8 @@
 						here. This is particularly useful for poetry.
 					</p>
 
+					<p>Running text is automatically hyphenated by default. To prevent hyphenation, such as for technical terms, enclose them in a span with class <code>g-nobreak</code>: <span class="g-nobreak">supercalifragilisticexpialidocious</span>. This will force an early line-break, or, failing that, overflow outside the main text column.</p>
+
 					<p>Apart from emoji, 😃, small images can be added inline by using the <code>g-inline</code> class in an <code>&lt;img&gt;</code> or <code>&lt;picture&gt;</code>, <img class="g-inline" src="images/wikipedia.png" />, or <code>&lt;svg&gt;</code>,
 
 						<!-- This Source Code Form is subject to the terms of the Mozilla Public
@@ -157,6 +159,8 @@
 						</svg>.
 					</p>
 
+					<p>It may be desirable to include some text for decorative purposes only, that should be user-selectable as part of the main text body. Enclose them in a span with the class <code>g-decor</code>, such as <span class="g-decor">!!</span>these exclamation marks<span class="g-decor">!!</span></p>
+
 					<p>Superscripts and subscripts behave as expected using <code>&lt;sup&gt;</code> and <code>&lt;sub&gt;</code>, such as for the carbonate ion <data value="C(=O)([O-])[O-]">CO<sub>3</sub><sup>2&minus;</sup></data>.</p>
 
 					<p>The above chemical formula has also been enclosed in a <code>&lt;data&gt;</code> element, to provide a machine-readable form (<abbr>SMILES</abbr>). This typically does not alter the visible formatting of the text. Another element that behaves this way is <code>&lt;time&gt;</code>, which should be used to specify time values such as <time datetime="1970-01-01">1 January 1970</time> in a machine-readable format without affecting its formatting.</p>
@@ -210,7 +214,14 @@
 
 				<h3>Computers and source code</h3>
 
-					<p>Use <code>&lt;code&gt;</code> to specify inline source code, such as the JavaScript <code>alert('Hello, world!');</code>, and combine with <code>&lt;var&gt;</code> to have variables in code: <code>ln -s <var>source_file</var> <var>target_link</var></code>. Program outputs should be specified with <code>&lt;samp&gt;</code>, as in <samp>ln: failed to create symbolic link '<var>target_link</var>': No such file or director</samp>. For keyboard interactions, use <code>&lt;kbd&gt;</code> to get the likes of <kbd>A</kbd> or <kbd>Ctrl</kbd>+<kbd>Z</kbd>.</p>
+					<p>Use <code>&lt;code&gt;</code> to specify inline source code, such as the JavaScript <code>alert('Hello, world!');</code>, and combine with <code>&lt;var&gt;</code> to have variables in code: <code>ln -s <var>source_file</var> <var>target_link</var></code>. Program outputs should be specified with <code>&lt;samp&gt;</code>, as in <samp>ln: failed to create symbolic link '<var>target_link</var>': No such file or director</samp>.
+					</p>
+
+					<p>For keyboard interactions, use <code>&lt;kbd&gt;</code> to get the likes of <kbd>A</kbd> or <kbd><kbd>Ctrl</kbd>+<kbd>Z</kbd></kbd>. When multiple keys are used in combination, as in the latter case above, nest the entire combination in an additional outer <code>&lt;kbd&gt;</code> element.
+					</p>
+
+					<p>To refer to on-screen <abbr title="graphical user interface">GUI</abbr> controls, use <code>&lt;kbd class="g-detail"&gt;</code>, as in <kbd><kbd class="g-detail">File</kbd>→<kbd class="g-detail">Save</kbd></kbd>. As before, when there are multiple controls being used in tandem, enclose them all in an additional outer <code>&lt;kbd&gt;</code> (without needing the <code>g-detail</code> class).</p>
+					</p>
 
 				<section>
 
@@ -280,6 +291,18 @@
 					<aside>Aside text should be placed before the regular text that it relates to in the <abbr>HTML</abbr>.</aside>
 
 					<p>In other cases, we might have text that is tangentially related which should be placed in a footnote or an aside with the <code>&lt;aside&gt;</code> element. The behaviour of this element changes based on the width of the viewport.</p>
+
+					<aside class="g-left">An aside on the left.</aside>
+
+					<p>By default, <code>&lt;aside&gt;</code> is placed on the right. It may be placed on the left as well, with the class <code>g-left</code>. However, note that these asides should not be used too close to each other, and the left and right asides should not be used at the same time, as they will likely overlap with each other especially on narrow displays.</p>
+
+					<aside>
+						Asides can also contain other block-level elements, like lists:
+						<ul>
+							<li>one</li>
+							<li>two</li>
+						</ul>
+					</aside>
 
 					<p>Mathematical equations can be displayed in Math<abbr>ML</abbr> using <code>&lt;math display="block"&gt;</code>, as so:</p>
 
