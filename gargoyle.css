@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.5 */
+/* version 0.6 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -9,6 +9,7 @@
 	Contents
 	- Section elements
 	- Text elements
+	- Numbered sections
 	- List elements
 	- Figure elements
 	- Table elements
@@ -26,27 +27,38 @@
 	Only browsers with >0.1% market share are noted
 
 	Optional features (unsupported browsers):
-		text-rendering (IE –11, Edge –18)
+		text-rendering (IE –11)
 		overflow-wrap (IE –11) fallback on deprecated alias word-wrap
-		hyphens -ms- for IE –11 & Edge –18, -webkit- for Safari –16.6 & iOS –16.7
-		hyphens: auto (IE –11, Edge –18) So no need for -ms- if the only values used are auto and none
-		tab-size (IE –11, Edge –18) Must be integer for iOS –12.5
-		width: max-content (IE –11, Edge –18)
+		hyphens -ms- for IE –11, -webkit- for Safari –16.6 & iOS –16.7
+		hyphens: auto (IE –11) So no need for -ms- if the only values used are auto and none
+		tab-size (IE –11) Must be integer for iOS –12.5
+		width: max-content (IE –11)
 		align-items: baseline (for Flexbox) (IE –11, possibly Edge –18)
 		gap (for Flexbox) (IE –11)
-		object-fit: cover or scale-down (IE –11, Edge –18)
-		display: contents (IE –11, Edge –18)
+		object-fit: cover or scale-down (IE –11)
+		display: contents (IE –11)
+		text-wrap-mode (Chrome –126, Safari –17.1, Firefox –118, IE –11, iOS Safari –16.7, Opera mobile –80)
+		text-wrap-style: pretty (Chrome –126, Safari –18.6, Firefox –146–, IE –11, iOS Safari –18.6, Opera mobile –80)
+		white-space-collapse (Chrome –112, Safari –17.1, Firefox –118, IE –11, iOS Safari –16.7)
+		text-decoration-thickness (IE –11, iOS Safari –11.2)
+		text-underline-position -webkit- for iOS Safari –11.2
 
 	Features with fallback mechanisms (unsupported browsers):
 		initial value (IE –11)
 		calc() (IE –11)
 			! Various known issues for IE11: https://caniuse.com/#feat=calc
-		text-align: start or end (IE –11, Edge –18)
+		:has() (Firefox –118, IE –11, iOS Safari –11.2, UC Browser –15.5, QQ Browser –14.9)
+		:not() (IE –11, QQ –14.9)
+		text-align: start or end (IE –11)
+		text-decoration-line (IE –11) -webkit- for iOS Safari 11.2
+		text-decoration-style (IE –11, Safari –26.1–, iOS Safari –26.1–)
 		::first-letter (Firefox –128, see ffbug workaround)
+		user-select -webkit- for Safari –26.6–, -ms- for IE –11
+		content-visibility (IE –11, Safari –17.6, Firefox –118 by default, iOS Safari –17.7, QQ –14.9)
 		Grid Layout for thumbnail list:
 			grid-template-columns use -ms-grid-columns for IE –11
 			grid-template-areas (IE –11)
-			grid-auto-flow: row (IE –11, Edge –18)
+			grid-auto-flow: row (IE –11)
 			gap (for Grid Layout) (IE –11) use grid-gap for iOS –11.2
 			align-items: baseline (for Grid Layout) (IE –11, possibly Edge –18)
 			grid-column (IE –11)
@@ -60,12 +72,25 @@
 		mask-position (IE –11), -webkit- for Chrome –119, iOS –15.3
 
 	Features with no implemented fallback mechanisms (and browsers with no support):
-		@supports (IE –11, Android –4.3)
+		@supports (IE –11)
+		@supports: selector() (IE –11, iOS Safari –11.2, Opera Mobile –80)
 */
 
 
 :root {
+	/*
+		Layout grid: 1.5rem rows, calc(100vw / 12) columns
+
+		When changing the value of one of these variables, take note of the following:
+		1) Check for any pre-calculated compatibility variables (ending with -compat) that depend on it and update them; the formula for the pre-calculated value should be given in the accompanying comments
+		2) Check each media query throughout the stylesheet for any dependency on the variable and update them; the screen size breakpoints given in px units have to be pre-calculated, and their formula should be given in the accompanying comments
+		3) If the media query breakpoints need to be overridden,
+
+		Any change to var(--g-font-size) and var(--g-line-height) will definitely affect many of the above.
+	*/
+
 	--g-font-size: 16px;
+	/* WARNING: All media queries need to be manually updated in px units */
 	--g-line-height: 1.5rem;
 	--g-skip: var(--g-line-height);
 	--g-span: 1rem;
@@ -81,6 +106,9 @@
 	--g-frame-visited-color: #600000;
 	--g-table-border-color: lightgrey;
 	--g-kbd-frame-color: lightgrey;
+	--g-kbd-background-color-compat: #e3e3e3;  /* lightgrey is #d3d3d3 */
+	--g-spoiler-color: var(--g-main-color);
+	--g-spoiler-highlight-color: #4f5f5f;  /* darkslategrey is #2f4f4f */
 
 	--g-large-v: 2.25rem;  /* compat */
 	--g-large-v: calc(1.5 * var(--g-skip));
@@ -126,10 +154,13 @@
 	--g-h6-font-size: var(--g-h4-font-size);
 	--g-h6-line-height: var(--g-line-height);
 
+	--g-underline-thickness: from-font;
+
 
 	--g-inline-height: 1.25rem;
 	--g-inline-padding-h: 0.2em;
 	--g-inline-border-radius: 0.2em;
+	--g-inline-border-radius-line-height-compat: 1.3rem;  /* compat; (--g-line-height) - var(--g-inline-border-radius) */
 	--g-inline-border-radius-monospace-line-height-compat: 1.3rem;  /* compat; (--g-monospace-line-height) - var(--g-inline-border-radius) */
 
 	--g-border-radius: 6px;
@@ -178,15 +209,18 @@
 	--g-main-width: calc(100vw - 2 * var(--g-main-margin-h));
 	--g-column-width: 40rem;
 
-	--g-main-nav-margin-v: var(--g-small-v);
-	--g-main-nav-margin-h: var(--g-medium-h);
-
 	--g-article-text-indent: 0;
 	--g-article-tab-size: 4;  /* Should be an integer for wide support */
+	--g-article-nav-margin-v: var(--g-small-v);
+	--g-article-nav-margin-h: var(--g-medium-h);
 
-	--g-main-aside-margin-h-with-column-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
-	--g-main-aside-width: 16rem;
-	/* WARNING: Media queries for <aside> need to be manually updated in precomputed px units */
+	--g-article-aside-width: 16rem;
+	--g-article-aside-min-width: 12rem;
+	--g-article-aside-margin-v: var(--g-medium-v);
+	--g-article-aside-margin-h: var(--g-large-h);
+	--g-article-aside-wide-side-column-margin-h-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
+	--g-article-aside-wide-left-column-negative-margin-h-compat: -2rem;  /* compat; -1 * (var(--g-article-aside-width) + var(--g-quote-margin-h)) */
+	/* WARNING: Media queries for <aside> need to be manually updated in px units */
 
 	--g-pre-padding-v: var(--g-small-v);
 	--g-pre-padding-h: var(--g-small-h);
@@ -217,7 +251,7 @@
 	--g-figcaption-width-compat: 38rem;  /* compat; var(--g-column-width) - 2 * var(--g-figcaption-margin-h) */
 	--g-figcaption-aligned-width-compat: 39rem;
 	--g-figure-wide-max-width: calc(100vw - 2 * var(--g-large-h));  /* No compat version because the existing fallback for figure max width, which is var(--g-main-width), already has more generous margins when calc() is not supported, especially on wider screens */
-	/* WARNING: Media queries for <figure> and <figcaption> need to be manually updated in precomputed px units */
+	/* WARNING: Media queries for <figure> and <figcaption> need to be manually updated in px units */
 
 	--g-table-margin-top: var(--g-small-v);
 	--g-table-margin-bottom: var(--g-large-v);
@@ -230,7 +264,9 @@
 	--g-kbd-padding-v: 0.1em;
 	--g-kbd-padding-h: var(--g-inline-padding-h);
 	--g-kbd-frame-width: 1px;
-	--g-kbd-shadow-width: 1px;
+	--g-kbd-shadow-vertical-offset: 1px;
+	--g-kbd-shadow-spread-radius: 1px;
+	--g-kbd-detail-frame-width: 1px;
 	--g-kbd-line-height-compat: 1.1rem;  /* compat; var(--g-line-height) - 2 * var(--g-border-radius) - var(--g-kbd-frame-width) */
 
 	--g-button-margin-v: var(--g-medium-v);
@@ -290,7 +326,6 @@
 	--g-image-button-hover-background-color: #000000a0;
 	--g-image-button-focus-color: #ffffffc0;
 	--g-image-button-focus-background-color: #000000c0;
-
 }
 
 
@@ -309,6 +344,9 @@ html {
 
 	/* Nominally an SVG property but good for Chrome */
 	text-rendering: optimizeLegibility;
+
+	-webkit-text-underline-position: from-font;
+	text-underline-position: from-font;
 }
 
 body {
@@ -339,38 +377,6 @@ main {
 	text-align: initial;
 }
 
-main nav {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: flex-start;
-	align-items: baseline;
-	align-content: flex-start;
-	gap: var(--g-main-nav-margin-v) var(--g-main-nav-margin-h);
-
-	margin: var(--g-main-nav-margin-v) auto;
-	padding: 0;
-
-	text-align: left;
-	text-align: start;
-	text-align: initial;
-}
-main nav.g-left {
-	justify-content: left;
-}
-main nav.g-start {
-	justify-content: left;
-	justify-content: start;
-}
-main nav.g-right {
-	justify-content: right;
-}
-main nav.g-end {
-	justify-content: right;
-	justify-content: end;
-}
-main nav.g-centre, main nav.g-center {
-	justify-content: center;
-}
 
 article {
 	display: block;
@@ -383,15 +389,53 @@ article {
 	text-align: initial;
 
 	/* CSS3 Text */
-	-webkit-hyphens: auto;
-	hyphens: auto;
-
 	word-wrap: break-word;  /* alias of overflow-wrap */
 	overflow-wrap: break-word;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+	word-break: break-word;
+
+	white-space-collapse: collapse;
+	text-wrap-mode: wrap;
+	text-wrap-style: pretty;
 
 	text-indent: var(--g-article-text-indent);
 	tab-size: var(--g-article-tab-size);
 }
+
+article nav {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: baseline;
+	align-content: flex-start;
+	gap: var(--g-article-nav-margin-v) var(--g-article-nav-margin-h);
+
+	margin: var(--g-article-nav-margin-v) auto;
+	padding: 0;
+
+	text-align: left;
+	text-align: start;
+	text-align: initial;
+}
+article nav.g-left {
+	justify-content: left;
+}
+article nav.g-start {
+	justify-content: left;
+	justify-content: start;
+}
+article nav.g-right {
+	justify-content: right;
+}
+article nav.g-end {
+	justify-content: right;
+	justify-content: end;
+}
+article nav.g-centre, article nav.g-center {
+	justify-content: center;
+}
+
 
 header {
 	display: block;
@@ -517,13 +561,10 @@ blockquote {
 	padding: 0;
 }
 
-main aside {
+article aside {
 	display: block;
 
-	margin-top: 0;
-	margin-bottom: 0;
-	margin-left: var(--g-quote-margin-h);
-	margin-right: 0;
+	margin: 0 var(--g-article-aside-margin-h);
 	padding: 0;
 
 	color: var(--g-quiet-color);
@@ -532,29 +573,80 @@ main aside {
 	text-align: start;
 	text-align: initial;
 }
-@media (min-width: 652.8px) {  /* (2 * var(--g-main-aside-width) + var(--g-main-aside-narrow-margin-h)) / (10 / 12) == 34rem / (10 / 12) == 40.8rem */
-	/* Divide by 10/12 because column width has a lower bound of 10/12 of display width, which happens when calc() is not supported, whereas var(--g-column-width) is only used when the display is not narrow */
-	main aside {
+@media (min-width: 453.818182px) {
+	/* 28.363636rem */
+	/* given by (2 * var(--g-article-aside-min-width) + var(--g-article-aside-margin-h)) / (11 / 12) == 26rem / (11 / 12) */
+	/* When the main column width is wide enough for any displaced content paragraph to be at least as wide as the min-width aside */
+	/* The main column width has a lower bound of 11/12 of display width, which occurs on narrow displays where calc() is not supported */
+	article aside {
 		float: right;
 
-		width: var(--g-main-aside-width);
-		margin-top: var(--g-quote-margin-v);
-		margin-bottom: var(--g-quote-margin-v);
+		width: var(--g-article-aside-width);
+		min-width: var(--g-article-aside-min-width);
+		max-width: var(--g-article-aside-min-width);  /* compat */
+		max-width: calc((100% - var(--g-article-aside-margin-h)) / 2);
+
+		margin-right: 0;
+		margin-top: var(--g-article-aside-margin-v);
+		margin-bottom: var(--g-article-aside-margin-v);
+	}
+	article aside.g-left {
+		float: left;
+
+		margin-left: 0;
+		margin-right: var(--g-article-aside-margin-h);
+
+		text-align: right;
+		text-align: end;
 	}
 }
-@media (min-width: 1248px) {  /* var(--g-column-width) + 2 * (var(--g-main-aside-width) + var(--g-block-margin-h) + var(--g-main-margin-h)) == 78rem */
-	main aside {
+@media (min-width: 1120px) {
+	/* 70rem */
+	/* given by var(--g-column-width) + 2 * (var(--g-article-aside-min-width) + var(--g-article-aside-margin-h) + var(--g-main-margin-h)) */
+	/* When the main content width is wide enough for the min aside width */
+	/* Allow aside to exceed outside the compatibility value of main content width (11/12 * 100vw), but not of the ideal value */
+	article aside {
 		position: absolute;
 		float: none;
 
+		max-width: var(--g-article-aside-min-width);  /* compat */
+		max-width: calc((100vw - var(--g-column-width)) / 2 - var(--g-article-aside-margin-h) - var(--g-main-margin-h));
+
 		margin-top: 0;
-		margin-left: var(--g-main-aside-margin-h-with-column-compat);
-		margin-left: calc(var(--g-column-width) + var(--g-quote-margin-h));
+		margin-left: var(--g-article-aside-wide-side-column-margin-h-compat);
+		margin-left: calc(var(--g-column-width) + var(--g-article-aside-margin-h));
 		margin-right: 0;
 
 		color: inherit;
 	}
+	article aside.g-left {
+		float: none;
+
+		margin-left: var(--g-article-aside-wide-left-column-negative-margin-h-compat);
+		margin-left: calc(-1 * var(--g-article-aside-margin-h));
+
+		transform: translateX(-100%);
+	}
 }
+
+
+article aside > h1:first-child, article aside > h2:first-child, article aside > h3:first-child, article aside > h4:first-child, article aside > h5:first-child, article aside > h6:first-child,
+article aside > p:first-child, article aside > pre:first-child,
+article aside > blockquote:first-child,
+article aside > ul:first-child, article aside > menu:first-child, article aside > ol:first-child, article aside > dl:first-child,
+article aside > img:first-child, article aside > picture:first-child, article aside > svg:first-child, article aside > figure:first-child,
+article aside > table:first-child {
+	margin-top: 0;
+}
+article aside > h1:last-child, article aside > h2:last-child, article aside > h3:last-child, article aside > h4:last-child, article aside > h5:last-child, article aside > h6:last-child,
+article aside > p:last-child, article aside > pre:last-child,
+article aside > blockquote:last-child,
+article aside > ul:last-child, article aside > menu:last-child, article aside > ol:last-child, article aside > dl:last-child,
+article aside > img:last-child, article aside > picture:last-child, article aside > svg:last-child, article aside > figure:last-child,
+article aside > table:last-child {
+	margin-bottom: 0;
+}
+
 
 pre {
 	display: block;
@@ -586,9 +678,11 @@ figure pre {
 figure.g-bound pre {
 	min-width: unset;
 
-	white-space: pre-wrap;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
+
+	white-space: pre-wrap;  /* legacy shorthand property, equivalent to both white-space-collapse: preserve and text-wrap-mode: wrap */
+	text-wrap-mode: wrap;
 }
 
 pre > code.g-frame, pre > samp.g-frame {
@@ -635,6 +729,11 @@ hr {
 
 	border: 0;
 	border-bottom: var(--g-hr-width) solid var(--g-main-color);
+}
+
+.g-compact {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 
@@ -1299,7 +1398,9 @@ figure.g-right figcaption.g-bound {
 	margin-right: auto;
 }
 
-@media (min-width: 704px) {  /* value of 100vw when var(--g-figure-wide-max-width) == var(--g-column-width); 44rem */
+@media (min-width: 704px) {
+	/* 44rem */
+	/* given by value of 100vw when var(--g-figure-wide-max-width) == var(--g-column-width) */
 	/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
 	figure {
 		max-width: var(--g-figure-wide-max-width);
@@ -1413,14 +1514,23 @@ a {
 	display: inline;
 
 	color: var(--g-link-color);
-	text-decoration: underline;
+
+	text-decoration: underline;  /* legacy shorthand property */
+	-webkit-text-decoration-line: underline;
+	text-decoration-line: underline;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 a:hover {
-	text-decoration: none;
-	text-decoration: underline double;
+	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: double;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 a:visited {
 	color: var(--g-visited-color);
+}
+
+u {
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 
 dfn {
@@ -1474,24 +1584,50 @@ samp {
 	background-color: ghostwhite;
 }
 
+
 kbd {
-	display: inline-block;
-	margin: 0 var(--g-kbd-margin-h);
-	padding: var(--g-kbd-padding-v) var(--g-kbd-padding-h);
+	display: inline;
+
+	box-sizing: border-box;
+	padding: 0 var(--g-inline-padding-h);
 
 	font-family: inherit;
-	font-size: var(--g-demi-relative-font-size);
-	font-weight: var(--g-demi-font-weight);
-
-	line-height: var(--g-kbd-line-height-compat);  /* border-radius increases line height */
-	line-height: calc(var(--g-line-height) - 2 * var(--g-border-radius) - var(--g-kbd-frame-width));
-	line-height: calc(1.5rem - 0.2em - 0.2em - 1px);
-
-	border: var(--g-kbd-frame-width) solid var(--g-kbd-frame-color);
-	box-shadow: 0 var(--g-kbd-shadow-width) 0 var(--g-kbd-shadow-width) var(--g-kbd-frame-color);
 
 	border-radius: var(--g-inline-border-radius);
+
+	background-color: var(--g-kbd-background-color-compat);
 }
+kbd > kbd {
+	padding: 0;
+}
+@supports (selector(kbd:has(> kbd))) and selector(kbd:not(:has(> kbd))) {
+	kbd {
+		background-color: inherit;
+	}
+	kbd:has(> kbd) {
+		padding: 0;
+	}
+	kbd:not(:has(> kbd)), kbd > kbd {
+		display: inline-block;
+		margin: 0 var(--g-kbd-margin-h);
+		padding: var(--g-kbd-padding-v) var(--g-kbd-padding-h);
+
+		font-size: var(--g-demi-relative-font-size);
+		font-weight: var(--g-demi-font-weight);
+
+		line-height: var(--g-kbd-line-height-compat);  /* border-radius increases line height */
+		line-height: calc(var(--g-line-height) - 2 * var(--g-border-radius) - var(--g-kbd-frame-width));
+		line-height: calc(1.5rem - 0.2em - 0.2em - 1px);
+
+		border: var(--g-kbd-frame-width) solid var(--g-kbd-frame-color);
+		box-shadow: 0 var(--g-kbd-shadow-vertical-offset) 0 var(--g-kbd-shadow-spread-radius) var(--g-kbd-frame-color);
+	}
+}
+kbd.g-detail, kbd.g-detail > kbd {
+	border-width: var(--g-kbd-detail-frame-width);
+	box-shadow: none;
+}
+
 h1 > kbd, h2 > kbd, h3 > kbd, h4 > kbd, h5 > kbd, h6 > kbd, b > kbd, strong > kbd, dfn > kbd, dt > kbd {
 	font-weight: var(--g-demi-bold-font-weight);
 }
@@ -1500,6 +1636,29 @@ kbd > code:first-child, kbd > samp:first-child {
 }
 kbd > code:last-child, kbd > samp:last-child {
 	padding-right: 0;
+}
+
+.g-spoiler:not([tabindex]):not(:hover),
+.g-spoiler[tabindex]:not(:focus):not(:focus-within) {
+	color: transparent !important;  /* compat for content-visibility: hidden not being supported */
+	background-color: var(--g-spoiler-color) !important;
+
+	border-radius: var(--g-inline-border-radius);
+
+	content-visibility: hidden !important;
+
+	cursor: pointer !important;
+
+	-webkit-user-select: none !important;
+	-ms-user-select: none !important;
+	user-select: none !important;
+}
+.g-spoiler:not([tabindex]):not(:hover) *,
+.g-spoiler[tabindex]:not(:focus):not(:focus-within) * {
+	visibility: hidden !important;
+}
+.g-spoiler[tabindex]:not(:focus):not(:focus-within):hover {
+	background: radial-gradient(var(--g-spoiler-highlight-color) 0%, var(--g-spoiler-color) 150%);
 }
 
 .g-math {
@@ -1524,7 +1683,11 @@ abbr {
 	font-weight: var(--g-demi-font-weight);
 }
 abbr[title] {
-	text-decoration: underline dotted;
+	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	-webkit-text-decoration-line: underline;
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 b > abbr, strong > abbr, dfn > abbr, dt > abbr {
 	font-weight: var(--g-demi-bold-font-weight);
@@ -1554,6 +1717,7 @@ b > abbr.g-capital::first-letter,
 strong > abbr.g-capital::first-letter,
 dfn > abbr.g-capital::first-letter,
 dt > abbr.g-capital::first-letter {
+	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
 h1 > abbr.g-capital::first-letter {
@@ -1569,11 +1733,14 @@ h6 > abbr.g-capital::first-letter {
 	font-weight: bold;
 }
 a abbr.g-capital {
-	text-decoration: underline;
+	text-decoration: underline;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	text-decoration-style: solid;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 a:hover abbr.g-capital {
-	text-decoration: none;
-	text-decoration: underline double;
+	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: double;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 
 
@@ -1591,17 +1758,30 @@ a:hover abbr.g-capital {
 	font-weight: var(--g-demi-font-weight);
 }
 .g-abbr[title] {
-	text-decoration: underline dotted;
+	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: dotted */
+	-webkit-text-decoration-line: underline;
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
-h1 > .g-abbr, h2 > .g-abbr, h3 > .g-abbr, h4 > .g-abbr, h5 > .g-abbr, h6 > .g-abbr, b > .g-abbr, strong > .g-abbr, dfn > .g-abbr, dt > .g-abbr {
+h1 > .g-abbr {
+	font-size: var(--g-h1-demi-relative-font-size);
+	font-weight: var(--g-h1-demi-font-weight);
+}
+h2 > .g-abbr, h3 > .g-abbr, h4 > .g-abbr, h5 > .g-abbr, h6 > .g-abbr {
+	font-size: var(--g-heading-demi-relative-font-size);
+	font-weight: var(--g-heading-demi-font-weight);
+}
+b > .g-abbr, strong > .g-abbr, dfn > .g-abbr, dt > .g-abbr {
 	font-weight: var(--g-demi-bold-font-weight);
 }
 a .g-abbr {
 	display: inline;
 }
 a:hover .g-abbr {
-	text-decoration: none;
-	text-decoration: underline double;
+	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: double;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 
 .g-abbr.g-capital {
@@ -1616,12 +1796,18 @@ a:hover .g-abbr {
 	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: normal;
 }
-h1 > .g-abbr.g-capital::first-letter,
+h1 > .g-abbr.g-capital::first-letter {
+	font-size: var(--g-h1-inverse-demi-relative-font-size);
+	font-weight: bold;
+}
 h2 > .g-abbr.g-capital::first-letter,
 h3 > .g-abbr.g-capital::first-letter,
 h4 > .g-abbr.g-capital::first-letter,
 h5 > .g-abbr.g-capital::first-letter,
-h6 > .g-abbr.g-capital::first-letter,
+h6 > .g-abbr.g-capital::first-letter {
+	font-size: var(--g-heading-inverse-demi-relative-font-size);
+	font-weight: bold;
+}
 b > .g-abbr.g-capital::first-letter,
 strong > .g-abbr.g-capital::first-letter,
 dfn > .g-abbr.g-capital::first-letter,
@@ -1629,15 +1815,34 @@ dt > .g-abbr.g-capital::first-letter {
 	font-weight: bold;
 }
 a .g-abbr.g-capital {
-	text-decoration: underline;
+	text-decoration: underline;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	text-decoration-style: solid;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 a:hover .g-abbr.g-capital {
-	text-decoration: none;
-	text-decoration: underline double;
+	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: double;
+	text-decoration-thickness: var(--g-underline-thickness);
 }
 
 .g-quiet {
 	color: var(--g-quiet-color);
+}
+
+.g-nobreak {
+	word-wrap: normal;  /* alias of overflow-wrap */
+	overflow-wrap: normal;
+	-webkit-hyphens: none;
+	hyphens: none;
+	word-break: keep-all;
+
+	text-wrap-mode: nowrap;
+}
+
+.g-decor {
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 
@@ -1662,7 +1867,9 @@ a.g-button {
 	overflow: hidden;
 
 	line-height: var(--g-button-line-height);
-	text-decoration: none;
+	text-decoration: none;  /* legacy shorthand property for text-decoration-line: none */
+	-webkit-text-decoration-line: none;
+	text-decoration-line: none;
 
 	transition: all 100ms ease;
 }
@@ -2461,11 +2668,11 @@ picture a.g-expand::after {
 
 
 /*
-	Unhide content after CSS is loaded
-	Add id="g-bodymask" to body element and apply
+	Hide content until after CSS is loaded
+	Add class="g-bodymask" to body element and apply
 		body { visibility: hidden; }
 	in internal stylesheet of HTML file, to be overwritten by the following
 */
-#g-bodymask {
+.g-bodymask {
 	visibility: visible;
 }

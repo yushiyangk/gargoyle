@@ -1,6 +1,53 @@
 ## Changelog
 
 
+### 0.6
+
+#### Breaking changes
+
+- Changed behaviour of `<kbd>`
+	- Replaced the variable `--g-kbd-shadow-width` with `--g-kbd-shadow-vertical-offset`, `--g-kbd-shadow-spread-radius` and `--g-kbd-detail-frame-width`, all with the same default value
+	- On older browsers, `<kbd>` now renders with a single solid background; this is in order to support nested `<kbd>` elements (as described on [MDN](https://web.archive.org/web/20251006025816/https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/kbd#usage_notes))
+- Changed behaviour of `<aside>` to be more flexible
+	- `<aside>` can now be placed in the left side column using class `g-left`
+	- Added compatibility variable `--g-article-aside-wide-left-column-negative-margin-h-compat` for left-side asides
+	- Its width can now vary between `--g-article-aside-min-width` (new variable) and `--g-article-aside-min-width`
+	- Use new variables `--g-article-aside-margin-v` and `--g-article-aside-margin-h` instead of piggy-backing off the `<blockquote>` variables as before; the default values are the same
+- Styles for in-text `<nav>`s and `<aside>`s now have more specific rules
+	- Previously, the rules were e.g. `main aside`
+	- Now, the rules are e.g. `article aside`
+	- This is to allow for content relating to the main text, but not part of the main text itself, e.g. a table of contents, to be placed inside of `<main>` but outside of `<article>`
+- The id `g-bodymask` has been changed to a class instead, in order to allow other user-specified ids on `<body>`
+
+#### Removed
+
+- Dropped support for Edge versions 18 and earlier
+
+#### Added
+
+- Added spoilers, created by adding the class `g-spoiler`
+	- The spoiler will be shown on mouse over
+	- Alternatively, add the attribute `tabindex="-1"` to show the spoiler only on click/touch
+	- Added the variables `--g-spoiler-color` and `--g-spoiler-highlight-color`
+- Added the `g-compact` class for removing vertical margins from block elements
+- Added the `g-nobreak` class for disabling hyphenation
+- Added the `g-decor` class for making text non-selectable
+- GUI controls can now be rendered distinctly using `<kbd class="g-detail">`; note that it will be rendered like a keyboard button if the class `g-detail` is omitted
+
+#### Changed
+
+- Added explicit `word-break`, `white-space-collapse`, `text-wrap-mode`, `text-wrap-style` properties to `article`
+- Added explicit `text-wrap-mode` property to `figure.g-bound pre`
+- Set `text-underline-position: from-font` for consistent behaviour between Webkit and Gecko
+
+#### Fixed
+
+- Fixed underlines that are too thick for certain font sizes on Webkit-based browsers
+- Removed extraneous margins in block elements nested inside an `<aside>`
+- Fixed capitalised smallcaps not rendering as full height in bold text
+- Fixed `<abbr>` in headings not using their corresponding font weight and inverse font size variables
+
+
 ### 0.5
 
 #### Breaking changes
