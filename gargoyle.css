@@ -2673,6 +2673,6 @@ picture a.g-expand::after {
 		body { visibility: hidden; }
 	in internal stylesheet of HTML file, to be overwritten by the following
 */
-.g-bodymask {
+body.g-bodymask {
 	visibility: visible;
 }
