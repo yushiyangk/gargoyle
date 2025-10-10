@@ -78,7 +78,19 @@
 
 
 :root {
+	/*
+		Layout grid: 1.5rem rows, calc(100vw / 12) columns
+
+		When changing the value of one of these variables, take note of the following:
+		1) Check for any pre-calculated compatibility variables (ending with -compat) that depend on it and update them; the formula for the pre-calculated value should be given in the accompanying comments
+		2) Check each media query throughout the stylesheet for any dependency on the variable and update them; the screen size breakpoints given in px units have to be pre-calculated, and their formula should be given in the accompanying comments
+		3) If the media query breakpoints need to be overridden,
+
+		Any change to var(--g-font-size) and var(--g-line-height) will definitely affect many of the above.
+	*/
+
 	--g-font-size: 16px;
+	/* WARNING: All media queries need to be manually updated in px units */
 	--g-line-height: 1.5rem;
 	--g-skip: var(--g-line-height);
 	--g-span: 1rem;
@@ -203,9 +215,12 @@
 	--g-article-nav-margin-h: var(--g-medium-h);
 
 	--g-article-aside-width: 16rem;
-	--g-article-aside-wide-column-margin-h-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
-	--g-article-aside-wide-left-column-margin-h-compat: -18rem;  /* compat; -1 * (var(--g-article-aside-width) + var(--g-quote-margin-h)) */
-	/* WARNING: Media queries for <aside> need to be manually updated in precomputed px units */
+	--g-article-aside-min-width: 12rem;
+	--g-article-aside-margin-v: var(--g-medium-v);
+	--g-article-aside-margin-h: var(--g-large-h);
+	--g-article-aside-wide-side-column-margin-h-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
+	--g-article-aside-wide-left-column-negative-margin-h-compat: -2rem;  /* compat; -1 * (var(--g-article-aside-width) + var(--g-quote-margin-h)) */
+	/* WARNING: Media queries for <aside> need to be manually updated in px units */
 
 	--g-pre-padding-v: var(--g-small-v);
 	--g-pre-padding-h: var(--g-small-h);
@@ -236,7 +251,7 @@
 	--g-figcaption-width-compat: 38rem;  /* compat; var(--g-column-width) - 2 * var(--g-figcaption-margin-h) */
 	--g-figcaption-aligned-width-compat: 39rem;
 	--g-figure-wide-max-width: calc(100vw - 2 * var(--g-large-h));  /* No compat version because the existing fallback for figure max width, which is var(--g-main-width), already has more generous margins when calc() is not supported, especially on wider screens */
-	/* WARNING: Media queries for <figure> and <figcaption> need to be manually updated in precomputed px units */
+	/* WARNING: Media queries for <figure> and <figcaption> need to be manually updated in px units */
 
 	--g-table-margin-top: var(--g-small-v);
 	--g-table-margin-bottom: var(--g-large-v);
@@ -549,7 +564,7 @@ blockquote {
 article aside {
 	display: block;
 
-	margin: 0 var(--g-quote-margin-h);
+	margin: 0 var(--g-article-aside-margin-h);
 	padding: 0;
 
 	color: var(--g-quiet-color);
@@ -558,36 +573,59 @@ article aside {
 	text-align: start;
 	text-align: initial;
 }
-@media (min-width: 652.8px) {  /* (2 * var(--g-main-aside-width) + var(--g-main-aside-narrow-margin-h)) / (10 / 12) == 34rem / (10 / 12) == 40.8rem */
-	/* Divide by 10/12 because column width has a lower bound of 10/12 of display width, which happens when calc() is not supported, whereas var(--g-column-width) is only used when the display is not narrow */
+@media (min-width: 453.818182px) {
+	/* 28.363636rem */
+	/* given by (2 * var(--g-article-aside-min-width) + var(--g-article-aside-margin-h)) / (11 / 12) == 26rem / (11 / 12) */
+	/* When the main column width is wide enough for any displaced content paragraph to be at least as wide as the min-width aside */
+	/* The main column width has a lower bound of 11/12 of display width, which occurs on narrow displays where calc() is not supported */
 	article aside {
 		float: right;
 
 		width: var(--g-article-aside-width);
-		margin-top: var(--g-quote-margin-v);
-		margin-bottom: var(--g-quote-margin-v);
+		min-width: var(--g-article-aside-min-width);
+		max-width: var(--g-article-aside-min-width);  /* compat */
+		max-width: calc((100% - var(--g-article-aside-margin-h)) / 2);
+
+		margin-right: 0;
+		margin-top: var(--g-article-aside-margin-v);
+		margin-bottom: var(--g-article-aside-margin-v);
 	}
 	article aside.g-left {
 		float: left;
+
+		margin-left: 0;
+		margin-right: var(--g-article-aside-margin-h);
 	}
 }
-@media (min-width: 1248px) {  /* var(--g-column-width) + 2 * (var(--g-main-aside-width) + var(--g-block-margin-h) + var(--g-main-margin-h)) == 78rem */
+@media (min-width: 1120px) {
+	/* 70rem */
+	/* given by var(--g-column-width) + 2 * (var(--g-article-aside-min-width) + var(--g-article-aside-margin-h) + var(--g-main-margin-h)) */
+	/* When the main content width is wide enough for the min aside width */
+	/* Allow aside to exceed outside the compatibility value of main content width (11/12 * 100vw), but not of the ideal value */
 	article aside {
 		position: absolute;
 		float: none;
 
+		max-width: var(--g-article-aside-min-width);  /* compat */
+		max-width: calc((100vw - var(--g-column-width)) / 2 - var(--g-article-aside-margin-h) - var(--g-main-margin-h));
+
 		margin-top: 0;
-		margin-left: var(--g-article-aside-wide-column-margin-h-compat);
-		margin-left: calc(var(--g-column-width) + var(--g-quote-margin-h));
+		margin-left: var(--g-article-aside-wide-side-column-margin-h-compat);
+		margin-left: calc(var(--g-column-width) + var(--g-article-aside-margin-h));
 		margin-right: 0;
 
 		color: inherit;
 	}
 	article aside.g-left {
-		margin-left: var(--g-article-aside-wide-left-column-margin-h-compat);
-		margin-left: calc(-1 * (var(--g-article-aside-width) + var(--g-quote-margin-h)));
+		float: none;
+
+		margin-left: var(--g-article-aside-wide-left-column-negative-margin-h-compat);
+		margin-left: calc(-1 * var(--g-article-aside-margin-h));
+
+		transform: translateX(-100%);
 	}
 }
+
 
 article aside > h1:first-child, article aside > h2:first-child, article aside > h3:first-child, article aside > h4:first-child, article aside > h5:first-child, article aside > h6:first-child,
 article aside > p:first-child, article aside > pre:first-child,
