@@ -1,8 +1,22 @@
 /* Gargoyle.css */
-/* version 0.6 */
+/* version 0.7 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
+/*
+	Usage:
+		- Include in HTML document with
+			<link rel="stylesheet" type="text/css" href="./gargoyle.css" />
+		- Add the class "g-default-media" to the <body> element
+
+	Customising:
+		- Override the CSS variables in :root, paying attention to any compatibility variables and media query breakpoints that need to be updated as well
+		- To override the media query breakpoints,
+			- Copy out the media query block into a new stylesheet
+			- Remove "body.g-default-media" from the start of each selector
+			- Update the px values as appropriate
+			- Remove the class "g-default-media" from the <body> element
+*/
 
 
 /*
@@ -81,12 +95,10 @@
 	/*
 		Layout grid: 1.5rem rows, calc(100vw / 12) columns
 
-		When changing the value of one of these variables, take note of the following:
+		When changing or overriding the following variables, take note:
 		1) Check for any pre-calculated compatibility variables (ending with -compat) that depend on it and update them; the formula for the pre-calculated value should be given in the accompanying comments
-		2) Check each media query throughout the stylesheet for any dependency on the variable and update them; the screen size breakpoints given in px units have to be pre-calculated, and their formula should be given in the accompanying comments
+		2) Check for any media queries that depend on it and update them; the display size breakpoints given in px units have to be pre-calculated, and their formula should be given in the accompanying comments
 		3) If the media query breakpoints need to be overridden,
-
-		Any change to var(--g-font-size) and var(--g-line-height) will definitely affect many of the above.
 	*/
 
 	--g-font-size: 16px;  /* NOTE: affects all media queries */
