@@ -197,14 +197,13 @@
 	--g-main-width: calc(100vw - 2 * var(--g-main-margin-h));
 	--g-column-width: 40rem;
 
-	--g-main-nav-margin-v: var(--g-small-v);
-	--g-main-nav-margin-h: var(--g-medium-h);
-
 	--g-article-text-indent: 0;
 	--g-article-tab-size: 4;  /* Should be an integer for wide support */
+	--g-article-nav-margin-v: var(--g-small-v);
+	--g-article-nav-margin-h: var(--g-medium-h);
 
-	--g-main-aside-margin-h-with-column-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
-	--g-main-aside-width: 16rem;
+	--g-article-aside-width: 16rem;
+	--g-article-aside-wide-column-margin-h-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
 	/* WARNING: Media queries for <aside> need to be manually updated in precomputed px units */
 
 	--g-pre-padding-v: var(--g-small-v);
@@ -362,38 +361,6 @@ main {
 	text-align: initial;
 }
 
-main nav {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: flex-start;
-	align-items: baseline;
-	align-content: flex-start;
-	gap: var(--g-main-nav-margin-v) var(--g-main-nav-margin-h);
-
-	margin: var(--g-main-nav-margin-v) auto;
-	padding: 0;
-
-	text-align: left;
-	text-align: start;
-	text-align: initial;
-}
-main nav.g-left {
-	justify-content: left;
-}
-main nav.g-start {
-	justify-content: left;
-	justify-content: start;
-}
-main nav.g-right {
-	justify-content: right;
-}
-main nav.g-end {
-	justify-content: right;
-	justify-content: end;
-}
-main nav.g-centre, main nav.g-center {
-	justify-content: center;
-}
 
 article {
 	display: block;
@@ -419,6 +386,40 @@ article {
 	text-indent: var(--g-article-text-indent);
 	tab-size: var(--g-article-tab-size);
 }
+
+article nav {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: baseline;
+	align-content: flex-start;
+	gap: var(--g-article-nav-margin-v) var(--g-article-nav-margin-h);
+
+	margin: var(--g-article-nav-margin-v) auto;
+	padding: 0;
+
+	text-align: left;
+	text-align: start;
+	text-align: initial;
+}
+article nav.g-left {
+	justify-content: left;
+}
+article nav.g-start {
+	justify-content: left;
+	justify-content: start;
+}
+article nav.g-right {
+	justify-content: right;
+}
+article nav.g-end {
+	justify-content: right;
+	justify-content: end;
+}
+article nav.g-centre, article nav.g-center {
+	justify-content: center;
+}
+
 
 header {
 	display: block;
@@ -544,7 +545,7 @@ blockquote {
 	padding: 0;
 }
 
-main aside {
+article aside {
 	display: block;
 
 	margin-top: 0;
@@ -561,21 +562,21 @@ main aside {
 }
 @media (min-width: 652.8px) {  /* (2 * var(--g-main-aside-width) + var(--g-main-aside-narrow-margin-h)) / (10 / 12) == 34rem / (10 / 12) == 40.8rem */
 	/* Divide by 10/12 because column width has a lower bound of 10/12 of display width, which happens when calc() is not supported, whereas var(--g-column-width) is only used when the display is not narrow */
-	main aside {
+	article aside {
 		float: right;
 
-		width: var(--g-main-aside-width);
+		width: var(--g-article-aside-width);
 		margin-top: var(--g-quote-margin-v);
 		margin-bottom: var(--g-quote-margin-v);
 	}
 }
 @media (min-width: 1248px) {  /* var(--g-column-width) + 2 * (var(--g-main-aside-width) + var(--g-block-margin-h) + var(--g-main-margin-h)) == 78rem */
-	main aside {
+	article aside {
 		position: absolute;
 		float: none;
 
 		margin-top: 0;
-		margin-left: var(--g-main-aside-margin-h-with-column-compat);
+		margin-left: var(--g-article-aside-wide-column-margin-h-compat);
 		margin-left: calc(var(--g-column-width) + var(--g-quote-margin-h));
 		margin-right: 0;
 
@@ -583,20 +584,20 @@ main aside {
 	}
 }
 
-main aside > h1:first-child, main aside > h2:first-child, main aside > h3:first-child, main aside > h4:first-child, main aside > h5:first-child, main aside > h6:first-child,
-main aside > p:first-child, main aside > pre:first-child,
-main aside > blockquote:first-child,
-main aside > ul:first-child, main aside > menu:first-child, main aside > ol:first-child, main aside > dl:first-child,
-main aside > img:first-child, main aside > picture:first-child, main aside > svg:first-child, main aside > figure:first-child,
-main aside > table:first-child {
+article aside > h1:first-child, article aside > h2:first-child, article aside > h3:first-child, article aside > h4:first-child, article aside > h5:first-child, article aside > h6:first-child,
+article aside > p:first-child, article aside > pre:first-child,
+article aside > blockquote:first-child,
+article aside > ul:first-child, article aside > menu:first-child, article aside > ol:first-child, article aside > dl:first-child,
+article aside > img:first-child, article aside > picture:first-child, article aside > svg:first-child, article aside > figure:first-child,
+article aside > table:first-child {
 	margin-top: 0;
 }
-main aside > h1:last-child, main aside > h2:last-child, main aside > h3:last-child, main aside > h4:last-child, main aside > h5:last-child, main aside > h6:last-child,
-main aside > p:last-child, main aside > pre:last-child,
-main aside > blockquote:last-child,
-main aside > ul:last-child, main aside > menu:last-child, main aside > ol:last-child, main aside > dl:last-child,
-main aside > img:last-child, main aside > picture:last-child, main aside > svg:last-child, main aside > figure:last-child,
-main aside > table:last-child {
+article aside > h1:last-child, article aside > h2:last-child, article aside > h3:last-child, article aside > h4:last-child, article aside > h5:last-child, article aside > h6:last-child,
+article aside > p:last-child, article aside > pre:last-child,
+article aside > blockquote:last-child,
+article aside > ul:last-child, article aside > menu:last-child, article aside > ol:last-child, article aside > dl:last-child,
+article aside > img:last-child, article aside > picture:last-child, article aside > svg:last-child, article aside > figure:last-child,
+article aside > table:last-child {
 	margin-bottom: 0;
 }
 
