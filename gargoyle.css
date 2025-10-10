@@ -89,8 +89,7 @@
 		Any change to var(--g-font-size) and var(--g-line-height) will definitely affect many of the above.
 	*/
 
-	--g-font-size: 16px;
-	/* WARNING: All media queries need to be manually updated in px units */
+	--g-font-size: 16px;  /* NOTE: affects all media queries */
 	--g-line-height: 1.5rem;
 	--g-skip: var(--g-line-height);
 	--g-span: 1rem;
@@ -204,10 +203,10 @@
 	--g-page-bottom: calc(2 * var(--g-skip));
 
 	--g-main-margin-v: var(--g-medium-v);
-	--g-main-margin-h: var(--g-medium-h);
+	--g-main-margin-h: var(--g-medium-h);  /* NOTE: affects media queries for <aside> */
 	--g-main-width: 91.666667vw;  /* compat */
 	--g-main-width: calc(100vw - 2 * var(--g-main-margin-h));
-	--g-column-width: 40rem;
+	--g-column-width: 40rem;  /* NOTE: affects media queries for <aside> and <figure> */
 
 	--g-article-text-indent: 0;
 	--g-article-tab-size: 4;  /* Should be an integer for wide support */
@@ -215,12 +214,11 @@
 	--g-article-nav-margin-h: var(--g-medium-h);
 
 	--g-article-aside-width: 16rem;
-	--g-article-aside-min-width: 12rem;
+	--g-article-aside-min-width: 12rem;  /* NOTE: affects media queries for <aside> */
 	--g-article-aside-margin-v: var(--g-medium-v);
-	--g-article-aside-margin-h: var(--g-large-h);
+	--g-article-aside-margin-h: var(--g-large-h);  /* NOTE: affects media queries for <aside> */
 	--g-article-aside-wide-side-column-margin-h-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
 	--g-article-aside-wide-left-column-negative-margin-h-compat: -2rem;  /* compat; -1 * (var(--g-article-aside-width) + var(--g-quote-margin-h)) */
-	/* WARNING: Media queries for <aside> need to be manually updated in px units */
 
 	--g-pre-padding-v: var(--g-small-v);
 	--g-pre-padding-h: var(--g-small-h);
@@ -250,8 +248,8 @@
 	--g-figcaption-margin-h: var(--g-medium-h);
 	--g-figcaption-width-compat: 38rem;  /* compat; var(--g-column-width) - 2 * var(--g-figcaption-margin-h) */
 	--g-figcaption-aligned-width-compat: 39rem;
-	--g-figure-wide-max-width: calc(100vw - 2 * var(--g-large-h));  /* No compat version because the existing fallback for figure max width, which is var(--g-main-width), already has more generous margins when calc() is not supported, especially on wider screens */
-	/* WARNING: Media queries for <figure> and <figcaption> need to be manually updated in px units */
+	--g-figure-wide-max-width: calc(100vw - 2 * var(--g-large-h));  /* NOTE: affects media queries for <figure> */
+	/* No compat variable for --g-figure-wide-max-width because the existing fallback for figure max width, var(--g-main-width), already has more generous margins when calc() is not supported, especially on wider screens */
 
 	--g-table-margin-top: var(--g-small-v);
 	--g-table-margin-bottom: var(--g-large-v);
