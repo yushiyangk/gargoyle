@@ -1643,6 +1643,8 @@ kbd > code:last-child, kbd > samp:last-child {
 	color: transparent !important;  /* compat for content-visibility: hidden not being supported */
 	background-color: var(--g-spoiler-color) !important;
 
+	border-radius: var(--g-inline-border-radius);
+
 	content-visibility: hidden !important;
 
 	cursor: pointer !important;
