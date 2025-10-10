@@ -595,6 +595,9 @@ article aside {
 
 		margin-left: 0;
 		margin-right: var(--g-article-aside-margin-h);
+
+		text-align: right;
+		text-align: end;
 	}
 }
 @media (min-width: 1120px) {
