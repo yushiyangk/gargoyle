@@ -1,8 +1,22 @@
 /* Gargoyle.css */
-/* version 0.6 */
+/* version 0.7 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
+/*
+	Usage:
+		- Include in HTML document with
+			<link rel="stylesheet" type="text/css" href="./gargoyle.css" />
+		- Add the class "g-default-media" to the <body> element
+
+	Customising:
+		- Override the CSS variables in :root, paying attention to any compatibility variables and media query breakpoints that need to be updated as well
+		- To override the media query breakpoints,
+			- Copy out the media query block into a new stylesheet
+			- Remove "body.g-default-media" from the start of each selector
+			- Update the px values as appropriate
+			- Remove the class "g-default-media" from the <body> element
+*/
 
 
 /*
@@ -81,16 +95,13 @@
 	/*
 		Layout grid: 1.5rem rows, calc(100vw / 12) columns
 
-		When changing the value of one of these variables, take note of the following:
+		When changing or overriding the following variables, take note:
 		1) Check for any pre-calculated compatibility variables (ending with -compat) that depend on it and update them; the formula for the pre-calculated value should be given in the accompanying comments
-		2) Check each media query throughout the stylesheet for any dependency on the variable and update them; the screen size breakpoints given in px units have to be pre-calculated, and their formula should be given in the accompanying comments
+		2) Check for any media queries that depend on it and update them; the display size breakpoints given in px units have to be pre-calculated, and their formula should be given in the accompanying comments
 		3) If the media query breakpoints need to be overridden,
-
-		Any change to var(--g-font-size) and var(--g-line-height) will definitely affect many of the above.
 	*/
 
-	--g-font-size: 16px;
-	/* WARNING: All media queries need to be manually updated in px units */
+	--g-font-size: 16px;  /* NOTE: affects all media queries */
 	--g-line-height: 1.5rem;
 	--g-skip: var(--g-line-height);
 	--g-span: 1rem;
@@ -204,10 +215,10 @@
 	--g-page-bottom: calc(2 * var(--g-skip));
 
 	--g-main-margin-v: var(--g-medium-v);
-	--g-main-margin-h: var(--g-medium-h);
+	--g-main-margin-h: var(--g-medium-h);  /* NOTE: affects media queries for <aside> */
 	--g-main-width: 91.666667vw;  /* compat */
 	--g-main-width: calc(100vw - 2 * var(--g-main-margin-h));
-	--g-column-width: 40rem;
+	--g-column-width: 40rem;  /* NOTE: affects media queries for <aside> and <figure> */
 
 	--g-article-text-indent: 0;
 	--g-article-tab-size: 4;  /* Should be an integer for wide support */
@@ -215,12 +226,11 @@
 	--g-article-nav-margin-h: var(--g-medium-h);
 
 	--g-article-aside-width: 16rem;
-	--g-article-aside-min-width: 12rem;
+	--g-article-aside-min-width: 12rem;  /* NOTE: affects media queries for <aside> */
 	--g-article-aside-margin-v: var(--g-medium-v);
-	--g-article-aside-margin-h: var(--g-large-h);
+	--g-article-aside-margin-h: var(--g-large-h);  /* NOTE: affects media queries for <aside> */
 	--g-article-aside-wide-side-column-margin-h-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
 	--g-article-aside-wide-left-column-negative-margin-h-compat: -2rem;  /* compat; -1 * (var(--g-article-aside-width) + var(--g-quote-margin-h)) */
-	/* WARNING: Media queries for <aside> need to be manually updated in px units */
 
 	--g-pre-padding-v: var(--g-small-v);
 	--g-pre-padding-h: var(--g-small-h);
@@ -250,8 +260,8 @@
 	--g-figcaption-margin-h: var(--g-medium-h);
 	--g-figcaption-width-compat: 38rem;  /* compat; var(--g-column-width) - 2 * var(--g-figcaption-margin-h) */
 	--g-figcaption-aligned-width-compat: 39rem;
-	--g-figure-wide-max-width: calc(100vw - 2 * var(--g-large-h));  /* No compat version because the existing fallback for figure max width, which is var(--g-main-width), already has more generous margins when calc() is not supported, especially on wider screens */
-	/* WARNING: Media queries for <figure> and <figcaption> need to be manually updated in px units */
+	--g-figure-wide-max-width: calc(100vw - 2 * var(--g-large-h));  /* NOTE: affects media queries for <figure> */
+	/* No compat variable for --g-figure-wide-max-width because the existing fallback for figure max width, var(--g-main-width), already has more generous margins when calc() is not supported, especially on wider screens */
 
 	--g-table-margin-top: var(--g-small-v);
 	--g-table-margin-bottom: var(--g-large-v);
@@ -578,7 +588,7 @@ article aside {
 	/* given by (2 * var(--g-article-aside-min-width) + var(--g-article-aside-margin-h)) / (11 / 12) == 26rem / (11 / 12) */
 	/* When the main column width is wide enough for any displaced content paragraph to be at least as wide as the min-width aside */
 	/* The main column width has a lower bound of 11/12 of display width, which occurs on narrow displays where calc() is not supported */
-	article aside {
+	body.g-default-media article aside {
 		float: right;
 
 		width: var(--g-article-aside-width);
@@ -590,7 +600,7 @@ article aside {
 		margin-top: var(--g-article-aside-margin-v);
 		margin-bottom: var(--g-article-aside-margin-v);
 	}
-	article aside.g-left {
+	body.g-default-media article aside.g-left {
 		float: left;
 
 		margin-left: 0;
@@ -605,7 +615,7 @@ article aside {
 	/* given by var(--g-column-width) + 2 * (var(--g-article-aside-min-width) + var(--g-article-aside-margin-h) + var(--g-main-margin-h)) */
 	/* When the main content width is wide enough for the min aside width */
 	/* Allow aside to exceed outside the compatibility value of main content width (11/12 * 100vw), but not of the ideal value */
-	article aside {
+	body.g-default-media article aside {
 		position: absolute;
 		float: none;
 
@@ -619,7 +629,7 @@ article aside {
 
 		color: inherit;
 	}
-	article aside.g-left {
+	body.g-default-media article aside.g-left {
 		float: none;
 
 		margin-left: var(--g-article-aside-wide-left-column-negative-margin-h-compat);
@@ -1402,21 +1412,21 @@ figure.g-right figcaption.g-bound {
 	/* 44rem */
 	/* given by value of 100vw when var(--g-figure-wide-max-width) == var(--g-column-width) */
 	/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
-	figure {
+	body.g-default-media figure {
 		max-width: var(--g-figure-wide-max-width);
 	}
 
 	/* Elements bound to column width should be set to appropriate values rather than 100% */
-	figcaption {
+	body.g-default-media figcaption {
 		max-width: var(--g-figcaption-width-compat);
 		max-width: calc(var(--g-column-width) - 2 * var(--g-figcaption-margin-h));
 	}
 
-	figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
+	body.g-default-media figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
 		max-width: var(--g-column-width);
 	}
 
-	figure.g-left figcaption.g-bound, figure.g-right figcaption.g-bound {
+	body.g-default-media figure.g-left figcaption.g-bound, figure.g-right figcaption.g-bound {
 		/* Reset max-width to disable centreing for single-line captions */
 		/* Subtract one-sided margin instead of two because captions for left- and right- aligned figures are flush against column but with var(--g-figcaption-margin-h) margin on the other side */
 		width: var(--g-figcaption-aligned-width-compat);
@@ -2673,6 +2683,6 @@ picture a.g-expand::after {
 		body { visibility: hidden; }
 	in internal stylesheet of HTML file, to be overwritten by the following
 */
-.g-bodymask {
+body.g-bodymask {
 	visibility: visible;
 }
