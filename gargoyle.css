@@ -1395,7 +1395,9 @@ figure.g-right figcaption.g-bound {
 	margin-right: auto;
 }
 
-@media (min-width: 704px) {  /* value of 100vw when var(--g-figure-wide-max-width) == var(--g-column-width); 44rem */
+@media (min-width: 704px) {
+	/* 44rem */
+	/* given by value of 100vw when var(--g-figure-wide-max-width) == var(--g-column-width) */
 	/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
 	figure {
 		max-width: var(--g-figure-wide-max-width);
