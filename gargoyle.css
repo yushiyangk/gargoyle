@@ -1700,14 +1700,14 @@ abbr[title] {
 	text-decoration-style: dotted;
 	text-decoration-thickness: var(--g-underline-thickness);
 }
-b > abbr, strong > abbr, dfn > abbr, dt > abbr {
+b abbr, strong abbr, dfn abbr, dt abbr {
 	font-weight: var(--g-demi-bold-font-weight);
 }
-h1 > abbr {
+h1 abbr {
 	font-size: var(--g-h1-demi-relative-font-size);
 	font-weight: var(--g-h1-demi-font-weight);
 }
-h2 > abbr, h3 > abbr, h4 > abbr, h5 > abbr, h6 > abbr {
+h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr {
 	font-size: var(--g-heading-demi-relative-font-size);
 	font-weight: var(--g-heading-demi-font-weight);
 }
@@ -1724,22 +1724,22 @@ abbr.g-capital::first-letter {
 	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: normal;
 }
-b > abbr.g-capital::first-letter,
-strong > abbr.g-capital::first-letter,
-dfn > abbr.g-capital::first-letter,
-dt > abbr.g-capital::first-letter {
+b abbr.g-capital::first-letter,
+strong abbr.g-capital::first-letter,
+dfn abbr.g-capital::first-letter,
+dt abbr.g-capital::first-letter {
 	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
-h1 > abbr.g-capital::first-letter {
+h1 abbr.g-capital::first-letter {
 	font-size: var(--g-h1-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
-h2 > abbr.g-capital::first-letter,
-h3 > abbr.g-capital::first-letter,
-h4 > abbr.g-capital::first-letter,
-h5 > abbr.g-capital::first-letter,
-h6 > abbr.g-capital::first-letter {
+h2 abbr.g-capital::first-letter,
+h3 abbr.g-capital::first-letter,
+h4 abbr.g-capital::first-letter,
+h5 abbr.g-capital::first-letter,
+h6 abbr.g-capital::first-letter {
 	font-size: var(--g-heading-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
@@ -1785,15 +1785,15 @@ dl.g-thumbnail a:hover abbr.g-capital {
 	text-decoration-style: dotted;
 	text-decoration-thickness: var(--g-underline-thickness);
 }
-h1 > .g-abbr {
+h1 .g-abbr {
 	font-size: var(--g-h1-demi-relative-font-size);
 	font-weight: var(--g-h1-demi-font-weight);
 }
-h2 > .g-abbr, h3 > .g-abbr, h4 > .g-abbr, h5 > .g-abbr, h6 > .g-abbr {
+h2 .g-abbr, h3 .g-abbr, h4 .g-abbr, h5 .g-abbr, h6 .g-abbr {
 	font-size: var(--g-heading-demi-relative-font-size);
 	font-weight: var(--g-heading-demi-font-weight);
 }
-b > .g-abbr, strong > .g-abbr, dfn > .g-abbr, dt > .g-abbr {
+b .g-abbr, strong .g-abbr, dfn .g-abbr, dt .g-abbr {
 	font-weight: var(--g-demi-bold-font-weight);
 }
 a .g-abbr {
@@ -1817,22 +1817,22 @@ a:hover .g-abbr {
 	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: normal;
 }
-h1 > .g-abbr.g-capital::first-letter {
+h1 .g-abbr.g-capital::first-letter {
 	font-size: var(--g-h1-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
-h2 > .g-abbr.g-capital::first-letter,
-h3 > .g-abbr.g-capital::first-letter,
-h4 > .g-abbr.g-capital::first-letter,
-h5 > .g-abbr.g-capital::first-letter,
-h6 > .g-abbr.g-capital::first-letter {
+h2 .g-abbr.g-capital::first-letter,
+h3 .g-abbr.g-capital::first-letter,
+h4 .g-abbr.g-capital::first-letter,
+h5 .g-abbr.g-capital::first-letter,
+h6 .g-abbr.g-capital::first-letter {
 	font-size: var(--g-heading-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
-b > .g-abbr.g-capital::first-letter,
-strong > .g-abbr.g-capital::first-letter,
-dfn > .g-abbr.g-capital::first-letter,
-dt > .g-abbr.g-capital::first-letter {
+b .g-abbr.g-capital::first-letter,
+strong .g-abbr.g-capital::first-letter,
+dfn .g-abbr.g-capital::first-letter,
+dt .g-abbr.g-capital::first-letter {
 	font-weight: bold;
 }
 a .g-abbr.g-capital {
