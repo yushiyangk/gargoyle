@@ -1068,7 +1068,7 @@ dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-
 	font-style: initial;
 }
 
-@supports (grid-template-areas: "thumb item") and (grid-auto-flow: row) and (display: contents) {
+@supports (grid-template-areas: "thumb item") and (grid-auto-flow: row) and (display: grid) {
 	dl.g-thumbnail {
 		display: grid;
 		grid-template-columns: var(--g-thumbnail-width) auto;
@@ -1090,7 +1090,8 @@ dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-
 		grid-column: item-start / item-end;
 		display: block;
 
-		max-width: unset;
+		max-width: calc(var(--g-column-width) - var(--g-thumbnail-width) - var(--g-item-margin-h));
+		/* this is only needed for figure.g-bound, so no need for compat */
 
 		margin: 0;
 	}
