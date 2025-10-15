@@ -981,10 +981,10 @@ dl.g-thumbnail dt img.g-bound, dl.g-thumbnail dt picture.g-bound, dl.g-thumbnail
 	object-fit: scale-down;
 }
 
-dl.g-thumbnail dt > *:first-child {
+dl.g-thumbnail dt > *:first-child, dl.g-thumbnail dd > *:first-child {
 	margin-top: 0;
 }
-dl.g-thumbnail dt > *:last-child {
+dl.g-thumbnail dt > *:last-child, dl.g-thumbnail dd > *:last-child {
 	margin-bottom: 0;
 }
 
