@@ -88,6 +88,7 @@
 	Features with no implemented fallback mechanisms (and browsers with no support):
 		@supports (IE –11)
 		@supports: selector() (IE –11, iOS Safari –11.2, Opera Mobile –80)
+		unset (IE –11)
 */
 
 
