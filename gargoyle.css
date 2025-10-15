@@ -196,6 +196,8 @@
 
 	--g-quote-margin-v: var(--g-medium-v);
 	--g-quote-margin-h: var(--g-large-h);
+	--g-quote-cite-margin-v: var(--g-small-v);
+	--g-quote-cite-negative-margin-v-compat: -0.75rem;
 
 	--g-list-margin-top: var(--g-medium-v);
 	--g-list-margin-bottom: var(--g-large-v);
@@ -570,6 +572,19 @@ blockquote {
 
 	margin: var(--g-quote-margin-v) var(--g-quote-margin-h);
 	padding: 0;
+}
+blockquote + cite {
+	display: block;
+
+	margin-top: var(--g-quote-cite-negative-margin-v-compat);
+	margin-top: calc(-1 * (var(--g-quote-margin-v) - var(--g-quote-cite-margin-v)));
+	margin-bottom: var(--g-quote-margin-v);
+	margin-left: var(--g-quote-margin-h);
+	margin-right: var(--g-quote-margin-h);
+
+	font-style: normal;
+	text-align: right;
+	text-align: end;
 }
 
 article aside {
