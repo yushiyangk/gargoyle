@@ -1139,16 +1139,20 @@ ol.g-continue {
 }
 
 .g-inline, .g-subinline {
-	display: inline-flex;
-	flex-flow: row wrap;
+	display: inline;
 
 	margin: 0;
 	padding: 0;
+
+	word-spacing: -1em;
+}
+
+.g-inline *, .g-subinline * {
+	word-spacing: normal;
 }
 
 .g-inline > li, .g-subinline > li, .g-inline > .g-li, .g-subinline > .g-li {
-	display: block;
-	flex: 0 0 auto;
+	display: inline;
 
 	margin: 0;
 	padding: 0;
