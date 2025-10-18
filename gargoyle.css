@@ -606,6 +606,9 @@ blockquote + cite {
 pre {
 	display: block;
 
+	width: max-content;
+	min-width: 100%;
+
 	margin-top: var(--g-text-margin-top);
 	margin-bottom: var(--g-text-margin-bottom);
 	margin-left: 0;
@@ -625,11 +628,9 @@ pre > code, pre > samp {
 
 figure pre {
 	margin: 0 auto;
-
-	width: 100%;
 }
 figure.g-bound pre {
-	min-width: unset;
+	width: unset;
 
 	word-wrap: break-word;
 	overflow-wrap: break-word;
@@ -1336,7 +1337,7 @@ figure {
 	left: 50%;
 
 	width: max-content;
-	min-width: var(--g-column-width);
+	min-width: 100%;
 	max-width: var(--g-main-width);
 
 	margin-top: var(--g-image-margin-top);
