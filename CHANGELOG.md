@@ -1,5 +1,10 @@
 ## Changelog
 
+### 0.7.2
+
+**Fixed** figures
+
+
 ### 0.7.1
 
 #### Added
