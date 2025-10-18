@@ -208,10 +208,6 @@
 	--g-quote-cite-margin-v: var(--g-small-v);
 	--g-quote-cite-negative-margin-v-compat: -0.75rem;
 
-	--g-callout-margin-v: var(--g-medium-v);
-	--g-callout-margin-h: var(--g-medium-h);
-	--g-callout-border-width: 6px;
-
 	--g-list-margin-top: var(--g-medium-v);
 	--g-list-margin-bottom: var(--g-large-v);
 	--g-list-item-margin-v: var(--g-small-v);
