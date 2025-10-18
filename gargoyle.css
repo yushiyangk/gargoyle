@@ -119,6 +119,7 @@
 	--g-frame-link-color: maroon;
 	--g-frame-visited-color: #600000;
 	--g-quote-border-color: var(--g-samp-color);
+	--g-aside-bound-color: ghostwhite;
 	--g-table-border-color: lightgrey;
 	--g-kbd-frame-color: lightgrey;
 	--g-kbd-background-color-compat: #e3e3e3;  /* lightgrey is #d3d3d3 */
@@ -203,6 +204,10 @@
 	--g-quote-cite-margin-v: var(--g-small-v);
 	--g-quote-cite-negative-margin-v-compat: -0.75rem;
 
+	--g-callout-margin-v: var(--g-medium-v);
+	--g-callout-margin-h: var(--g-medium-h);
+	--g-callout-border-width: 6px;
+
 	--g-list-margin-top: var(--g-medium-v);
 	--g-list-margin-bottom: var(--g-large-v);
 	--g-list-item-margin-v: var(--g-small-v);
@@ -232,6 +237,13 @@
 	--g-article-nav-margin-v: var(--g-small-v);
 	--g-article-nav-margin-h: var(--g-medium-h);
 
+	--g-pre-padding-v: var(--g-small-v);
+	--g-pre-padding-h: var(--g-small-h);
+	--g-pre-padding-negative-margin-h-compat: -0.5rem;  /* compat; -1 * var(--g-pre-padding-h) */
+	--g-pre-title-margin-v: var(--g-tiny-v);
+	--g-pre-title-margin-top-with-negative-padding-compat: -0.375rem;  /* compat; var(--g-pre-title-margin-v) - var(--g-pre-padding-v) */
+	--g-pre-title-color: var(--g-quiet-color);
+
 	--g-article-aside-width: 16rem;
 	--g-article-aside-min-width: 12rem;  /* NOTE: affects media queries for <aside> */
 	--g-article-aside-margin-v: var(--g-medium-v);
@@ -239,12 +251,9 @@
 	--g-article-aside-wide-side-column-margin-h-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
 	--g-article-aside-wide-left-column-negative-margin-h-compat: -2rem;  /* compat; -1 * (var(--g-article-aside-width) + var(--g-quote-margin-h)) */
 
-	--g-pre-padding-v: var(--g-small-v);
-	--g-pre-padding-h: var(--g-small-h);
-	--g-pre-padding-negative-margin-h-compat: -0.5rem;  /* compat; -1 * var(--g-pre-padding-h) */
-	--g-pre-title-margin-v: var(--g-tiny-v);
-	--g-pre-title-margin-top-with-negative-padding-compat: -0.375rem;  /* compat; var(--g-pre-title-margin-v) - var(--g-pre-padding-v) */
-	--g-pre-title-color: var(--g-quiet-color);
+	--g-aside-bound-padding-v: var(--g-pre-padding-v);
+	--g-aside-bound-padding-h: var(--g-pre-padding-h);
+	--g-aside-bound-padding-negative-margin-h-compat: var(--g-pre-padding-negative-margin-h-compat);  /* compat; -1 * var(--g-aside-bound-padding-h) */
 
 	--g-hr-width: 1px;
 
@@ -594,6 +603,78 @@ blockquote + cite {
 	text-align: end;
 }
 
+pre {
+	display: block;
+
+	width: var(--g-column-width);
+	min-width: max-content;
+	max-width: 100%;
+
+	margin-top: var(--g-text-margin-top);
+	margin-bottom: var(--g-text-margin-bottom);
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+}
+
+pre > code, pre > samp {
+	display: block;
+
+	margin: 0 var(--g-pre-padding-negative-margin-h-compat);
+	margin: 0 calc(-1 * var(--g-pre-padding-h));
+	padding: var(--g-pre-padding-v) var(--g-pre-padding-h);
+
+	border-radius: var(--g-border-radius);
+}
+
+figure pre {
+	margin: 0 auto;
+}
+figure.g-bound pre {
+	min-width: unset;
+
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+
+	white-space: pre-wrap;  /* legacy shorthand property, equivalent to both white-space-collapse: preserve and text-wrap-mode: wrap */
+	text-wrap-mode: wrap;
+}
+
+pre > code.g-frame, pre > samp.g-frame {
+	border: var(--g-frame-width) solid var(--g-frame-color);
+	border-radius: var(--g-frame-border-radius);
+}
+
+pre > code[title]::before, pre > samp[title]::before {
+	content: attr(title);
+	display: block;
+
+	margin-top: var(--g-pre-title-margin-top-with-negative-padding-compat);
+	margin-top: calc(var(--g-pre-title-margin-v) - var(--g-pre-padding-v));
+	margin-bottom: var(--g-pre-title-margin-v);
+
+	color: var(--g-pre-title-color);
+	text-align: right;
+	text-align: end;
+}
+pre > code[title].g-title-left::before, pre > samp[title].g-title-left::before {
+	text-align: left;
+}
+pre > code[title].g-title-start::before, pre > samp[title].g-title-start::before {
+	text-align: left;
+	text-align: start;
+}
+pre > code[title].g-title-right::before, pre > samp[title].g-title-right::before {
+	text-align: right;
+}
+pre > code[title].g-title-end::before, pre > samp[title].g-title-end::before {
+	text-align: right;
+	text-align: end;
+}
+pre > code[title].g-title-centre::before, pre > samp[title].g-title-centre::before, pre > code[title].g-title-center::before, pre > samp[title].g-title-center::before {
+	text-align: center;
+}
+
 article aside {
 	display: block;
 
@@ -680,77 +761,22 @@ article aside > table:last-child {
 	margin-bottom: 0;
 }
 
+aside.g-bound {
+	float: none;
+	position: static;
 
-pre {
-	display: block;
-
-	width: var(--g-column-width);
-	min-width: max-content;
-	max-width: 100%;
-
-	margin-top: var(--g-text-margin-top);
-	margin-bottom: var(--g-text-margin-bottom);
-	margin-left: 0;
-	margin-right: 0;
-	padding: 0;
-}
-
-pre > code, pre > samp {
-	display: block;
-
-	margin: 0 var(--g-pre-padding-negative-margin-h-compat);
-	margin: 0 calc(-1 * var(--g-pre-padding-h));
-	padding: var(--g-pre-padding-v) var(--g-pre-padding-h);
-
-	border-radius: var(--g-border-radius);
-}
-
-figure pre {
-	margin: 0 auto;
-}
-figure.g-bound pre {
+	width: auto;
 	min-width: unset;
+	max-width: unset;
 
-	word-wrap: break-word;
-	overflow-wrap: break-word;
+	margin: 0 var(--g-aside-bound-padding-negative-margin-h-compat);
+	margin: 0 calc(-1 * var(--g-aside-bound-padding-h));
+	padding: var(--g-aside-bound-padding-v) var(--g-aside-bound-padding-h);
 
-	white-space: pre-wrap;  /* legacy shorthand property, equivalent to both white-space-collapse: preserve and text-wrap-mode: wrap */
-	text-wrap-mode: wrap;
-}
+	color: inherit;
+	background-color: var(--g-aside-bound-color);
 
-pre > code.g-frame, pre > samp.g-frame {
-	border: var(--g-frame-width) solid var(--g-frame-color);
-	border-radius: var(--g-frame-border-radius);
-}
-
-pre > code[title]::before, pre > samp[title]::before {
-	content: attr(title);
-	display: block;
-
-	margin-top: var(--g-pre-title-margin-top-with-negative-padding-compat);
-	margin-top: calc(var(--g-pre-title-margin-v) - var(--g-pre-padding-v));
-	margin-bottom: var(--g-pre-title-margin-v);
-
-	color: var(--g-pre-title-color);
-	text-align: right;
-	text-align: end;
-}
-pre > code[title].g-title-left::before, pre > samp[title].g-title-left::before {
-	text-align: left;
-}
-pre > code[title].g-title-start::before, pre > samp[title].g-title-start::before {
-	text-align: left;
-	text-align: start;
-}
-pre > code[title].g-title-right::before, pre > samp[title].g-title-right::before {
-	text-align: right;
-}
-pre > code[title].g-title-end::before, pre > samp[title].g-title-end::before {
-	text-align: right;
-	text-align: end;
-}
-pre > code[title].g-title-centre::before, pre > samp[title].g-title-centre::before, pre > code[title].g-title-center::before, pre > samp[title].g-title-center::before {
-	text-align: center;
+	transform: none;
 }
 
 hr {
