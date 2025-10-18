@@ -1851,11 +1851,6 @@ b .g-abbr, strong .g-abbr, dfn .g-abbr, dt .g-abbr {
 a .g-abbr {
 	display: inline;
 }
-a:hover .g-abbr {
-	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
-	text-decoration-style: double;
-	text-decoration-thickness: var(--g-underline-thickness);
-}
 
 .g-abbr.g-capital {
 	display: inline-block;
