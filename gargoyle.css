@@ -118,6 +118,7 @@
 	--g-frame-color: darkslategrey;
 	--g-frame-link-color: maroon;
 	--g-frame-visited-color: #600000;
+	--g-quote-border-color: var(--g-samp-color);
 	--g-table-border-color: lightgrey;
 	--g-kbd-frame-color: lightgrey;
 	--g-kbd-background-color-compat: #e3e3e3;  /* lightgrey is #d3d3d3 */
@@ -198,6 +199,7 @@
 
 	--g-quote-margin-v: var(--g-medium-v);
 	--g-quote-margin-h: var(--g-large-h);
+	--g-quote-border-width: 6px;
 	--g-quote-cite-margin-v: var(--g-small-v);
 	--g-quote-cite-negative-margin-v-compat: -0.75rem;
 
@@ -572,8 +574,11 @@ h6 {
 blockquote {
 	display: block;
 
-	margin: var(--g-quote-margin-v) var(--g-quote-margin-h);
-	padding: 0;
+	margin: var(--g-quote-margin-v) 0;
+	padding: 0 var(--g-quote-margin-h);
+	padding-left: calc(var(--g-quote-margin-h) - var(--g-quote-border-width));  /* padding value as compat */
+
+	border-left: var(--g-quote-border-width) solid var(--g-quote-border-color);
 }
 blockquote + cite {
 	display: block;
