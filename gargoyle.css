@@ -171,6 +171,10 @@
 	--g-h6-line-height: var(--g-line-height);
 
 	--g-underline-thickness: from-font;
+	/* divide by 4 as a hieuristic, no need for compat and allow it to be ignored if not supported */
+	--g-h1-abbr-capital-underline-offset: calc((var(--g-h1-inverse-demi-relative-font-size) - 1em) / 4);
+	--g-heading-abbr-capital-underline-offset: calc((var(--g-heading-inverse-demi-relative-font-size) - 1em) / 4);
+	--g-abbr-capital-underline-offset: calc((var(--g-inverse-demi-relative-font-size) - 1em) / 4);
 
 
 	--g-inline-height: 1.25rem;
@@ -1796,24 +1800,24 @@ h6 abbr.g-capital::first-letter {
 	font-weight: bold;
 }
 a abbr.g-capital {
-	text-decoration: underline;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
-	text-decoration-style: solid;
-	text-decoration-thickness: var(--g-underline-thickness);
+	text-decoration: inherit;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	text-decoration-style: inherit;
+	text-decoration-thickness: inherit;
+	text-underline-offset: var(--g-abbr-capital-underline-offset);
 }
-a:hover abbr.g-capital {
-	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
-	text-decoration-style: double;
-	text-decoration-thickness: var(--g-underline-thickness);
+h1 a abbr.g-capital, a h1 abbr.g-capital {
+	text-underline-offset: var(--g-h1-abbr-capital-underline-offset);
 }
-dl.g-thumbnail a abbr.g-capital {
-	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
-	text-decoration-style: dotted;
-	text-decoration-thickness: var(--g-underline-thickness);
+h2 a abbr.g-capital, a h2 abbr.g-capital,
+h3 a abbr.g-capital, a h3 abbr.g-capital,
+h4 a abbr.g-capital, a h4 abbr.g-capital,
+h5 a abbr.g-capital, a h5 abbr.g-capital,
+h6 a abbr.g-capital, a h6 abbr.g-capital {
+	text-underline-offset: var(--g-heading-abbr-capital-underline-offset);
 }
-dl.g-thumbnail a:hover abbr.g-capital {
+dl.g-thumbnail a abbr[title].g-capital {
 	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
 	text-decoration-style: dotted;
-	text-decoration-thickness: var(--g-underline-thickness);
 }
 
 
@@ -1883,24 +1887,24 @@ dt .g-abbr.g-capital::first-letter {
 	font-weight: bold;
 }
 a .g-abbr.g-capital {
-	text-decoration: underline;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
-	text-decoration-style: solid;
-	text-decoration-thickness: var(--g-underline-thickness);
+	text-decoration: inherit;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	text-decoration-style: inherit;
+	text-decoration-thickness: inherit;
+	text-underline-offset: var(--g-abbr-capital-underline-offset);
 }
-a:hover .g-abbr.g-capital {
-	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
-	text-decoration-style: double;
-	text-decoration-thickness: var(--g-underline-thickness);
+h1 a .g-abbr.g-capital, a h1 .g-abbr.g-capital {
+	text-underline-offset: var(--g-h1-abbr-capital-underline-offset);
 }
-dl.g-thumbnail a .g-abbr.g-capital {
-	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
-	text-decoration-style: dotted;
-	text-decoration-thickness: var(--g-underline-thickness);
+h2 a .g-abbr.g-capital, a h2 .g-abbr.g-capital,
+h3 a .g-abbr.g-capital, a h3 .g-abbr.g-capital,
+h4 a .g-abbr.g-capital, a h4 .g-abbr.g-capital,
+h5 a .g-abbr.g-capital, a h5 .g-abbr.g-capital,
+h6 a .g-abbr.g-capital, a h6 .g-abbr.g-capital {
+	text-underline-offset: var(--g-heading-abbr-capital-underline-offset);
 }
-dl.g-thumbnail a:hover .g-abbr.g-capital {
+dl.g-thumbnail a .g-abbr[title].g-capital {
 	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
 	text-decoration-style: dotted;
-	text-decoration-thickness: var(--g-underline-thickness);
 }
 
 .g-quiet {
