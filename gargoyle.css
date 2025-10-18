@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.7 */
+/* version 0.7.1 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -88,6 +88,7 @@
 	Features with no implemented fallback mechanisms (and browsers with no support):
 		@supports (IE –11)
 		@supports: selector() (IE –11, iOS Safari –11.2, Opera Mobile –80)
+		unset (IE –11)
 */
 
 
@@ -108,13 +109,17 @@
 
 	--g-main-color: darkslategrey;
 	--g-background-color: snow;
-	--g-quiet-color: grey;
+	--g-quiet-color: slategrey;
 	--g-highlight-color: lavenderblush;
 	--g-link-color: maroon;
 	--g-visited-color: #600000;
+	--g-code-color: seashell;
+	--g-samp-color: ghostwhite;
 	--g-frame-color: darkslategrey;
 	--g-frame-link-color: maroon;
 	--g-frame-visited-color: #600000;
+	--g-quote-border-color: var(--g-samp-color);
+	--g-aside-bound-color: ghostwhite;
 	--g-table-border-color: lightgrey;
 	--g-kbd-frame-color: lightgrey;
 	--g-kbd-background-color-compat: #e3e3e3;  /* lightgrey is #d3d3d3 */
@@ -166,6 +171,10 @@
 	--g-h6-line-height: var(--g-line-height);
 
 	--g-underline-thickness: from-font;
+	/* divide by 4 as a hieuristic, no need for compat and allow it to be ignored if not supported */
+	--g-h1-abbr-capital-underline-offset: calc((var(--g-h1-inverse-demi-relative-font-size) - 1em) / 4);
+	--g-heading-abbr-capital-underline-offset: calc((var(--g-heading-inverse-demi-relative-font-size) - 1em) / 4);
+	--g-abbr-capital-underline-offset: calc((var(--g-inverse-demi-relative-font-size) - 1em) / 4);
 
 
 	--g-inline-height: 1.25rem;
@@ -195,6 +204,9 @@
 
 	--g-quote-margin-v: var(--g-medium-v);
 	--g-quote-margin-h: var(--g-large-h);
+	--g-quote-border-width: 6px;
+	--g-quote-cite-margin-v: var(--g-small-v);
+	--g-quote-cite-negative-margin-v-compat: -0.75rem;
 
 	--g-list-margin-top: var(--g-medium-v);
 	--g-list-margin-bottom: var(--g-large-v);
@@ -225,6 +237,13 @@
 	--g-article-nav-margin-v: var(--g-small-v);
 	--g-article-nav-margin-h: var(--g-medium-h);
 
+	--g-pre-padding-v: var(--g-small-v);
+	--g-pre-padding-h: var(--g-small-h);
+	--g-pre-padding-negative-margin-h-compat: -0.5rem;  /* compat; -1 * var(--g-pre-padding-h) */
+	--g-pre-title-margin-v: var(--g-tiny-v);
+	--g-pre-title-margin-top-with-negative-padding-compat: -0.375rem;  /* compat; var(--g-pre-title-margin-v) - var(--g-pre-padding-v) */
+	--g-pre-title-color: var(--g-quiet-color);
+
 	--g-article-aside-width: 16rem;
 	--g-article-aside-min-width: 12rem;  /* NOTE: affects media queries for <aside> */
 	--g-article-aside-margin-v: var(--g-medium-v);
@@ -232,12 +251,9 @@
 	--g-article-aside-wide-side-column-margin-h-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
 	--g-article-aside-wide-left-column-negative-margin-h-compat: -2rem;  /* compat; -1 * (var(--g-article-aside-width) + var(--g-quote-margin-h)) */
 
-	--g-pre-padding-v: var(--g-small-v);
-	--g-pre-padding-h: var(--g-small-h);
-	--g-pre-padding-negative-margin-h-compat: -0.5rem;  /* compat; -1 * var(--g-pre-padding-h) */
-	--g-pre-title-margin-v: var(--g-tiny-v);
-	--g-pre-title-margin-top-with-negative-padding-compat: -0.375rem;  /* compat; var(--g-pre-title-margin-v) - var(--g-pre-padding-v) */
-	--g-pre-title-color: var(--g-quiet-color);
+	--g-aside-bound-padding-v: var(--g-pre-padding-v);
+	--g-aside-bound-padding-h: var(--g-pre-padding-h);
+	--g-aside-bound-padding-negative-margin-h-compat: var(--g-pre-padding-negative-margin-h-compat);  /* compat; -1 * var(--g-aside-bound-padding-h) */
 
 	--g-hr-width: 1px;
 
@@ -567,8 +583,94 @@ h6 {
 blockquote {
 	display: block;
 
-	margin: var(--g-quote-margin-v) var(--g-quote-margin-h);
+	margin: var(--g-quote-margin-v) 0;
+	padding: 0 var(--g-quote-margin-h);
+	padding-left: calc(var(--g-quote-margin-h) - var(--g-quote-border-width));  /* padding value as compat */
+
+	border-left: var(--g-quote-border-width) solid var(--g-quote-border-color);
+}
+blockquote + cite {
+	display: block;
+
+	margin-top: var(--g-quote-cite-negative-margin-v-compat);
+	margin-top: calc(-1 * (var(--g-quote-margin-v) - var(--g-quote-cite-margin-v)));
+	margin-bottom: var(--g-quote-margin-v);
+	margin-left: var(--g-quote-margin-h);
+	margin-right: var(--g-quote-margin-h);
+
+	font-style: normal;
+	text-align: right;
+	text-align: end;
+}
+
+pre {
+	display: block;
+
+	margin-top: var(--g-text-margin-top);
+	margin-bottom: var(--g-text-margin-bottom);
+	margin-left: 0;
+	margin-right: 0;
 	padding: 0;
+}
+
+pre > code, pre > samp {
+	display: block;
+
+	margin: 0 var(--g-pre-padding-negative-margin-h-compat);
+	margin: 0 calc(-1 * var(--g-pre-padding-h));
+	padding: var(--g-pre-padding-v) var(--g-pre-padding-h);
+
+	border-radius: var(--g-border-radius);
+}
+
+figure pre {
+	margin: 0 auto;
+
+	width: 100%;
+}
+figure.g-bound pre {
+	min-width: unset;
+
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+
+	white-space: pre-wrap;  /* legacy shorthand property, equivalent to both white-space-collapse: preserve and text-wrap-mode: wrap */
+	text-wrap-mode: wrap;
+}
+
+pre > code.g-frame, pre > samp.g-frame {
+	border: var(--g-frame-width) solid var(--g-frame-color);
+	border-radius: var(--g-frame-border-radius);
+}
+
+pre > code[title]::before, pre > samp[title]::before {
+	content: attr(title);
+	display: block;
+
+	margin-top: var(--g-pre-title-margin-top-with-negative-padding-compat);
+	margin-top: calc(var(--g-pre-title-margin-v) - var(--g-pre-padding-v));
+	margin-bottom: var(--g-pre-title-margin-v);
+
+	color: var(--g-pre-title-color);
+	text-align: right;
+	text-align: end;
+}
+pre > code[title].g-title-left::before, pre > samp[title].g-title-left::before {
+	text-align: left;
+}
+pre > code[title].g-title-start::before, pre > samp[title].g-title-start::before {
+	text-align: left;
+	text-align: start;
+}
+pre > code[title].g-title-right::before, pre > samp[title].g-title-right::before {
+	text-align: right;
+}
+pre > code[title].g-title-end::before, pre > samp[title].g-title-end::before {
+	text-align: right;
+	text-align: end;
+}
+pre > code[title].g-title-centre::before, pre > samp[title].g-title-centre::before, pre > code[title].g-title-center::before, pre > samp[title].g-title-center::before {
+	text-align: center;
 }
 
 article aside {
@@ -657,77 +759,22 @@ article aside > table:last-child {
 	margin-bottom: 0;
 }
 
+aside.g-bound {
+	float: none;
+	position: static;
 
-pre {
-	display: block;
-
-	width: var(--g-column-width);
-	min-width: max-content;
-	max-width: 100%;
-
-	margin-top: var(--g-text-margin-top);
-	margin-bottom: var(--g-text-margin-bottom);
-	margin-left: 0;
-	margin-right: 0;
-	padding: 0;
-}
-
-pre > code, pre > samp {
-	display: block;
-
-	margin: 0 var(--g-pre-padding-negative-margin-h-compat);
-	margin: 0 calc(-1 * var(--g-pre-padding-h));
-	padding: var(--g-pre-padding-v) var(--g-pre-padding-h);
-
-	border-radius: var(--g-border-radius);
-}
-
-figure pre {
-	margin: 0 auto;
-}
-figure.g-bound pre {
+	width: auto;
 	min-width: unset;
+	max-width: unset;
 
-	word-wrap: break-word;
-	overflow-wrap: break-word;
+	margin: 0 var(--g-aside-bound-padding-negative-margin-h-compat);
+	margin: 0 calc(-1 * var(--g-aside-bound-padding-h));
+	padding: var(--g-aside-bound-padding-v) var(--g-aside-bound-padding-h);
 
-	white-space: pre-wrap;  /* legacy shorthand property, equivalent to both white-space-collapse: preserve and text-wrap-mode: wrap */
-	text-wrap-mode: wrap;
-}
+	color: inherit;
+	background-color: var(--g-aside-bound-color);
 
-pre > code.g-frame, pre > samp.g-frame {
-	border: var(--g-frame-width) solid var(--g-frame-color);
-	border-radius: var(--g-frame-border-radius);
-}
-
-pre > code[title]::before, pre > samp[title]::before {
-	content: attr(title);
-	display: block;
-
-	margin-top: var(--g-pre-title-margin-top-with-negative-padding-compat);
-	margin-top: calc(var(--g-pre-title-margin-v) - var(--g-pre-padding-v));
-	margin-bottom: var(--g-pre-title-margin-v);
-
-	color: var(--g-pre-title-color);
-	text-align: right;
-	text-align: end;
-}
-pre > code[title].g-title-left::before, pre > samp[title].g-title-left::before {
-	text-align: left;
-}
-pre > code[title].g-title-start::before, pre > samp[title].g-title-start::before {
-	text-align: left;
-	text-align: start;
-}
-pre > code[title].g-title-right::before, pre > samp[title].g-title-right::before {
-	text-align: right;
-}
-pre > code[title].g-title-end::before, pre > samp[title].g-title-end::before {
-	text-align: right;
-	text-align: end;
-}
-pre > code[title].g-title-centre::before, pre > samp[title].g-title-centre::before, pre > code[title].g-title-center::before, pre > samp[title].g-title-center::before {
-	text-align: center;
+	transform: none;
 }
 
 hr {
@@ -965,10 +1012,10 @@ dl.g-thumbnail dt img.g-bound, dl.g-thumbnail dt picture.g-bound, dl.g-thumbnail
 	object-fit: scale-down;
 }
 
-dl.g-thumbnail dt > *:first-child {
+dl.g-thumbnail dt > *:first-child, dl.g-thumbnail dd > *:first-child {
 	margin-top: 0;
 }
-dl.g-thumbnail dt > *:last-child {
+dl.g-thumbnail dt > *:last-child, dl.g-thumbnail dd > *:last-child {
 	margin-bottom: 0;
 }
 
@@ -1052,7 +1099,7 @@ dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-
 	font-style: initial;
 }
 
-@supports (grid-template-areas: "thumb item") and (grid-auto-flow: row) and (display: contents) {
+@supports (grid-template-areas: "thumb item") and (grid-auto-flow: row) and (display: grid) {
 	dl.g-thumbnail {
 		display: grid;
 		grid-template-columns: var(--g-thumbnail-width) auto;
@@ -1074,7 +1121,8 @@ dl.g-thumbnail p, dl.g-thumbnail h1, dl.g-thumbnail h2, dl.g-thumbnail h3, dl.g-
 		grid-column: item-start / item-end;
 		display: block;
 
-		max-width: unset;
+		max-width: calc(var(--g-column-width) - var(--g-thumbnail-width) - var(--g-item-margin-h));
+		/* this is only needed for figure.g-bound, so no need for compat */
 
 		margin: 0;
 	}
@@ -1122,16 +1170,20 @@ ol.g-continue {
 }
 
 .g-inline, .g-subinline {
-	display: inline-flex;
-	flex-flow: row wrap;
+	display: inline;
 
 	margin: 0;
 	padding: 0;
+
+	word-spacing: -1em;
+}
+
+.g-inline *, .g-subinline * {
+	word-spacing: normal;
 }
 
 .g-inline > li, .g-subinline > li, .g-inline > .g-li, .g-subinline > .g-li {
-	display: block;
-	flex: 0 0 auto;
+	display: inline;
 
 	margin: 0;
 	padding: 0;
@@ -1284,6 +1336,7 @@ figure {
 	left: 50%;
 
 	width: max-content;
+	min-width: var(--g-column-width);
 	max-width: var(--g-main-width);
 
 	margin-top: var(--g-image-margin-top);
@@ -1588,10 +1641,10 @@ code, samp {
 	border-radius: var(--g-inline-border-radius);
 }
 code {
-	background-color: seashell;
+	background-color: var(--g-code-color);
 }
 samp {
-	background-color: ghostwhite;
+	background-color: var(--g-samp-color);
 }
 
 
@@ -1699,14 +1752,14 @@ abbr[title] {
 	text-decoration-style: dotted;
 	text-decoration-thickness: var(--g-underline-thickness);
 }
-b > abbr, strong > abbr, dfn > abbr, dt > abbr {
+b abbr, strong abbr, dfn abbr, dt abbr {
 	font-weight: var(--g-demi-bold-font-weight);
 }
-h1 > abbr {
+h1 abbr {
 	font-size: var(--g-h1-demi-relative-font-size);
 	font-weight: var(--g-h1-demi-font-weight);
 }
-h2 > abbr, h3 > abbr, h4 > abbr, h5 > abbr, h6 > abbr {
+h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr {
 	font-size: var(--g-heading-demi-relative-font-size);
 	font-weight: var(--g-heading-demi-font-weight);
 }
@@ -1723,34 +1776,44 @@ abbr.g-capital::first-letter {
 	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: normal;
 }
-b > abbr.g-capital::first-letter,
-strong > abbr.g-capital::first-letter,
-dfn > abbr.g-capital::first-letter,
-dt > abbr.g-capital::first-letter {
+b abbr.g-capital::first-letter,
+strong abbr.g-capital::first-letter,
+dfn abbr.g-capital::first-letter,
+dt abbr.g-capital::first-letter {
 	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
-h1 > abbr.g-capital::first-letter {
+h1 abbr.g-capital::first-letter {
 	font-size: var(--g-h1-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
-h2 > abbr.g-capital::first-letter,
-h3 > abbr.g-capital::first-letter,
-h4 > abbr.g-capital::first-letter,
-h5 > abbr.g-capital::first-letter,
-h6 > abbr.g-capital::first-letter {
+h2 abbr.g-capital::first-letter,
+h3 abbr.g-capital::first-letter,
+h4 abbr.g-capital::first-letter,
+h5 abbr.g-capital::first-letter,
+h6 abbr.g-capital::first-letter {
 	font-size: var(--g-heading-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
 a abbr.g-capital {
-	text-decoration: underline;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
-	text-decoration-style: solid;
-	text-decoration-thickness: var(--g-underline-thickness);
+	text-decoration: inherit;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	text-decoration-style: inherit;
+	text-decoration-thickness: inherit;
+	text-underline-offset: var(--g-abbr-capital-underline-offset);
 }
-a:hover abbr.g-capital {
-	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
-	text-decoration-style: double;
-	text-decoration-thickness: var(--g-underline-thickness);
+h1 a abbr.g-capital, a h1 abbr.g-capital {
+	text-underline-offset: var(--g-h1-abbr-capital-underline-offset);
+}
+h2 a abbr.g-capital, a h2 abbr.g-capital,
+h3 a abbr.g-capital, a h3 abbr.g-capital,
+h4 a abbr.g-capital, a h4 abbr.g-capital,
+h5 a abbr.g-capital, a h5 abbr.g-capital,
+h6 a abbr.g-capital, a h6 abbr.g-capital {
+	text-underline-offset: var(--g-heading-abbr-capital-underline-offset);
+}
+dl.g-thumbnail a abbr[title].g-capital {
+	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: dotted;
 }
 
 
@@ -1774,24 +1837,19 @@ a:hover abbr.g-capital {
 	text-decoration-style: dotted;
 	text-decoration-thickness: var(--g-underline-thickness);
 }
-h1 > .g-abbr {
+h1 .g-abbr {
 	font-size: var(--g-h1-demi-relative-font-size);
 	font-weight: var(--g-h1-demi-font-weight);
 }
-h2 > .g-abbr, h3 > .g-abbr, h4 > .g-abbr, h5 > .g-abbr, h6 > .g-abbr {
+h2 .g-abbr, h3 .g-abbr, h4 .g-abbr, h5 .g-abbr, h6 .g-abbr {
 	font-size: var(--g-heading-demi-relative-font-size);
 	font-weight: var(--g-heading-demi-font-weight);
 }
-b > .g-abbr, strong > .g-abbr, dfn > .g-abbr, dt > .g-abbr {
+b .g-abbr, strong .g-abbr, dfn .g-abbr, dt .g-abbr {
 	font-weight: var(--g-demi-bold-font-weight);
 }
 a .g-abbr {
 	display: inline;
-}
-a:hover .g-abbr {
-	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
-	text-decoration-style: double;
-	text-decoration-thickness: var(--g-underline-thickness);
 }
 
 .g-abbr.g-capital {
@@ -1806,33 +1864,43 @@ a:hover .g-abbr {
 	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: normal;
 }
-h1 > .g-abbr.g-capital::first-letter {
+h1 .g-abbr.g-capital::first-letter {
 	font-size: var(--g-h1-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
-h2 > .g-abbr.g-capital::first-letter,
-h3 > .g-abbr.g-capital::first-letter,
-h4 > .g-abbr.g-capital::first-letter,
-h5 > .g-abbr.g-capital::first-letter,
-h6 > .g-abbr.g-capital::first-letter {
+h2 .g-abbr.g-capital::first-letter,
+h3 .g-abbr.g-capital::first-letter,
+h4 .g-abbr.g-capital::first-letter,
+h5 .g-abbr.g-capital::first-letter,
+h6 .g-abbr.g-capital::first-letter {
 	font-size: var(--g-heading-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
-b > .g-abbr.g-capital::first-letter,
-strong > .g-abbr.g-capital::first-letter,
-dfn > .g-abbr.g-capital::first-letter,
-dt > .g-abbr.g-capital::first-letter {
+b .g-abbr.g-capital::first-letter,
+strong .g-abbr.g-capital::first-letter,
+dfn .g-abbr.g-capital::first-letter,
+dt .g-abbr.g-capital::first-letter {
 	font-weight: bold;
 }
 a .g-abbr.g-capital {
-	text-decoration: underline;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
-	text-decoration-style: solid;
-	text-decoration-thickness: var(--g-underline-thickness);
+	text-decoration: inherit;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
+	text-decoration-style: inherit;
+	text-decoration-thickness: inherit;
+	text-underline-offset: var(--g-abbr-capital-underline-offset);
 }
-a:hover .g-abbr.g-capital {
-	text-decoration: underline double;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
-	text-decoration-style: double;
-	text-decoration-thickness: var(--g-underline-thickness);
+h1 a .g-abbr.g-capital, a h1 .g-abbr.g-capital {
+	text-underline-offset: var(--g-h1-abbr-capital-underline-offset);
+}
+h2 a .g-abbr.g-capital, a h2 .g-abbr.g-capital,
+h3 a .g-abbr.g-capital, a h3 .g-abbr.g-capital,
+h4 a .g-abbr.g-capital, a h4 .g-abbr.g-capital,
+h5 a .g-abbr.g-capital, a h5 .g-abbr.g-capital,
+h6 a .g-abbr.g-capital, a h6 .g-abbr.g-capital {
+	text-underline-offset: var(--g-heading-abbr-capital-underline-offset);
+}
+dl.g-thumbnail a .g-abbr[title].g-capital {
+	text-decoration: underline dotted;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: double */
+	text-decoration-style: dotted;
 }
 
 .g-quiet {

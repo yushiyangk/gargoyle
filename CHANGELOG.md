@@ -1,5 +1,34 @@
 ## Changelog
 
+### 0.7.1
+
+#### Added
+
+- In-column paragraph callout box, implemented with `aside.g-bound`
+	- Variables `--g-aside-bound-color`, `--g-aside-bound-padding-v`, `--g-aside-bound-padding-h`, and compatibility variable `--g-aside-bound-padding-negative-margin-h-compat`
+- Formatted citation when `<cite>` immediately follows a `<blockquote>`
+	- Variable `--g-quote-cite-margin-v` and its compatibility variable `--g-quote-cite-negative-margin-v-compat`
+- Subtle left border for `<blockquote>`, and the variables `--g-quote-border-color` and `--g-quote-border-width`
+- Support for `<figure>` inside `dl.g-thumbnail dd`
+- Variables for `<code>` and `<samp>` background colours: `--g-code-color` and `--g-samp-color`
+
+
+#### Changed
+
+- The class `g-quiet` now renders text as `slategrey` instead of `grey`
+- Changed `.g-inline` lists from `inline-flex` to fully `inline`, improving its line-breaking behaviour in running text
+
+#### Fixed
+
+- Various display bugs for `abbr` and `.g-abbr`:
+	- Fixed lack of smallcaps when a non-immediate descendent of `<b>`, `<strong>`, `<dfn>`, `<dt>`, `<h1>` through `<h6>`
+	- Fixed thick mismatched underline on hover when inside `<a>`
+	- Removed extraneous underline and double underline when inside `<a>` inside `<dl class="g-thumbnail">`
+	- Underline of `abbr.g-capital` and `.g-abbr.g-capital` should now match surrounding text when inside `<a>`
+- Removed extraneous vertical margin for block-level elements inside `dl.g-thumbnail dd`
+- Multiple `pre code` or `pre samp` blocks inside the same `<figure>` should now have the same width based on the widest amongst them
+
+
 ### 0.7
 
 **Breaking change**: the class `g-default-media` must be added to the top-level `<body>` element in each HTML document for media queries to work correctly.
