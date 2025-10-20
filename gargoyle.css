@@ -1035,10 +1035,6 @@ dl.g-thumbnail > a {
 	display: contents;
 }
 
-dl.g-thumbnail > a:first-child > dt:first-of-type, dl.g-thumbnail > a:first-child > dd:first-of-type {
-	margin-top: 0;
-}
-
 dl.g-thumbnail > a:hover dt {
 	margin-top: var(--g-thumbnail-list-fallback-margin-top-with-negative-padding-compat);
 	margin-top: calc(var(--g-item-margin-v) - var(--g-image-highlight-padding-v));
