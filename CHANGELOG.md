@@ -1,5 +1,21 @@
 ## Changelog
 
+### 0.8
+
+#### Breaking changes
+
+- Predefined action buttons (`.g-go`, etc.) are now uncoloured by default, and can be coloured like any other buttons (with `.g-green`, etc.)
+
+#### Added
+
+- Link annotations: the classes `g-external`, `g-download` and `g-archive` can be added to in-text `<a>` elements to annotate their behaviour
+
+#### Fixed
+
+- Hover effect for predefined action buttons where the icon is the on right no longer cause the icon to shift
+- First item in a `dl.g-thumbnail` no longer shifts on hover if it is a link
+- `.g-bound` works again for figures when using default media queries (`.g-default-media`)
+
 ### 0.7.2
 
 **Fixed** figures
