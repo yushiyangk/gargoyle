@@ -19,9 +19,7 @@
 
 				<h2>Inline text</h2>
 
-					<p>Here is a hyperlink to <a href="">nowhere</a>, and another link to an <a href="https://example.com/">example domain</a>.
-
-					<>Sometimes, we might want text to stand out as <b>bold</b> or <i>italics</i>. These may be for <em>emphasis</em>, or <strong>even more emphasis</strong>. The former pair uses <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> for formatting, while the latter pair uses <code>&lt;em&gt;</code> and <code>&lt;strong&gt;</code> to provide the semantics of emphasis or extra importance.
+					<p>Sometimes, we might want text to stand out as <b>bold</b> or <i>italics</i>. These may be for <em>emphasis</em>, or <strong>even more emphasis</strong>. The former pair uses <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> for formatting, while the latter pair uses <code>&lt;em&gt;</code> and <code>&lt;strong&gt;</code> to provide the semantics of emphasis or extra importance.</p>
 
 					<p>When we wish to make text more prominent but without the emphasis, there are special cases where we do not need to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code>, because there exist dedicated <abbr>HTML</abbr> elements for that purpose. These include <code>&lt;cite&gt;</code> for the names of artworks, e.g. <cite>The Rite of Spring</cite> by Igor Stravinsky, or <code>&lt;dfn&gt;</code> for highlighting the <dfn>keyword</dfn> in a glossary entry, or <code>&lt;mark&gt;</code> for <mark>highlighting</mark>, such as for search results.</p>
 
@@ -164,6 +162,12 @@
 					<p>Superscripts and subscripts behave as expected using <code>&lt;sup&gt;</code> and <code>&lt;sub&gt;</code>, such as for the carbonate ion <data value="C(=O)([O-])[O-]">CO<sub>3</sub><sup>2&minus;</sup></data>.</p>
 
 					<p>The above chemical formula has also been enclosed in a <code>&lt;data&gt;</code> element, to provide a machine-readable form (<abbr>SMILES</abbr>). This typically does not alter the visible formatting of the text. Another element that behaves this way is <code>&lt;time&gt;</code>, which should be used to specify time values such as <time datetime="1970-01-01">1 January 1970</time> in a machine-readable format without affecting its formatting.</p>
+
+				<h3>Hyperlinks</h3>
+
+					<p>Here is a hyperlink to <a href="">nowhere</a>, and another link to an <a href="https://example.com/">example domain</a>.
+
+					<p>Links can be annotated with icons, with <code>g-external</code> to indicate that they go to an <a class="g-external" href="https://example.com/">external website</a>, or with <code>g-download</code> to indicate that they <a class="g-download" href="demo.html" download>link to a file</a>, or with <code>g-archive</code> to indicate that they <a class="g-archive" href="https://web.archive.org/web/20131021020703/https://www.cnet.com/">link to an archived snapshot</a>.</p>
 
 				<h3>Abbreviations</h3>
 

@@ -14,3 +14,8 @@ For action buttons, size 24, colour black, no fill, weight 400, grade 0, optical
 For picture action buttons, size 24, colour black, no fill, weight 500, grade 0, optical size 24, style outlined:
 .g-external - open_in_new_24dp_BLACK_FILL0_wght500_GRAD0_opsz24.svg
 .g-expand - expand_content_24dp_BLACK_FILL0_wght500_GRAD0_opsz24.svg
+
+For link annotations, size 16, colour black, no fill, weight 400, grade 0, optical size 20, style outlined:
+.g-external - open_in_new_16dp_BLACK_FILL0_wght400_GRAD0_opsz20.svg
+.g-download - draft_16dp_BLACK_FILL0_wght400_GRAD0_opsz20.svg
+.g-archive - history_2_16dp_BLACK_FILL0_wght400_GRAD0_opsz20.svg

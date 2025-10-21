@@ -77,7 +77,7 @@
 			align-items: baseline (for Grid Layout) (IE –11, possibly Edge –18)
 			grid-column (IE –11)
 
-	Dependent features for action buttons, which will fallback to plain hyperlinks (unsupported browsers):
+	Dependent features for action buttons and link annotations, which will fallback to plain hyperlinks (unsupported browsers):
 		mask-image (IE –11), -webkit- for Chrome –119, iOS –15.3, Opera –117
 		mask-image SVG (IE –11)
 		mask-image multiple (IE –11)
@@ -170,6 +170,7 @@
 	--g-h6-font-size: var(--g-h4-font-size);
 	--g-h6-line-height: var(--g-line-height);
 
+	--g-link-annotation-size: 0.666667rem;;
 	--g-underline-thickness: from-font;
 	/* divide by 4 as a hieuristic, no need for compat and allow it to be ignored if not supported */
 	--g-h1-abbr-capital-underline-offset: calc((var(--g-h1-inverse-demi-relative-font-size) - 1em) / 4);
@@ -1593,6 +1594,58 @@ a:visited {
 	color: var(--g-visited-color);
 }
 
+@supports (
+		(mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'))
+		and (mask-size: var(--g-link-annotation-size))
+		and (mask-repeat: no-repeat)
+		and (mask-position: center)
+	) or (
+		(-webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><rect width="100" height="100" /></svg>'))
+		and (-webkit-mask-size: var(--g-link-annotation-size))
+		and (-webkit-mask-repeat: no-repeat)
+		and (-webkit-mask-position: center)
+	)
+{
+	a.g-external::after, a.g-download::after, a.g-archive::after {
+		content: '';
+		display: inline;
+
+		padding-right: var(--g-link-annotation-size);
+
+		vertical-align: sub;
+
+		background-color: var(--g-link-color);
+
+		-webkit-mask-size: var(--g-link-annotation-size);
+		mask-size: var(--g-link-annotation-size);
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		mask-position: center;
+	}
+	a.g-external:visited::after, a.g-download:visited::after, a.g-archive:visited::after {
+		background-color: var(--g-visited-color);
+	}
+	a.g-external::after {
+		-webkit-mask-image:
+			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="black"><path d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h528v-264h72v264q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm171-192-51-51 357-357H576v-72h240v240h-72v-117L387-336Z"/></svg>');
+		mask-image:
+			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="black"><path d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h528v-264h72v264q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm171-192-51-51 357-357H576v-72h240v240h-72v-117L387-336Z"/></svg>');
+	}
+	a.g-download::after {
+		-webkit-mask-image:
+			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="black"><path d="M263.72-96Q234-96 213-117.15T192-168v-624q0-29.7 21.15-50.85Q234.3-864 264-864h312l192 192v504q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72ZM528-624v-168H264v624h432v-456H528ZM264-792v189-189 624-624Z"/></svg>');
+		mask-image:
+			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="black"><path d="M263.72-96Q234-96 213-117.15T192-168v-624q0-29.7 21.15-50.85Q234.3-864 264-864h312l192 192v504q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72ZM528-624v-168H264v624h432v-456H528ZM264-792v189-189 624-624Z"/></svg>');
+	}
+	a.g-archive::after {
+		-webkit-mask-image:
+			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="black"><path d="M480-96q-160 0-272-112T96-480h72q0 130 91 221t221 91q130 0 221-91t91-221q0-130-91-221t-221-91q-80 0-150 38T217-648h119v72H108q33-128 136.5-208T480-864q80 0 149.5 30t122 82.5Q804-699 834-629.5T864-480q0 79-30 149t-82.5 122.5Q699-156 629.5-126T480-96Zm100-248L444-480v-192h72v162l115 115-51 51Z"/></svg>');
+		mask-image:
+			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="black"><path d="M480-96q-160 0-272-112T96-480h72q0 130 91 221t221 91q130 0 221-91t91-221q0-130-91-221t-221-91q-80 0-150 38T217-648h119v72H108q33-128 136.5-208T480-864q80 0 149.5 30t122 82.5Q804-699 834-629.5T864-480q0 79-30 149t-82.5 122.5Q699-156 629.5-126T480-96Zm100-248L444-480v-192h72v162l115 115-51 51Z"/></svg>');
+	}
+}
+
 u {
 	text-decoration-thickness: var(--g-underline-thickness);
 }
@@ -2158,6 +2211,21 @@ picture a.g-button.g-external, picture a.g-button.g-expand {
 	width: var(--g-image-button-icon-width);
 	height: var(--g-image-button-height);
 }
+
+/* override link annotations */
+picture a.g-button.g-external::after {
+	display: block;
+
+	padding-right: 0;
+	background-color: var(--g-image-button-color);
+}
+picture a.g-button.g-external:hover::after {
+	background-color: var(--g-image-button-hover-color);
+}
+picture a.g-button.g-external:focus::after, picture a.g-button.g-external:focus-within::after {
+	background-color: var(--g-image-button-focus-color);
+}
+
 picture a.g-button.g-external::after {
 	opacity: 1;
 
