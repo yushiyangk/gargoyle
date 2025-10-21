@@ -2373,13 +2373,13 @@ picture a.g-button.g-expand::after {
 			top 50% right var(--g-button-icon-highlight-margin-h-compat),
 			top 50% right var(--g-button-icon-box-width-compat);
 		-webkit-mask-position:
-			top 50% right calc(var(--g-button-icon-margin-h) - ((calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale))) - var(--g-button-icon-size))),
+			top 50% right calc(var(--g-button-icon-margin-h) - ((var(--g-button-icon-highlight-scale) - 1) / 2) * var(--g-button-icon-size)),
 			top 50% right calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 		mask-position:
 			top 50% right var(--g-button-icon-highlight-margin-h-compat),
 			top 50% right var(--g-button-icon-box-width-compat);
 		mask-position:
-			top 50% right calc(var(--g-button-icon-margin-h) - ((calc(var(--g-button-icon-size) * var(--g-button-icon-highlight-scale))) - var(--g-button-icon-size))),
+			top 50% right calc(var(--g-button-icon-margin-h) - ((var(--g-button-icon-highlight-scale) - 1) / 2) * var(--g-button-icon-size)),
 			top 50% right calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 	}
 	a.g-button.g-go:focus::after, a.g-button.g-go:focus-within::after, a.g-button.g-go:focus-within::after , a.g-button.g-send:focus::after, a.g-button.g-send:focus-within::after, a.g-button.g-send:focus-within::after , a.g-button.g-upload:focus::after, a.g-button.g-upload:focus-within::after, a.g-button.g-upload:focus-within::after , a.g-button.g-download:focus::after, a.g-button.g-download:focus-within::after, a.g-button.g-download:focus-within::after  {
