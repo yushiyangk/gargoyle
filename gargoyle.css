@@ -2021,7 +2021,7 @@ a.g-orange:hover, a.g-orange:focus, a.g-orange:focus-within {
 	background-color: var(--g-button-orange-highlight-color);
 }
 
-a.g-yellow, a.g-star {
+a.g-yellow {
 	color: var(--g-button-yellow-color);
 	border-color: var(--g-button-yellow-color);
 	background-color: var(--g-button-yellow-background-color);
