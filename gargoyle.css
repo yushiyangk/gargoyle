@@ -2278,13 +2278,13 @@ picture a.g-button.g-expand::after {
 			top 50% left var(--g-button-icon-highlight-margin-h-compat),
 			top 50% left var(--g-button-icon-box-width-compat);
 		-webkit-mask-position:
-			top 50% left calc(var(--g-button-icon-margin-h) - (((var(--g-button-icon-size) * var(--g-button-icon-highlight-scale)) - var(--g-button-icon-size)) / 2)),
+			top 50% left calc(var(--g-button-icon-margin-h) - ((var(--g-button-icon-highlight-scale) - 1) / 2) * var(--g-button-icon-size)),
 			top 50% left calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 		mask-position:
 			top 50% left var(--g-button-icon-highlight-margin-h-compat),
 			top 50% left var(--g-button-icon-box-width-compat);
 		mask-position:
-			top 50% left calc(var(--g-button-icon-margin-h) - (((var(--g-button-icon-size) * var(--g-button-icon-highlight-scale)) - var(--g-button-icon-size)) / 2)),
+			top 50% left calc(var(--g-button-icon-margin-h) - ((var(--g-button-icon-highlight-scale) - 1) / 2) * var(--g-button-icon-size)),
 			top 50% left calc(var(--g-button-icon-size) + 2 * var(--g-button-icon-margin-h));
 	}
 	a.g-button.g-cancel:focus::after, a.g-button.g-cancel:focus-within::after, a.g-button.g-okay:focus::after, a.g-button.g-okay:focus-within::after, a.g-button.g-back:focus::after, a.g-button.g-back:focus-within::after, a.g-button.g-star:focus::after, a.g-button.g-star:focus-within::after, a.g-button.g-delete:focus::after, a.g-button.g-delete:focus-within::after {
