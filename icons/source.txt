@@ -1,0 +1,16 @@
+Icons are from Google's Material Symbols: https://fonts.google.com/icons
+
+For action buttons, size 24, colour black, no fill, weight 400, grade 0, optical size 24, style outlined:
+.g-go - arrow_forward_24dp_BLACK_FILL0_wght400_GRAD0_opsz24.svg
+.g-send - send_24dp_BLACK_FILL0_wght400_GRAD0_opsz24.svg
+.g-upload - upload_24dp_BLACK_FILL0_wght400_GRAD0_opsz24.svg
+.g-download - download_24dp_BLACK_FILL0_wght400_GRAD0_opsz24
+.g-okay - check_24dp_BLACK_FILL0_wght400_GRAD0_opsz24
+.g-cancel - close_24dp_BLACK_FILL0_wght400_GRAD0_opsz24.svg
+.g-back - arrow_back_24dp_BLACK_FILL0_wght400_GRAD0_opsz24.svg
+.g-star - star_24dp_BLACK_FILL0_wght400_GRAD0_opsz24
+.g-delete - delete_24dp_BLACK_FILL0_wght400_GRAD0_opsz24.svg
+
+For picture action buttons, size 24, colour black, no fill, weight 500, grade 0, optical size 24, style outlined:
+.g-external - open_in_new_24dp_BLACK_FILL0_wght500_GRAD0_opsz24.svg
+.g-expand - expand_content_24dp_BLACK_FILL0_wght500_GRAD0_opsz24.svg
