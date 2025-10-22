@@ -276,7 +276,7 @@
 	--g-thumbnail-list-fallback-margin-right-with-negative-padding-compat: 0.5rem;  /* compat; var(--g-item-margin-h) - var(--g-thumbnail-list-padding-h) */
 
 	--g-sublink-margin: 0.15em;
-	--g-inline-list-separtor-margin: 0.3em;
+	--g-inline-list-separator-margin: 0.3em;
 
 	--g-figcaption-margin-v: var(--g-small-v);
 	--g-figcaption-margin-h: var(--g-medium-h);
@@ -1195,8 +1195,8 @@ ol.g-continue {
 	content: '·';
 	display: inline;
 
-	padding-left: var(--g-inline-list-separtor-margin);
-	padding-right: var(--g-inline-list-separtor-margin);
+	padding-left: var(--g-inline-list-separator-margin);
+	padding-right: var(--g-inline-list-separator-margin);
 	line-height: 0;
 
 	color: var(--g-inline-list-separator-color);
@@ -1220,7 +1220,7 @@ ol.g-continue {
 	content: ':';
 	display: inline;
 
-	margin-right: var(--g-inline-list-separtor-margin);
+	margin-right: var(--g-inline-list-separator-margin);
 }
 .g-inline > dt:last-child::after, .g-subinline > dt:last-child::after {
 	content: none;
@@ -1241,8 +1241,8 @@ ol.g-continue {
 	font-weight: bold;
 	color: var(--g-inline-list-separator-color);
 
-	margin-left: var(--g-inline-list-separtor-margin);
-	margin-right: var(--g-inline-list-separtor-margin);
+	margin-left: var(--g-inline-list-separator-margin);
+	margin-right: var(--g-inline-list-separator-margin);
 }
 .g-inline > dd:last-child::after, .g-subinline > dd:last-child::after {
 	content: none;
