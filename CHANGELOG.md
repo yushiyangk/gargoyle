@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.9.1
+
+**Changed**: Icon for `g-archive` link annotations
+
 ### 0.9
 
 **Breaking change**: Renamed misspelled variable `--g-inline-list-separtor-margin` to `--g-inline-list-separator-margin`
