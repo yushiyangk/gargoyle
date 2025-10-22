@@ -1634,11 +1634,6 @@ a:visited {
 	}
 
 	a.g-sublink {
-		--g-sublink-border-width: 0.05rem;
-		--g-sublink-double-border-width: 0.15rem;
-		--g-sublink-baseline-offset: 0.12rem;
-		--g-link-annotation-offset: 0.12rem;
-
 		display: inline;
 
 		margin-left: var(--g-sublink-margin);
