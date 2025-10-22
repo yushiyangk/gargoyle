@@ -1,5 +1,11 @@
 ## Changelog
 
+### 0.9
+
+**Breaking change**: Renamed misspelled variable `--g-inline-list-separtor-margin` to `--g-inline-list-separator-margin`
+
+**Added**: subsidiary links following primary `<a>` elements, added with `<a class="g-sublink">` in addition to one of the link-annotating classes
+
 ### 0.8
 
 #### Breaking changes
