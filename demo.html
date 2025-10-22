@@ -169,6 +169,12 @@
 
 					<p>Links can be annotated with icons, with <code>g-external</code> to indicate that they go to an <a class="g-external" href="https://example.com/">external website</a>, or with <code>g-download</code> to indicate that they <a class="g-download" href="demo.html" download>link to a file</a>, or with <code>g-archive</code> to indicate that they <a class="g-archive" href="https://web.archive.org/web/20131021020703/https://www.cnet.com/">link to an archived snapshot</a>.</p>
 
+					<p>Subsidiary links can be attached to a main link, e.g. an archived version of a main link, by adding an <code>&lt;a&gt;</code> with the class <code>a-sublink</code> in addition to one of the above link annotations: <a href="https://example.com/">like this</a><a class="g-sublink g-archive" href="https://web.archive.org/web/20251011001025/https://example.com/"></a>.
+					</p>
+
+					<p>A link can both be annotated and be followed by a subsidiary link: <a class="g-external" href="https://example.com/">like this</a><a class="g-sublink g-archive" href="https://web.archive.org/web/20251011001025/https://example.com/"></a>.
+					</p>
+
 				<h3>Abbreviations</h3>
 
 					<p>Abbreviations make use of simulated small caps, as in <abbr title="HyperText Markup Language">HTML</abbr>, because most fonts do not implement a suitable size of smallcaps for use in place of uppercase letters in running text (they are implemented as x-height petite caps instead, which are more suited for replacing lowercase letters). The font size and weight of such <code>&lt;abbr&gt;</code> elements need to be tuned in the stylesheet to properly fit the font in use. <abbr class="g-capital">CSS</abbr> is fun; for abbreviations that start a sentence, the class <code>g-capital</code> should be used to ensure that the first letter is fully capitalised.</p>
