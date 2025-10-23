@@ -1359,6 +1359,7 @@ figcaption {
 	/* Effectively centre for single line, left-align for multiple lines */
 	width: max-content;
 	max-width: 100%;
+	max-width: calc(100% - 2 * var(--g-figcaption-margin-h));
 
 	margin: var(--g-figcaption-margin-v) auto;  /* figcaption may be above or below */
 	padding: 0;
@@ -1434,6 +1435,8 @@ figure.g-left table {
 }
 
 figure.g-left figcaption {
+	max-width: calc(100% - var(--g-figcaption-margin-h));
+
 	margin-left: 0;
 	margin-right: auto;
 
@@ -1449,6 +1452,8 @@ figure.g-right table {
 }
 
 figure.g-right figcaption {
+	max-width: calc(100% - var(--g-figcaption-margin-h));
+
 	margin-left: auto;
 	margin-right: 0;
 
@@ -1458,7 +1463,9 @@ figure.g-right figcaption {
 figure.g-left figcaption.g-bound,
 figure.g-right figcaption.g-bound {
 	width: 100%;
+	width: calc(100% - var(--g-figcaption-margin-h));
 	max-width: 100%;
+	max-width: calc(100% - var(--g-figcaption-margin-h));
 
 	margin-left: auto;
 	margin-right: auto;
