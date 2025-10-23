@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.9.2 */
+/* version 0.9.3 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -690,7 +690,7 @@ pre > code[title].g-title-centre::before, pre > samp[title].g-title-centre::befo
 article aside {
 	display: block;
 
-	margin: 0 var(--g-article-aside-margin-h);
+	margin: var(--g-article-aside-margin-v) var(--g-article-aside-margin-h);
 	padding: 0;
 
 	color: var(--g-quiet-color);
@@ -713,8 +713,6 @@ article aside {
 		max-width: calc((100% - var(--g-article-aside-margin-h)) / 2);
 
 		margin-right: 0;
-		margin-top: var(--g-article-aside-margin-v);
-		margin-bottom: var(--g-article-aside-margin-v);
 	}
 	body.g-default-media article aside.g-left {
 		float: left;
@@ -739,6 +737,7 @@ article aside {
 		max-width: calc((100vw - var(--g-column-width)) / 2 - var(--g-article-aside-margin-h) - var(--g-main-margin-h));
 
 		margin-top: 0;
+		margin-bottom: 0;
 		margin-left: var(--g-article-aside-wide-side-column-margin-h-compat);
 		margin-left: calc(var(--g-column-width) + var(--g-article-aside-margin-h));
 		margin-right: 0;
