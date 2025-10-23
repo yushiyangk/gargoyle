@@ -1,5 +1,16 @@
 ## Changelog
 
+### 0.9.2
+
+#### Added
+
+- Subtle `box-shadow` for `<figure>` to make it clearer when it overlaps with a side-column
+- Bring `<aside>` in side columns to the front on hover
+
+#### Changed
+
+- Added a small margin for `<figcaption>` even on narrow displays to help it stand out from regular paragraphs, whereas it used to be only added on wider displays
+
 ### 0.9.1
 
 **Changed**: Icon for `g-archive` link annotations

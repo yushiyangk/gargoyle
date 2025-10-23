@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.9.1 */
+/* version 0.9.2 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -181,6 +181,13 @@
 	--g-h1-abbr-capital-underline-offset: calc((var(--g-h1-inverse-demi-relative-font-size) - 1em) / 4);
 	--g-heading-abbr-capital-underline-offset: calc((var(--g-heading-inverse-demi-relative-font-size) - 1em) / 4);
 	--g-abbr-capital-underline-offset: calc((var(--g-inverse-demi-relative-font-size) - 1em) / 4);
+
+	--g-aside-hover-opacity: 0.96;
+	--g-aside-blur-radius: var(--g-border-radius);
+	--g-aside-spread-radius: var(--g-aside-blur-radius);
+	--g-figure-blur-radius: var(--g-border-radius);
+	--g-figure-spread-radius: 12px;  /* compat */
+	--g-figure-spread-radius: calc(var(--g-figure-blur-radius) * 2);
 
 
 	--g-inline-height: 1.25rem;
@@ -745,6 +752,15 @@ article aside {
 		margin-left: calc(-1 * var(--g-article-aside-margin-h));
 
 		transform: translateX(-100%);
+	}
+	body.g-default-media article aside:hover {
+		z-index: 1;
+		box-shadow: 0 0 var(--g-aside-blur-radius) var(--g-aside-spread-radius) var(--g-background-color);
+	}
+
+	/* Add dithered margin for figure when aside is in a side column and the figure may be drawn over it */
+	body.g-default-media figure {
+		box-shadow: 0 0 var(--g-figure-blur-radius) var(--g-figure-spread-radius) var(--g-background-color);
 	}
 }
 
@@ -1359,6 +1375,7 @@ figcaption {
 	/* Effectively centre for single line, left-align for multiple lines */
 	width: max-content;
 	max-width: 100%;
+	max-width: calc(100% - 2 * var(--g-figcaption-margin-h));
 
 	margin: var(--g-figcaption-margin-v) auto;  /* figcaption may be above or below */
 	padding: 0;
@@ -1434,6 +1451,8 @@ figure.g-left table {
 }
 
 figure.g-left figcaption {
+	max-width: calc(100% - var(--g-figcaption-margin-h));
+
 	margin-left: 0;
 	margin-right: auto;
 
@@ -1449,6 +1468,8 @@ figure.g-right table {
 }
 
 figure.g-right figcaption {
+	max-width: calc(100% - var(--g-figcaption-margin-h));
+
 	margin-left: auto;
 	margin-right: 0;
 
@@ -1458,7 +1479,9 @@ figure.g-right figcaption {
 figure.g-left figcaption.g-bound,
 figure.g-right figcaption.g-bound {
 	width: 100%;
+	width: calc(100% - var(--g-figcaption-margin-h));
 	max-width: 100%;
+	max-width: calc(100% - var(--g-figcaption-margin-h));
 
 	margin-left: auto;
 	margin-right: auto;
