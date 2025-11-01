@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.9.4
+
+**Fixed**: `aside.g-bound` on hover no longer changes background colour
+
 ### 0.9.3
 
 **Fixed**: vertical margins for `<aside>` in narrow displays

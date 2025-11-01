@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.9.3 */
+/* version 0.9.4 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -755,6 +755,9 @@ article aside {
 	body.g-default-media article aside:hover {
 		z-index: 1;
 		box-shadow: 0 0 var(--g-aside-blur-radius) var(--g-aside-spread-radius) var(--g-background-color);
+	}
+	body.g-default-media article aside.g-bound:hover {
+		background-color: var(--g-aside-bound-color);
 	}
 
 	/* Add dithered margin for figure when aside is in a side column and the figure may be drawn over it */
