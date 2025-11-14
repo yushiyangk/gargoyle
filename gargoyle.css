@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.9.5 */
+/* version 0.9.6 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -1190,7 +1190,7 @@ ol.g-continue {
 	counter-reset: none;
 }
 
-.g-inline, .g-subinline {
+.g-inline, .g-subinline, .g-inline .g-subinline {
 	display: inline;
 
 	margin: 0;
@@ -1199,7 +1199,7 @@ ol.g-continue {
 	word-spacing: -1em;
 }
 
-.g-inline *, .g-subinline * {
+.g-inline *, .g-subinline *, .g-inline .g-subinline * {
 	word-spacing: normal;
 }
 
@@ -1226,8 +1226,7 @@ ol.g-continue {
 }
 
 .g-inline > dt, .g-subinline > dt {
-	display: block;
-	flex: 0 0 auto;
+	display: inline;
 
 	margin: 0;
 	padding: 0;
@@ -1245,8 +1244,7 @@ ol.g-continue {
 }
 
 .g-inline > dd, .g-subinline > dd {
-	display: block;
-	flex: 0 0 auto;
+	display: inline;
 
 	margin: 0;
 	padding: 0;

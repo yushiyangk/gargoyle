@@ -1,5 +1,12 @@
 ## Changelog
 
+### 0.9.6
+
+#### Fixed
+
+- `dl.g-inline` not being inlined
+- Extra whitespace in `.g-subinline` when inside `.g-inline` (which is almost always)
+
 ### 0.9.5
 
 **Fixed**: Words being broken up excessively in narrow elements
