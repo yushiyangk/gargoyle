@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.9.5
+
+**Fixed**: Words being broken up excessively in narrow elements
+
 ### 0.9.4
 
 **Fixed**: `aside.g-bound` on hover no longer changes background colour
