@@ -1190,7 +1190,7 @@ ol.g-continue {
 	counter-reset: none;
 }
 
-.g-inline, .g-subinline {
+.g-inline, .g-subinline, .g-inline .g-subinline {
 	display: inline;
 
 	margin: 0;
@@ -1199,7 +1199,7 @@ ol.g-continue {
 	word-spacing: -1em;
 }
 
-.g-inline *, .g-subinline * {
+.g-inline *, .g-subinline *, .g-inline .g-subinline * {
 	word-spacing: normal;
 }
 
