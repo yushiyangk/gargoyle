@@ -1226,8 +1226,7 @@ ol.g-continue {
 }
 
 .g-inline > dt, .g-subinline > dt {
-	display: block;
-	flex: 0 0 auto;
+	display: inline;
 
 	margin: 0;
 	padding: 0;
@@ -1245,8 +1244,7 @@ ol.g-continue {
 }
 
 .g-inline > dd, .g-subinline > dd {
-	display: block;
-	flex: 0 0 auto;
+	display: inline;
 
 	margin: 0;
 	padding: 0;
