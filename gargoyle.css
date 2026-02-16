@@ -122,7 +122,7 @@
 	--g-aside-bound-color: ghostwhite;
 	--g-table-border-color: lightgrey;
 	--g-kbd-frame-color: lightgrey;
-	--g-kbd-background-color-compat: #e3e3e3;  /* lightgrey is #d3d3d3 */
+	--g-kbd-background-color-compat: #eaeaea;  /* lightgrey is #d3d3d3 */
 	--g-spoiler-color: var(--g-main-color);
 	--g-spoiler-highlight-color: #4f5f5f;  /* darkslategrey is #2f4f4f */
 	--g-inline-list-separator-color: var(--g-quiet-color);
