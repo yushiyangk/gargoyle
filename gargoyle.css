@@ -120,9 +120,9 @@
 	--g-frame-visited-color: #600000;
 	--g-quote-border-color: var(--g-samp-color);
 	--g-aside-bound-color: ghostwhite;
-	--g-table-border-color: #c9d3d3;
+	--g-table-border-color: #c9cfd3;
 	--g-kbd-frame-color: var(--g-table-border-color);
-	--g-kbd-background-color-compat: #eaeded;
+	--g-kbd-background-color-compat: #eaebed;
 	--g-spoiler-color: var(--g-main-color);
 	--g-spoiler-highlight-color: #4f5f5f;  /* darkslategrey is #2f4f4f */
 	--g-inline-list-separator-color: var(--g-quiet-color);
@@ -359,7 +359,7 @@
 	--g-button-yellow-color: goldenrod;
 	--g-button-yellow-background-color: #faf2c6;
 	--g-button-yellow-highlight-color: #faecac;
-	--g-image-button-color: #d0d3d3;  /* Based on --g-table-border-color, but with less saturation */
+	--g-image-button-color: #d0d1d3;  /* Based on --g-table-border-color, but with less saturation */
 	--g-image-button-background-color: #00080880;
 	--g-image-button-hover-color: #fcffff;
 	--g-image-button-hover-background-color: #000808a0;
