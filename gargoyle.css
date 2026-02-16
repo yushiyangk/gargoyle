@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.9.6 */
+/* version 0.9.7 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -113,16 +113,16 @@
 	--g-highlight-color: lavenderblush;
 	--g-link-color: maroon;
 	--g-visited-color: #600000;
-	--g-code-color: seashell;
+	--g-code-color: floralwhite;
 	--g-samp-color: ghostwhite;
 	--g-frame-color: darkslategrey;
 	--g-frame-link-color: maroon;
 	--g-frame-visited-color: #600000;
 	--g-quote-border-color: var(--g-samp-color);
 	--g-aside-bound-color: ghostwhite;
-	--g-table-border-color: lightgrey;
-	--g-kbd-frame-color: lightgrey;
-	--g-kbd-background-color-compat: #e3e3e3;  /* lightgrey is #d3d3d3 */
+	--g-table-border-color: #c9cfd3;
+	--g-kbd-frame-color: var(--g-table-border-color);
+	--g-kbd-background-color-compat: #eaebed;
 	--g-spoiler-color: var(--g-main-color);
 	--g-spoiler-highlight-color: #4f5f5f;  /* darkslategrey is #2f4f4f */
 	--g-inline-list-separator-color: var(--g-quiet-color);
@@ -359,12 +359,12 @@
 	--g-button-yellow-color: goldenrod;
 	--g-button-yellow-background-color: #faf2c6;
 	--g-button-yellow-highlight-color: #faecac;
-	--g-image-button-color: lightgrey;
-	--g-image-button-background-color: #00000080;
-	--g-image-button-hover-color: white;
-	--g-image-button-hover-background-color: #000000a0;
-	--g-image-button-focus-color: #ffffffc0;
-	--g-image-button-focus-background-color: #000000c0;
+	--g-image-button-color: #d0d1d3;  /* Based on --g-table-border-color, but with less saturation */
+	--g-image-button-background-color: #00080880;
+	--g-image-button-hover-color: #fcffff;
+	--g-image-button-hover-background-color: #000808a0;
+	--g-image-button-focus-color: #fcffffc0;
+	--g-image-button-focus-background-color: #000808c0;
 }
 
 
@@ -699,6 +699,16 @@ article aside {
 	text-align: start;
 	text-align: initial;
 }
+article aside.g-bound {
+	margin-left: var(--g-aside-bound-padding-negative-margin-h-compat);
+	margin-left: calc(-1 * var(--g-aside-bound-padding-h));
+	margin-right: var(--g-aside-bound-padding-negative-margin-h-compat);
+	margin-right: calc(-1 * var(--g-aside-bound-padding-h));
+	padding: var(--g-aside-bound-padding-v) var(--g-aside-bound-padding-h);
+
+	color: inherit;
+	background-color: var(--g-aside-bound-color);
+}
 @media (min-width: 453.818182px) {
 	/* 28.363636rem */
 	/* given by (2 * var(--g-article-aside-min-width) + var(--g-article-aside-margin-h)) / (11 / 12) == 26rem / (11 / 12) */
@@ -722,6 +732,22 @@ article aside {
 
 		text-align: right;
 		text-align: end;
+	}
+	body.g-default-media article aside.g-bound {
+		float: none;
+		position: static;
+
+		width: auto;
+		min-width: unset;
+		max-width: unset;
+
+		margin-left: var(--g-aside-bound-padding-negative-margin-h-compat);
+		margin-left: calc(-1 * var(--g-aside-bound-padding-h));
+		margin-right: var(--g-aside-bound-padding-negative-margin-h-compat);
+		margin-right: calc(-1 * var(--g-aside-bound-padding-h));
+		padding: var(--g-aside-bound-padding-v) var(--g-aside-bound-padding-h);
+
+		transform: none;
 	}
 }
 @media (min-width: 1120px) {
@@ -752,6 +778,24 @@ article aside {
 
 		transform: translateX(-100%);
 	}
+	body.g-default-media article aside.g-bound {
+		float: none;
+		position: static;
+
+		width: auto;
+		min-width: unset;
+		max-width: unset;
+
+		margin-top: var(--g-text-margin-top);
+		margin-bottom: var(--g-text-margin-bottom);
+		margin-left: var(--g-aside-bound-padding-negative-margin-h-compat);
+		margin-left: calc(-1 * var(--g-aside-bound-padding-h));
+		margin-right: var(--g-aside-bound-padding-negative-margin-h-compat);
+		margin-right: calc(-1 * var(--g-aside-bound-padding-h));
+		padding: var(--g-aside-bound-padding-v) var(--g-aside-bound-padding-h);
+
+		transform: none;
+	}
 	body.g-default-media article aside:hover {
 		z-index: 1;
 		box-shadow: 0 0 var(--g-aside-blur-radius) var(--g-aside-spread-radius) var(--g-background-color);
@@ -765,7 +809,6 @@ article aside {
 		box-shadow: 0 0 var(--g-figure-blur-radius) var(--g-figure-spread-radius) var(--g-background-color);
 	}
 }
-
 
 article aside > h1:first-child, article aside > h2:first-child, article aside > h3:first-child, article aside > h4:first-child, article aside > h5:first-child, article aside > h6:first-child,
 article aside > p:first-child, article aside > pre:first-child,
@@ -782,24 +825,6 @@ article aside > ul:last-child, article aside > menu:last-child, article aside > 
 article aside > img:last-child, article aside > picture:last-child, article aside > svg:last-child, article aside > figure:last-child,
 article aside > table:last-child {
 	margin-bottom: 0;
-}
-
-aside.g-bound {
-	float: none;
-	position: static;
-
-	width: auto;
-	min-width: unset;
-	max-width: unset;
-
-	margin: 0 var(--g-aside-bound-padding-negative-margin-h-compat);
-	margin: 0 calc(-1 * var(--g-aside-bound-padding-h));
-	padding: var(--g-aside-bound-padding-v) var(--g-aside-bound-padding-h);
-
-	color: inherit;
-	background-color: var(--g-aside-bound-color);
-
-	transform: none;
 }
 
 hr {

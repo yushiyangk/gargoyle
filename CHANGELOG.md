@@ -1,5 +1,17 @@
 ## Changelog
 
+### 0.9.7
+
+#### Fixed
+
+- Infobox with `aside.g-bound` now works when `.g-default-media` is not overriden
+
+#### Changed
+
+- Changed background colour of `<code>` from `seashell` to `floralwhite`, which better matches the luminance of `<samp>` (it is now slightly lighter and slightly less warm)
+- Tweaked grey tones (used in border colours and image action buttons) to have slight blue-green tint
+- Made compatibility background colour of `<kbd>` lighter for better contrast with text
+
 ### 0.9.6
 
 #### Fixed
