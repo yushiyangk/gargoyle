@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.9.8
+
+**Changed**: Reduced height for `<pre>` so that it aligns with the 1/4 baseline grid
+
 ### 0.9.7
 
 #### Fixed
