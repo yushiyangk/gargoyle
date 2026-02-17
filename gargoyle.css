@@ -150,6 +150,7 @@
 
 	--g-monospace-font-size: var(--g-font-size);
 	--g-monospace-line-height: var(--g-line-height);
+	--g-monospace-pre-line-height: 1.125rem;
 
 	--g-h1-font-size: 2rem;
 	--g-h1-line-height: var(--g-large-v);
@@ -627,6 +628,8 @@ pre {
 	margin-left: 0;
 	margin-right: 0;
 	padding: 0;
+
+	line-height: var(--g-monospace-pre-line-height);
 }
 
 pre > code, pre > samp {
@@ -637,6 +640,8 @@ pre > code, pre > samp {
 	padding: var(--g-pre-padding-v) var(--g-pre-padding-h);
 
 	border-radius: var(--g-border-radius);
+
+	line-height: var(--g-monospace-pre-line-height);
 }
 
 figure pre {
