@@ -118,7 +118,7 @@
 	--g-frame-color: darkslategrey;
 	--g-frame-link-color: maroon;
 	--g-frame-visited-color: #600000;
-	--g-quote-border-color: var(--g-samp-color);
+	--g-quote-border-color: var(--g-highlight-color);
 	--g-aside-bound-color: ghostwhite;
 	--g-table-border-color: #c9cfd3;
 	--g-kbd-frame-color: var(--g-table-border-color);
