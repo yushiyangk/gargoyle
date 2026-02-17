@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.9.8 */
+/* version 0.9.9 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -114,11 +114,14 @@
 	--g-link-color: maroon;
 	--g-visited-color: #600000;
 	--g-code-color: floralwhite;
+	--g-code-title-color: #eaebed80;
 	--g-samp-color: ghostwhite;
+	--g-samp-title-color: var(--g-code-title-color);
 	--g-frame-color: darkslategrey;
 	--g-frame-link-color: maroon;
 	--g-frame-visited-color: #600000;
-	--g-quote-border-color: var(--g-samp-color);
+	--g-quote-border-color: var(--g-highlight-color);
+	--g-aside-border-color: #eaebed;
 	--g-aside-bound-color: ghostwhite;
 	--g-table-border-color: #c9cfd3;
 	--g-kbd-frame-color: var(--g-table-border-color);
@@ -255,15 +258,17 @@
 	--g-pre-padding-h: var(--g-small-h);
 	--g-pre-padding-negative-margin-h-compat: -0.5rem;  /* compat; -1 * var(--g-pre-padding-h) */
 	--g-pre-title-margin-v: var(--g-tiny-v);
-	--g-pre-title-margin-top-with-negative-padding-compat: -0.375rem;  /* compat; var(--g-pre-title-margin-v) - var(--g-pre-padding-v) */
+	--g-pre-title-margin-top-with-negative-padding-compat: -0.75rem;  /* compat; -1 * var(--g-pre-padding-v) */
 	--g-pre-title-color: var(--g-quiet-color);
 
 	--g-article-aside-width: 16rem;
 	--g-article-aside-min-width: 12rem;  /* NOTE: affects media queries for <aside> */
 	--g-article-aside-margin-v: var(--g-medium-v);
 	--g-article-aside-margin-h: var(--g-large-h);  /* NOTE: affects media queries for <aside> */
+	--g-article-aside-padding-h: var(--g-large-h);  /* NOTE: affects media queries for <aside> */
 	--g-article-aside-wide-side-column-margin-h-compat: 42rem;  /* compat; var(--g-column-width) + var(--g-quote-margin-h) */
 	--g-article-aside-wide-left-column-negative-margin-h-compat: -2rem;  /* compat; -1 * (var(--g-article-aside-width) + var(--g-quote-margin-h)) */
+	--g-article-aside-border-width: var(--g-quote-border-width);
 
 	--g-aside-bound-padding-v: var(--g-pre-padding-v);
 	--g-aside-bound-padding-h: var(--g-pre-padding-h);
@@ -642,6 +647,8 @@ pre > code, pre > samp {
 	border-radius: var(--g-border-radius);
 
 	line-height: var(--g-monospace-pre-line-height);
+
+	text-wrap-mode: wrap;
 }
 
 figure pre {
@@ -667,12 +674,31 @@ pre > code[title]::before, pre > samp[title]::before {
 	display: block;
 
 	margin-top: var(--g-pre-title-margin-top-with-negative-padding-compat);
-	margin-top: calc(var(--g-pre-title-margin-v) - var(--g-pre-padding-v));
+	margin-top: calc(-1 * var(--g-pre-padding-v));
 	margin-bottom: var(--g-pre-title-margin-v);
+	margin-left: calc(-1 * var(--g-pre-padding-h));
+	margin-right: calc(-1 * var(--g-pre-padding-h));
+	padding: 0 var(--g-pre-padding-h);
+
+	border-top-left-radius: var(--g-border-radius);
+	border-top-right-radius: var(--g-border-radius);
 
 	color: var(--g-pre-title-color);
+
+	line-height: var(--g-monospace-line-height);
+
 	text-align: right;
 	text-align: end;
+}
+pre > code.g-frame[title]::before, pre > samp.g-frame[title]::before {
+	border-top-left-radius: var(--g-frame-border-radius);
+	border-top-right-radius: var(--g-frame-border-radius);
+}
+pre > code[title]::before {
+	background-color: var(--g-code-title-color);
+}
+pre > samp[title]::before {
+	background-color: var(--g-samp-title-color);
 }
 pre > code[title].g-title-left::before, pre > samp[title].g-title-left::before {
 	text-align: left;
@@ -697,6 +723,10 @@ article aside {
 
 	margin: var(--g-article-aside-margin-v) var(--g-article-aside-margin-h);
 	padding: 0;
+	padding-left: var(--g-article-aside-padding-h);  /* compat */
+	padding-left: calc(var(--g-article-aside-padding-h) - var(--g-article-aside-border-width));
+
+	border-left: var(--g-article-aside-border-width) solid var(--g-aside-border-color);
 
 	color: var(--g-quiet-color);
 
@@ -711,12 +741,14 @@ article aside.g-bound {
 	margin-right: calc(-1 * var(--g-aside-bound-padding-h));
 	padding: var(--g-aside-bound-padding-v) var(--g-aside-bound-padding-h);
 
+	border: none;
+
 	color: inherit;
 	background-color: var(--g-aside-bound-color);
 }
-@media (min-width: 453.818182px) {
-	/* 28.363636rem */
-	/* given by (2 * var(--g-article-aside-min-width) + var(--g-article-aside-margin-h)) / (11 / 12) == 26rem / (11 / 12) */
+@media (min-width: 488.727273px) {
+	/* 30.545454rem */
+	/* given by (2 * var(--g-article-aside-min-width) + var(--g-article-aside-margin-h) + var(--g-article-aside-padding-h)) / (11 / 12) == 28rem / (11 / 12) */  /* TODO: UPDATE value above */
 	/* When the main column width is wide enough for any displaced content paragraph to be at least as wide as the min-width aside */
 	/* The main column width has a lower bound of 11/12 of display width, which occurs on narrow displays where calc() is not supported */
 	body.g-default-media article aside {
@@ -725,15 +757,27 @@ article aside.g-bound {
 		width: var(--g-article-aside-width);
 		min-width: var(--g-article-aside-min-width);
 		max-width: var(--g-article-aside-min-width);  /* compat */
-		max-width: calc((100% - var(--g-article-aside-margin-h)) / 2);
+		max-width: calc((100% - var(--g-article-aside-margin-h) - var(--g-article-aside-padding-h)) / 2);
 
+		margin-left: var(--g-article-aside-margin-h);
 		margin-right: 0;
+		padding-left: var(--g-article-aside-padding-h);  /* compat */
+		padding-left: calc(var(--g-article-aside-padding-h) - var(--g-article-aside-border-width));
+		padding-right: 0;
+
+		border-left: var(--g-article-aside-border-width) solid var(--g-aside-border-color);
 	}
 	body.g-default-media article aside.g-left {
 		float: left;
 
 		margin-left: 0;
 		margin-right: var(--g-article-aside-margin-h);
+		padding-left: 0;
+		padding-right: var(--g-article-aside-padding-h);  /* compat */
+		padding-right: calc(var(--g-article-aside-padding-h) - var(--g-article-aside-border-width));
+
+		border-left: none;
+		border-right: var(--g-article-aside-border-width) solid var(--g-aside-border-color);
 
 		text-align: right;
 		text-align: end;
@@ -751,6 +795,8 @@ article aside.g-bound {
 		margin-right: var(--g-aside-bound-padding-negative-margin-h-compat);
 		margin-right: calc(-1 * var(--g-aside-bound-padding-h));
 		padding: var(--g-aside-bound-padding-v) var(--g-aside-bound-padding-h);
+
+		border: none;
 
 		transform: none;
 	}
@@ -773,6 +819,8 @@ article aside.g-bound {
 		margin-left: calc(var(--g-column-width) + var(--g-article-aside-margin-h));
 		margin-right: 0;
 
+		border: none;
+
 		color: inherit;
 	}
 	body.g-default-media article aside.g-left {
@@ -780,6 +828,8 @@ article aside.g-bound {
 
 		margin-left: var(--g-article-aside-wide-left-column-negative-margin-h-compat);
 		margin-left: calc(-1 * var(--g-article-aside-margin-h));
+
+		border: none;
 
 		transform: translateX(-100%);
 	}

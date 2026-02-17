@@ -1,5 +1,17 @@
 ## Changelog
 
+### 0.9.9
+
+#### Fixed
+
+- Text overflow in `<pre><code>` and `<pre><samp>` under certain circumstances, when an unbounded element (i.e. without `class="g-bound"`) is forcefully constrained in width, e.g. by a floated element
+
+### Changed
+
+- Made border colour for `<blockquote>` more prominent, changing from `ghostwhite` (same as `<samp>`) to `lavendarblush` (same as highlighted image links on hover)
+- Added solid side border for `<aside>` when in narrow page layouts, when it is placed within the main content column, in order to more clearly delineate it
+- Block-level `<pre><code>` and `<pre><samp>` with a `title` attribute now render the title with a slightly darker background colour, whereas it was previously distinguished only by a slightly lighter font colour
+
 ### 0.9.8
 
 **Changed**: Reduced height for `<pre>` so that it aligns with the 1/4 baseline grid
