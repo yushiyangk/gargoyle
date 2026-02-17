@@ -642,6 +642,8 @@ pre > code, pre > samp {
 	border-radius: var(--g-border-radius);
 
 	line-height: var(--g-monospace-pre-line-height);
+
+	text-wrap-mode: wrap;
 }
 
 figure pre {
