@@ -1,12 +1,16 @@
 ## Changelog
 
+### 0.9.10
+
+**Added**: `.g-sc` class, with the same effect as `.g-abbr` but without the semantic connotations
+
 ### 0.9.9
 
 #### Fixed
 
 - Text overflow in `<pre><code>` and `<pre><samp>` under certain circumstances, when an unbounded element (i.e. without `class="g-bound"`) is forcefully constrained in width, e.g. by a floated element
 
-### Changed
+#### Changed
 
 - Made border colour for `<blockquote>` more prominent, changing from `ghostwhite` (same as `<samp>`) to `lavendarblush` (same as highlighted image links on hover)
 - Added solid side border for `<aside>` when in narrow page layouts, when it is placed within the main content column, in order to more clearly delineate it

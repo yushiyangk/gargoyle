@@ -2148,7 +2148,7 @@ dl.g-thumbnail a abbr[title].g-capital {
 	hyphens: none;
 }
 
-.g-abbr {
+.g-abbr, .g-sc {
 	font-size: var(--g-demi-relative-font-size);
 	font-weight: var(--g-demi-font-weight);
 }
@@ -2159,22 +2159,24 @@ dl.g-thumbnail a abbr[title].g-capital {
 	text-decoration-style: dotted;
 	text-decoration-thickness: var(--g-underline-thickness);
 }
-h1 .g-abbr {
+h1 .g-abbr, h1 .g-sc {
 	font-size: var(--g-h1-demi-relative-font-size);
 	font-weight: var(--g-h1-demi-font-weight);
 }
-h2 .g-abbr, h3 .g-abbr, h4 .g-abbr, h5 .g-abbr, h6 .g-abbr {
+h2 .g-abbr, h3 .g-abbr, h4 .g-abbr, h5 .g-abbr, h6 .g-abbr,
+h2 .g-sc, h3 .g-sc, h4 .g-sc, h5 .g-sc, h6 .g-sc {
 	font-size: var(--g-heading-demi-relative-font-size);
 	font-weight: var(--g-heading-demi-font-weight);
 }
-b .g-abbr, strong .g-abbr, dfn .g-abbr, dt .g-abbr {
+b .g-abbr, strong .g-abbr, dfn .g-abbr, dt .g-abbr,
+b .g-sc, strong .g-sc, dfn .g-sc, dt .g-sc {
 	font-weight: var(--g-demi-bold-font-weight);
 }
-a .g-abbr {
+a .g-abbr, a .g-sc {
 	display: inline;
 }
 
-.g-abbr.g-capital {
+.g-abbr.g-capital, .g-sc.g-capital {
 	display: inline-block;
 
 	margin: 0;
@@ -2182,11 +2184,11 @@ a .g-abbr {
 
 	-moz-animation: ffbug 0.1s ease 1;
 }
-.g-abbr.g-capital::first-letter {
+.g-abbr.g-capital::first-letter, .g-sc.g-capital::first-letter {
 	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: normal;
 }
-h1 .g-abbr.g-capital::first-letter {
+h1 .g-abbr.g-capital::first-letter, h1 .g-sc.g-capital::first-letter {
 	font-size: var(--g-h1-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
@@ -2194,30 +2196,45 @@ h2 .g-abbr.g-capital::first-letter,
 h3 .g-abbr.g-capital::first-letter,
 h4 .g-abbr.g-capital::first-letter,
 h5 .g-abbr.g-capital::first-letter,
-h6 .g-abbr.g-capital::first-letter {
+h6 .g-abbr.g-capital::first-letter,
+h2 .g-sc.g-capital::first-letter,
+h3 .g-sc.g-capital::first-letter,
+h4 .g-sc.g-capital::first-letter,
+h5 .g-sc.g-capital::first-letter,
+h6 .g-sc.g-capital::first-letter {
 	font-size: var(--g-heading-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
 b .g-abbr.g-capital::first-letter,
 strong .g-abbr.g-capital::first-letter,
 dfn .g-abbr.g-capital::first-letter,
-dt .g-abbr.g-capital::first-letter {
+dt .g-abbr.g-capital::first-letter,
+b .g-sc.g-capital::first-letter,
+strong .g-sc.g-capital::first-letter,
+dfn .g-sc.g-capital::first-letter,
+dt .g-sc.g-capital::first-letter {
 	font-weight: bold;
 }
-a .g-abbr.g-capital {
+a .g-abbr.g-capital, a .g-sc.g-capital {
 	text-decoration: inherit;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
 	text-decoration-style: inherit;
 	text-decoration-thickness: inherit;
 	text-underline-offset: var(--g-abbr-capital-underline-offset);
 }
-h1 a .g-abbr.g-capital, a h1 .g-abbr.g-capital {
+h1 a .g-abbr.g-capital, a h1 .g-abbr.g-capital,
+h1 a .g-sc.g-capital, a h1 .g-sc.g-capital {
 	text-underline-offset: var(--g-h1-abbr-capital-underline-offset);
 }
 h2 a .g-abbr.g-capital, a h2 .g-abbr.g-capital,
 h3 a .g-abbr.g-capital, a h3 .g-abbr.g-capital,
 h4 a .g-abbr.g-capital, a h4 .g-abbr.g-capital,
 h5 a .g-abbr.g-capital, a h5 .g-abbr.g-capital,
-h6 a .g-abbr.g-capital, a h6 .g-abbr.g-capital {
+h6 a .g-abbr.g-capital, a h6 .g-abbr.g-capital,
+h2 a .g-sc.g-capital, a h2 .g-sc.g-capital,
+h3 a .g-sc.g-capital, a h3 .g-sc.g-capital,
+h4 a .g-sc.g-capital, a h4 .g-sc.g-capital,
+h5 a .g-sc.g-capital, a h5 .g-sc.g-capital,
+h6 a .g-sc.g-capital, a h6 .g-sc.g-capital {
 	text-underline-offset: var(--g-heading-abbr-capital-underline-offset);
 }
 dl.g-thumbnail a .g-abbr[title].g-capital {
