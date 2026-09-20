@@ -2,7 +2,15 @@
 
 ### 0.9.10
 
-**Added**: `.g-sc` class, with the same effect as `.g-abbr` but without the semantic connotations
+#### Added
+
+- `.g-sc` class, with the same effect as `.g-abbr` but without the semantic connotations
+- Support for for adding `.g-external`, `.g-download`, `.g-archive` tags to generic `<span>` elements in addition to `<a>`
+
+#### Fixed
+
+- `.g-external`, `.g-download`, `.g-archive` tagged links now follow their parent's colour without requiring custom styles
+
 
 ### 0.9.9
 
