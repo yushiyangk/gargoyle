@@ -1715,7 +1715,8 @@ a:visited {
 	)
 {
 
-	a.g-external::after, a.g-download::after, a.g-archive::after {
+	a.g-external::after, a.g-download::after, a.g-archive::after,
+	span.g-external::after, span.g-download::after, span.g-archive::after {
 		content: '';
 		display: inline-block;
 
@@ -1725,7 +1726,7 @@ a:visited {
 
 		vertical-align: var(--g-sublink-baseline-offset);
 
-		background-color: var(--g-link-color);
+		background-color: currentColor;
 
 		-webkit-mask-size: var(--g-link-annotation-size);
 		mask-size: var(--g-link-annotation-size);
@@ -1738,19 +1739,19 @@ a:visited {
 		background-color: var(--g-visited-color);
 	}
 
-	a.g-external::after {
+	a.g-external::after, span.g-external::after {
 		-webkit-mask-image:
 			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="black"><path d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h528v-264h72v264q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm171-192-51-51 357-357H576v-72h240v240h-72v-117L387-336Z"/></svg>');
 		mask-image:
 			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="black"><path d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h528v-264h72v264q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm171-192-51-51 357-357H576v-72h240v240h-72v-117L387-336Z"/></svg>');
 	}
-	a.g-download::after {
+	a.g-download::after, span.g-download::after {
 		-webkit-mask-image:
 			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="black"><path d="M263.72-96Q234-96 213-117.15T192-168v-624q0-29.7 21.15-50.85Q234.3-864 264-864h312l192 192v504q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72ZM528-624v-168H264v624h432v-456H528ZM264-792v189-189 624-624Z"/></svg>');
 		mask-image:
 			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="black"><path d="M263.72-96Q234-96 213-117.15T192-168v-624q0-29.7 21.15-50.85Q234.3-864 264-864h312l192 192v504q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72ZM528-624v-168H264v624h432v-456H528ZM264-792v189-189 624-624Z"/></svg>');
 	}
-	a.g-archive::after {
+	a.g-archive::after, span.g-archive::after {
 		-webkit-mask-image:
 			url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="black"><path d="M263.72-96Q234-96 213-117.15T192-168v-624q0-29.7 21.16-50.85Q234.32-864 264.04-864h432.24Q726-864 747-842.85T768-792v624q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72Zm.28-72h432v-624h-72v312l-96-48-96 48v-312H264v624Zm0 0v-624 624Zm168-312 96-48 96 48-96-48-96 48Z"/></svg>');
 		mask-image:
@@ -2148,7 +2149,7 @@ dl.g-thumbnail a abbr[title].g-capital {
 	hyphens: none;
 }
 
-.g-abbr {
+.g-abbr, .g-sc {
 	font-size: var(--g-demi-relative-font-size);
 	font-weight: var(--g-demi-font-weight);
 }
@@ -2159,22 +2160,24 @@ dl.g-thumbnail a abbr[title].g-capital {
 	text-decoration-style: dotted;
 	text-decoration-thickness: var(--g-underline-thickness);
 }
-h1 .g-abbr {
+h1 .g-abbr, h1 .g-sc {
 	font-size: var(--g-h1-demi-relative-font-size);
 	font-weight: var(--g-h1-demi-font-weight);
 }
-h2 .g-abbr, h3 .g-abbr, h4 .g-abbr, h5 .g-abbr, h6 .g-abbr {
+h2 .g-abbr, h3 .g-abbr, h4 .g-abbr, h5 .g-abbr, h6 .g-abbr,
+h2 .g-sc, h3 .g-sc, h4 .g-sc, h5 .g-sc, h6 .g-sc {
 	font-size: var(--g-heading-demi-relative-font-size);
 	font-weight: var(--g-heading-demi-font-weight);
 }
-b .g-abbr, strong .g-abbr, dfn .g-abbr, dt .g-abbr {
+b .g-abbr, strong .g-abbr, dfn .g-abbr, dt .g-abbr,
+b .g-sc, strong .g-sc, dfn .g-sc, dt .g-sc {
 	font-weight: var(--g-demi-bold-font-weight);
 }
-a .g-abbr {
+a .g-abbr, a .g-sc {
 	display: inline;
 }
 
-.g-abbr.g-capital {
+.g-abbr.g-capital, .g-sc.g-capital {
 	display: inline-block;
 
 	margin: 0;
@@ -2182,11 +2185,11 @@ a .g-abbr {
 
 	-moz-animation: ffbug 0.1s ease 1;
 }
-.g-abbr.g-capital::first-letter {
+.g-abbr.g-capital::first-letter, .g-sc.g-capital::first-letter {
 	font-size: var(--g-inverse-demi-relative-font-size);
 	font-weight: normal;
 }
-h1 .g-abbr.g-capital::first-letter {
+h1 .g-abbr.g-capital::first-letter, h1 .g-sc.g-capital::first-letter {
 	font-size: var(--g-h1-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
@@ -2194,30 +2197,45 @@ h2 .g-abbr.g-capital::first-letter,
 h3 .g-abbr.g-capital::first-letter,
 h4 .g-abbr.g-capital::first-letter,
 h5 .g-abbr.g-capital::first-letter,
-h6 .g-abbr.g-capital::first-letter {
+h6 .g-abbr.g-capital::first-letter,
+h2 .g-sc.g-capital::first-letter,
+h3 .g-sc.g-capital::first-letter,
+h4 .g-sc.g-capital::first-letter,
+h5 .g-sc.g-capital::first-letter,
+h6 .g-sc.g-capital::first-letter {
 	font-size: var(--g-heading-inverse-demi-relative-font-size);
 	font-weight: bold;
 }
 b .g-abbr.g-capital::first-letter,
 strong .g-abbr.g-capital::first-letter,
 dfn .g-abbr.g-capital::first-letter,
-dt .g-abbr.g-capital::first-letter {
+dt .g-abbr.g-capital::first-letter,
+b .g-sc.g-capital::first-letter,
+strong .g-sc.g-capital::first-letter,
+dfn .g-sc.g-capital::first-letter,
+dt .g-sc.g-capital::first-letter {
 	font-weight: bold;
 }
-a .g-abbr.g-capital {
+a .g-abbr.g-capital, a .g-sc.g-capital {
 	text-decoration: inherit;  /* legacy shorthand property for text-decoration-line: underline and text-decoration-style: solid */
 	text-decoration-style: inherit;
 	text-decoration-thickness: inherit;
 	text-underline-offset: var(--g-abbr-capital-underline-offset);
 }
-h1 a .g-abbr.g-capital, a h1 .g-abbr.g-capital {
+h1 a .g-abbr.g-capital, a h1 .g-abbr.g-capital,
+h1 a .g-sc.g-capital, a h1 .g-sc.g-capital {
 	text-underline-offset: var(--g-h1-abbr-capital-underline-offset);
 }
 h2 a .g-abbr.g-capital, a h2 .g-abbr.g-capital,
 h3 a .g-abbr.g-capital, a h3 .g-abbr.g-capital,
 h4 a .g-abbr.g-capital, a h4 .g-abbr.g-capital,
 h5 a .g-abbr.g-capital, a h5 .g-abbr.g-capital,
-h6 a .g-abbr.g-capital, a h6 .g-abbr.g-capital {
+h6 a .g-abbr.g-capital, a h6 .g-abbr.g-capital,
+h2 a .g-sc.g-capital, a h2 .g-sc.g-capital,
+h3 a .g-sc.g-capital, a h3 .g-sc.g-capital,
+h4 a .g-sc.g-capital, a h4 .g-sc.g-capital,
+h5 a .g-sc.g-capital, a h5 .g-sc.g-capital,
+h6 a .g-sc.g-capital, a h6 .g-sc.g-capital {
 	text-underline-offset: var(--g-heading-abbr-capital-underline-offset);
 }
 dl.g-thumbnail a .g-abbr[title].g-capital {
