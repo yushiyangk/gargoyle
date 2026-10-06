@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.9.9 */
+/* version 0.9.11 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -1922,6 +1922,10 @@ u {
 dfn {
 	font-weight: bold;
 	font-style: inherit;
+}
+
+mark {
+	color: inherit;
 }
 
 small {
