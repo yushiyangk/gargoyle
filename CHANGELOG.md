@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.9.11
+
+**Changed**: `<mark>` now inherits text colour from its parent, instead of relying on browser defaults that may force it to black
+
 ### 0.9.10
 
 #### Added
