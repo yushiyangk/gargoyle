@@ -1924,6 +1924,10 @@ dfn {
 	font-style: inherit;
 }
 
+mark {
+	color: inherit;
+}
+
 small {
 	font-size: var(--g-small-font-size);
 	line-height: var(--g-small-line-height);
