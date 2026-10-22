@@ -294,8 +294,6 @@
 	--g-figcaption-margin-v: var(--g-small-v);
 	--g-figcaption-margin-h: var(--g-medium-h);
 	--g-figcaption-aligned-margin-h: 0rem;
-	--g-figcaption-width-compat: 38rem;  /* compat; var(--g-column-width) - 2 * var(--g-figcaption-margin-h) */
-	--g-figcaption-aligned-width-compat: 39rem;
 	--g-figure-wide-max-width: calc(100vw - 2 * var(--g-large-h));  /* NOTE: affects media queries for <figure> */
 	/* No compat variable for --g-figure-wide-max-width because the existing fallback for figure max width, var(--g-main-width), already has more generous margins when calc() is not supported, especially on wider screens */
 
