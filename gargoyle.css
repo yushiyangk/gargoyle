@@ -1439,9 +1439,6 @@ main picture img, main a:hover picture img {
 figure {
 	display: block;
 
-	position: relative;
-	left: 50%;
-
 	width: max-content;
 	min-width: 100%;
 
@@ -1451,9 +1448,15 @@ figure {
 	margin-right: 0;
 	padding: 0;
 
-	transform: translateX(-50%);
-
 	text-align: initial;
+}
+@supports (transform: translateX(calc(-50% + max(0rem, (100% - var(--g-main-width)) / 2)))) {
+	figure {
+		position: relative;
+		left: 50%;
+
+		transform: translateX(calc(-50% + max(0rem, (100% - var(--g-main-width)) / 2)));
+	}
 }
 
 figcaption {
