@@ -1,4 +1,4 @@
-Icons are from Google's Material Symbols: https://fonts.google.com/icons
+Most icons are from Google's Material Symbols: https://fonts.google.com/icons
 
 For action buttons, size 24, colour black, no fill, weight 400, grade 0, optical size 24, style outlined:
 .g-go - arrow_forward_24dp_BLACK_FILL0_wght400_GRAD0_opsz24.svg
@@ -19,3 +19,6 @@ For link annotations, size 16, colour black, no fill, weight 400, grade 0, optic
 .g-external - open_in_new_16dp_BLACK_FILL0_wght400_GRAD0_opsz20.svg
 .g-download - draft_16dp_BLACK_FILL0_wght400_GRAD0_opsz20.svg
 .g-archive - book_16dp_BLACK_FILL0_wght400_GRAD0_opsz20.svg
+
+
+Wikipedia icon is from https://commons.wikimedia.org/wiki/File:Wikipedia's_W.svg
