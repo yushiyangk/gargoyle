@@ -1,5 +1,33 @@
 ## Changelog
 
+### 0.10
+
+#### Breaking changes
+
+- Simplified `@media (min-width: 704px)` media query for `<figure>` and `<figcaption>`
+	- Removed variables `--g-figcaption-width-compat` and `--g-figcaption-aligned-width-compat`
+- `<figure>` no longer has `max-width` bounded by `--g-main-width`
+	- `<img>`, `<picture>`, `<svg>` and `<table>` inside `<figure>` now has `max-width` bounded by `--g-main-width` or `--g-figure-wide-max-width`, rather than parent width
+	- `<figcaption>` now has `max-width` bounded by `--g-main-width` or `--g-column-width`, rather than parent width
+	- `<figure>` with class `g-bound` still has `max-width` bounded by parent, and any `<img>`, `<picture>`, `<svg>`, `<table>`, or `<figcaption>` inside that is also still bounded by parent
+
+#### Added
+
+- `.g-wiki` link annotation
+- `.g-file` as an alias for `.g-download` in the context of link annotations (inline `<a>` and `<span>` elements)
+- Styles for `<pre>` inside `<td>` or `<th>`
+- `.g-bound` can now be added to `<pre>` elements directly, regardless of whether it is in a `<figure>`
+- `.g-detail` on a `<figure>` now works on `<table>` elements contained within it
+
+#### Changed
+
+- Multiple `<pre>` elements in a `<figure>` will now always have the same width, even if any of them exceed the width of the viewport
+
+#### Fixed
+
+- The default values for `--g-article-text-indent`, `--g-dt-margin-left`, `--g-figcaption-aligned-margin-h` now all have units despite still evaluating to `0`, so that they do not break `calc()`
+- Media query overrides for `@media (min-width: 704px)` was previously broken for `figure picture.g-bound` and `figure svg.g-bound`
+
 ### 0.9.11
 
 **Changed**: `<mark>` now inherits text colour from its parent, instead of relying on browser defaults that may force it to black

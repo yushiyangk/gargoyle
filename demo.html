@@ -167,7 +167,9 @@
 
 					<p>Here is a hyperlink to <a href="">nowhere</a>, and another link to an <a href="https://example.com/">example domain</a>.
 
-					<p>Links can be annotated with icons, with <code>g-external</code> to indicate that they go to an <a class="g-external" href="https://example.com/">external website</a>, or with <code>g-download</code> to indicate that they <a class="g-download" href="demo.html" download>link to a file</a>, or with <code>g-archive</code> to indicate that they <a class="g-archive" href="https://web.archive.org/web/20131021020703/https://www.cnet.com/">link to an archived snapshot</a>.</p>
+					<p>Links can be annotated with icons, with <code>g-external</code> to indicate that they go to an <a class="g-external" href="https://example.com/">external website</a>, or with <code>g-download</code> or <code>g-file</code> to indicate that they <a class="g-file" href="demo.html" download>link to a file</a>, or with <code>g-archive</code> to indicate that they <a class="g-archive" href="https://web.archive.org/web/20131021020703/https://www.cnet.com/">link to an archived snapshot</a>.</p>
+
+					<p>Links to Wikipedia can also be directly annotated with <code>g-wiki</code>: <a class="g-wiki" href="https://en.wikipedia.org/wiki/Philosophy">Philosophy</a>.</p>
 
 					<p>Subsidiary links can be attached to a main link, e.g. an archived version of a main link, by adding an <code>&lt;a&gt;</code> with the class <code>a-sublink</code> in addition to one of the above link annotations: <a href="https://example.com/">like this</a><a class="g-sublink g-archive" href="https://web.archive.org/web/20251011001025/https://example.com/"></a>.
 					</p>
@@ -2108,6 +2110,11 @@ BBBBB BBBBB BBBBB BBBBB BBBBB BBBBB BBBBB BBBBB BBBBB BBBBB BBBBB BBBBB BBBBB BB
 
 
 					<figure>
+						<pre><code>for i in {1..20}; do echo -n "AAAAA "; done</code></pre>
+						<pre><samp>AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA</samp></pre>
+					</figure>
+
+					<figure class="g-bound">
 						<pre><code>for i in {1..20}; do echo -n "AAAAA "; done</code></pre>
 						<pre><samp>AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA</samp></pre>
 					</figure>
