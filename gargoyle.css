@@ -637,6 +637,9 @@ pre {
 
 	line-height: var(--g-monospace-pre-line-height);
 }
+pre.g-bound {
+	max-width: min(var(--g-main-width), var(--g-column-width));
+}
 
 pre > code, pre > samp {
 	display: block;
