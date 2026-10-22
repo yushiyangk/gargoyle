@@ -249,7 +249,7 @@
 	--g-main-width: calc(100vw - 2 * var(--g-main-margin-h));
 	--g-column-width: 40rem;  /* NOTE: affects media queries for <aside> and <figure> */
 
-	--g-article-text-indent: 0;
+	--g-article-text-indent: 0em;
 	--g-article-tab-size: 4;  /* Should be an integer for wide support */
 	--g-article-nav-margin-v: var(--g-small-v);
 	--g-article-nav-margin-h: var(--g-medium-h);
@@ -276,7 +276,7 @@
 
 	--g-hr-width: 1px;
 
-	--g-dt-margin-left: 0;
+	--g-dt-margin-left: 0rem;
 	--g-dd-margin-left: 1.5rem;  /* compat */
 	--g-dd-margin-left: calc(1.5 * var(--g-span));
 
@@ -293,6 +293,7 @@
 
 	--g-figcaption-margin-v: var(--g-small-v);
 	--g-figcaption-margin-h: var(--g-medium-h);
+	--g-figcaption-aligned-margin-h: 0rem;
 	--g-figcaption-width-compat: 38rem;  /* compat; var(--g-column-width) - 2 * var(--g-figcaption-margin-h) */
 	--g-figcaption-aligned-width-compat: 39rem;
 	--g-figure-wide-max-width: calc(100vw - 2 * var(--g-large-h));  /* NOTE: affects media queries for <figure> */
@@ -1440,7 +1441,6 @@ figure {
 
 	width: max-content;
 	min-width: 100%;
-	max-width: var(--g-main-width);
 
 	margin-top: var(--g-image-margin-top);
 	margin-bottom: var(--g-image-margin-bottom);
@@ -1458,26 +1458,24 @@ figcaption {
 
 	/* Effectively centre for single line, left-align for multiple lines */
 	width: max-content;
-	max-width: 100%;
-	max-width: calc(100% - 2 * var(--g-figcaption-margin-h));
+	max-width: min(var(--g-main-width), var(--g-column-width));
+	max-width: calc(min(var(--g-main-width), var(--g-column-width)) - 2 * var(--g-figcaption-margin-h));
 
 	margin: var(--g-figcaption-margin-v) auto;  /* figcaption may be above or below */
 	padding: 0;
 
 	text-align: left;
 }
-figcaption.g-bound {
-	margin-left: auto;
-	margin-right: auto;
-}
 
 figure img, figure picture, figure svg, figure table {
 	display: block;
 
+	max-width: var(--g-main-width);
+
 	margin: 0 auto;
 }
-figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
-	max-width: 100%;
+figure img.g-bound, figure picture.g-bound, figure svg.g-bound, figure table.g-bound {
+	max-width: min(var(--g-main-width), var(--g-column-width));
 }
 
 figure.g-tall img, figure.g-tall picture, figure.g-tall svg {
@@ -1485,6 +1483,9 @@ figure.g-tall img, figure.g-tall picture, figure.g-tall svg {
 }
 figure.g-detail img, figure.g-detail picture, figure.g-detail svg {
 	max-height: unset;
+	max-width: unset;
+}
+figure.g-detail table {
 	max-width: unset;
 }
 
@@ -1507,7 +1508,7 @@ figure > a img, figure > a picture, figure > a svg {
 }
 
 figure.g-bound {
-	max-width: 100%;
+	max-width: min(var(--g-main-width), var(--g-column-width));
 
 	margin-left: 0;
 	margin-right: 0;
@@ -1535,12 +1536,15 @@ figure.g-left table {
 }
 
 figure.g-left figcaption {
-	max-width: calc(100% - var(--g-figcaption-margin-h));
+	max-width: calc(min(var(--g-main-width), var(--g-column-width)) - var(--g-figcaption-margin-h) - 0rem);
 
-	margin-left: 0;
+	margin-left: var(--g-figcaption-aligned-margin-h);
 	margin-right: auto;
 
 	text-align: left;
+}
+figure.g-left figcaption.g-bound {
+	margin-left: calc(max(0rem, (100% - var(--g-column-width)) / 2) + var(--g-figcaption-aligned-margin-h));
 }
 
 figure.g-right img,
@@ -1552,55 +1556,40 @@ figure.g-right table {
 }
 
 figure.g-right figcaption {
-	max-width: calc(100% - var(--g-figcaption-margin-h));
+	max-width: calc(min(var(--g-main-width), var(--g-column-width)) - var(--g-figcaption-margin-h) - 0rem);
 
 	margin-left: auto;
-	margin-right: 0;
+	margin-right: var(--g-figcaption-aligned-margin-h);
 
 	text-align: right;
 }
-
-figure.g-left figcaption.g-bound,
 figure.g-right figcaption.g-bound {
-	width: 100%;
-	width: calc(100% - var(--g-figcaption-margin-h));
-	max-width: 100%;
-	max-width: calc(100% - var(--g-figcaption-margin-h));
-
-	margin-left: auto;
-	margin-right: auto;
+	margin-right: calc(max(0rem, (100% - var(--g-column-width)) / 2) + var(--g-figcaption-aligned-margin-h));
 }
 
 @media (min-width: 704px) {
 	/* 44rem */
 	/* given by value of 100vw when var(--g-figure-wide-max-width) == var(--g-column-width) */
 	/* When viewport is wider than main column, use more generous margins for figures bounded by viewport size */
-	body.g-default-media figure {
+
+	body.g-default-media figure img,
+	body.g-default-media figure picture,
+	body.g-default-media figure svg,
+	body.g-default-media figure table {
 		max-width: var(--g-figure-wide-max-width);
 	}
-
-	body.g-default-media figure.g-bound {
+	body.g-default-media figure.g-bound img,
+	body.g-default-media figure.g-bound picture,
+	body.g-default-media figure.g-bound svg,
+	body.g-default-media figure.g-bound table {
 		max-width: 100%;
 	}
 
-	/* Elements bound to column width should be set to appropriate values rather than 100% */
-	body.g-default-media figcaption {
-		max-width: var(--g-figcaption-width-compat);
-		max-width: calc(var(--g-column-width) - 2 * var(--g-figcaption-margin-h));
-	}
-
-	body.g-default-media figure img.g-bound, figure picture.g-bound, figure svg.g-bound {
+	body.g-default-media figure img.g-bound,
+	body.g-default-media figure picture.g-bound,
+	body.g-default-media figure svg.g-bound,
+	body.g-default-media figure table.g-bound {
 		max-width: var(--g-column-width);
-	}
-
-	body.g-default-media figure.g-left figcaption.g-bound, figure.g-right figcaption.g-bound {
-		/* Reset max-width to disable centreing for single-line captions */
-		/* Subtract one-sided margin instead of two because captions for left- and right- aligned figures are flush against column but with var(--g-figcaption-margin-h) margin on the other side */
-		width: var(--g-figcaption-aligned-width-compat);
-		width: calc(var(--g-column-width) - var(--g-figcaption-margin-h));
-		max-width: var(--g-figcaption-aligned-width-compat);
-		max-width: calc(var(--g-column-width) - var(--g-figcaption-margin-h));
-		/* Contrast with centred figure with a multiline (left-aligned) caption, or with directly left- or right- aligned captions, both of which have margin on boths sides and are not flush */
 	}
 }
 
