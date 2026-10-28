@@ -1,5 +1,13 @@
 ## Changelog
 
+### 0.11
+
+#### Breaking changes
+
+- `.g-abbr` no longer automatically renders text as small-caps, but still renders with dotted underline
+	- `.g-abbr` should be used for mixed-case abbreviations, in conjunction with `.g-sc`
+	- `<abbr>` should be used for simple all-caps abbreviations
+
 ### 0.10.2
 
 #### Fixed
