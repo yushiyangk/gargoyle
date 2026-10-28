@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.10 */
+/* version 0.10.1 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -773,6 +773,13 @@ article aside.g-bound {
 
 		border-left: var(--g-article-aside-border-width) solid var(--g-aside-border-color);
 	}
+	article aside:hover {
+		position: relative;
+		z-index: 1;
+
+		background-color: var(--g-background-color);
+		box-shadow: 0 0 var(--g-aside-blur-radius) var(--g-aside-spread-radius) var(--g-background-color);
+	}
 	body.g-default-media article aside.g-left {
 		float: left;
 
@@ -858,7 +865,10 @@ article aside.g-bound {
 		transform: none;
 	}
 	body.g-default-media article aside:hover {
+		position: absolute;
 		z-index: 1;
+
+		background-color: var(--g-background-color);
 		box-shadow: 0 0 var(--g-aside-blur-radius) var(--g-aside-spread-radius) var(--g-background-color);
 	}
 	body.g-default-media article aside.g-bound:hover {
