@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.10.1 */
+/* version 0.10.2 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -773,7 +773,7 @@ article aside.g-bound {
 
 		border-left: var(--g-article-aside-border-width) solid var(--g-aside-border-color);
 	}
-	article aside:hover {
+	body.g-default-media article aside:hover {
 		position: relative;
 		z-index: 1;
 
@@ -812,6 +812,12 @@ article aside.g-bound {
 		border: none;
 
 		transform: none;
+	}
+	body.g-default-media article aside.g-bound:hover {
+		position: static;
+
+		background-color: var(--g-aside-bound-color);
+		box-shadow: none;
 	}
 }
 @media (min-width: 1120px) {
@@ -872,7 +878,10 @@ article aside.g-bound {
 		box-shadow: 0 0 var(--g-aside-blur-radius) var(--g-aside-spread-radius) var(--g-background-color);
 	}
 	body.g-default-media article aside.g-bound:hover {
+		position: static;
+
 		background-color: var(--g-aside-bound-color);
+		box-shadow: none;
 	}
 
 	/* Add dithered margin for figure when aside is in a side column and the figure may be drawn over it */

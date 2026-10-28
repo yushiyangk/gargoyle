@@ -1,5 +1,11 @@
 ## Changelog
 
+### 0.10.2
+
+#### Fixed
+
+- `aside.g-bound` no longer moves or reflows upon hover
+
 ### 0.10.1
 
 #### Added
