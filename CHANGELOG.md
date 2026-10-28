@@ -1,5 +1,11 @@
 ## Changelog
 
+### 0.10.1
+
+#### Added
+
+- Bring `<aside>` in side columns to the front on hover on medium-width displays
+
 ### 0.10
 
 #### Breaking changes
