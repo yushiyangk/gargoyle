@@ -1,5 +1,12 @@
 ## Changelog
 
+### 0.11.1
+
+#### Fixed
+
+- `figure.g-bound` when nested inside an element with extra horizontal margins will now respect the parent's margins
+- `pre.g-bound` when nested inside an element with extra horizontal margins will now respect the parent's margins
+
 ### 0.11
 
 #### Breaking changes
