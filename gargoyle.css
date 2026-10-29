@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.11 */
+/* version 0.11.1 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -636,7 +636,7 @@ pre {
 	line-height: var(--g-monospace-pre-line-height);
 }
 pre.g-bound {
-	max-width: min(var(--g-main-width), var(--g-column-width));
+	max-width: 100%;
 }
 
 pre > code, pre > samp {
@@ -655,6 +655,9 @@ pre > code, pre > samp {
 
 figure pre {
 	margin: 0 auto;
+}
+figure pre.g-bound {
+	max-width: min(var(--g-main-width), var(--g-column-width));
 }
 figure.g-bound pre {
 	width: unset;
@@ -1531,7 +1534,7 @@ figure > a img, figure > a picture, figure > a svg {
 }
 
 figure.g-bound {
-	max-width: min(var(--g-main-width), var(--g-column-width));
+	max-width: 100%;
 
 	margin-left: 0;
 	margin-right: 0;
