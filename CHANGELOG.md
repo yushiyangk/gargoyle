@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.11.2
+
+**Fixed**: nested smallcaps no longer compound in effect
+
 ### 0.11.1
 
 #### Fixed
