@@ -1,5 +1,5 @@
 /* Gargoyle.css */
-/* version 0.11.1 */
+/* version 0.11.2 */
 
 /* Yu Shiyang <yu.shiyang@gnayihs.uy> */
 
@@ -2120,6 +2120,9 @@ abbr[title] {
 	text-decoration-style: dotted;
 	text-decoration-thickness: var(--g-underline-thickness);
 }
+abbr abbr {
+	font-size: 1em;
+}
 b abbr, strong abbr, dfn abbr, dt abbr {
 	font-weight: var(--g-demi-bold-font-weight);
 }
@@ -2204,6 +2207,12 @@ dl.g-thumbnail a abbr[title].g-capital {
 .g-sc {
 	font-size: var(--g-demi-relative-font-size);
 	font-weight: var(--g-demi-font-weight);
+}
+abbr .g-sc, .g-sc .g-sc {
+	font-size: 1em;
+}
+.g-sc abbr {
+	font-size: 1em;
 }
 h1 .g-sc {
 	font-size: var(--g-h1-demi-relative-font-size);
